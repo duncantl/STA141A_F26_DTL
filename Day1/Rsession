@@ -1,0 +1,442 @@
+]0;Day1~/sta141a/Public/Day1> R
+
+R Under development (unstable) (2025-03-26 r88055) -- "Unsuffered Consequences"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin23.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 81526 
+Time = 2026-09-24 09:58:38 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day1 
+1> d = readRDS("../Data/SFGate/Sep2026_Mar2012_May2011.rds")
+Error in gzfile(file, "rb") : cannot open the connection
+In addition: Warning message:
+In gzfile(file, "rb") :
+  cannot open compressed file '../Data/SFGate/Sep2026_Mar2012_May2011.rds', probable reason 'No such file or directory'
+
+Enter a frame number, or 0 to exit   
+
+1: readRDS("../Data/SFGate/Sep2026_Mar2012_May2011.rds")
+2: gzfile(file, "rb")
+
+Selection: 0
+1> d = readRDS("../../Data/SFGate/Sep2026_Mar2012_May2011.rds")
+[01:29] 2> ls()
+[1] "d"              "PRMGateway"     "PRMGatewayProd"
+[03:12] 3> class(d)
+[1] "data.frame"
+[04:58] 4> head(d)
+            address       date  amount bedrooms bathrooms  sqft build   lastSold lastSoldAmount               county
+1 1325 10th Ave. #A 2011-06-16  965000       NA        NA  1847  1912       <NA>             NA San Francisco County
+2     1983 15th St. 2011-06-14 1005000       NA        NA  1362  1908 2009-07-02        1000000 San Francisco County
+3  2057 15th St. #D 2011-06-14  545000       NA        NA 16830  1907 2011-05-06         605000 San Francisco County
+4     2417 15th St. 2011-06-17  867500       NA        NA  1301  1928       <NA>             NA San Francisco County
+5  3440 16th St. #1 2011-06-17 1069000       NA        NA  1820  2000 2006-09-15         980000 San Francisco County
+6    2422 18th Ave. 2011-06-17  660000       NA        NA  1310  1926       <NA>             NA San Francisco County
+[05:55] 5> nrow(d)
+[1] 1100
+[08:42] 6> ncol(d)
+[1] 10
+[09:10] 7> names(d)
+ [1] "address"        "date"           "amount"         "bedrooms"       "bathrooms"      "sqft"          
+ [7] "build"          "lastSold"       "lastSoldAmount" "county"        
+[09:16] 8> tail(d)
+                         address       date amount bedrooms bathrooms sqft build   lastSold lastSoldAmount  county
+1095 1201 Glen Cove Parkway #114 2026-07-13 347500        2        NA  976  1992 2026-02-25             NA Vallejo
+1096 1201 Glen Cove Parkway #904 2026-07-15 307000        2        NA 1014  1992 2024-11-14             NA Vallejo
+1097           171 Maywood Drive 2026-07-15 337500        3        NA 1008  1955       <NA>             NA Vallejo
+1098          196 Nantucket Lane 2026-07-14 305000        1        NA 1062  1985 2017-10-02             NA Vallejo
+1099     355 Parkview Terrace #1 2026-07-13 160000        2        NA  918  1973 2024-03-28             NA Vallejo
+1100          4142 Sheffield Way 2026-07-15 789000        3        NA 2430  2003 2016-09-28             NA Vallejo
+[10:25] 9> head(d$bedrooms)
+[1] NA NA NA NA NA NA
+[11:42] 10> tail(d$bedrooms)
+[1] 2 2 3 1 2 3
+[11:45] 11> class(d$bedrooms)
+[1] "numeric"
+[12:35] 12> d$date
+*** output flushed ***
+[14:56] 13> min(d$date)
+[1] "2011-05-20"
+[15:08] 14> min(x$date)
+Error: object 'x' not found
+No suitable frames for recover()
+[15:08] 14> max(d$date)
+[1] "2026-08-21"
+[15:18] 15> range(d$date)
+[1] "2011-05-20" "2026-08-21"
+[15:43] 16> typeof(d)
+[1] "list"
+[16:20] 17> class(d$date)
+[1] "Date"
+[17:30] 18> typeof(d$date)
+[1] "double"
+[17:51] 19> format(d$date,  "%Y")
+   [1] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+  [17] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+  [33] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+  [49] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+  [65] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+  [81] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+  [97] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+ [113] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+ [129] "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011" "2011"
+ [145] "2011" "2011" "2011" "2011" "2011" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [161] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [177] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [193] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [209] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [225] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [241] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [257] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [273] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [289] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [305] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [321] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [337] "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012" "2012"
+ [353] "2012" "2012" "2012" "2012" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [369] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [385] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [401] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [417] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [433] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [449] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [465] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [481] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [497] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [513] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [529] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [545] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [561] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [577] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [593] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [609] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [625] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [641] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [657] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [673] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [689] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [705] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [721] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [737] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [753] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [769] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [785] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [801] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [817] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [833] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [849] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [865] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [881] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [897] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [913] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [929] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [945] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [961] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [977] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+ [993] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[1009] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[1025] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[1041] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[1057] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[1073] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[1089] "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026" "2026"
+[19:22] 20> table(format(d$date,  "%Y"))
+
+2011 2012 2026 
+ 149  207  744 
+[20:07] 21> ls()
+[1] "d"              "PRMGateway"     "PRMGatewayProd"
+[22:55] 22> y = 10*x + rnorm(N) + 5
+Error: object 'x' not found
+No suitable frames for recover()
+[22:55] 22> N = 1000
+x = rnorm(N)
+[26:42] 23> [26:42] 24> y = 10*x + rnorm(N) + 5
+[26:43] 25> plot(x, y)
+[26:46] 26> y = 10*x + rnorm(N) + 500
+[27:50] 27> ?table
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+table                   package:base                   R Documentation
+
+Cross Tabulation and Table Creation
+
+Description:
+
+     ‘table’ uses cross-classifying factors to build a contingency
+     table of the counts at each combination of factor levels.
+
+Usage:
+
+     table(...,
+           exclude = if (useNA == "no") c(NA, NaN),
+           useNA = c("no", "ifany", "always"),
+           dnn = list.names(...), deparse.level = 1)
+     
+     as.table(x, ...)
+     is.table(x)
+     
+:...skipping...
+table                   package:base                   R Documentation
+
+Cross Tabulation and Table Creation
+
+Description:
+
+     ‘table’ uses cross-classifying factors to build a contingency
+     table of the counts at each combination of factor levels.
+
+Usage:
+
+     table(...,
+           exclude = if (useNA == "no") c(NA, NaN),
+           useNA = c("no", "ifany", "always"),
+           dnn = list.names(...), deparse.level = 1)
+     
+     as.table(x, ...)
+     is.table(x)
+     
+     ## S3 method for class 'table'
+     as.data.frame(x, row.names = NULL, ...,
+                   responseName = "Freq", stringsAsFactors = TRUE,
+                   sep = "", base = list(LETTERS))
+     
+Arguments:
+
+     ...: one or more objects which can be interpreted as factors
+          (including numbers or character strings), or a ‘list’ (such
+          as a data frame) whose components can be so interpreted.
+          (For ‘as.table’, arguments passed to specific methods; for
+          ‘as.data.frame’, unused.)
+
+ exclude: levels to remove for all factors in ‘...’.  If it does not
+          contain ‘NA’ and ‘useNA’ is not specified, it implies ‘useNA
+          = "ifany"’.  See ‘Details’ for its interpretation for
+          non-factor arguments.
+
+   useNA: whether to include ‘NA’ values in the table.  See ‘Details’.
+          Can be abbreviated.
+: 
+
+     dnn: the names to be given to the dimensions in the result (the
+          _dimnames names_).
+
+deparse.level: controls how the default ‘dnn’ is constructed.  See
+          ‘Details’.
+
+       x: an arbitrary R object, or an object inheriting from class
+'          ‘"table"’ for the ‘as.data.frame’ method. Note that
+          ‘as.data.frame.table(x, *)’ may be called explicitly for
+          non-table ‘x’ for “reshaping” ‘array’s.
+
+row.names: a character vector giving the row names for the data frame.
+
+responseName: the name to be used for the column of table entries,
+          usually counts.
+
+stringsAsFactors: logical: should the classifying factors be returned
+          as factors (the default) or character vectors?
+
+sep, base: passed to ‘provideDimnames’.
+
+Details:
+
+     If the argument ‘dnn’ is not supplied, the internal function
+     ‘list.names’ is called to compute the ‘dimname names’ as follows:
+     If ‘...’ is one ‘list’ with its own ‘names()’, these ‘names’ are
+     used.  Otherwise, if the arguments in ‘...’ are named, those names
+     are used.  For the remaining arguments, ‘deparse.level = 0’ gives
+     an empty name, ‘deparse.level = 1’ uses the supplied argument if
+     it is a symbol, and ‘deparse.level = 2’ will deparse the argument.
+
+     Only when ‘exclude’ is specified (i.e., not by default) and
+     non-empty, will ‘table’ potentially drop levels of factor
+     arguments.
+
+     ‘useNA’ controls if the table includes counts of ‘NA’ values: the
+     allowed values correspond to never (‘"no"’), only if the count is
+     positive (‘"ifany"’) and even for zero counts (‘"always"’).  Note
+     the somewhat “pathological” case of two different kinds of ‘NA’s
+: 
+     which are treated differently, depending on both ‘useNA’ and
+     ‘exclude’, see ‘d.patho’ in the ‘Examples:’ below.
+
+     Both ‘exclude’ and ‘useNA’ operate on an “all or none” basis.  If
+     you want to control the dimensions of a multiway table separately,
+     modify each argument using ‘factor’ or ‘addNA’.
+
+     Non-factor arguments ‘a’ are coerced via ‘factor(a,
+     exclude=exclude)’.  Since R 3.4.0, care is taken _not_ to count
+     the excluded values (where they were included in the ‘NA’ count,
+     previously).
+
+     The ‘summary’ method for class ‘"table"’ (used for objects created
+     by ‘table’ or ‘xtabs’) which gives basic information and performs
+     a chi-squared test for independence of factors (note that the
+     function ‘chisq.test’ currently only handles 2-d tables).
+
+Value:
+
+     ‘table()’ returns a _contingency table_, an object of class
+     ‘"table"’, an array of integer values.  Note that unlike S the
+     result is always an ‘array’, a 1D array if one factor is given.
+
+     ‘as.table’ and ‘is.table’ coerce to and test for contingency
+     table, respectively.
+
+     The ‘as.data.frame’ method for objects inheriting from class
+     ‘"table"’ can be used to convert the array-based representation of
+     a contingency table to a data frame containing the classifying
+     factors and the corresponding entries (the latter as component
+     named by ‘responseName’).  This is the inverse of ‘xtabs’.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     ‘tabulate’ is the underlying function and allows finer control.
+: 
+
+     Use ‘ftable’ for printing (and more) of multidimensional tables.
+     ‘margin.table’, ‘prop.table’, ‘addmargins’.
+
+     ‘addNA’ for constructing factors with ‘NA’ as a level.
+
+     ‘xtabs’ for cross tabulation of data frames with a formula
+     interface.
+
+Examples:
+
+     require(stats) # for rpois and xtabs
+     ## Simple frequency distribution
+     table(rpois(100, 5))
+     ## Check the design:
+     with(warpbreaks, table(wool, tension))
+     table(state.division, state.region)
+     
+     # simple two-way contingency table
+     with(airquality, table(cut(Temp, quantile(Temp)), Month))
+     
+     a <- letters[1:3]
+     table(a, sample(a))                    # dnn is c("a", "")
+     table(a, sample(a), dnn = NULL)        # dimnames() have no names
+     table(a, sample(a), deparse.level = 0) # dnn is c("", "")
+     table(a, sample(a), deparse.level = 2) # dnn is c("a", "sample(a)")
+     
+     ## xtabs() <-> as.data.frame.table() :
+     UCBAdmissions ## already a contingency table
+     DF <- as.data.frame(UCBAdmissions)
+     class(tab <- xtabs(Freq ~ ., DF)) # xtabs & table
+     ## tab *is* "the same" as the original table:
+     all(tab == UCBAdmissions)
+     all.equal(dimnames(tab), dimnames(UCBAdmissions))
+     
+     a <- rep(c(NA, 1/0:3), 10)
+     table(a)                 # does not report NA's
+     table(a, exclude = NULL) # reports NA's
+     b <- factor(rep(c("A","B","C"), 10))
+     table(b)
+: 
+     table(b, exclude = "B")
+     d <- factor(rep(c("A","B","C"), 10), levels = c("A","B","C","D","E"))
+     table(d, exclude = "B")
+     print(table(b, d), zero.print = ".")
+     
+     ## NA counting:
+     is.na(d) <- 3:4
+     d. <- addNA(d)
+     d.[1:7]
+     table(d.) # ", exclude = NULL" is not needed
+     ## i.e., if you want to count the NA's of 'd', use
+     table(d, useNA = "ifany")
+     
+     ## "pathological" case:
+     d.patho <- addNA(c(1,NA,1:2,1:3))[-7]; is.na(d.patho) <- 3:4
+     d.patho
+     ## just 3 consecutive NA's ? --- well, have *two* kinds of NAs here :
+     as.integer(d.patho) # 1 4 NA NA 1 2
+     ##
+     ## In R >= 3.4.0, table() allows to differentiate:
+     table(d.patho)                   # counts the "unusual" NA
+     table(d.patho, useNA = "ifany")  # counts all three
+     table(d.patho, exclude = NULL)   #  (ditto)
+     table(d.patho, exclude = NA)     # counts none
+     
+     ## Two-way tables with NA counts. The 3rd variant is absurd, but shows
+     ## something that cannot be done using exclude or useNA.
+     with(airquality,
+        table(OzHi = Ozone > 80, Month, useNA = "ifany"))
+     with(airquality,
+        table(OzHi = Ozone > 80, Month, useNA = "always"))
+     with(airquality,
+        table(OzHi = Ozone > 80, addNA(Month)))
+     
+
+(END)
+
+^     table(a)                 # does not report NA's
+     table(a, exclude = NULL) # reports NA's
+     b <- factor(rep(c("A","B","C"), 10))
+:
+
+^     table(a, exclude = NULL) # reports NA's
+     b <- factor(rep(c("A","B","C"), 10))
+     table(b)
+     table(b, exclude = "B")
+     d <- factor(rep(c("A","B","C"), 10), levels = c("A","B","C","D","E"))
+     table(d, exclude = "B")
+     print(table(b, d), zero.print = ".")
+     
+     ## NA counting:
+     is.na(d) <- 3:4
+     d. <- addNA(d)
+     d.[1:7]
+     table(d.) # ", exclude = NULL" is not needed
+     ## i.e., if you want to count the NA's of 'd', use
+     table(d, useNA = "ifany")
+     
+     ## "pathological" case:
+     d.patho <- addNA(c(1,NA,1:2,1:3))[-7]; is.na(d.patho) <- 3:4
+     d.patho
+     ## just 3 consecutive NA's ? --- well, have *two* kinds of NAs here :
+     as.intepger(d.patho) # 1 4 NA NA 1 2
+     ##
+     ## In R >= 3.4.0, table() allows to differentiate:
+     table(d.patho)                   # counts the "unusual" NA
+     table(d.patho, useNA = "ifany")  # counts all three
+     table(d.patho, exclude = NULL)   #  (ditto)
+     table(d.patho, exclude = NA)     # counts none
+     
+     ## Two-way tables with NA counts. The 3rd variant is absurd, but shows
+     ## something that cannot be done using exclude or useNA.
+     with(airquality,
+        table(OzHi = Ozone > 80, Month, useNA = "ifany"))
+     with(airquality,
+        table(OzHi = Ozone > 80, Month, useNA = "always"))
+     with(airquality,
+        table(OzHi = Ozone > 80, addNA(Month)))
+     
+
+~
+(END)q
+[31:05] 28> 
+[31:05] 28> example(table)
+*** output flushed ***
+[33:27] 29> 
