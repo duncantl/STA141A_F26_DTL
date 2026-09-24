@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STA141A F26 Day1 DTL</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# STA141A
+# Fall 2026
+## Fundamentals of Statistical Data Science
+### Professor Duncan Temple Lang
+
+Quick Links:  [Canvas]()  [Piazza](https://piazza.com/class/mubrw2k0bsw7j0/)
+
+Github: [https://github.com/duncantl/STA141A_F26_DTL](https://github.com/duncantl/STA141A_F26_DTL)
+
+<div style="clear: both"/>
+
+<!-- <hr width="50%"/> -->
+
+---
+
+# Communicating
+
++ Feel free to call me Duncan.
+
+   + BTW, my last name is "Temple Lang".
+
+--
+
++ Please ask questions during class
+
+   + and answer my questions!
+
+--
+
++ Ask all questions about the course (content, logistics, ...) on Piazza.
+
+   + Make the questions public, not private.
+
+   + Don't be afraid/shy to post questions and answers.
+
+   + Don't post anonymously.
+
++ Send private/personal question to me at dtemplelang@ucdavis.edu.
+
+---
+
+# Teaching Assistant
+
+<div style="display: flex; align-items: center; gap: 20px;">
+  <img src="../../ZHANG, Biying.jpg" style="width: 40%;" />
+  <div>
+      <h3>Phoebe (Biying) Zhang</h3>
+      <p>PhD Student in Statistics</p>
+  </div>
+</div>
+
+--
+
+Office hours
+
+ + Monday 3:00-4:00 PM: Math Sciences Building (MSB) Room 1117
+ + Wednesday 4:00-5:00 PM: on [Zoom](https://ucdavis.zoom.us/j/98773103382?pwd=auB1X4z1tWFeH8G9QENUEGz0bjauFY.1)
+
+
+---
+
+# Duncan's Office Hours
+
++ Tuesday and Thursday 10.30 - 11.30 in person
+
++ Friday - 3.30 - 4.30pm [Zoom](https://ucdavis.zoom.us/j/99506591099?pwd=frafMbkia7wDztmNqGOqHasxYJbbL0.1&jst=4)
+
+---
+
+# Course Goals
+
+For each of you to
+
++ Become a proficient R programmer
+   + and programmer generally (not just R.)
+--
+
++ Get a sense for *exploring* and *manipulating* data
+
+--
+
++ Know how to approach solving computational problems related to data analysis and simulation
+   + breaking problems into sequence of smaller steps
+   + identifying roadblocks and alternatives.
+
+--
+
++ Learn some valuable, general computational statistical methods, e.g.,
+
+   + cross validation
+
+   + bootstrap
+
+   + random number generation 
+
+---
+
+# Learning to program
+
+Learning at least one programming language well is significantly more valuable 
+than knowing several only somewhat/a little.
+
+--
+
+It is easier to become proficient in a programming language by learning the 
+fundamentals and computational model of that language.
+
+   + not just mimicing/adapting examples
+
+--
+
+Like human language, need to know syntax, grammar, semantics.
+
+
+---
+
+# Learning
+
++ I truly want you to learn this material.
+
+--
+
++ I believe it will help you
+   + in other courses
+   + getting internships and research opportunities
+   + getting and keeping a job.
+
+--
+
++ You are at University to learn
+   +  not just get the best grades.
+
+--
+
++ It is truly worth the time to become proficient in R and computational reasoning.
+
+--
+
++ I try to be as responsive and available as possible to keep you moving forward.
+  + Make use of this.
+
+---
+# Grading
+
+--
+
++ Homework - 24%
+   + anticipate 6 homeworks, each 4%
+
+--
+
++ Midterm exam - 35%
+
++ Final exam - 36%
+
+--
+
++ Participation - 5%
+   + class, piazza, office hours.
+
+--
+
++ Significant change from how I previously ran statistical computing courses.
+   + Due to AI.
+
+--
+
++ Pay no attention to the estimated grades Canvas provides
+   + They are nonsense.
+
+---
+
+# Homework 1
+
++ 
+
++ Due October 5th by 11pm
+
++ Submit on Canvas
+
+---
+
+# Mid-Term Date
+
++ Thursday, October 29th  9 - 10.20
+    + plus Accommodations
+
++ Any conflicts?
+   + Let me know immediately.
+
+---
+
+# Code of Conduct
+
++ Read and understand the [Code of Academic Conduct](https://studentconduct.ucdavis.edu/conduct/policies/student-conduct-and-discipline-interim#102.01.1)
+
++ [Suggestions for Avoiding Academic Misconduct](https://studentconduct.ucdavis.edu/suggestions-avoiding-academic-misconduct)
+
+---
+# Artificial Intelligence
+
++ When you have a job, you should know how to use AI - if they let you.
+
+--
+
++ However, when at University, you are here to learn for the future.
+
+--
+
++ It is essential that you learn the foundations and fundamentals
+    of the language(s) in which  AI might generate code.
+
+--
+
++ You need to be able to understand and review AI generated code.
+
+  + Know it works
+  + Adapt it when it doesn't.
+
+--
+
++ I know grades are important and AI may seem like  a way to improve grades.
+   + Won't work in this course because of the (unfortunate) grading structure.
+
+
+---
+
+# AI 
+
++ Many job interviews will not allow you to use AI during the interview.  
+  + Want to see what you know
+  + Could you solve the problem and write the code yourself.
+    + If you can, then sure you can use AI because you have shown you are capable of doing it
+      yourself.
+  + If you can't do it yourself, why should they employ you.
+     + All you are doing is passing the "prompt" to AI and passing on the results.
+
++ If you can show that you can do it faster with AI but know how to understand, review, verify the results, then  you
+  are in better shape.
+   + But w/o ability to reason about the problem, you are a not better than AI itself.
+
+---
+# Learn to use AI
+
++ You should learn to use AI 
+   + to be productive
+   + to learn about things efficiently
+
++ For programming, learn to use AI after you have learned to program yourself.
+   + You can then learn how to use AI to be more efficient.
+
++ That is a separate class
+   + If there isn't one, ask for it.
+
+
+---
+
+# Use of Artificial Intelligence in this course
+
++ Do the homeworks yourself.
+  + They will prepare you for the exam.
+
++ Use AI to LEARN not to DO your work.
+
++ You can search for help online and adapt answers to your needs.
+
++ You **cannot** have AI generate the code for you.
+
++ You **can* learn from AI but **not** have it solve/complete an entire question for you.
+
++ I am convinced this is in your best long-term interest and learning.
+  + I hope you do too and don't take the apparent "easy" route
+
+
+---
+# AI
+
++ DO NOT UPLOAD PROMPTS, DATA, ... from this course to AI portals.
+
+---
+#
+
+You can use
+
++ Ideas and code you find on the Web
+
++ Code snippets posted on Piazza
+
++ YOU MUST NOTE IN YOUR CODE AND REPORT WHERE YOU GOT THESE!
+
+---
+# Lectures
+
++ I want you to raise questions and discuss problems, questions, concepts in class.
+
++ The beginning of every class, I ask for questions. I expect
+   there to be some. If not, then you are not working on the assignments.
+
++ If I say something you don’t understand, but you have
+   tried to follow, ask me to explain it a different way.
+
++ If I speak too quickly, ask me to slow down.
+
+
+---
+# Lectures
+
++ We'll be doing a lot of "live coding" and problem solving.
+
++ Important for you to participate and learn the reasoning, alternatives, trade-offs.
+
+
+---
+# Posting on Piazza
+
++ Don’t post a screen shot of R code
+  +  We can’t cut-and-paste it to analyze it or even find the syntax error.
+
++ Put the R code in as text
+  + Format it 
+
++ Do not put much R code in, i.e., keep the question focused.
+   + Don't put your solution to an entire howework question!
+
+
+---
+# Posting on Piazza
+### Before Posting
+
++ Make certain to read all the posts - regularly
+
+  + Part of the course learning.
+
+  + You will learn a lot and find suggestions about how to approach aspects of the assignments.
+
++ Don’t repeat a question, i.e., that was asked previously.
+
++ Try to find the answer or some background information
+    before simply expecting others to look it up for you.
+
+
+---
+# Posting on Piazza
+### Example of Bad Question
+
++ “I tried to read the data and it didn’t work”
+   + What data - a file, a URL? What format? Does the file actually exist?….
+
++ What’s “it”?
+
++ In what way didn’t it “work”?
+
+
+---
+# Posting on Piazza
+### Good Question
+
++ Much more likely to get a good answer quickly if you
+   pose a question well
+
++ Focus on what information is necessary for a reader who isn’t sitting in front of your computer
+
++ Enough to provide all the relevant details
+
++ Not too much so reader can’t see the relevant element
+
+   + And doesn’t bother to reply.
+
+
+---
+# Posting on Piazza
+### Good Question
+
++ Minimal reproducible example
+
+  + Take the time to create a much simpler version of only
+     the part of your code that exhibits the problem.
+
+  + Doing this will often be enough to solve the problem yourself.
+
+    + You will have learned a lot in the process of solving it yourself.
+
+    + This is where you learn for the future.
+
+---
+# Posting on Piazza
+### Good Question
+
+In the question, state
+
++ what you expect the code to do and what results you expect it to produce
+
++ what it actually produces
+
++ In what ways these are different.
+
++ Include any error or warning message
+
++ And the output from sessionInfo()
+
+
+---
+# Books/Materials
+
++ [Advanced R](https://adv-r.hadley.nz/), Hadley Wickham
+    + not really advanced, just more than the basics.
+
++ [R Manuals](https://cran.r-project.org/manuals.html)
+
++ Advanced R Solutions, Malte Grosser, Henning Bumann, Hadley Wickham.
+
++ [R for Data Science](https://r4ds.hadley.nz), Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund
+
++ [The Art of R Programming](https://nostarch.com/artofr.htm), Norm Matloff
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="remark-toc/index.js">     </script>   
+    <script>
+     var slideshow = remark.create({
+                            // Clear the format string to eliminate slide numbers completely
+                       slideNumberFormat: '' 
+                      });
+//     var toc = require('remark-toc');
+//     slideshow.use(toc);
+    </script>
+  </body>
+</html>
+
+
+
