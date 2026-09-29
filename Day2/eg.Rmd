@@ -1,0 +1,60 @@
+# My Title
+## My Sub-title
+### Date: Sep, 28 , 2026
+
+
+## Reading the Data
+
+We start by reading the data into R
+```{r}
+d = readRDS("../Data/SFHouses.rds")
+```
+
+We don't want to show the code for this next operation to the reader as we are just doing some
+sanity checks. 
+So we add `echo=FALSE` to the section:
+```{r,echo=FALSE}
+stopifnot(nrow(d) > 0)
+stopifnot(class(d) == "data.frame")
+stopifnot(inherits(d, "data.frame"))
+```
+
+Generally, I would include these in my report.
+
+## Summary of the Data Frame
+
+Next, we compute the number of rows and columns:
+```{r}
+dim(d)
+```
+
+We also compute the class of each column
+```{r}
+sapply(d, class)
+```
+
+## Plot
+
+We plot sqft versus sale price/amount
+```{r}
+plot(d$sqft, d$amount)
+```
+
+
+Create the PDF file from the Rmd file:
+```{r,eval=FALSE}
+rmarkdown::render("eg.Rmd", "pdf_document")
+```
+
+
+Generate the R code from the Rmd file:
+```{r, eval=FALSE}
+knitr::purl("eg.Rmd", documentation = 0)
+```
+
+
+```{r}
+g = split(d, d$county)
+
+g[[2]]
+```
