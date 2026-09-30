@@ -1,0 +1,207 @@
+]0;Day2~/sta141a/Public/Day2> R
+
+R Under development (unstable) (2025-03-26 r88055) -- "Unsuffered Consequences"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin23.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 43786 
+Time = 2026-09-29 08:54:30 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day2 
+1> d = readRDS("../Data/SFHouses.rds")
+[54:41] 2> names(d)
+ [1] "address"        "date"           "amount"         "bedrooms"       "bathrooms"      "sqft"          
+ [7] "build"          "lastSold"       "lastSoldAmount" "county"        
+[22:28] 3> class(d)
+[1] "data.frame"
+[22:30] 4> dim(d)
+[1] 1100   10
+[23:58] 5> head(d)
+            address       date  amount bedrooms bathrooms  sqft build   lastSold lastSoldAmount               county
+1 1325 10th Ave. #A 2011-06-16  965000       NA        NA  1847  1912       <NA>             NA San Francisco County
+2     1983 15th St. 2011-06-14 1005000       NA        NA  1362  1908 2009-07-02        1000000 San Francisco County
+3  2057 15th St. #D 2011-06-14  545000       NA        NA 16830  1907 2011-05-06         605000 San Francisco County
+4     2417 15th St. 2011-06-17  867500       NA        NA  1301  1928       <NA>             NA San Francisco County
+5  3440 16th St. #1 2011-06-17 1069000       NA        NA  1820  2000 2006-09-15         980000 San Francisco County
+6    2422 18th Ave. 2011-06-17  660000       NA        NA  1310  1926       <NA>             NA San Francisco County
+[25:03] 6> sapply(d, class)
+       address           date         amount       bedrooms      bathrooms           sqft          build       lastSold 
+   "character"         "Date"      "integer"      "numeric"      "numeric"      "numeric"      "integer"         "Date" 
+lastSoldAmount         county 
+     "integer"    "character" 
+[26:55] 7> ty = sapply(d, class)
+[32:42] 8> class(ty)
+[1] "character"
+[34:00] 9> dim(ty)
+NULL
+[34:06] 10> length(ty)
+[1] 10
+[36:05] 11> names(ty)
+ [1] "address"        "date"           "amount"         "bedrooms"       "bathrooms"      "sqft"          
+ [7] "build"          "lastSold"       "lastSoldAmount" "county"        
+[36:25] 12> ty["date"]
+  date 
+"Date" 
+[37:12] 13> ty[2]
+  date 
+"Date" 
+[40:07] 14> tty
+Error: object 'tty' not found
+No suitable frames for recover()
+[40:07] 14> ty
+       address           date         amount       bedrooms      bathrooms           sqft          build       lastSold 
+   "character"         "Date"      "integer"      "numeric"      "numeric"      "numeric"      "integer"         "Date" 
+lastSoldAmount         county 
+     "integer"    "character" 
+[43:21] 15> sapply(d, length)
+       address           date         amount       bedrooms      bathrooms           sqft          build       lastSold 
+          1100           1100           1100           1100           1100           1100           1100           1100 
+lastSoldAmount         county 
+          1100           1100 
+[43:28] 16> is.list(d)
+[1] TRUE
+[43:43] 17> class(d)
+[1] "data.frame"
+[43:47] 18> head(d)
+            address       date  amount bedrooms bathrooms  sqft build   lastSold lastSoldAmount               county
+1 1325 10th Ave. #A 2011-06-16  965000       NA        NA  1847  1912       <NA>             NA San Francisco County
+2     1983 15th St. 2011-06-14 1005000       NA        NA  1362  1908 2009-07-02        1000000 San Francisco County
+3  2057 15th St. #D 2011-06-14  545000       NA        NA 16830  1907 2011-05-06         605000 San Francisco County
+4     2417 15th St. 2011-06-17  867500       NA        NA  1301  1928       <NA>             NA San Francisco County
+5  3440 16th St. #1 2011-06-17 1069000       NA        NA  1820  2000 2006-09-15         980000 San Francisco County
+6    2422 18th Ave. 2011-06-17  660000       NA        NA  1310  1926       <NA>             NA San Francisco County
+[44:23] 19> tail(d)
+                         address       date amount bedrooms bathrooms sqft build   lastSold lastSoldAmount  county
+1095 1201 Glen Cove Parkway #114 2026-07-13 347500        2        NA  976  1992 2026-02-25             NA Vallejo
+1096 1201 Glen Cove Parkway #904 2026-07-15 307000        2        NA 1014  1992 2024-11-14             NA Vallejo
+1097           171 Maywood Drive 2026-07-15 337500        3        NA 1008  1955       <NA>             NA Vallejo
+1098          196 Nantucket Lane 2026-07-14 305000        1        NA 1062  1985 2017-10-02             NA Vallejo
+1099     355 Parkview Terrace #1 2026-07-13 160000        2        NA  918  1973 2024-03-28             NA Vallejo
+1100          4142 Sheffield Way 2026-07-15 789000        3        NA 2430  2003 2016-09-28             NA Vallejo
+[44:35] 20> lapply(d, class)
+$address
+[1] "character"
+
+$date
+[1] "Date"
+
+$amount
+[1] "integer"
+
+$bedrooms
+[1] "numeric"
+
+$bathrooms
+[1] "numeric"
+
+$sqft
+[1] "numeric"
+
+$build
+[1] "integer"
+
+$lastSold
+[1] "Date"
+
+$lastSoldAmount
+[1] "integer"
+
+$county
+[1] "character"
+
+[45:06] 21> ty2 = lapply(d, class)
+[45:54] 22> class(ty2)
+[1] "list"
+[45:59] 23> sapply(ty2, class)
+       address           date         amount       bedrooms      bathrooms           sqft          build       lastSold 
+   "character"    "character"    "character"    "character"    "character"    "character"    "character"    "character" 
+lastSoldAmount         county 
+   "character"    "character" 
+[46:24] 24> table(sapply(ty2, class))
+
+character 
+       10 
+[46:29] 25> table(sapply(ty2, length))
+
+ 1 
+10 
+[46:58] 26> table(d$bathrooms)
+
+  1 1.5   2 2.5   3 3.5   4 4.5   5 5.5   8 
+126  28 240 110  66  28   9   8   5   3   1 
+[47:33] 27> table(d$bedrooms)
+
+  1   2   3   4   5   6   9 
+ 41 167 253 189  55   5   1 
+[48:07] 28> tt = lapply(d, table)
+[48:19] 29> sapply(tt, length)
+       address           date         amount       bedrooms      bathrooms           sqft          build       lastSold 
+          1099             44            586              7             11            782            130            729 
+lastSoldAmount         county 
+           438            112 
+[48:38] 30> duplicated(d$address)
+*** output flushed ***
+[49:31] 31> table(duplicated(d$address))
+
+FALSE  TRUE 
+ 1099     1 
+[50:01] 32> d[duplicated(d$address), ]
+               address       date amount bedrooms bathrooms sqft build lastSold lastSoldAmount  county
+508 2868 Hannah Street 2026-07-17 454000       NA        NA   NA    NA     <NA>             NA Oakland
+[50:15] 33> which(duplicated(d$address))
+[1] 508
+[52:39] 34> d[d$address 
++   C-c C-c^C
+No suitable frames for recover()
+[52:39] 34> class(sapply(d[ , c("amount", "bedrooms", "bathrooms")],  mean, na.rm  = TRUE))
+[1] "numeric"
+[07:05] 56> class(sapply(d[ , c("amount", "bedrooms", "bathrooms")],  range, na.rm  = TRUE))
+[1] "matrix" "array" 
+[07:37] 57> (sapply(d[ , c("amount", "bedrooms", "bathrooms")],  range, na.rm  = TRUE))
+       amount bedrooms bathrooms
+[1,]   145000        1         1
+[2,] 20500000        9         8
+[07:49] 58> v = lapply(d[ , c("amount", "bedrooms", "bathrooms")],  range, na.rm  = TRUE)
+[08:27] 59> sapply(v, class)
+   amount  bedrooms bathrooms 
+"integer" "numeric" "numeric" 
+[08:30] 60> class(c(TRUE))
+[1] "logical"
+[11:06] 61> class(c(1L))
+[1] "integer"
+[11:17] 62> x1 = c(TRUE, 1L)
+[11:45] 63> class(x1)
+[1] "integer"
+[11:53] 64> x1
+[1] 1 1
+[12:06] 65> x1 = c(TRUE, 2L)
+[12:17] 66> x1
+[1] 1 2
+[12:19] 67> class(3.141)
+[1] "numeric"
+[13:02] 68> x2 = c(x1,3.141)
+[13:28] 69> class(x2)
+[1] "numeric"
+[13:33] 70> x3 = c("abc", x1, 3.141)
+[14:07] 71> class(x3)
+[1] "character"
+[14:15] 72> x3 = c("123", x1, 3.141)
+[14:32] 73> class(x3)
+[1] "character"
+[14:36] 74> x3 = c(as.numeric("123"), x1, 3.141)
+[15:21] 75> class(x3)
+[1] "numeric"
+[15:24] 76> 
