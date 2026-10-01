@@ -1,11 +1,10 @@
+
 # From Day 2
 
 + See [Day 2 topics summary](../Day2/README.md)
 
 
-
-
-# Topics
+# Day 3 Topics
 
 + [outliers](outliers.md)
 
