@@ -1,0 +1,39 @@
+```r
+w1 = is.na(d$bedrooms)
+w2 = is.na(d$bathrooms)
+table(isNABedrooms = w1, isNABathrooms = w2)
+```
+(Note how I use names for the arguments which appear in the results to describe the rows and the
+columns. This helps make the results clearer.)
+
++ When we have NA for bedrooms, we also have NA for bathrooms
++ When we have actual values for bedrooms, 624 bathrooms values are non-NA but 87 are NA.
+
+
+Let's look at the 87
+```{r}
+d[!w1 & w2, ]
+```
+
+Let's look at the year of the date sold
+```{r}
+d$date[!w1 & w2]
+```
+
+We actually want the year, not the specific date:
+```{r}
+table( format( d$date[!w1 & w2], "%Y"))
+```
+
+All 2026!
+
+Was the number of bathrooms in the data for these and erroneously dropped or converted to NA when
+reading the data, or was it not present?
+
+
+Let's also understand the NAs for all 3 years:
+```{r}
+table(format(d$date, "%Y"))
+table(isNABedrooms = w1, yearSold = format(d$date, "%Y"))
+table(isNABathrooms = w2, yearSold = format(d$date, "%Y"))
+```
