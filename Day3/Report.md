@@ -34,6 +34,9 @@
    reproduce your answers.
    + Generate it programmatically from your .Rmd file if using markdown using
       `knitr::purl()`
+```
+knitr::purl("eg.Rmd", documentation = 0, output = "eg.R")
+```
 
 + Your .Rmd file if you are using markdown.
 
