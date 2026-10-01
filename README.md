@@ -34,3 +34,4 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
       + [Graphical/plot guidelines](Day3/Plots.md)
  	  + [Report guidelines](Day3/Report.md)
 
+   + [R session](Day3/Rsession), [R commands](Day3/Rsession.R), [R commands markdown](Day3/Rsession.md)
