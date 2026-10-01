@@ -24,3 +24,18 @@
 
 + Cite your sources for any ideas or code you used.
 
+
+
+# Submit
+
++ PDF with your text and R code for each question
+
++ .R file  containing all your (relevant) R code for us to be able to 
+   reproduce your answers.
+   + Generate it programmatically from your .Rmd file if using markdown using
+      `knitr::purl()`
+
++ Your .Rmd file if you are using markdown.
+
+
++ See example R markdow file [eg.Rmd](../Day2/eg.Rmd)
