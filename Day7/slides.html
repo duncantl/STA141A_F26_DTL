@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Subsetting, Matching and Merging</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Subsetting, Matching and Merging
+
+### Duncan Temple Lang
+
+<div style="clear: both"/>
+
+<!-- <hr width="50%"/> -->
+
+---
+
+# Quick Recap
+
++ Subsetting
+
+  + by logical vector
+  + by position vector
+  + by negative position to drop/omit items
+  + by name of a vector
+  + by rowname of a data.frame/matrix
+
+---
+# Logical
+
+```r
+x = c(XY = "A", ZD = "B", GH = "C", LM = "A", JD = "F", NB = "D")
+i = seq(along = x)
+x[ x == "A"]
+```
+```
+ XY  LM 
+"A" "A" 
+```
+```r
+i[ x == "A"]
+```
+```
+[1] 1 4
+```
+
++ Note how we are subsetting x and i using the same logical condition.
+
+---
+# By Name
+
+```r
+x[c("ZD", "JD", "LM")]
+```
+
++ If names are duplicated/repeated, get the first one.
+
++ Or, if we want, 
+```
+x[ names(x) %in% c("ZD", "JD", "LM") ]
+```
+
+# Negative Position
+
+```{r}
+x[ - 1 ]
+```
+```
+ ZD  GH  LM  JD  NB 
+"B" "C" "A" "F" "D" 
+```
+```
+x[ - c(1, 5) ]
+```
+```
+ ZD  GH  LM  NB 
+"B" "C" "A" "D" 
+```
+---
+# Special Cases
+
++ NA & 0 
+```{r}
+x[ NA ] 
+```
+```
+<NA> <NA> <NA> <NA> <NA> <NA> 
+  NA   NA   NA   NA   NA   NA 
+```
+    + Same length as `x`
+    + All NA's in result.
+
+--
++ When NA is part of a vector for subsetting
+    
+```{r}
+x[ c( 2, 4, NA, 1) ]    
+```
+```
+  ZD   LM <NA>   XY 
+ "B"  "A"   NA  "A"     
+```
+   + get NA for that element, not all NAs.
+
+---
+# Indexing with 0 
+
+```{r}
+x[ 0 ] 
+    ```
+```
+named character(0)    
+```
+       + empty vector
+
+```r
+x[ c(1, 2, 0, 4) ]    
+```    
+```
+ XY  ZD  LM 
+"A" "B" "A" 
+```
+    + omits the element so result has 3 elements.
+---    
+# character vectror and names
+
++ index by name on a vector
++ or by rownames on a data.frame/matrix    
+
+---
+    
++ `m = match(a, b)`
+    + integer vector with same length as a
+    + position in b corresponding to each value in a
+
++ Can then use the result to subset b or parallel vector or data.frame 
+```
+b[m]    
+```    
+     + same as a
+
++ More interesting to use this to index a parallel vector to b
+```
+other[m]
+```
+
++ Consider a data.frame with two columns  - b and c
+```
+m = match(a, df$b)
+df$c[m]
+```    
+
+---
+# Match and rows
+
++ From previous slide, subset rows of `df` by `m`    
+    
+```{r}
+df[m, ]
+```    
+  + get corresponding rows of m and their a and b columns
+
+---
+#  match() with 2 or more columns  
+
++ Can combine the columns
+
+```{r}
+k1 = paste(col1, col2, col3)    
+
+k2 = paste(target$col1, target$col2, target$col3)
+
+match(k1, k2)
+```
+
+---
+# `match(a, b)`
+
++ Typically, only one match in b for each value in a.
+
++ May have repated values in `a` which will match to the same position in `b`
+
+---
+    
+# merge()
+
+```r
+merge(x, y, by = intersect(names(x), names(y)),
+      by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
+```
+
++ x and y data.frames
+
++ by - vector of the column names in both x and y to use to create the key.
+
++ if x and y have different names for the corresponding columns, need to specify the names of the columns in x and in y that correspond to each other
+      + by.x and by.y
+
+
+
+
+    
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="remark-toc/index.js">     </script>   
+    <script>
+     var slideshow = remark.create();
+//     var toc = require('remark-toc');
+//     slideshow.use(toc);
+    </script>
+  </body>
+</html>
