@@ -35,3 +35,41 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
  	  + [Report guidelines](Day3/Report.md)
 
    + [R session](Day3/Rsession), [R commands](Day3/Rsession.R), [R commands markdown](Day3/Rsession.md)
+
+
++ Day4
+   + Combining data from 2 or more vectors or data.frames
+   + match()
+   + merge()
+   + No laptop
+   + Chalk & board discussion on 
+
+
++ [Day5](Day5)
+   + How R finds variables
+      + search() 
+	  + ls()
+   + Basics of function calls
+      + lazy evaluation of arguments
+   + Matching values in 2 vectors/data.frames
+      + subsetting by name in a vector and rownames in a data.frame
+      + match()
+
+
+
++ [Day6](Day6)
+     + [R session](Day6/Rsession)
+	 + [Outline](Day6/Outline.md) 	 
+     + [merge.md](Day6/merge.md) 	 
+
++ [Day7](Day7)
+	+ [slides](Day7/slides.html)
+	    + subsetting
+		+ match()
+		+ merge
+    + [merge.md](Day6/merge.md)
+	    + example
+		   + match() and merge()
+	    + identical()
+		+ all.equal()
+    + [R session](Day7/Rsession)
