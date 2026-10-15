@@ -1,0 +1,540 @@
+]0;Day6~/sta141a/Public/Day6> cd ../Day7
+]0;Day7~/sta141a/Public/Day7> R
+
+R Under development (unstable) (2025-03-26 r88055) -- "Unsuffered Consequences"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin23.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 74915 
+Time = 2026-10-15 08:57:12 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day7 
+1> library(Lahman)
+[57:16] 2> s16 = Salaries[ Salaries$yearID == 2016, ]
+[00:09] 3> order(s16$salary, decreasing = TRUE)
+  [1] 407 310 607 108 799 134 346 433 609 681 116 242 321 765 475 617 319 703 788 635 761 822 403 179 222 293 649 715 111
+ [30] 604 170 830 819 603 144 784 808 351 810 842  86 573  35  58 230 469 850 691 174 294 359 479 690 392 493 781 302 420
+ [59] 552  18 624 826 176 787  22  59 468 567 399 173 501  51 107 412 503 851 437 273 697 483 593  96 329 335 388 569 443
+ [88]  94 140 186 481 576 258 274 326 295 198 297 353 429 534   2 103 201 229 271 126 559 171 410 462 605 644 376 561 687
+[117]  27 381 812 852 746 178 223 324  98 490 669 404 807 137 367 685 782 291 322 494 507 531 660 740 786 264  32 673 794
+[146] 694 743 106 257 363 515 389 182 192 236 254 435 477 512 513 518 564 570 709 747 130 679 375  60 314 405 448 452 773
+[175] 652  85 157 408 599 608 124 227 247 339 521 734 790  89 308 466 727 207 455 630 110 119 270 529 848 638 586 364 442
+[204] 634 383 771  57 839 413 791 148 169 354 434 720 723 757 543 289 183  16 508 224 517 664  23 356 447 489 849 613  48
+[233] 623 387 631 642 181 225 328 726 505 785 492  26 128 211 327 377 444 454 516 698 737 150 485 566 415  31 120 221 498
+[262] 751 497 332 596  14 109 371 847 208 511 661  10 467 426 232 449 539  71  74 139 146 149 318 382 401 525 550 789  70
+[291] 238 344 471 729 131  92 730 127 323  13 811 733 312  68 133 417 601 764 213 818 112 622 763 464 275 386 772 298 373
+[320]   3 368 581 792 456 827 441 204 205 259 424 431 530 582 594 615 451 680 168 538  24 700 228 239 303 411 578 633 735
+[349] 217 713 142 365  11 337 402 636 710 841 290 347 163  29 122 390 397 421 536 549 572 588 592 653 666 309 683 616 187
+[378] 243 253 612 774 366 226 189 268 372 491   9  30  77 203 251 265 278 296 370 391 499 506 547 584 637 656 722 756 805
+[407] 262  99 546 215 817  49   5 672 263 647 769 202 141 831  42  87 118 160 248 316 470 574 614 677 731 766 821 801 154
+[436] 540 728  69 292 362 458 439 524 510 602 742 478 556 632 188 313 199   1  52  56  82 338 577 668 836 793 523 797 317
+[465] 102 418 457 162 333  40 446 651 777  39 105 138 167 193 252 255 281 395 430 450 486 814 816 820 846 117 285 610  81
+[494] 101 241 393 658 702 804 231 419 563 385 707 548 662 767 459 153 315  95  75 143 218 184 360 340 838 283 260 406 352
+[523] 320 558  65 427 659 165 245 277 152 693  84 823 473 560 754 643 177 663 341 436 190 840 465 719 809  78 210 695 125
+[552] 684 759  25 175 589 600 692 645 717 541 113 282 629 276 425 557  28 145 350 716 837 575 487 725 519 813 284 348 495
+[581] 306 806 234 671 676 476 250 331 732 803  67 216 172 196 300 343 780 825 180 620 665 132 244 762 520 398 394 484 342
+[610] 374 197 545 200 704 829 739 526 706 121 156   7 151 712 611 595 627 650 718 544 325 587 654 422  19 288  34  50  97
+[639] 311 345 440 509 555 562 568 606 136 461 480  44 279  80 384 357 396 758 158 618 280 400 542 648 674 689 738  43 256
+[668] 272 533 748 191 159 185 307 164 482 500 147 445 646 554 640 736 220 796 349 750 583 474  12 463  76 336 504 527 626
+[697] 714 776 783 800  53 537 625 844 409 667 551  73 355 532 301 770 696 123 114 705 416 580 682 795 802   6  38  61  64
+[726] 100 104 115 161 304 358 453 460 553 565 591 597 675 711 768 775 745  33 699 755 845 488   8 246 286 760 832  20 598
+[755] 585  63 779  41 655 853  54 155 432 843 209 628 670  17  47  90 194 214 502 571 590 657 708 535 828 166 219   4  21
+[784] 129 195 233 305 414 472 496 621 678 798  83  46 330 206 249 380 267 641 778  55  88  91  93 235 299 379 428 438 528
+[813] 833 261 237 741 361 514 721 724  15  36  37  45  62  66  72  79 135 212 240 266 269 287 334 369 378 423 522 579 619
+[842] 639 686 688 701 744 749 752 753 815 824 834 835
+[00:13] 4> head(s16$salary[ order(s16$salary, decreasing = TRUE) ], 20)
+ [1] 33000000 31799030 30000000 28000000 28000000 27328046 25857143 25000000 25000000 25000000 24000000 24000000 24000000
+[14] 23125000 23000000 22750000 22500000 22142857 22125000 22000000
+[00:33] 5> range(s16$salary)
+[1]   507500 33000000
+[01:00] 6> l = s16[order(s16$salary, decreasing = TRUE)[1:10],]
+[01:11] 7> head(l)
+      yearID teamID lgID  playerID   salary
+12560   2016    LAN   NL kershcl01 33000000
+8996    2016    ARI   NL greinza01 31799030
+19116   2016    BOS   AL priceda01 30000000
+3481    2016    DET   AL cabremi01 28000000
+24484   2016    DET   AL verlaju01 28000000
+4176    2016    NYN   NL cespeyo01 27328046
+[01:16] 8> l
+      yearID teamID lgID  playerID   salary
+12560   2016    LAN   NL kershcl01 33000000
+8996    2016    ARI   NL greinza01 31799030
+19116   2016    BOS   AL priceda01 30000000
+3481    2016    DET   AL cabremi01 28000000
+24484   2016    DET   AL verlaju01 28000000
+4176    2016    NYN   NL cespeyo01 27328046
+10419   2016    SEA   AL hernafe02 25857143
+13560   2016    CHN   NL lestejo01 25000000
+19207   2016    LAA   AL pujolal01 25000000
+20925   2016    NYA   AL sabatcc01 25000000
+[01:32] 9> names(People)
+ [1] "playerID"     "birthYear"    "birthMonth"   "birthDay"     "birthCity"    "birthCountry" "birthState"  
+ [8] "deathYear"    "deathMonth"   "deathDay"     "deathCountry" "deathState"   "deathCity"    "nameFirst"   
+[15] "nameLast"     "nameGiven"    "weight"       "height"       "bats"         "throws"       "debut"       
+[22] "bbrefID"      "finalGame"    "retroID"      "deathDate"    "birthDate"   
+[02:26] 10> head(People)
+   playerID birthYear birthMonth birthDay  birthCity birthCountry birthState deathYear deathMonth deathDay deathCountry
+1 aardsda01      1981         12       27     Denver          USA         CO        NA         NA       NA         <NA>
+2 aaronha01      1934          2        5     Mobile          USA         AL      2021          1       22          USA
+3 aaronto01      1939          8        5     Mobile          USA         AL      1984          8       16          USA
+4  aasedo01      1954          9        8     Orange          USA         CA        NA         NA       NA         <NA>
+5  abadan01      1972          8       25 Palm Beach          USA         FL        NA         NA       NA         <NA>
+6  abadfe01      1985         12       17  La Romana         D.R.  La Romana        NA         NA       NA         <NA>
+  deathState deathCity nameFirst nameLast        nameGiven weight height bats throws      debut   bbrefID  finalGame
+1       <NA>      <NA>     David  Aardsma      David Allan    215     75    R      R 2004-04-06 aardsda01 2015-08-23
+2         GA   Atlanta      Hank    Aaron      Henry Louis    180     72    R      R 1954-04-13 aaronha01 1976-10-03
+3         GA   Atlanta    Tommie    Aaron       Tommie Lee    190     75    R      R 1962-04-10 aaronto01 1971-09-26
+4       <NA>      <NA>       Don     Aase   Donald William    190     75    R      R 1977-07-26  aasedo01 1990-10-03
+5       <NA>      <NA>      Andy     Abad    Fausto Andres    184     73    L      L 2001-09-10  abadan01 2006-04-13
+6       <NA>      <NA>  Fernando     Abad Fernando Antonio    235     74    L      L 2010-07-28  abadfe01 2023-07-18
+   retroID  deathDate  birthDate
+1 aardd001       <NA> 1981-12-27
+2 aaroh101 2021-01-22 1934-02-05
+3 aarot101 1984-08-16 1939-08-05
+4 aased001       <NA> 1954-09-08
+5 abada001       <NA> 1972-08-25
+6 abadf001       <NA> 1985-12-17
+[02:31] 11> m = match(l$playerID, People$playerID)
+[04:58] 12> m
+ [1] 11536  8427 17520  3078 22465  3634  9555 12551 17592 19022
+[04:59] 13> table(is.na(m))
+
+FALSE 
+   10 
+[06:14] 14> p = People[m,]
+[06:32] 15> p
+       playerID birthYear birthMonth birthDay     birthCity birthCountry        birthState deathYear deathMonth deathDay
+11536 kershcl01      1988          3       19        Dallas          USA                TX        NA         NA       NA
+8427  greinza01      1983         10       21       Orlando          USA                FL        NA         NA       NA
+17520 priceda01      1985          8       26  Murfreesboro          USA                TN        NA         NA       NA
+3078  cabremi01      1983          4       18       Maracay    Venezuela            Aragua        NA         NA       NA
+22465 verlaju01      1983          2       20 Manakin Sabot          USA                VA        NA         NA       NA
+3634  cespeyo01      1985         10       18   Campechuela         Cuba            Granma        NA         NA       NA
+9555  hernafe02      1986          4        8      Valencia    Venezuela          Carabobo        NA         NA       NA
+12551 lestejo01      1984          1        7        Tacoma          USA                WA        NA         NA       NA
+17592 pujolal01      1980          1       16 Santo Domingo         D.R. Distrito Nacional        NA         NA       NA
+19022 sabatcc01      1980          7       21       Vallejo          USA                CA        NA         NA       NA
+      deathCountry deathState deathCity nameFirst  nameLast            nameGiven weight height bats throws      debut
+11536         <NA>       <NA>      <NA>   Clayton   Kershaw       Clayton Edward    225     76    L      L 2008-05-25
+8427          <NA>       <NA>      <NA>      Zack   Greinke       Donald Zachary    200     74    R      R 2004-05-22
+17520         <NA>       <NA>      <NA>     David     Price         David Taylor    215     77    L      L 2008-09-14
+3078          <NA>       <NA>      <NA>    Miguel   Cabrera          Jose Miguel    267     76    R      R 2003-06-20
+22465         <NA>       <NA>      <NA>    Justin Verlander        Justin Brooks    235     77    R      R 2005-07-04
+3634          <NA>       <NA>      <NA>    Yoenis  Cespedes               Yoenis    225     71    R      R 2012-03-28
+9555          <NA>       <NA>      <NA>     Felix Hernandez Felix Abraham Graham    220     75    R      R 2005-08-04
+12551         <NA>       <NA>      <NA>       Jon    Lester       Jonathan Tyler    249     76    L      L 2006-06-10
+17592         <NA>       <NA>      <NA>    Albert    Pujols         Jose Alberto    235     75    R      R 2001-04-02
+19022         <NA>       <NA>      <NA>        CC  Sabathia      Carsten Charles    300     78    L      L 2001-04-08
+        bbrefID  finalGame  retroID deathDate  birthDate
+11536 kershcl01       <NA> kersc001      <NA> 1988-03-19
+8427  greinza01       <NA> greiz001      <NA> 1983-10-21
+17520 priceda01 2022-09-30 pricd001      <NA> 1985-08-26
+3078  cabremi01       <NA> cabrm001      <NA> 1983-04-18
+22465 verlaju01       <NA> verlj001      <NA> 1983-02-20
+3634  cespeyo01 2020-08-01 cespy001      <NA> 1985-10-18
+9555  hernafe02 2019-09-26 hernf002      <NA> 1986-04-08
+12551 lestejo01 2021-10-02 lestj001      <NA> 1984-01-07
+17592 pujolal01 2022-10-04 pujoa001      <NA> 1980-01-16
+19022 sabatc.01 2019-09-24 sabac001      <NA> 1980-07-21
+[06:33] 16> cbind(l$playerId, p$playerId)
+NULL
+[07:02] 17> cbind(l$playerID, p$playerID)
+      [,1]        [,2]       
+ [1,] "kershcl01" "kershcl01"
+ [2,] "greinza01" "greinza01"
+ [3,] "priceda01" "priceda01"
+ [4,] "cabremi01" "cabremi01"
+ [5,] "verlaju01" "verlaju01"
+ [6,] "cespeyo01" "cespeyo01"
+ [7,] "hernafe02" "hernafe02"
+ [8,] "lestejo01" "lestejo01"
+ [9,] "pujolal01" "pujolal01"
+[10,] "sabatcc01" "sabatcc01"
+[07:07] 18> l$playerID == p$playerID
+ [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+[07:25] 19> table(l$playerID == p$playerID)
+
+TRUE 
+  10 
+[07:30] 20> cbind(l, p)
+      yearID teamID lgID  playerID   salary  playerID birthYear birthMonth birthDay     birthCity birthCountry
+12560   2016    LAN   NL kershcl01 33000000 kershcl01      1988          3       19        Dallas          USA
+8996    2016    ARI   NL greinza01 31799030 greinza01      1983         10       21       Orlando          USA
+19116   2016    BOS   AL priceda01 30000000 priceda01      1985          8       26  Murfreesboro          USA
+3481    2016    DET   AL cabremi01 28000000 cabremi01      1983          4       18       Maracay    Venezuela
+24484   2016    DET   AL verlaju01 28000000 verlaju01      1983          2       20 Manakin Sabot          USA
+4176    2016    NYN   NL cespeyo01 27328046 cespeyo01      1985         10       18   Campechuela         Cuba
+10419   2016    SEA   AL hernafe02 25857143 hernafe02      1986          4        8      Valencia    Venezuela
+13560   2016    CHN   NL lestejo01 25000000 lestejo01      1984          1        7        Tacoma          USA
+19207   2016    LAA   AL pujolal01 25000000 pujolal01      1980          1       16 Santo Domingo         D.R.
+20925   2016    NYA   AL sabatcc01 25000000 sabatcc01      1980          7       21       Vallejo          USA
+             birthState deathYear deathMonth deathDay deathCountry deathState deathCity nameFirst  nameLast
+12560                TX        NA         NA       NA         <NA>       <NA>      <NA>   Clayton   Kershaw
+8996                 FL        NA         NA       NA         <NA>       <NA>      <NA>      Zack   Greinke
+19116                TN        NA         NA       NA         <NA>       <NA>      <NA>     David     Price
+3481             Aragua        NA         NA       NA         <NA>       <NA>      <NA>    Miguel   Cabrera
+24484                VA        NA         NA       NA         <NA>       <NA>      <NA>    Justin Verlander
+4176             Granma        NA         NA       NA         <NA>       <NA>      <NA>    Yoenis  Cespedes
+10419          Carabobo        NA         NA       NA         <NA>       <NA>      <NA>     Felix Hernandez
+13560                WA        NA         NA       NA         <NA>       <NA>      <NA>       Jon    Lester
+19207 Distrito Nacional        NA         NA       NA         <NA>       <NA>      <NA>    Albert    Pujols
+20925                CA        NA         NA       NA         <NA>       <NA>      <NA>        CC  Sabathia
+                 nameGiven weight height bats throws      debut   bbrefID  finalGame  retroID deathDate  birthDate
+12560       Clayton Edward    225     76    L      L 2008-05-25 kershcl01       <NA> kersc001      <NA> 1988-03-19
+8996        Donald Zachary    200     74    R      R 2004-05-22 greinza01       <NA> greiz001      <NA> 1983-10-21
+19116         David Taylor    215     77    L      L 2008-09-14 priceda01 2022-09-30 pricd001      <NA> 1985-08-26
+3481           Jose Miguel    267     76    R      R 2003-06-20 cabremi01       <NA> cabrm001      <NA> 1983-04-18
+24484        Justin Brooks    235     77    R      R 2005-07-04 verlaju01       <NA> verlj001      <NA> 1983-02-20
+4176                Yoenis    225     71    R      R 2012-03-28 cespeyo01 2020-08-01 cespy001      <NA> 1985-10-18
+10419 Felix Abraham Graham    220     75    R      R 2005-08-04 hernafe02 2019-09-26 hernf002      <NA> 1986-04-08
+13560       Jonathan Tyler    249     76    L      L 2006-06-10 lestejo01 2021-10-02 lestj001      <NA> 1984-01-07
+19207         Jose Alberto    235     75    R      R 2001-04-02 pujolal01 2022-10-04 pujoa001      <NA> 1980-01-16
+20925      Carsten Charles    300     78    L      L 2001-04-08 sabatc.01 2019-09-24 sabac001      <NA> 1980-07-21
+[08:08] 21> t16.2 = merge(l, People,  "playerID")
+[08:33] 22> t16 = cbind(l, p)
+[08:37] 23> identical(t16, t16.2)
+[1] FALSE
+[09:55] 24> all.equal(t16, t16.2)
+ [1] "Names: 29 string mismatches"                                                                        
+ [2] "Attributes: < Component “row.names”: Mean relative difference: 0.9995983 >"                         
+ [3] "Length mismatch: comparison on first 30 components"                                                 
+ [4] "Component 1: Modes: numeric, character"                                                             
+ [5] "Component 1: target is numeric, current is character"                                               
+ [6] "Component 2: 'current' is not a factor"                                                             
+ [7] "Component 3: Attributes: < Component “levels”: Lengths (2, 35) differ (string compare on first 2) >"
+ [8] "Component 3: Attributes: < Component “levels”: 2 string mismatches >"                               
+ [9] "Component 3: 10 string mismatches"                                                                  
+[10] "Component 4: Modes: character, numeric"                                                             
+[11] "Component 4: Attributes: < target is NULL, current is list >"                                       
+[12] "Component 4: target is character, current is factor"                                                
+[13] "Component “salary”: Mean relative difference: 0.1217716"                                            
+[14] "Component 6: Modes: character, numeric"                                                             
+[15] "Component 6: target is character, current is numeric"                                               
+[16] "Component 7: Mean relative difference: 0.9974795"                                                   
+[17] "Component 8: Mean relative difference: 2.6"                                                         
+[18] "Component 9: Modes: numeric, character"                                                             
+[19] "Component 9: target is numeric, current is character"                                               
+[20] "Component 10: 10 string mismatches"                                                                 
+[21] "Component 11: 10 string mismatches"                                                                 
+[22] "Component 12: Modes: character, numeric"                                                            
+[23] "Component 12: target is character, current is numeric"                                              
+[24] "Component 15: Modes: numeric, character"                                                            
+[25] "Component 15: target is numeric, current is character"                                              
+[26] "Component 18: 'is.NA' value mismatch: 0 in current 10 in target"                                    
+[27] "Component 19: 10 string mismatches"                                                                 
+[28] "Component 20: 10 string mismatches"                                                                 
+[29] "Component 21: Modes: character, numeric"                                                            
+[30] "Component 21: target is character, current is numeric"                                              
+[31] "Component 22: Mean relative difference: 0.681569"                                                   
+[32] "Component 23: Attributes: < target is NULL, current is list >"                                      
+[33] "Component 23: target is numeric, current is factor"                                                 
+[34] "Component 24: Attributes: < Component “levels”: Lengths (3, 4) differ (string compare on first 3) >"
+[35] "Component 24: 8 string mismatches"                                                                  
+[36] "Component 25: 'current' is not a factor"                                                            
+[37] "Component 26: 10 string mismatches"                                                                 
+[38] "Component 27: 'is.NA' value mismatch: 4 in current 0 in target"                                     
+[39] "Component 28: 'is.NA' value mismatch: 0 in current 4 in target"                                     
+[40] "Component 29: Modes: character, numeric"                                                            
+[41] "Component 29: Attributes: < target is NULL, current is list >"                                      
+[42] "Component 29: target is character, current is Date"                                                 
+[43] "Component 30: 'is.NA' value mismatch: 0 in current 10 in target"                                    
+[10:03] 25> dim(t16)
+[1] 10 31
+[11:52] 26> dim(t1.2)
+Error: object 't1.2' not found
+No suitable frames for recover()
+[11:52] 26> dim(t16.2)
+[1] 10 30
+[12:06] 27> names(t16)
+ [1] "yearID"       "teamID"       "lgID"         "playerID"     "salary"       "playerID"     "birthYear"   
+ [8] "birthMonth"   "birthDay"     "birthCity"    "birthCountry" "birthState"   "deathYear"    "deathMonth"  
+[15] "deathDay"     "deathCountry" "deathState"   "deathCity"    "nameFirst"    "nameLast"     "nameGiven"   
+[22] "weight"       "height"       "bats"         "throws"       "debut"        "bbrefID"      "finalGame"   
+[29] "retroID"      "deathDate"    "birthDate"   
+[14:21] 28> names(t16.2)
+ [1] "playerID"     "yearID"       "teamID"       "lgID"         "salary"       "birthYear"    "birthMonth"  
+ [8] "birthDay"     "birthCity"    "birthCountry" "birthState"   "deathYear"    "deathMonth"   "deathDay"    
+[15] "deathCountry" "deathState"   "deathCity"    "nameFirst"    "nameLast"     "nameGiven"    "weight"      
+[22] "height"       "bats"         "throws"       "debut"        "bbrefID"      "finalGame"    "retroID"     
+[29] "deathDate"    "birthDate"   
+[14:25] 29> all(names(t16.2) %in% names(t16))
+[1] TRUE
+[14:58] 30> table(names(t16))
+
+        bats      bbrefID    birthCity birthCountry    birthDate     birthDay   birthMonth   birthState    birthYear 
+           1            1            1            1            1            1            1            1            1 
+   deathCity deathCountry    deathDate     deathDay   deathMonth   deathState    deathYear        debut    finalGame 
+           1            1            1            1            1            1            1            1            1 
+      height         lgID    nameFirst    nameGiven     nameLast     playerID      retroID       salary       teamID 
+           1            1            1            1            1            2            1            1            1 
+      throws       weight       yearID 
+           1            1            1 
+[16:51] 31> which(names(t16) == "playerId")
+integer(0)
+[17:22] 32> which(names(t16) == "playerID")
+[1] 4 6
+[17:27] 33> which(names(t16) == "playerID")[2]
+[1] 6
+[18:03] 34> tt = t16[ - which(names(t16) == "playerID")[2], ]
+[18:13] 35> tt = t16[ , - which(names(t16) == "playerID")[2] ]
+[18:47] 36> dim(tt)
+[1] 10 30
+[18:49] 37> cbind(names(tt), names(t16.2))
+      [,1]           [,2]          
+ [1,] "yearID"       "playerID"    
+ [2,] "teamID"       "yearID"      
+ [3,] "lgID"         "teamID"      
+ [4,] "playerID"     "lgID"        
+ [5,] "salary"       "salary"      
+ [6,] "birthYear"    "birthYear"   
+ [7,] "birthMonth"   "birthMonth"  
+ [8,] "birthDay"     "birthDay"    
+ [9,] "birthCity"    "birthCity"   
+[10,] "birthCountry" "birthCountry"
+[11,] "birthState"   "birthState"  
+[12,] "deathYear"    "deathYear"   
+[13,] "deathMonth"   "deathMonth"  
+[14,] "deathDay"     "deathDay"    
+[15,] "deathCountry" "deathCountry"
+[16,] "deathState"   "deathState"  
+[17,] "deathCity"    "deathCity"   
+[18,] "nameFirst"    "nameFirst"   
+[19,] "nameLast"     "nameLast"    
+[20,] "nameGiven"    "nameGiven"   
+[21,] "weight"       "weight"      
+[22,] "height"       "height"      
+[23,] "bats"         "bats"        
+[24,] "throws"       "throws"      
+[25,] "debut"        "debut"       
+[26,] "bbrefID"      "bbrefID"     
+[27,] "finalGame"    "finalGame"   
+[28,] "retroID"      "retroID"     
+[29,] "deathDate"    "deathDate"   
+[30,] "birthDate"    "birthDate"   
+[19:12] 38> length(intersect(names(tt), names(t16.2)))
+[1] 30
+[19:54] 39> names(tt[, names(t16.2)]) == names(t16.2)
+ [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+[24] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+[21:04] 40> table(names(tt[, names(t16.2)]) == names(t16.2))
+
+TRUE 
+  30 
+[21:06] 41> identical(tt[, names(t16.2)], t16.2)
+[1] FALSE
+[21:24] 42> all.equal(tt[, names(t16.2)], t16.2)
+ [1] "Attributes: < Component “row.names”: Mean relative difference: 0.9995983 >"
+ [2] "Component “playerID”: 10 string mismatches"                                
+ [3] "Component “teamID”: 10 string mismatches"                                  
+ [4] "Component “lgID”: 4 string mismatches"                                     
+ [5] "Component “salary”: Mean relative difference: 0.1217716"                   
+ [6] "Component “birthYear”: Mean relative difference: 0.001456012"              
+ [7] "Component “birthMonth”: Mean relative difference: 0.8"                     
+ [8] "Component “birthDay”: Mean relative difference: 0.3678161"                 
+ [9] "Component “birthCity”: 10 string mismatches"                               
+[10] "Component “birthCountry”: 6 string mismatches"                             
+[11] "Component “birthState”: 10 string mismatches"                              
+[12] "Component “nameFirst”: 10 string mismatches"                               
+[13] "Component “nameLast”: 10 string mismatches"                                
+[14] "Component “nameGiven”: 10 string mismatches"                               
+[15] "Component “weight”: Mean relative difference: 0.13159"                     
+[16] "Component “height”: Mean relative difference: 0.02945508"                  
+[17] "Component “bats”: 8 string mismatches"                                     
+[18] "Component “throws”: 8 string mismatches"                                   
+[19] "Component “debut”: 10 string mismatches"                                   
+[20] "Component “bbrefID”: 10 string mismatches"                                 
+[21] "Component “finalGame”: 'is.NA' value mismatch: 4 in current 4 in target"   
+[22] "Component “retroID”: 10 string mismatches"                                 
+[23] "Component “birthDate”: Mean relative difference: 0.1866879"                
+[21:33] 43> names(Parks)
+[1] "park.alias" "park.key"   "park.name"  "city"       "state"      "country"   
+[29:21] 44> head(Parks)
+                                                                               park.alias park.key
+1                                                                       Greenbush Grounds    ALB01
+2                                                                   Fourth Avenue Grounds    ALT01
+3                                                           Edison Field; Anaheim Stadium    ANA01
+4                                                                                    <NA>    ARL01
+5 The Ballpark in Arlington; Ameriquest Field in Arlington; Rangers Ballpark in Arlington    ARL02
+6                                                  Fulton County Stadium; Atlanta Stadium    ATL01
+                      park.name       city state country
+1                Riverside Park Rensselaer    NY      US
+2                 Columbia Park    Altoona    PA      US
+3      Angel Stadium of Anaheim    Anaheim    CA      US
+4             Arlington Stadium  Arlington    TX      US
+5  Globe Life Park in Arlington  Arlington    TX      US
+6 Atlanta-Fulton County Stadium    Atlanta    GA      US
+[29:40] 45> names(Teams)
+ [1] "yearID"         "lgID"           "teamID"         "franchID"       "divID"          "Rank"          
+ [7] "G"              "Ghome"          "W"              "L"              "DivWin"         "WCWin"         
+[13] "LgWin"          "WSWin"          "R"              "AB"             "H"              "X2B"           
+[19] "X3B"            "HR"             "BB"             "SO"             "SB"             "CS"            
+[25] "HBP"            "SF"             "RA"             "ER"             "ERA"            "CG"            
+[31] "SHO"            "SV"             "IPouts"         "HA"             "HRA"            "BBA"           
+[37] "SOA"            "E"              "DP"             "FP"             "name"           "park"          
+[43] "attendance"     "BPF"            "PPF"            "teamIDBR"       "teamIDlahman45" "teamIDretro"   
+[30:00] 46> table(Teams$park %in% Parks$park.key)
+
+FALSE 
+ 3614 
+[30:32] 47> table(Teams$park %in% Parks$park.name)
+
+FALSE  TRUE 
+ 1219  2395 
+[30:44] 48>
+[30:44] 48> table(Teams$park %in% Parks$park.alias)
+
+FALSE  TRUE 
+ 3379   235 
+[30:57] 49> table(Teams$park.name[Teams$yearID >= 1986 & Teams$yearID < 2017] %in% Parks$park.alias)
+< table of extent 0 >
+[31:54] 50> table(Teams$park[Teams$yearID >= 1986 & Teams$yearID < 2017] %in% Parks$park.name)
+
+FALSE  TRUE 
+  342   550 
+[32:07] 51> setdiff(Teams$park[Teams$yearID >= 1985 & Teams$yearID < 2017], Parks$park.name)
+ [1] "Fenway Park II"                        "Anaheim Stadium"                      
+ [3] "Comiskey Park"                         "Riverfront Stadium"                   
+ [5] "Royals Stadium"                        "Hubert H Humphrey Metrodome"          
+ [7] "Oakland Coliseum"                      "Jack Murphy Stadium"                  
+ [9] "Exhibition Stadium /Skydome"           "Skydome"                              
+[11] "Comiskey Park II"                      "Joe Robbie Stadium"                   
+[13] "Jacobs Field"                          "The Ballpark at Arlington"            
+[15] "Edison International Field"            "3Com Park"                            
+[17] "Bank One Ballpark"                     "Pro Player Stadium"                   
+[19] "Kingdome / Safeco Field"               "Enron Field"                          
+[21] "Safeco Field"                          "PacBell Park"                         
+[23] "Miller Park"                           "Minute Maid Park"                     
+[25] "U.S. Cellular Field"                   "Great American Ball Park"             
+[27] "Stade Olympique/Hiram Bithorn Stadium" "Angels Stadium of Anaheim"            
+[29] "Network Associates Coliseum"           "SBC Park"                             
+[31] "Dolphin Stadium"                       "Angel Stadium"                        
+[33] "McAfee Coliseum"                       "Ameriquest Field"                     
+[35] "R.F.K. Stadium"                        "Rangers Ballpark in Arlington"        
+[37] "Yankee Stadium III"                    "Sun Life Stadium"                     
+[39] "Marlins Park"                          "O.co Coliseum"                        
+[33:31] 52> grep("Anaheim", Parks$park.name, value = TRUE)
+[1] "Angel Stadium of Anaheim"
+[34:05] 53> grep("pacbell", Parks$park.name, value = TRUE, ignore.case = TRUE)
+character(0)
+[34:30] 54> grep(" I+$", Parks$park.name, value = TRUE)
+ [1] "Oriole Park I"                       "Oriole Park II"                      "Oriole Park III"                    
+ [4] "South End Grounds I"                 "South End Grounds II"                "South End Grounds III"              
+ [7] "Olympic Park I"                      "Olympic Park II"                     "Lake Front Park I"                  
+[10] "Lake Front Park II"                  "South Side Park I"                   "South Side Park II"                 
+[13] "South Side Park III"                 "Comiskey Park I"                     "League Park I"                      
+[16] "League Park II"                      "League Park I"                       "League Park II"                     
+[19] "League Park III"                     "Recreation Park I"                   "Recreation Park II"                 
+[22] "Neil Park I"                         "Neil Park II"                        "Seventh Street Park I"              
+[25] "Seventh Street Park II"              "Seventh Street Park III"             "Eclipse Park I"                     
+[28] "Eclipse Park II"                     "Eclipse Park III"                    "Washington Park I"                  
+[31] "Ridgewood Park I"                    "Washington Park II"                  "Polo Grounds III"                   
+[34] "Washington Park III"                 "Yankee Stadium I"                    "Ridgewood Park II"                  
+[37] "Yankee Stadium II"                   "Huntingdon Grounds I"                "Huntingdon Grounds II"              
+[40] "Exposition Park I"                   "Exposition Park II"                  "Exposition Park III"                
+[43] "Culver Field I"                      "Culver Field II"                     "Sportsman's Park I"                 
+[46] "Sportsman's Park II"                 "Sportsman's Park III"                "Busch Stadium II"                   
+[49] "Busch Stadium III"                   "Star Park I"                         "Star Park II"                       
+[52] "American League Park I"              "Agricultural County Fair Grounds I"  "Agricultural County Fair Grounds II"
+[55] "League Park II"                      "Inlet Park II"                       "Washington Park II"                 
+[58] "Association Park II"                 "Giants Park II"                     
+[36:17] 55> w = grepl(" I", Parks$park.name) | grepl(" II", Parks$park.name) | grepl(" III", Parks$park.name)
+[39:06] 56> table(w)
+w
+FALSE  TRUE 
+  279    66 
+[39:10] 57> Parks$park.name[w]
+ [1] "Oriole Park I"                       "Oriole Park II"                      "Oriole Park III"                    
+ [4] "Oriole Park IV"                      "South End Grounds I"                 "South End Grounds II"               
+ [7] "South End Grounds III"               "Olympic Park I"                      "Olympic Park II"                    
+[10] "Lake Front Park I"                   "Lake Front Park II"                  "South Side Park I"                  
+[13] "South Side Park II"                  "South Side Park III"                 "Comiskey Park I"                    
+[16] "League Park I"                       "League Park II"                      "League Park I"                      
+[19] "League Park II"                      "League Park III"                     "League Park IV"                     
+[22] "Recreation Park I"                   "Recreation Park II"                  "Neil Park I"                        
+[25] "Neil Park II"                        "Seventh Street Park I"               "Seventh Street Park II"             
+[28] "Seventh Street Park III"             "Eclipse Park I"                      "Eclipse Park II"                    
+[31] "Eclipse Park III"                    "Long Island Grounds"                 "Polo Grounds I (Southeast Diamond)" 
+[34] "Polo Grounds II (Southwest Diamond)" "Washington Park I"                   "Ridgewood Park I"                   
+[37] "Washington Park II"                  "Polo Grounds III"                    "Polo Grounds IV"                    
+[40] "Washington Park III"                 "Yankee Stadium I"                    "Ridgewood Park II"                  
+[43] "Washington Park IV"                  "Yankee Stadium II"                   "Huntingdon Grounds I"               
+[46] "Huntingdon Grounds II"               "Exposition Park I"                   "Exposition Park II"                 
+[49] "Exposition Park III"                 "Culver Field I"                      "Culver Field II"                    
+[52] "Sportsman's Park I"                  "Sportsman's Park II"                 "Sportsman's Park III"               
+[55] "Busch Stadium II"                    "Busch Stadium III"                   "Star Park I"                        
+[58] "Star Park II"                        "American League Park I"              "Agricultural County Fair Grounds I" 
+[61] "Agricultural County Fair Grounds II" "League Park II"                      "Inlet Park II"                      
+[64] "Washington Park II"                  "Association Park II"                 "Giants Park II"                     
+[39:29] 58> z = gregexpr(" I+$", Parks$park.name)
+[40:40] 59> z[1:5]
+[[1]]
+[1] -1
+attr(,"match.length")
+[1] -1
+
+[[2]]
+[1] -1
+attr(,"match.length")
+[1] -1
+
+[[3]]
+[1] -1
+attr(,"match.length")
+[1] -1
+
+[[4]]
+[1] -1
+attr(,"match.length")
+[1] -1
+
+[[5]]
+[1] -1
+attr(,"match.length")
+[1] -1
+
+[40:44] 60> z
+*** output flushed ***
+[40:49] 61> z = gregexpr(" I+$", c("Agricultural County Fair Grounds II", "League Park II", "Inlet Park II"                      ))
+[41:24] 62> z
+[[1]]
+[1] 33
+attr(,"match.length")
+[1] 3
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE
+
+[[2]]
+[1] 12
+attr(,"match.length")
+[1] 3
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE
+
+[[3]]
+[1] 11
+attr(,"match.length")
+[1] 3
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE
+
+[41:25] 63> 
