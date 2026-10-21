@@ -73,3 +73,9 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
 	    + identical()
 		+ all.equal()
     + [R session](Day7/Rsession)
+
+
++ [Day 8](Day8)
+    + Read the individual political contribution data from the FEC
+	+ Start reading the NASA data, e.g. [Data/NASA/temperature1.txt](Data/NASA/temperature1.txt)
+    + [R session](Day8/Rsession)    
