@@ -49,7 +49,7 @@ rmarkdown::render("eg.Rmd", "pdf_document")
 
 Generate the R code from the Rmd file:
 ```{r, eval=FALSE}
-knitr::purl("eg.Rmd", documentation = 0)
+knitr::purl("eg.Rmd", documentation = 0, output = "eg.R")
 ```
 
 
