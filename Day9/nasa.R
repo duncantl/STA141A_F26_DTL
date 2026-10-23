@@ -16,16 +16,24 @@ function(file = "../Data/NASA/temperature1.txt", encoding = "UTF8")
 #    browser()
     
     # longitude
-    # Split the longitude line get only the vales
-    lon = strsplit(tmp2[6],  " ")
+    # Split the longitude line get only the values
+    # Originally had
+    #     lon = strsplit(tmp2[6],  " ")
+    # What difference does it make?
+    # options(warn = 2, error = recover)
+    # then read()
+    lon = strsplit(tmp2[6],  " ")[[1]]
     lon = lon[ lon != "" ]
     lon = compLongitude(lon)
     d$lon = rep(lon, each = nrow(tmp))
 
     
     # date
-    d$date = getDate(tmp2[5])
+    d$date = as.Date(getDate(tmp2[5]), "%d-%b-%Y")
 
+    # remove the meaningless row names.
+    rownames(d) = NULL
+    
     d
 }
 
