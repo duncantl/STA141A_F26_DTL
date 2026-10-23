@@ -54,11 +54,11 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
    + Matching values in 2 vectors/data.frames
       + subsetting by name in a vector and rownames in a data.frame
       + match()
-
+   + [R session](Day5/Rsession), [R commands](Day5/Rcode.R), [R commands markdown](Day5/Rcode.md)
 
 
 + [Day6](Day6)
-     + [R session](Day6/Rsession)
+     + [R session](Day6/Rsession), [R commands](Day6/Rcode.R), [R commands markdown](Day6/Rcode.md)
 	 + [Outline](Day6/Outline.md) 	 
      + [merge.md](Day6/merge.md) 	 
 
@@ -72,11 +72,19 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
 		   + match() and merge()
 	    + identical()
 		+ all.equal()
-    + [R session](Day7/Rsession)
+    + [R session](Day7/Rsession), [R commands](Day7/Rcode.R), [R commands markdown](Day7/Rcode.md)
 
 
 + [Day 8](Day8)
     + Read the individual political contribution data from the FEC
 	   + Example data [Data/itcont_small.txt](Data/itcont_small.txt)
 	+ Start reading the NASA data, e.g. [Data/NASA/temperature1.txt](Data/NASA/temperature1.txt)
-    + [R session](Day8/Rsession)    
+    + [R session](Day8/Rsession), [R commands](Day8/Rcode.R), [R commands markdown](Day8/Rcode.md)
+
+
++ [Day 9](Day9)
+	+ [topics, strategy, steps](Day9/Outline.md)
+	    + writing functions 
+   	    + browser() and debugging.
+    + [nasa functions](Day9/nasa.R)
+    + [R session](Day9/Rsession), [R commands](Day9/Rcode.R), [R commands markdown](Day9/Rcode.md)
