@@ -2,20 +2,26 @@
 Find the names of the 10 highest paid people in 2016 and how much they were paid in that year.
 
 ```{r}
-s16 = subset(Salaries, yearID == 2016)
+s16 = Salaries[ Salaries$yearID == 2016, ]
 l = s16[order(s16$salary, decreasing = TRUE)[1:10],]
+l
 ```
 
+Get the names of the 10 people:
 ```{r}
 m = match(l$playerID, People$playerID)
+m
+table(is.na(m))
 p = People[m,]
 ```
 
+Connect the rows of `l` with the corresponding rows of `p`
 ```{r}
 t16 = cbind(l, p)
 ```
 
 
+Can also do the same computation with `merge()`
 ```{r}
 t16.2 = merge(l, People,  "playerID")
 ```
@@ -26,6 +32,10 @@ identical(t16, t16.2)
 ````
 
 No, names are not in the same order. Nor are the rows.
+
+```{r}
+all.equal(t16, t16.2)
+```
 
 
 Do they have the same dimension?
@@ -50,6 +60,7 @@ t16$playerID # first one
 
 z = t16[names(t16) == "playerID"]
 length(z)
+names(z)
 identical(z[[1]], z[[2]]) 
 ```
 
@@ -57,14 +68,30 @@ Why the `[[ ]]`?
 What is `z[1]` and `z[2]`?
 
 
+Extract the same set of columns
 ```
 tmp = t16[names(t16.2)]
 identical(tmp[order(tmp$playerID), ], t16.2[order(t16.2$playerID),])
 ```
 
+Still not identical. Let's use `all.equal()` to get the an explanation of what is different:
 ```{r}
 all.equal(tmp[order(tmp$playerID), ], t16.2[order(t16.2$playerID),])
 ```
+```
+[1] "Attributes: < Component “row.names”: Mean relative difference: 0.9995983 >"
+```
+So the row.names attributes are different
+
+```{r}
+lapply( list(tmp[order(tmp$playerID), ], t16.2[order(t16.2$playerID),]), rownames)
+```
+
+We don't care about that.
+This tells us that the columns are the same.
+
+However, let's confirm that in a different way.
+Let's order the rows so the people are aligned and then compare each column.
 
 ```{r}
 tmp = tmp[order(tmp$playerID), ]
