@@ -1,0 +1,946 @@
+]0;Public~/sta141a/Public> R
+
+R Under development (unstable) (2025-03-26 r88055) -- "Unsuffered Consequences"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin23.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 49001 
+Time = 2026-10-14 12:33:54 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public 
+1> library(Lahman)
+[34:00] 2> ls(2)
+ [1] "AllstarFull"         "Appearances"         "AwardsManagers"      "AwardsPlayers"       "AwardsShareManagers"
+ [6] "AwardsSharePlayers"  "Batting"             "battingLabels"       "BattingPost"         "battingStats"       
+[11] "CollegePlaying"      "Fielding"            "fieldingLabels"      "FieldingOF"          "FieldingOFsplit"    
+[16] "FieldingPost"        "HallOfFame"          "HomeGames"           "Label"               "LahmanData"         
+[21] "Managers"            "ManagersHalf"        "Parks"               "People"              "Pitching"           
+[26] "pitchingLabels"      "PitchingPost"        "playerInfo"          "Salaries"            "Schools"            
+[31] "SeriesPost"          "teamInfo"            "Teams"               "TeamsFranchises"     "TeamsHalf"          
+[34:02] 3> d = readRDS("../Data/SFHouses.rds")
+Error in gzfile(file, "rb") : cannot open the connection
+In addition: Warning message:
+In gzfile(file, "rb") :
+  cannot open compressed file '../Data/SFHouses.rds', probable reason 'No such file or directory'
+
+Enter a frame number, or 0 to exit   
+
+1: readRDS("../Data/SFHouses.rds")
+2: gzfile(file, "rb")
+
+Selection: 0
+[34:02] 3> q()
+Save workspace image? [y/n/c]: n
+]0;Public~/sta141a/Public> cd Day6
+]0;Day6~/sta141a/Public/Day6> R
+
+R Under development (unstable) (2025-03-26 r88055) -- "Unsuffered Consequences"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin23.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 49020 
+Time = 2026-10-14 12:34:29 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day6 
+1> d = readRDS("../Data/SFHouses.rds")
+[34:30] 2> d$fsqft = cut(d$sqft, c(0, 500,  1000, 2000, 3000, 4000, 5000, Inf))
+[34:41] 3> t = tapply(d$amount, list(d$fsqft, d$county), median, na.rm = TRUE)
+[34:47] 4> class(d$fsqft)
+[1] "factor"
+[35:02] 5> head(d$fsqft)
+[1] (1e+03,2e+03] (1e+03,2e+03] (5e+03,Inf]   (1e+03,2e+03] (1e+03,2e+03] (1e+03,2e+03]
+Levels: (0,500] (500,1e+03] (1e+03,2e+03] (2e+03,3e+03] (3e+03,4e+03] (4e+03,5e+03] (5e+03,Inf]
+[35:11] 6> levels(d$fsqft)
+[1] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[35:32] 7> t
+*** output flushed ***
+[36:11] 8> cty = readRDS("../Day5/CityCounties.rds")
+[37:05] 9> head(cty)
+         Acalanes Ridge                  Acampo                   Acton                Adelanto                    Adin 
+  "Contra Costa County"    "San Joaquin County"    "Los Angeles County" "San Bernardino County"          "Modoc County" 
+           Adin Lookout 
+         "Modoc County" 
+[37:08] 10> head(d$county[cty])
+[1] NA NA NA NA NA NA
+[37:21] 11> head(d$county)
+[1] "San Francisco County" "San Francisco County" "San Francisco County" "San Francisco County" "San Francisco County"
+[6] "San Francisco County"
+[37:38] 12> cty["San Francisco County"] = "San Francisco County"
+[38:01] 13> table(d$county %in%  names(cty))
+
+TRUE 
+1100 
+[38:21] 14> d$county2 = cty[ d$county ]
+[38:55] 15> table(d$county2)
+
+      Alameda County  Contra Costa County                Marin         Marin County          Napa County San Francisco County 
+                 218                  149                    4                   26                   17                  237 
+           San Mateo     San Mateo County   Santa Clara County        Solano County        Sonoma County 
+                   1                  192                  174                   41                   41 
+[39:00] 16> t = tapply(d$amount, list(d$fsqft, d$county2), median, na.rm = TRUE)
+[39:32] 17> t
+              Alameda County Contra Costa County   Marin Marin County Napa County San Francisco County San Mateo
+(0,500]                   NA                  NA      NA           NA          NA                   NA        NA
+(500,1e+03]           527500              383500  520000       395000      725000               515000        NA
+(1e+03,2e+03]        1038500              715000  921250      1200000      835000               788000   1068000
+(2e+03,3e+03]        1560000             1100000      NA      1700000     1100000              1300000        NA
+(3e+03,4e+03]        2875000             1862500 4500000      9610000          NA              1900000        NA
+(4e+03,5e+03]             NA             2422500      NA      3755000          NA               885000        NA
+(5e+03,Inf]          5039000             5900000      NA     16921000          NA               545000        NA
+              San Mateo County Santa Clara County Solano County Sonoma County
+(0,500]                     NA             345000            NA            NA
+(500,1e+03]             360000             655000        302500        525000
+(1e+03,2e+03]           610000            1390000        525000        735000
+(2e+03,3e+03]          1253000            1942500        770000       1410000
+(3e+03,4e+03]          1935000            4200000       1096000       3438500
+(4e+03,5e+03]          3500000            6250000            NA            NA
+(5e+03,Inf]                 NA                 NA            NA            NA
+[39:33] 18> as.numeric(t)
+ [1]       NA   527500  1038500  1560000  2875000       NA  5039000       NA   383500   715000  1100000  1862500  2422500
+[14]  5900000       NA   520000   921250       NA  4500000       NA       NA       NA   395000  1200000  1700000  9610000
+[27]  3755000 16921000       NA   725000   835000  1100000       NA       NA       NA       NA   515000   788000  1300000
+[40]  1900000   885000   545000       NA       NA  1068000       NA       NA       NA       NA       NA   360000   610000
+[53]  1253000  1935000  3500000       NA   345000   655000  1390000  1942500  4200000  6250000       NA       NA   302500
+[66]   525000   770000  1096000       NA       NA       NA   525000   735000  1410000  3438500       NA       NA
+[40:14] 19> length(as.numeric(t))
+[1] 77
+[40:23] 20> z = data.frame( median = as.numeric(t))
+[40:49] 21> z
+*** output flushed ***
+[40:50] 22> rownames(t)
+[1] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[42:14] 23> rep(rownames(t), 3)
+ [1] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+ [8] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[15] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[42:23] 24> rep(rownames(t), ncol(t))
+ [1] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+ [8] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[15] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[22] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[29] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[36] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[43] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[50] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[57] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[64] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[71] "(0,500]"       "(500,1e+03]"   "(1e+03,2e+03]" "(2e+03,3e+03]" "(3e+03,4e+03]" "(4e+03,5e+03]" "(5e+03,Inf]"  
+[42:41] 25> z$fsqft = rep(rownames(t), ncol(t))
+[42:53] 26> head(z, 22)
+    median         fsqft
+1       NA       (0,500]
+2   527500   (500,1e+03]
+3  1038500 (1e+03,2e+03]
+4  1560000 (2e+03,3e+03]
+5  2875000 (3e+03,4e+03]
+6       NA (4e+03,5e+03]
+7  5039000   (5e+03,Inf]
+8       NA       (0,500]
+9   383500   (500,1e+03]
+10  715000 (1e+03,2e+03]
+11 1100000 (2e+03,3e+03]
+12 1862500 (3e+03,4e+03]
+13 2422500 (4e+03,5e+03]
+14 5900000   (5e+03,Inf]
+15      NA       (0,500]
+16  520000   (500,1e+03]
+17  921250 (1e+03,2e+03]
+18      NA (2e+03,3e+03]
+19 4500000 (3e+03,4e+03]
+20      NA (4e+03,5e+03]
+21      NA   (5e+03,Inf]
+22      NA       (0,500]
+[42:59] 27> colnames(t)
+ [1] "Alameda County"       "Contra Costa County"  "Marin"                "Marin County"         "Napa County"         
+ [6] "San Francisco County" "San Mateo"            "San Mateo County"     "Santa Clara County"   "Solano County"       
+[11] "Sonoma County"       
+[43:36] 28> rep(colnames(t), 2)
+ [1] "Alameda County"       "Contra Costa County"  "Marin"                "Marin County"         "Napa County"         
+ [6] "San Francisco County" "San Mateo"            "San Mateo County"     "Santa Clara County"   "Solano County"       
+[11] "Sonoma County"        "Alameda County"       "Contra Costa County"  "Marin"                "Marin County"        
+[16] "Napa County"          "San Francisco County" "San Mateo"            "San Mateo County"     "Santa Clara County"  
+[21] "Solano County"        "Sonoma County"       
+[43:43] 29> rep(colnames(t), each = 2)
+ [1] "Alameda County"       "Alameda County"       "Contra Costa County"  "Contra Costa County"  "Marin"               
+ [6] "Marin"                "Marin County"         "Marin County"         "Napa County"          "Napa County"         
+[11] "San Francisco County" "San Francisco County" "San Mateo"            "San Mateo"            "San Mateo County"    
+[16] "San Mateo County"     "Santa Clara County"   "Santa Clara County"   "Solano County"        "Solano County"       
+[21] "Sonoma County"        "Sonoma County"       
+[44:08] 30> rep(c("A", "B", "C"), c(3, 5, 7))
+ [1] "A" "A" "A" "B" "B" "B" "B" "B" "C" "C" "C" "C" "C" "C" "C"
+[45:38] 31> v = lapply(c(100, 200, 300), rnorm)
+[46:13] 32> v
+*** output flushed ***
+[46:14] 33> names(v) = c("M", "T", "W")
+[46:30] 34> z2 = data.frame(values = unlist(v), dow = rep(names(v), sapply(v, length)))
+[47:18] 35> head(z2)
+       values dow
+M1  0.4165205   M
+M2 -0.4224291   M
+M3  0.9154087   M
+M4  1.1212987   M
+M5 -0.6720512   M
+M6  0.7695212   M
+[47:20] 36> z2
+*** output flushed ***
+[47:35] 37> sapply(v, length)
+  M   T   W 
+100 200 300 
+[48:35] 38> #t = tapply(d$amount, list(d$fsqft, d$county2), median, na.rm = TRUE)
+[48:35] 38> buckets = split(d$amount,  list(d$fsqft, d$county2))
+[49:48] 39> names(buckets)
+ [1] "(0,500].Alameda County"             "(500,1e+03].Alameda County"         "(1e+03,2e+03].Alameda County"      
+ [4] "(2e+03,3e+03].Alameda County"       "(3e+03,4e+03].Alameda County"       "(4e+03,5e+03].Alameda County"      
+ [7] "(5e+03,Inf].Alameda County"         "(0,500].Contra Costa County"        "(500,1e+03].Contra Costa County"   
+[10] "(1e+03,2e+03].Contra Costa County"  "(2e+03,3e+03].Contra Costa County"  "(3e+03,4e+03].Contra Costa County" 
+[13] "(4e+03,5e+03].Contra Costa County"  "(5e+03,Inf].Contra Costa County"    "(0,500].Marin"                     
+[16] "(500,1e+03].Marin"                  "(1e+03,2e+03].Marin"                "(2e+03,3e+03].Marin"               
+[19] "(3e+03,4e+03].Marin"                "(4e+03,5e+03].Marin"                "(5e+03,Inf].Marin"                 
+[22] "(0,500].Marin County"               "(500,1e+03].Marin County"           "(1e+03,2e+03].Marin County"        
+[25] "(2e+03,3e+03].Marin County"         "(3e+03,4e+03].Marin County"         "(4e+03,5e+03].Marin County"        
+[28] "(5e+03,Inf].Marin County"           "(0,500].Napa County"                "(500,1e+03].Napa County"           
+[31] "(1e+03,2e+03].Napa County"          "(2e+03,3e+03].Napa County"          "(3e+03,4e+03].Napa County"         
+[34] "(4e+03,5e+03].Napa County"          "(5e+03,Inf].Napa County"            "(0,500].San Francisco County"      
+[37] "(500,1e+03].San Francisco County"   "(1e+03,2e+03].San Francisco County" "(2e+03,3e+03].San Francisco County"
+[40] "(3e+03,4e+03].San Francisco County" "(4e+03,5e+03].San Francisco County" "(5e+03,Inf].San Francisco County"  
+[43] "(0,500].San Mateo"                  "(500,1e+03].San Mateo"              "(1e+03,2e+03].San Mateo"           
+[46] "(2e+03,3e+03].San Mateo"            "(3e+03,4e+03].San Mateo"            "(4e+03,5e+03].San Mateo"           
+[49] "(5e+03,Inf].San Mateo"              "(0,500].San Mateo County"           "(500,1e+03].San Mateo County"      
+[52] "(1e+03,2e+03].San Mateo County"     "(2e+03,3e+03].San Mateo County"     "(3e+03,4e+03].San Mateo County"    
+[55] "(4e+03,5e+03].San Mateo County"     "(5e+03,Inf].San Mateo County"       "(0,500].Santa Clara County"        
+[58] "(500,1e+03].Santa Clara County"     "(1e+03,2e+03].Santa Clara County"   "(2e+03,3e+03].Santa Clara County"  
+[61] "(3e+03,4e+03].Santa Clara County"   "(4e+03,5e+03].Santa Clara County"   "(5e+03,Inf].Santa Clara County"    
+[64] "(0,500].Solano County"              "(500,1e+03].Solano County"          "(1e+03,2e+03].Solano County"       
+[67] "(2e+03,3e+03].Solano County"        "(3e+03,4e+03].Solano County"        "(4e+03,5e+03].Solano County"       
+[70] "(5e+03,Inf].Solano County"          "(0,500].Sonoma County"              "(500,1e+03].Sonoma County"         
+[73] "(1e+03,2e+03].Sonoma County"        "(2e+03,3e+03].Sonoma County"        "(3e+03,4e+03].Sonoma County"       
+[76] "(4e+03,5e+03].Sonoma County"        "(5e+03,Inf].Sonoma County"         
+[49:57] 40> sapply(buckets, median, na.rm = TRUE)
+            (0,500].Alameda County         (500,1e+03].Alameda County       (1e+03,2e+03].Alameda County 
+                                NA                             527500                            1038500 
+      (2e+03,3e+03].Alameda County       (3e+03,4e+03].Alameda County       (4e+03,5e+03].Alameda County 
+                           1560000                            2875000                                 NA 
+        (5e+03,Inf].Alameda County        (0,500].Contra Costa County    (500,1e+03].Contra Costa County 
+                           5039000                                 NA                             383500 
+ (1e+03,2e+03].Contra Costa County  (2e+03,3e+03].Contra Costa County  (3e+03,4e+03].Contra Costa County 
+                            715000                            1100000                            1862500 
+ (4e+03,5e+03].Contra Costa County    (5e+03,Inf].Contra Costa County                      (0,500].Marin 
+                           2422500                            5900000                                 NA 
+                 (500,1e+03].Marin                (1e+03,2e+03].Marin                (2e+03,3e+03].Marin 
+                            520000                             921250                                 NA 
+               (3e+03,4e+03].Marin                (4e+03,5e+03].Marin                  (5e+03,Inf].Marin 
+                           4500000                                 NA                                 NA 
+              (0,500].Marin County           (500,1e+03].Marin County         (1e+03,2e+03].Marin County 
+                                NA                             395000                            1200000 
+        (2e+03,3e+03].Marin County         (3e+03,4e+03].Marin County         (4e+03,5e+03].Marin County 
+                           1700000                            9610000                            3755000 
+          (5e+03,Inf].Marin County                (0,500].Napa County            (500,1e+03].Napa County 
+                          16921000                                 NA                             725000 
+         (1e+03,2e+03].Napa County          (2e+03,3e+03].Napa County          (3e+03,4e+03].Napa County 
+                            835000                            1100000                                 NA 
+         (4e+03,5e+03].Napa County            (5e+03,Inf].Napa County       (0,500].San Francisco County 
+                                NA                                 NA                                 NA 
+  (500,1e+03].San Francisco County (1e+03,2e+03].San Francisco County (2e+03,3e+03].San Francisco County 
+                            515000                             788000                            1300000 
+(3e+03,4e+03].San Francisco County (4e+03,5e+03].San Francisco County   (5e+03,Inf].San Francisco County 
+                           1900000                             885000                             545000 
+                 (0,500].San Mateo              (500,1e+03].San Mateo            (1e+03,2e+03].San Mateo 
+                                NA                                 NA                            1068000 
+           (2e+03,3e+03].San Mateo            (3e+03,4e+03].San Mateo            (4e+03,5e+03].San Mateo 
+                                NA                                 NA                                 NA 
+             (5e+03,Inf].San Mateo           (0,500].San Mateo County       (500,1e+03].San Mateo County 
+                                NA                                 NA                             360000 
+    (1e+03,2e+03].San Mateo County     (2e+03,3e+03].San Mateo County     (3e+03,4e+03].San Mateo County 
+                            610000                            1253000                            1935000 
+    (4e+03,5e+03].San Mateo County       (5e+03,Inf].San Mateo County         (0,500].Santa Clara County 
+                           3500000                                 NA                             345000 
+    (500,1e+03].Santa Clara County   (1e+03,2e+03].Santa Clara County   (2e+03,3e+03].Santa Clara County 
+                            655000                            1390000                            1942500 
+  (3e+03,4e+03].Santa Clara County   (4e+03,5e+03].Santa Clara County     (5e+03,Inf].Santa Clara County 
+                           4200000                            6250000                                 NA 
+             (0,500].Solano County          (500,1e+03].Solano County        (1e+03,2e+03].Solano County 
+                                NA                             302500                             525000 
+       (2e+03,3e+03].Solano County        (3e+03,4e+03].Solano County        (4e+03,5e+03].Solano County 
+                            770000                            1096000                                 NA 
+         (5e+03,Inf].Solano County              (0,500].Sonoma County          (500,1e+03].Sonoma County 
+                                NA                                 NA                             525000 
+       (1e+03,2e+03].Sonoma County        (2e+03,3e+03].Sonoma County        (3e+03,4e+03].Sonoma County 
+                            735000                            1410000                            3438500 
+       (4e+03,5e+03].Sonoma County          (5e+03,Inf].Sonoma County 
+                                NA                                 NA 
+[50:27] 41> buckets[[1]]
+integer(0)
+[51:06] 42> median(buckets[[1]])
+[1] NA
+[51:12] 43> lapply(buckets, median, na.rm = TRUE)
+$`(0,500].Alameda County`
+[1] NA
+
+$`(500,1e+03].Alameda County`
+[1] 527500
+
+$`(1e+03,2e+03].Alameda County`
+[1] 1038500
+
+$`(2e+03,3e+03].Alameda County`
+[1] 1560000
+
+$`(3e+03,4e+03].Alameda County`
+[1] 2875000
+
+$`(4e+03,5e+03].Alameda County`
+[1] NA
+
+$`(5e+03,Inf].Alameda County`
+[1] 5039000
+
+$`(0,500].Contra Costa County`
+[1] NA
+
+$`(500,1e+03].Contra Costa County`
+[1] 383500
+
+$`(1e+03,2e+03].Contra Costa County`
+[1] 715000
+
+$`(2e+03,3e+03].Contra Costa County`
+[1] 1100000
+
+$`(3e+03,4e+03].Contra Costa County`
+[1] 1862500
+
+$`(4e+03,5e+03].Contra Costa County`
+[1] 2422500
+
+$`(5e+03,Inf].Contra Costa County`
+[1] 5900000
+
+$`(0,500].Marin`
+[1] NA
+
+$`(500,1e+03].Marin`
+[1] 520000
+
+$`(1e+03,2e+03].Marin`
+[1] 921250
+
+$`(2e+03,3e+03].Marin`
+[1] NA
+
+$`(3e+03,4e+03].Marin`
+[1] 4500000
+
+$`(4e+03,5e+03].Marin`
+[1] NA
+
+$`(5e+03,Inf].Marin`
+[1] NA
+
+$`(0,500].Marin County`
+[1] NA
+
+$`(500,1e+03].Marin County`
+[1] 395000
+
+$`(1e+03,2e+03].Marin County`
+[1] 1200000
+
+$`(2e+03,3e+03].Marin County`
+[1] 1700000
+
+$`(3e+03,4e+03].Marin County`
+[1] 9610000
+
+$`(4e+03,5e+03].Marin County`
+[1] 3755000
+
+$`(5e+03,Inf].Marin County`
+[1] 16921000
+
+$`(0,500].Napa County`
+[1] NA
+
+$`(500,1e+03].Napa County`
+[1] 725000
+
+$`(1e+03,2e+03].Napa County`
+[1] 835000
+
+$`(2e+03,3e+03].Napa County`
+[1] 1100000
+
+$`(3e+03,4e+03].Napa County`
+[1] NA
+
+$`(4e+03,5e+03].Napa County`
+[1] NA
+
+$`(5e+03,Inf].Napa County`
+[1] NA
+
+$`(0,500].San Francisco County`
+[1] NA
+
+$`(500,1e+03].San Francisco County`
+[1] 515000
+
+$`(1e+03,2e+03].San Francisco County`
+[1] 788000
+
+$`(2e+03,3e+03].San Francisco County`
+[1] 1300000
+
+$`(3e+03,4e+03].San Francisco County`
+[1] 1900000
+
+$`(4e+03,5e+03].San Francisco County`
+[1] 885000
+
+$`(5e+03,Inf].San Francisco County`
+[1] 545000
+
+$`(0,500].San Mateo`
+[1] NA
+
+$`(500,1e+03].San Mateo`
+[1] NA
+
+$`(1e+03,2e+03].San Mateo`
+[1] 1068000
+
+$`(2e+03,3e+03].San Mateo`
+[1] NA
+
+$`(3e+03,4e+03].San Mateo`
+[1] NA
+
+$`(4e+03,5e+03].San Mateo`
+[1] NA
+
+$`(5e+03,Inf].San Mateo`
+[1] NA
+
+$`(0,500].San Mateo County`
+[1] NA
+
+$`(500,1e+03].San Mateo County`
+[1] 360000
+
+$`(1e+03,2e+03].San Mateo County`
+[1] 610000
+
+$`(2e+03,3e+03].San Mateo County`
+[1] 1253000
+
+$`(3e+03,4e+03].San Mateo County`
+[1] 1935000
+
+$`(4e+03,5e+03].San Mateo County`
+[1] 3500000
+
+$`(5e+03,Inf].San Mateo County`
+[1] NA
+
+$`(0,500].Santa Clara County`
+[1] 345000
+
+$`(500,1e+03].Santa Clara County`
+[1] 655000
+
+$`(1e+03,2e+03].Santa Clara County`
+[1] 1390000
+
+$`(2e+03,3e+03].Santa Clara County`
+[1] 1942500
+
+$`(3e+03,4e+03].Santa Clara County`
+[1] 4200000
+
+$`(4e+03,5e+03].Santa Clara County`
+[1] 6250000
+
+$`(5e+03,Inf].Santa Clara County`
+[1] NA
+
+$`(0,500].Solano County`
+[1] NA
+
+$`(500,1e+03].Solano County`
+[1] 302500
+
+$`(1e+03,2e+03].Solano County`
+[1] 525000
+
+$`(2e+03,3e+03].Solano County`
+[1] 770000
+
+$`(3e+03,4e+03].Solano County`
+[1] 1096000
+
+$`(4e+03,5e+03].Solano County`
+[1] NA
+
+$`(5e+03,Inf].Solano County`
+[1] NA
+
+$`(0,500].Sonoma County`
+[1] NA
+
+$`(500,1e+03].Sonoma County`
+[1] 525000
+
+$`(1e+03,2e+03].Sonoma County`
+[1] 735000
+
+$`(2e+03,3e+03].Sonoma County`
+[1] 1410000
+
+$`(3e+03,4e+03].Sonoma County`
+[1] 3438500
+
+$`(4e+03,5e+03].Sonoma County`
+[1] NA
+
+$`(5e+03,Inf].Sonoma County`
+[1] NA
+
+[51:40] 44> length(buckets)
+[1] 77
+[52:01] 45> n = lapply(buckets, median, na.rm = TRUE)
+[52:39] 46> summary(n)
+*** output flushed ***
+[52:44] 47> unlist(n)
+*** output flushed ***
+[53:07] 48> n2 = sapply(buckets, median, na.rm = TRUE)
+[53:54] 49> n2
+            (0,500].Alameda County         (500,1e+03].Alameda County       (1e+03,2e+03].Alameda County 
+                                NA                             527500                            1038500 
+      (2e+03,3e+03].Alameda County       (3e+03,4e+03].Alameda County       (4e+03,5e+03].Alameda County 
+                           1560000                            2875000                                 NA 
+        (5e+03,Inf].Alameda County        (0,500].Contra Costa County    (500,1e+03].Contra Costa County 
+                           5039000                                 NA                             383500 
+ (1e+03,2e+03].Contra Costa County  (2e+03,3e+03].Contra Costa County  (3e+03,4e+03].Contra Costa County 
+                            715000                            1100000                            1862500 
+ (4e+03,5e+03].Contra Costa County    (5e+03,Inf].Contra Costa County                      (0,500].Marin 
+                           2422500                            5900000                                 NA 
+                 (500,1e+03].Marin                (1e+03,2e+03].Marin                (2e+03,3e+03].Marin 
+                            520000                             921250                                 NA 
+               (3e+03,4e+03].Marin                (4e+03,5e+03].Marin                  (5e+03,Inf].Marin 
+                           4500000                                 NA                                 NA 
+              (0,500].Marin County           (500,1e+03].Marin County         (1e+03,2e+03].Marin County 
+                                NA                             395000                            1200000 
+        (2e+03,3e+03].Marin County         (3e+03,4e+03].Marin County         (4e+03,5e+03].Marin County 
+                           1700000                            9610000                            3755000 
+          (5e+03,Inf].Marin County                (0,500].Napa County            (500,1e+03].Napa County 
+                          16921000                                 NA                             725000 
+         (1e+03,2e+03].Napa County          (2e+03,3e+03].Napa County          (3e+03,4e+03].Napa County 
+                            835000                            1100000                                 NA 
+         (4e+03,5e+03].Napa County            (5e+03,Inf].Napa County       (0,500].San Francisco County 
+                                NA                                 NA                                 NA 
+  (500,1e+03].San Francisco County (1e+03,2e+03].San Francisco County (2e+03,3e+03].San Francisco County 
+                            515000                             788000                            1300000 
+(3e+03,4e+03].San Francisco County (4e+03,5e+03].San Francisco County   (5e+03,Inf].San Francisco County 
+                           1900000                             885000                             545000 
+                 (0,500].San Mateo              (500,1e+03].San Mateo            (1e+03,2e+03].San Mateo 
+                                NA                                 NA                            1068000 
+           (2e+03,3e+03].San Mateo            (3e+03,4e+03].San Mateo            (4e+03,5e+03].San Mateo 
+                                NA                                 NA                                 NA 
+             (5e+03,Inf].San Mateo           (0,500].San Mateo County       (500,1e+03].San Mateo County 
+                                NA                                 NA                             360000 
+    (1e+03,2e+03].San Mateo County     (2e+03,3e+03].San Mateo County     (3e+03,4e+03].San Mateo County 
+                            610000                            1253000                            1935000 
+    (4e+03,5e+03].San Mateo County       (5e+03,Inf].San Mateo County         (0,500].Santa Clara County 
+                           3500000                                 NA                             345000 
+    (500,1e+03].Santa Clara County   (1e+03,2e+03].Santa Clara County   (2e+03,3e+03].Santa Clara County 
+                            655000                            1390000                            1942500 
+  (3e+03,4e+03].Santa Clara County   (4e+03,5e+03].Santa Clara County     (5e+03,Inf].Santa Clara County 
+                           4200000                            6250000                                 NA 
+             (0,500].Solano County          (500,1e+03].Solano County        (1e+03,2e+03].Solano County 
+                                NA                             302500                             525000 
+       (2e+03,3e+03].Solano County        (3e+03,4e+03].Solano County        (4e+03,5e+03].Solano County 
+                            770000                            1096000                                 NA 
+         (5e+03,Inf].Solano County              (0,500].Sonoma County          (500,1e+03].Sonoma County 
+                                NA                                 NA                             525000 
+       (1e+03,2e+03].Sonoma County        (2e+03,3e+03].Sonoma County        (3e+03,4e+03].Sonoma County 
+                            735000                            1410000                            3438500 
+       (4e+03,5e+03].Sonoma County          (5e+03,Inf].Sonoma County 
+                                NA                                 NA 
+[53:55] 50> class(n2)
+[1] "numeric"
+[54:00] 51> n3 = lapply(buckets, quantile, c(.25, .5, .75), na.rm = TRUE)
+[54:44] 52> table(sapply(n3, class))
+
+numeric 
+     77 
+[54:59] 53> table(sapply(n3, length))
+
+ 3 
+77 
+[55:06] 54> n4 = sapply(buckets, quantile, c(.25, .5, .75), na.rm = TRUE)
+[55:17] 55> class(n4)
+[1] "matrix" "array" 
+[55:21] 56> n4
+    (0,500].Alameda County (500,1e+03].Alameda County (1e+03,2e+03].Alameda County (2e+03,3e+03].Alameda County
+25%                     NA                     396250                       796250                      1195000
+50%                     NA                     527500                      1038500                      1560000
+75%                     NA                     750000                      1346250                      1910000    (3e+03,4e+03].Alameda County (4e+03,5e+03].Alameda County (5e+03,Inf].Alameda County (0,500].Contra Costa County
+25%                      2324500                           NA                    5039000                          NA
+50%                      2875000                           NA                    5039000                          NA
+75%                      3262500                           NA                    5039000                          NA
+    (500,1e+03].Contra Costa County (1e+03,2e+03].Contra Costa County (2e+03,3e+03].Contra Costa County
+25%                          299000                            590000                            725000
+50%                          383500                            715000                           1100000
+75%                          485000                            910500                           1790000
+    (3e+03,4e+03].Contra Costa County (4e+03,5e+03].Contra Costa County (5e+03,Inf].Contra Costa County (0,500].Marin
+25%                           1032500                           2136250                         4850000            NA
+50%                           1862500                           2422500                         5900000            NA
+75%                           2375000                           2708750                         6587500            NA
+    (500,1e+03].Marin (1e+03,2e+03].Marin (2e+03,3e+03].Marin (3e+03,4e+03].Marin (4e+03,5e+03].Marin (5e+03,Inf].Marin
+25%            520000              838125                  NA             4500000                  NA                NA
+50%            520000              921250                  NA             4500000                  NA                NA
+75%            520000             1004375                  NA             4500000                  NA                NA
+    (0,500].Marin County (500,1e+03].Marin County (1e+03,2e+03].Marin County (2e+03,3e+03].Marin County
+25%                   NA                   395000                     983750                    1672500
+50%                   NA                   395000                    1200000                    1700000
+75%                   NA                   395000                    1512625                    2268750
+    (3e+03,4e+03].Marin County (4e+03,5e+03].Marin County (5e+03,Inf].Marin County (0,500].Napa County (500,1e+03].Napa County
+25%                    5790000                    3132500                 16921000                  NA                  725000
+50%                    9610000                    3755000                 16921000                  NA                  725000
+75%                   13430000                    4377500                 16921000                  NA                  725000
+    (1e+03,2e+03].Napa County (2e+03,3e+03].Napa County (3e+03,4e+03].Napa County (4e+03,5e+03].Napa County
+25%                    650000                   1100000                        NA                        NA
+50%                    835000                   1100000                        NA                        NA
+75%                    993750                   1100000                        NA                        NA
+    (5e+03,Inf].Napa County (0,500].San Francisco County (500,1e+03].San Francisco County (1e+03,2e+03].San Francisco County
+25%                      NA                           NA                           375000                             582500
+50%                      NA                           NA                           515000                             788000
+75%                      NA                           NA                           649000                             962500
+    (2e+03,3e+03].San Francisco County (3e+03,4e+03].San Francisco County (4e+03,5e+03].San Francisco County
+25%                            1015000                            1289000                             885000
+50%                            1300000                            1900000                             885000
+75%                            1750000                            2707500                             885000
+    (5e+03,Inf].San Francisco County (0,500].San Mateo (500,1e+03].San Mateo (1e+03,2e+03].San Mateo (2e+03,3e+03].San Mateo
+25%                           545000                NA                    NA                 1068000                      NA
+50%                           545000                NA                    NA                 1068000                      NA
+75%                           545000                NA                    NA                 1068000                      NA
+    (3e+03,4e+03].San Mateo (4e+03,5e+03].San Mateo (5e+03,Inf].San Mateo (0,500].San Mateo County
+25%                      NA                      NA                    NA                       NA
+50%                      NA                      NA                    NA                       NA
+75%                      NA                      NA                    NA                       NA
+    (500,1e+03].San Mateo County (1e+03,2e+03].San Mateo County (2e+03,3e+03].San Mateo County (3e+03,4e+03].San Mateo County
+25%                       245000                         425000                         933750                        1065000
+50%                       360000                         610000                        1253000                        1935000
+75%                       550000                         908000                        1932500                        2275000
+    (4e+03,5e+03].San Mateo County (5e+03,Inf].San Mateo County (0,500].Santa Clara County (500,1e+03].Santa Clara County
+25%                        2382500                           NA                     345000                         567000
+50%                        3500000                           NA                     345000                         655000
+75%                        5550000                           NA                     345000                         782000
+    (1e+03,2e+03].Santa Clara County (2e+03,3e+03].Santa Clara County (3e+03,4e+03].Santa Clara County
+25%                          1001250                          1512500                          3045000
+50%                          1390000                          1942500                          4200000
+75%                          1730000                          3055000                          4547500
+    (4e+03,5e+03].Santa Clara County (5e+03,Inf].Santa Clara County (0,500].Solano County (500,1e+03].Solano County
+25%                          4275000                             NA                    NA                    231250
+50%                          6250000                             NA                    NA                    302500
+75%                          7800000                             NA                    NA                    325000
+    (1e+03,2e+03].Solano County (2e+03,3e+03].Solano County (3e+03,4e+03].Solano County (4e+03,5e+03].Solano County
+25%                      462500                      690125                     1096000                          NA
+50%                      525000                      770000                     1096000                          NA
+75%                      598500                      924000                     1096000                          NA
+    (5e+03,Inf].Solano County (0,500].Sonoma County (500,1e+03].Sonoma County (1e+03,2e+03].Sonoma County
+25%                        NA                    NA                    515000                      580000
+50%                        NA                    NA                    525000                      735000
+75%                        NA                    NA                    565000                      860000
+    (2e+03,3e+03].Sonoma County (3e+03,4e+03].Sonoma County (4e+03,5e+03].Sonoma County (5e+03,Inf].Sonoma County
+25%                     1175000                     3438500                          NA                        NA
+50%                     1410000                     3438500                          NA                        NA
+75%                     1847500                     3438500                          NA                        NA
+[55:31] 57> head(n3)
+$`(0,500].Alameda County`
+25% 50% 75% 
+ NA  NA  NA 
+
+$`(500,1e+03].Alameda County`
+   25%    50%    75% 
+396250 527500 750000 
+
+$`(1e+03,2e+03].Alameda County`
+    25%     50%     75% 
+ 796250 1038500 1346250 
+
+$`(2e+03,3e+03].Alameda County`
+    25%     50%     75% 
+1195000 1560000 1910000 
+
+$`(3e+03,4e+03].Alameda County`
+    25%     50%     75% 
+2324500 2875000 3262500 
+
+$`(4e+03,5e+03].Alameda County`
+25% 50% 75% 
+ NA  NA  NA 
+
+[55:50] 58> head(Parks)
+Error: object 'Parks' not found
+
+Enter a frame number, or 0 to exit   
+
+1: head(Parks)
+
+Selection: 0
+[55:50] 58> library(Lahman)
+[58:13] 59> head(Teams)
+  yearID lgID teamID franchID divID Rank  G Ghome  W  L DivWin WCWin LgWin WSWin   R   AB   H X2B X3B HR BB SO SB CS HBP SF
+1   1871   NA    BS1      BNA  <NA>    3 31    NA 20 10   <NA>  <NA>     N  <NA> 401 1372 426  70  37  3 60 19 73 16  NA NA
+2   1871   NA    CH1      CNA  <NA>    2 28    NA 19  9   <NA>  <NA>     N  <NA> 302 1196 323  52  21 10 60 22 69 21  NA NA
+3   1871   NA    CL1      CFC  <NA>    8 29    NA 10 19   <NA>  <NA>     N  <NA> 249 1186 328  35  40  7 26 25 18  8  NA NA
+4   1871   NA    FW1      KEK  <NA>    7 19    NA  7 12   <NA>  <NA>     N  <NA> 137  746 178  19   8  2 33  9 16  4  NA NA
+5   1871   NA    NY2      NNA  <NA>    5 33    NA 16 17   <NA>  <NA>     N  <NA> 302 1404 403  43  21  1 33 15 46 15  NA NA
+6   1871   NA    PH1      PNA  <NA>    1 28    NA 21  7   <NA>  <NA>     Y  <NA> 376 1281 410  66  27  9 46 23 56 12  NA NA
+   RA  ER  ERA CG SHO SV IPouts  HA HRA BBA SOA   E DP    FP                    name                         park attendance
+1 303 109 3.55 22   1  3    828 367   2  42  23 243 24 0.834    Boston Red Stockings          South End Grounds I         NA
+2 241  77 2.76 25   0  1    753 308   6  28  22 229 16 0.829 Chicago White Stockings      Union Base-Ball Grounds         NA
+3 341 116 4.11 23   0  0    762 346  13  53  34 234 15 0.818  Cleveland Forest Citys National Association Grounds         NA
+4 243  97 5.17 19   1  0    507 261   5  21  17 163  8 0.803    Fort Wayne Kekiongas               Hamilton Field         NA
+5 313 121 3.72 32   1  0    879 373   7  42  22 235 14 0.840        New York Mutuals     Union Grounds (Brooklyn)         NA
+6 266 137 4.95 27   0  0    747 329   3  53  16 194 13 0.845  Philadelphia Athletics     Jefferson Street Grounds         NA
+  BPF PPF teamIDBR teamIDlahman45 teamIDretro
+1 103  98      BOS            BS1         BS1
+2 104 102      CHI            CH1         CH1
+3  96 100      CLE            CL1         CL1
+4 101 107      KEK            FW1         FW1
+5  90  88      NYU            NY2         NY2
+6 102  98      ATH            PH1         PH1
+[58:17] 60> head(Parks)
+                                                                               park.alias park.key
+1                                                                       Greenbush Grounds    ALB01
+2                                                                   Fourth Avenue Grounds    ALT01
+3                                                           Edison Field; Anaheim Stadium    ANA01
+4                                                                                    <NA>    ARL01
+5 The Ballpark in Arlington; Ameriquest Field in Arlington; Rangers Ballpark in Arlington    ARL02
+6                                                  Fulton County Stadium; Atlanta Stadium    ATL01
+                      park.name       city state country
+1                Riverside Park Rensselaer    NY      US
+2                 Columbia Park    Altoona    PA      US
+3      Angel Stadium of Anaheim    Anaheim    CA      US
+4             Arlington Stadium  Arlington    TX      US
+5  Globe Life Park in Arlington  Arlington    TX      US
+6 Atlanta-Fulton County Stadium    Atlanta    GA      US
+[58:21] 61> table(Teams$park %in% Parks$park.name)
+
+FALSE  TRUE 
+ 1219  2395 
+[59:25] 62> table(Teams$park %in% Parks$park.alias)
+
+FALSE  TRUE 
+ 3379   235 
+[59:31] 63> m = match(Teams$park,Parks$park.name)
+[59:52] 64> table(is.na(m))
+
+FALSE  TRUE 
+ 2395  1219 
+[59:55] 65> table(!is.na(m))
+
+FALSE  TRUE 
+ 1219  2395 
+[00:03] 66> ?Parks
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+Parks                  package:Lahman                  R Documentation
+
+Parks table
+
+Description:
+
+     Name and location data for baseball stadiums.
+
+Usage:
+
+     data(Parks)
+     
+Format:
+
+     A data frame with 262 observations on the following 6 variables.
+
+     ‘park.key’ unique identifier for each ballpark
+
+     ‘park.name’ the name of the ballpark
+
+     ‘park.alias’ a semicolon delimited list of other names for the
+          ballpark if they exist
+
+     ‘city’ city where the ballpark is located
+
+     ‘state’ state where the ballpark is located
+
+     ‘country’ country where the ballpark is located
+
+Details:
+
+     This dataset apparently includes all ballparks that were ever used
+     in baseball. There is no indication of the years they were used,
+     nor the teams that played there.
+: 
+
+     The ballparks can be associated with teams through the ‘park’
+     variable in the ‘Teams’ table.
+
+Source:
+
+     Lahman, S. (2026) Lahman's Baseball Database, 1871-2025, 2026
+     version, <https://sabr.org/lahman-database/>
+
+See Also:
+
+     ‘Teams’
+
+Examples:
+
+     data(Parks)
+     library(dplyr)
+     # how many parks in each country?
+     table(Parks$country)
+     
+     # how many parks in each US state?
+     Parks %>% 
+       filter(country=="US") %>% 
+       count(state, sort=TRUE)
+     
+     # ballparks in NYC
+     Parks %>% 
+       filter(state=="NY") %>% 
+       filter(city %in% c("New York", "Brooklyn", "Queens"))
+     
+     # ballparks in Canada
+     Parks %>% 
+       filter(country=="CA") %>% 
+       count(state, sort=TRUE)
+     
+:
+
+^     The ballparks can be associated with teams through the ‘park’
+     variable in the ‘Teams’ table.
+
+Source:
+
+     Lahman, S. (2026) Lahman's Baseball Database, 1871-2025, 2026
+     version, <https://sabr.org/lahman-database/>
+
+See Also:
+
+     ‘Teams’
+
+Examples:
+
+     data(Parks)
+     library(dplyr)
+     # how many parks in each country?
+     table(Parks$country)
+     
+     # how many parks in each US state?
+     Parks %>% 
+       filter(country=="US") %>% 
+       count(state, sort=TRUE)
+     
+     # ballparks in NYC
+     Parks %>% 
+       filter(state=="NY") %>% 
+       filter(city %in% c("New York", "Brooklyn", "Queens"))
+     
+     # ballparks in Canada
+     Parks %>% 
+       filter(country=="CA") %>% 
+       count(state, sort=TRUE)
+     
+     # what are the Canadian parks?
+     Parks %>% 
+       dplyr::filter(country=="CA")
+     
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+(END)q
+[58:30] 67> 
+[58:30] 67> names(Teams)
+ [1] "yearID"         "lgID"           "teamID"         "franchID"       "divID"          "Rank"           "G"             
+ [8] "Ghome"          "W"              "L"              "DivWin"         "WCWin"          "LgWin"          "WSWin"         
+[15] "R"              "AB"             "H"              "X2B"            "X3B"            "HR"             "BB"            
+[22] "SO"             "SB"             "CS"             "HBP"            "SF"             "RA"             "ER"            
+[29] "ERA"            "CG"             "SHO"            "SV"             "IPouts"         "HA"             "HRA"           
+[36] "BBA"            "SOA"            "E"              "DP"             "FP"             "name"           "park"          
+[43] "attendance"     "BPF"            "PPF"            "teamIDBR"       "teamIDlahman45" "teamIDretro"   
+[58:39] 68> names(Parks)
+[1] "park.alias" "park.key"   "park.name"  "city"       "state"      "country"   
+[58:48] 69> sapply(Parks[,1:3], function(x) table(Teams$park %in% x))
+$park.alias
+
+FALSE  TRUE 
+ 3379   235 
+
+$park.key
+
+FALSE 
+ 3614 
+
+$park.name
+
+FALSE  TRUE 
+ 1219  2395 
+
+[59:17] 70> 
