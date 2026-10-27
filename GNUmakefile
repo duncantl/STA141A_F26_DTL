@@ -8,3 +8,6 @@ Rsession.R: Rsession
 
 %.R: %
 	Rscript -e "library(FormatSession); cat(getCode(\"$<\"), file = \"$@\", sep = \"\n\n\")"
+
+%.md: %
+	Rscript -e "library(FormatSession); toMd(getCode(\"$<\"), \"$@\")"
