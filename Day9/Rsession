@@ -1,0 +1,811 @@
+]0;Day8~/sta141a/Public/Day8> git add Rsession
+]0;Day8~/sta141a/Public/Day8> git commit -m "FEC individual contributions data with read.table() and other approach. Start of reading the NASA data."
+[main f3dcf6f] FEC individual contributions data with read.table() and other approach. Start of reading the NASA data.
+ 1 file changed, 2069 insertions(+)
+ create mode 100644 Day8/Rsession
+]0;Day8~/sta141a/Public/Day8> git add ../README.md 
+]0;Day8~/sta141a/Public/Day8> git commit -m "..."
+[main 3de4917] ...
+ 1 file changed, 6 insertions(+)
+]0;Day8~/sta141a/Public/Day8> git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 37.52 KiB | 9.38 MiB/s, done.
+Total 7 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.        
+To github.com:duncantl/STA141A_F26_DTL.git
+   5a3b286..3de4917  main -> main
+]0;Day8~/sta141a/Public/Day8> cd ../Data/
+]0;Data~/sta141a/Public/Data> ls
+CACountyInfo.rds  NASA/  SFHouses.rds
+]0;Data~/sta141a/Public/Data> head -n 61000 ~/Data/FEC/2026/itcont.txt > itcont_small.txt
+]0;Data~/sta141a/Public/Data> wc -l itcont_small.txt 
+61000 itcont_small.txt
+]0;Data~/sta141a/Public/Data> git add itcont_small.txt 
+]0;Data~/sta141a/Public/Data> git commit -m "itcont.txt subset"
+[main a0df484] itcont.txt subset
+ 1 file changed, 61000 insertions(+)
+ create mode 100644 Data/itcont_small.txt
+]0;Data~/sta141a/Public/Data> cd ../
+]0;Public~/sta141a/Public> git add README.md 
+]0;Public~/sta141a/Public> git commit -m "itcont_small link"
+[main 3f1c9b8] itcont_small link
+ 1 file changed, 1 insertion(+)
+]0;Public~/sta141a/Public> git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 1.97 MiB | 10.31 MiB/s, done.
+Total 7 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.        
+To github.com:duncantl/STA141A_F26_DTL.git
+   3de4917..3f1c9b8  main -> main
+]0;Public~/sta141a/Public> cd Day9
+]0;Day9~/sta141a/Public/Day9> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 29374 
+Time = 2026-10-22 09:00:00 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day9 
+1> l = readLines("USA_CA_Mount.Shasta.725957_TMYx.pvsyst")
+Error in file(con, "r") : cannot open the connection
+In addition: Warning message:
+In file(con, "r") :
+  cannot open file 'USA_CA_Mount.Shasta.725957_TMYx.pvsyst': No such file or directory
+
+Enter a frame number, or 0 to exit 
+
+1: readLines("USA_CA_Mount.Shasta.725957_TMYx.pvsyst")
+2: file(con, "r")
+
+Selection: 0
+1> l = readLines("../Data/USA_CA_Mount.Shasta.725957_TMYx.pvsyst")
+[21:08] 2> l[13:14]
+[1] "Year,Month,Day,Hour,Minute,GHI,DHI,DNI,Tamb,WindVel,WindDir"
+[2] ",,,,,W/m2,W/m2,W/m2,deg.C,m/sec,\xb0"                       
+[21:19] 3> grep("W/m2", l)
+integer(0)
+Warning messages:
+1: In grep("W/m2", l) :
+  unable to translate ',,,,,W/m2,W/m2,W/m2,deg.C,m/sec,<b0>' to a wide string
+2: In grep("W/m2", l) : input string 14 is invalid
+[22:46] 4> l2 = readLines("../Data/USA_CA_Mount.Shasta.725957_TMYx.pvsyst", encoding = "latin1")
+[26:54] 5> l2[14]
+[1] ",,,,,W/m2,W/m2,W/m2,deg.C,m/sec,°"
+[26:58] 6> grep("W/m2", l2)
+[1] 14
+[28:36] 7> 
+[28:36] 7> tmp = read.table("../Data/NASA/temperature1.txt", skip = 7,header = FALSE)
+[32:39] 8> class(tmp)
+[1] "data.frame"
+[32:46] 9> dim(tmp)
+[1] 24 27
+[32:49] 10> head(tmp)
+     V1 V2  V3    V4    V5    V6    V7    V8    V9   V10   V11   V12   V13   V14   V15   V16   V17   V18   V19
+1 36.2N  / 51: 272.1 270.3 270.3 270.9 271.5 275.6 278.4 278.4 278.4 278.4 277.8 277.3 276.7 276.7 278.9 283.2
+2 33.8N  / 50: 282.2 282.2 272.7 272.7 271.5 280.0 281.6 281.6 281.6 282.7 281.1 282.2 281.6 281.6 284.2 287.8
+3 31.2N  / 49: 285.2 285.2 276.1 275.0 278.9 281.6 283.7 283.7 283.7 284.7 284.2 285.2 286.3 289.3 289.8 289.8
+4 28.8N  / 48: 290.7 286.8 286.8 276.7 277.3 283.2 287.3 288.3 288.3 289.3 289.3 289.8 289.3 288.8 291.2 292.2
+5 26.2N  / 47: 292.7 293.6 284.2 284.2 279.5 281.1 289.3 292.2 292.7 293.2 293.6 294.1 294.1 292.7 295.0 295.0
+6 23.8N  / 46: 293.6 295.0 295.5 282.7 282.7 281.6 285.2 294.1 294.6 295.5 296.0 296.5 296.0 296.5 296.0 296.9
+    V20   V21   V22   V23   V24   V25   V26   V27
+1 285.8 286.8 286.8 288.3 288.8 288.8 288.8 288.8
+2 288.3 289.3 289.8 289.8 289.3 289.8 289.8 289.8
+3 292.7 290.7 290.7 291.2 291.7 290.7 290.7 290.7
+4 292.2 292.2 292.2 292.7 293.2 293.2 292.2 292.2
+5 294.6 294.6 294.6 294.6 294.6 294.6 294.6 294.1
+6 296.9 296.5 296.0 296.0 296.5 296.0 295.5 295.0
+[33:08] 11> tmp[ , -(1:2)]
+*** output flushed ***
+[40:11] 12> tmp[ , -(1:3)]
+      V4    V5    V6    V7    V8    V9   V10   V11   V12   V13   V14   V15   V16   V17   V18   V19   V20   V21
+1  272.1 270.3 270.3 270.9 271.5 275.6 278.4 278.4 278.4 278.4 277.8 277.3 276.7 276.7 278.9 283.2 285.8 286.8
+2  282.2 282.2 272.7 272.7 271.5 280.0 281.6 281.6 281.6 282.7 281.1 282.2 281.6 281.6 284.2 287.8 288.3 289.3
+3  285.2 285.2 276.1 275.0 278.9 281.6 283.7 283.7 283.7 284.7 284.2 285.2 286.3 289.3 289.8 289.8 292.7 290.7
+4  290.7 286.8 286.8 276.7 277.3 283.2 287.3 288.3 288.3 289.3 289.3 289.8 289.3 288.8 291.2 292.2 292.2 292.2
+5  292.7 293.6 284.2 284.2 279.5 281.1 289.3 292.2 292.7 293.2 293.6 294.1 294.1 292.7 295.0 295.0 294.6 294.6
+6  293.6 295.0 295.5 282.7 282.7 281.6 285.2 294.1 294.6 295.5 296.0 296.5 296.0 296.5 296.0 296.9 296.9 296.5
+7  294.6 295.0 296.0 297.4 283.7 282.7 291.7 296.0 296.9 296.0 296.0 296.9 298.7 298.7 298.3 297.8 298.3 298.3
+8  296.9 296.9 297.8 297.8 300.1 293.2 289.3 290.2 296.0 296.5 295.5 298.3 298.7 299.2 299.6 299.2 299.2 297.8
+9  297.8 298.3 299.2 300.5 301.0 301.0 300.1 298.3 291.2 293.6 293.6 298.7 299.2 299.2 299.2 299.2 299.2 299.2
+10 298.7 299.6 299.6 300.1 300.5 301.0 300.5 300.1 300.5 301.0 294.6 293.2 298.3 299.6 299.6 299.2 299.2 299.6
+11 300.1 300.5 300.5 301.0 300.5 300.1 300.5 300.1 300.1 300.1 299.6 299.6 299.6 299.6 299.6 300.5 301.0 299.6
+12 300.1 300.5 300.1 300.1 300.1 300.1 300.1 299.6 299.6 299.2 299.2 301.0 301.4 301.0 300.1 301.0 301.0 299.6
+13 300.5 299.6 300.1 299.6 300.1 299.6 300.1 300.5 300.5 301.0 300.5 301.9 301.9 301.4 301.0 298.7 296.5 298.3
+14 299.6 299.2 299.2 299.6 300.1 299.6 300.1 300.1 300.1 301.0 301.0 301.0 301.0 300.1 300.1 294.6 297.4 300.5
+15 298.3 297.8 297.8 297.8 298.7 298.3 298.3 298.7 299.6 299.6 298.7 300.1 299.2 299.2 294.6 294.6 297.8 298.7
+16 297.8 297.4 297.8 297.4 297.4 297.8 297.4 297.4 297.4 299.2 298.3 298.3 297.8 298.3 287.3 298.7 298.3 299.2
+17 298.3 297.8 297.4 297.8 298.3 297.8 298.3 297.8 298.3 298.3 297.8 298.7 297.8 297.8 288.8 300.1 300.1 300.1
+18 298.3 298.3 297.8 297.8 297.8 297.4 297.8 297.4 297.4 297.8 298.3 298.3 298.7 297.8 291.7 296.5 299.6 300.1
+19 298.3 297.8 297.4 296.9 297.4 297.4 297.4 296.9 296.9 297.4 297.4 297.4 298.3 297.8 297.4 286.8 298.7 299.6
+20 298.3 297.8 297.4 296.9 296.9 296.9 296.9 296.5 296.5 296.9 296.9 296.9 297.8 298.3 295.5 284.2 296.9 298.3
+21 297.8 297.4 297.4 296.9 296.9 296.5 296.0 296.5 295.5 296.0 296.0 296.5 296.5 296.9 296.5 293.6 281.6 282.2
+22 296.9 296.9 296.5 296.0 296.5 296.0 295.5 295.5 295.5 295.5 295.5 295.5 295.5 295.5 295.5 296.5 293.6 287.3
+23 296.9 296.9 296.5 296.5 296.0 295.5 295.0 295.5 295.0 295.0 294.6 295.0 294.6 295.5 295.0 296.5 296.9 292.2
+24 296.9 296.5 296.0 296.5 295.5 295.0 295.5 295.0 295.0 294.6 294.6 294.6 294.6 294.6 294.6 295.5 296.0 296.9
+     V22   V23   V24   V25   V26   V27
+1  286.8 288.3 288.8 288.8 288.8 288.8
+2  289.8 289.8 289.3 289.8 289.8 289.8
+3  290.7 291.2 291.7 290.7 290.7 290.7
+4  292.2 292.7 293.2 293.2 292.2 292.2
+5  294.6 294.6 294.6 294.6 294.6 294.1
+6  296.0 296.0 296.5 296.0 295.5 295.0
+7  297.4 297.4 296.9 296.9 296.9 296.5
+8  298.3 298.3 298.3 297.8 297.8 297.4
+9  298.7 299.2 298.7 298.7 298.3 297.8
+10 299.2 299.2 299.6 299.2 298.7 298.3
+11 300.1 299.6 299.2 299.2 299.2 298.7
+12 297.8 299.6 299.6 298.7 299.2 299.2
+13 300.5 300.5 296.0 297.8 297.8 299.6
+14 300.1 297.8 295.0 297.8 299.2 296.5
+15 299.6 299.2 299.2 300.1 299.2 298.3
+16 300.1 300.5 301.9 301.4 300.5 300.5
+17 300.5 301.0 301.4 301.4 301.4 301.0
+18 300.1 301.0 301.0 301.0 300.1 300.1
+19 300.1 299.6 300.5 300.1 299.2 298.7
+20 299.6 299.2 299.2 299.2 299.2 298.7
+21 299.6 302.8 299.2 298.7 299.2 299.6
+22 282.2 290.2 301.0 301.0 301.9 301.0
+23 283.2 283.2 290.2 303.2 301.4 302.3
+24 288.3 288.8 301.4 304.9 302.3 300.1
+[40:44] 13> class(tmp[ , -(1:3)])
+[1] "data.frame"
+[40:49] 14> class(tmp[,1])
+[1] "character"
+[41:50] 15> class(tmp[,4])
+[1] "numeric"
+[42:02] 16> class(tmp[,4, drop = FALSE])
+[1] "data.frame"
+[42:48] 17> tmp[,1]
+ [1] "36.2N" "33.8N" "31.2N" "28.8N" "26.2N" "23.8N" "21.2N" "18.8N" "16.2N" "13.8N" "11.2N" "8.8N"  "6.2N" 
+[14] "3.8N"  "1.2N"  "1.2S"  "3.8S"  "6.2S"  "8.8S"  "11.2S" "13.8S" "16.2S" "18.8S" "21.2S"
+[44:55] 18> source("nasa.R")
+[53:37] 19> z = read()
+Called from: compLatitude(tmp[, 1])
+Browse[1]> ls()
+[1] "x"
+Browse[1]> x
+ [1] "36.2N" "33.8N" "31.2N" "28.8N" "26.2N" "23.8N" "21.2N" "18.8N" "16.2N" "13.8N" "11.2N" "8.8N"  "6.2N" 
+[14] "3.8N"  "1.2N"  "1.2S"  "3.8S"  "6.2S"  "8.8S"  "11.2S" "13.8S" "16.2S" "18.8S" "21.2S"
+Browse[1]> #substring(x, 1, 
+Browse[1]> nchar(x)
+ [1] 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 4 5 5 5 5 5
+Browse[1]> substring(x, 1, nchar(x) - 1)
+ [1] "36.2" "33.8" "31.2" "28.8" "26.2" "23.8" "21.2" "18.8" "16.2" "13.8" "11.2" "8.8"  "6.2"  "3.8"  "1.2" 
+[16] "1.2"  "3.8"  "6.2"  "8.8"  "11.2" "13.8" "16.2" "18.8" "21.2"
+Browse[1]> options(width = 75)
+Browse[1]> substring(x, 1, nchar(x) - 1)
+ [1] "36.2" "33.8" "31.2" "28.8" "26.2" "23.8" "21.2" "18.8" "16.2" "13.8"
+[11] "11.2" "8.8"  "6.2"  "3.8"  "1.2"  "1.2"  "3.8"  "6.2"  "8.8"  "11.2"
+[21] "13.8" "16.2" "18.8" "21.2"
+Browse[1]> ans = as.numeric(substring(x, 1, nchar(x) - 1))
+Browse[1]> ans
+ [1] 36.2 33.8 31.2 28.8 26.2 23.8 21.2 18.8 16.2 13.8 11.2  8.8  6.2  3.8
+[15]  1.2  1.2  3.8  6.2  8.8 11.2 13.8 16.2 18.8 21.2
+Browse[1]>     substring(x, nchar(x))
+ [1] "N" "N" "N" "N" "N" "N" "N" "N" "N" "N" "N" "N" "N" "N" "N" "S" "S"
+[18] "S" "S" "S" "S" "S" "S" "S"
+Browse[1]>     ns = substring(x, nchar(x))
+Browse[1]>     w = ns == "S"
+Browse[1]> w
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[23]  TRUE  TRUE
+Browse[1]> ans[w]*-1
+[1]  -1.2  -3.8  -6.2  -8.8 -11.2 -13.8 -16.2 -18.8 -21.2
+Browse[1]>     ans[w] = ans[w]*-1
+Browse[1]> as
+*** output flushed ***
+Browse[1]> ans
+ [1]  36.2  33.8  31.2  28.8  26.2  23.8  21.2  18.8  16.2  13.8  11.2
+[12]   8.8   6.2   3.8   1.2  -1.2  -3.8  -6.2  -8.8 -11.2 -13.8 -16.2
+[23] -18.8 -21.2
+Browse[1]> cbind(x, ans)
+      x       ans    
+ [1,] "36.2N" "36.2" 
+ [2,] "33.8N" "33.8" 
+ [3,] "31.2N" "31.2" 
+ [4,] "28.8N" "28.8" 
+ [5,] "26.2N" "26.2" 
+ [6,] "23.8N" "23.8" 
+ [7,] "21.2N" "21.2" 
+ [8,] "18.8N" "18.8" 
+ [9,] "16.2N" "16.2" 
+[10,] "13.8N" "13.8" 
+[11,] "11.2N" "11.2" 
+[12,] "8.8N"  "8.8"  
+[13,] "6.2N"  "6.2"  
+[14,] "3.8N"  "3.8"  
+[15,] "1.2N"  "1.2"  
+[16,] "1.2S"  "-1.2" 
+[17,] "3.8S"  "-3.8" 
+[18,] "6.2S"  "-6.2" 
+[19,] "8.8S"  "-8.8" 
+[20,] "11.2S" "-11.2"
+[21,] "13.8S" "-13.8"
+[22,] "16.2S" "-16.2"
+[23,] "18.8S" "-18.8"
+[24,] "21.2S" "-21.2"
+Browse[1]> Q
+[03:30] 36> source("nasa.R")
+[04:16] 37> ls()
+[1] "compLatitude"   "l"              "l2"             "PRMGateway"    
+[5] "PRMGatewayProd" "read"           "tmp"           
+[04:38] 38> tmp
+*** output flushed ***
+[04:39] 39> tmp[,1]
+ [1] "36.2N" "33.8N" "31.2N" "28.8N" "26.2N" "23.8N" "21.2N" "18.8N"
+ [9] "16.2N" "13.8N" "11.2N" "8.8N"  "6.2N"  "3.8N"  "1.2N"  "1.2S" 
+[17] "3.8S"  "6.2S"  "8.8S"  "11.2S" "13.8S" "16.2S" "18.8S" "21.2S"
+[04:47] 40> source("nasa.R")
+[04:55] 41> compLatitude(tmp[,1])
+ [1]  36.2  33.8  31.2  28.8  26.2  23.8  21.2  18.8  16.2  13.8  11.2
+[12]   8.8   6.2   3.8   1.2  -1.2  -3.8  -6.2  -8.8 -11.2 -13.8 -16.2
+[23] -18.8 -21.2
+[05:07] 42> source("nasa.R")
+[09:31] 43> z = read()
+Called from: read()
+Browse[1]> ls()
+[1] "d"        "encoding" "file"     "lat"      "tmp"      "tmp2"    
+[7] "vals"    
+Browse[1]> tmp2
+[1] "             VARIABLE : Mean Near-surface air temperature (kelvin)"                                                                                                                    
+[2] "             FILENAME : ISCCPMonthly_avg.nc"                                                                                                                                           
+[3] "             FILEPATH : /usr/local/fer_data/data/"                                                                                                                                     
+[4] "             SUBSET   : 24 by 24 points (LONGITUDE-LATITUDE)"                                                                                                                          
+[5] "             TIME     : 16-JAN-1995 00:00"                                                                                                                                             
+[6] "              113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W  96.2W  93.8W  91.2W  88.8W  86.2W  83.8W  81.2W  78.8W  76.2W  73.8W  71.2W  68.8W  66.2W  63.8W  61.2W  58.8W  56.2W  "
+Browse[1]> tmp2[5]
+[1] "             TIME     : 16-JAN-1995 00:00"
+Browse[1]> gsub("TIME", "", tmp2[5])
+[1] "                  : 16-JAN-1995 00:00"
+Browse[1]> gsub(":", "", gsub("TIME", "", tmp2[5]))
+[1] "                   16-JAN-1995 0000"
+Browse[1]> trimws(gsub(":", "", gsub("TIME", "", tmp2[5])))
+[1] "16-JAN-1995 0000"
+Browse[1]> tmp[6]
+*** output flushed ***
+Browse[1]> tmp2[6]
+[1] "              113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W  96.2W  93.8W  91.2W  88.8W  86.2W  83.8W  81.2W  78.8W  76.2W  73.8W  71.2W  68.8W  66.2W  63.8W  61.2W  58.8W  56.2W  "
+Browse[1]> Q
+[13:02] 51> source("nasa.R")
+[15:59] 52> z = readLines("../Data/NASA/temperature1.txt", n = 6)
+[16:22] 53> z
+[1] "             VARIABLE : Mean Near-surface air temperature (kelvin)"                                                                                                                    
+[2] "             FILENAME : ISCCPMonthly_avg.nc"                                                                                                                                           
+[3] "             FILEPATH : /usr/local/fer_data/data/"                                                                                                                                     
+[4] "             SUBSET   : 24 by 24 points (LONGITUDE-LATITUDE)"                                                                                                                          
+[5] "             TIME     : 16-JAN-1995 00:00"                                                                                                                                             
+[6] "              113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W  96.2W  93.8W  91.2W  88.8W  86.2W  83.8W  81.2W  78.8W  76.2W  73.8W  71.2W  68.8W  66.2W  63.8W  61.2W  58.8W  56.2W  "
+[16:23] 54> z[6]
+[1] "              113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W  96.2W  93.8W  91.2W  88.8W  86.2W  83.8W  81.2W  78.8W  76.2W  73.8W  71.2W  68.8W  66.2W  63.8W  61.2W  58.8W  56.2W  "
+[16:26] 55> compLongitude(z[6])
+[1] NA
+Warning message:
+In compLongitude(z[6]) : NAs introduced by coercion
+[16:45] 56> read.table("../Data/NASA/temperature1.txt", n = 1, skip = 5)
+Error in read.table("../Data/NASA/temperature1.txt", n = 1, skip = 5) : 
+  argument 2 matches multiple formal arguments
+No suitable frames for recover()
+[16:45] 56> read.table("../Data/NASA/temperature1.txt", nrow = 1, skip = 5)
+      V1     V2     V3     V4     V5     V6    V7    V8    V9   V10   V11
+1 113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W 96.2W 93.8W 91.2W 88.8W
+    V12   V13   V14   V15   V16   V17   V18   V19   V20   V21   V22   V23
+1 86.2W 83.8W 81.2W 78.8W 76.2W 73.8W 71.2W 68.8W 66.2W 63.8W 61.2W 58.8W
+    V24
+1 56.2W
+[18:15] 57> strsplit(z[6], " ")
+[[1]]
+ [1] ""       ""       ""       ""       ""       ""       ""      
+ [8] ""       ""       ""       ""       ""       ""       ""      
+[15] "113.8W" "111.2W" "108.8W" "106.2W" "103.8W" "101.2W" "98.8W" 
+[22] ""       "96.2W"  ""       "93.8W"  ""       "91.2W"  ""      
+[29] "88.8W"  ""       "86.2W"  ""       "83.8W"  ""       "81.2W" 
+[36] ""       "78.8W"  ""       "76.2W"  ""       "73.8W"  ""      
+[43] "71.2W"  ""       "68.8W"  ""       "66.2W"  ""       "63.8W" 
+[50] ""       "61.2W"  ""       "58.8W"  ""       "56.2W"  ""      
+
+[18:44] 58> v = strsplit(z[6], " ")[[1]]
+[19:02] 59> v = v[ v != ""]
+[19:08] 60> v
+ [1] "113.8W" "111.2W" "108.8W" "106.2W" "103.8W" "101.2W" "98.8W" 
+ [8] "96.2W"  "93.8W"  "91.2W"  "88.8W"  "86.2W"  "83.8W"  "81.2W" 
+[15] "78.8W"  "76.2W"  "73.8W"  "71.2W"  "68.8W"  "66.2W"  "63.8W" 
+[22] "61.2W"  "58.8W"  "56.2W" 
+[19:08] 61> compLongitude(v)
+ [1] -113.8 -111.2 -108.8 -106.2 -103.8 -101.2  -98.8  -96.2  -93.8  -91.2
+[11]  -88.8  -86.2  -83.8  -81.2  -78.8  -76.2  -73.8  -71.2  -68.8  -66.2
+[21]  -63.8  -61.2  -58.8  -56.2
+[19:24] 62> Sys.getlocale()
+[1] "en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8"
+[33:05] 63> ll = readLines("~/sta141a/Assignments/ReadingData/zip/USA_CA_Marin.County.AP-Gnoss.Field.720406_TMYx.stat", encoding = "latin1")
+[35:20] 64> head(ll)
+[1] " -EnergyPlus Weather Converter Version 2022.11.03"             
+[2] " Statistics for USA_CA_Marin.County.AP-Gnoss.Field.720406_TMYx"
+[3] " Location -- Marin.County.AP-Gnoss.Field CA USA  "             
+[4] "      {N 38° 9.00'} {W 122° 33.00'} {GMT -8.0 Hours}"          
+[5] " Elevation --     1 m above sea level"                         
+[6] " Standard Pressure at Elevation -- 101318 Pa"                  
+[35:22] 65> grep("abc", ll)
+integer(0)
+[35:44] 66> ?Encoding
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+Encoding                 package:base                  R Documentation
+
+Read or Set the Declared Encodings for a Character Vector
+
+Description:
+
+     Read or set the declared encodings for a character vector.
+
+Usage:
+
+     Encoding(x)
+     
+     Encoding(x) <- value
+     
+     enc2native(x)
+     enc2utf8(x)
+     
+Arguments:
+
+       x: A character vector.
+
+   value: A character vector of positive length.
+
+Details:
+
+     Character strings in R can be declared to be encoded in ‘"latin1"’
+     or ‘"UTF-8"’ or as ‘"bytes"’.  These declarations can be read by
+     ‘Encoding’, which will return a character vector of values
+     ‘"latin1"’, ‘"UTF-8"’ ‘"bytes"’ or ‘"unknown"’, or set, when
+     ‘value’ is recycled as needed and other values are silently
+     treated as ‘"unknown"’.  ASCII strings will never be marked with a
+     declared encoding, since their representation is the same in all
+     supported encodings.  Strings marked as ‘"bytes"’ are intended to
+     be non-ASCII strings which should be manipulated as bytes, and
+     never converted to a character encoding (so writing them to a text
+     file is supported only by ‘writeLines(useBytes = TRUE)’).
+
+     ‘enc2native’ and ‘enc2utf8’ convert elements of character vectors
+     to the native encoding or UTF-8 respectively, taking any marked
+     encoding into account.  They are primitive functions, designed to
+     do minimal copying.
+
+     There are other ways for character strings to acquire a declared
+     encoding apart from explicitly setting it (and these have changed
+     as R has evolved).  The parser marks strings containing ‘\u’ or
+     ‘\U’ escapes.  Functions ‘scan’, ‘read.table’, ‘readLines’, and
+     ‘parse’ have an ‘encoding’ argument that is used to declare
+     encodings, ‘iconv’ declares encodings from its ‘to’ argument, and
+:  
+     console input in suitable locales is also declared.  ‘intToUtf8’
+     declares its output as ‘"UTF-8"’, and output text connections (see
+     ‘textConnection’) are marked if running in a suitable locale.
+     Under some circumstances (see its help page) ‘source(encoding=)’
+     will mark encodings of character strings it outputs.
+
+     Most character manipulation functions will set the encoding on
+     output strings if it was declared on the corresponding input.
+     These include ‘chartr’, ‘strsplit(useBytes = FALSE)’, ‘tolower’
+     and ‘toupper’ as well as ‘sub(useBytes = FALSE)’ and
+     ‘gsub(useBytes = FALSE)’.  Note that such functions do not
+     _preserve_ the encoding, but if they know the input encoding and
+     that the string has been successfully re-encoded (to the current
+     encoding or UTF-8), they mark the output.
+
+     ‘substr’ does preserve the encoding, and ‘chartr’, ‘tolower’ and
+     ‘toupper’ preserve UTF-8 encoding on systems with Unicode wide
+     characters.  With their ‘fixed’ and ‘perl’ options, ‘strsplit’,
+     ‘sub’ and ‘gsub’ will give a marked UTF-8 result if any of the
+     inputs are UTF-8.
+
+     ‘paste’ and ‘sprintf’ return elements marked as bytes if any of
+     the corresponding inputs is marked as bytes, and otherwise marked
+     as UTF-8 if any of the inputs is marked as UTF-8.
+
+     ‘match’, ‘pmatch’, ‘charmatch’, ‘duplicated’ and ‘unique’ all
+     match in UTF-8 if any of the elements are marked as UTF-8.
+
+     Changing the current encoding from a running R session may lead to
+     confusion (see ‘Sys.setlocale’).
+
+     There is some ambiguity as to what is meant by a ‘Latin-1’ locale,
+     since some OSes (notably Windows) make use of character positions
+     undefined (or used for control characters) in the ISO 8859-1
+     character set.  How such characters are interpreted is
+     system-dependent but as from R 3.5.0 they are if possible
+     interpreted as per Windows codepage 1252 (which Microsoft calls
+     ‘Windows Latin 1 (ANSI)’) when converting to e.g. UTF-8.
+
+Value:
+
+     A character vector.
+
+     For ‘enc2utf8’ encodings are always marked: they are for
+     ‘enc2native’ in UTF-8 and Latin-1 locales.
+
+Examples:
+
+     ## x is intended to be in latin1
+     x. <- x <- "fran\xE7ais"
+     Encoding(x.) # "unknown" (UTF-8 loc.) | "latin1" (8859-1/CP-1252 loc.) | ....
+     Encoding(x) <- "latin1"
+     x
+     xx <- iconv(x, "latin1", "UTF-8")
+     Encoding(c(x., x, xx))
+     c(x, xx)
+     xb <- xx; Encoding(xb) <- "bytes"
+     xb # will be encoded in hex
+     cat("x = ", x, ", xx = ", xx, ", xb = ", xb, "\n", sep = "")
+     (Ex <- Encoding(c(x.,x,xx,xb)))
+     stopifnot(identical(Ex, c(Encoding(x.), Encoding(x),
+                               Encoding(xx), Encoding(xb))))
+     
+
+(END)q
+[38:11] 67> [38:11] 67> ?Sys.setlocale
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+locales                  package:base                  R Documentation
+
+Query or Set Aspects of the Locale
+
+Description:
+
+     Get details of or set aspects of the locale for the R process.
+
+Usage:
+
+     Sys.getlocale (category = "LC_ALL")
+     Sys.setlocale (category = "LC_ALL", locale = "")
+     .LC.categories
+     
+Arguments:
+
+category: character string.  The following categories should always be
+          supported: ‘"LC_ALL"’, ‘"LC_COLLATE"’, ‘"LC_CTYPE"’,
+          ‘"LC_MONETARY"’, ‘"LC_NUMERIC"’ and ‘"LC_TIME"’.  Some
+          systems (not Windows) will also support ‘"LC_MESSAGES"’,
+          ‘"LC_PAPER"’ and ‘"LC_MEASUREMENT"’.  These category names
+          are available in ‘.LC.categories’; even when not supported,
+          ‘Sys.getlocale(.)’ will return ‘""’, e.g., for the
+          ‘"LC_PAPER"’ example on Windows.
+
+  locale: character string.  A valid locale name on the system in use.
+          Normally ‘""’ (the default) will pick up the default locale
+          for the system.
+
+Details:
+
+     The locale describes aspects of the internationalization of a
+     program.  Initially most aspects of the locale of R are set to
+     ‘"C"’ (which is the default for the C language and reflects
+     North-American usage - also known as ‘"POSIX"’).  R sets
+     ‘"LC_CTYPE"’ and ‘"LC_COLLATE"’, which allow the use of a
+     different character set and alphabetic comparisons in that
+     character set (including the use of ‘sort’), ‘"LC_MONETARY"’ (for
+     use by ‘Sys.localeconv’) and ‘"LC_TIME"’ may affect the behaviour
+     of ‘as.POSIXlt’ and ‘strptime’ and functions which use them (but
+     not ‘date’).
+
+     The first seven categories described here are those specified by
+     POSIX.  ‘"LC_MESSAGES"’ will be ‘"C"’ on systems that do not
+     support message translation, and is not supported on Windows,
+     where you _must_ use the ‘LANGUAGE’ environment variable for
+     message translation, see below and the ‘Sys.setLanguage()’
+     utility.  Trying to use an unsupported category is an error for
+: 
+     ‘Sys.setlocale’.
+
+     Note that setting category ‘"LC_ALL"’ sets only categories
+     ‘"LC_COLLATE"’, ‘"LC_CTYPE"’, ‘"LC_MONETARY"’ and ‘"LC_TIME"’.
+
+     Attempts to set an invalid locale are ignored.  There may or may
+     not be a warning, depending on the OS.
+
+     Attempts to change the character set (by
+     ‘Sys.setlocale("LC_CTYPE", )’, if that implies a different
+     character set) during a session may not work and are likely to
+     lead to some confusion.
+
+     Note that the ‘LANGUAGE’ environment variable has precedence over
+     ‘"LC_MESSAGES"’ in selecting the language for message translation
+     on most R platforms.
+
+     On platforms where ICU is used for collation the locale used for
+     collation can be reset by ‘icuSetCollate’.  Except on Windows, the
+     initial setting is taken from the ‘"LC_COLLATE"’ category, and it
+     is reset when this is changed by a call to ‘Sys.setlocale’.
+
+Value:
+
+     A character string of length one describing the locale in use
+     (after setting for ‘Sys.setlocale’), or an empty character string
+     if the current locale settings are invalid or ‘NULL’ if locale
+     information is unavailable.
+
+     For ‘category = "LC_ALL"’ the details of the string are
+     system-specific: it might be a single locale name or a set of
+     locale names separated by ‘"/"’ (macOS) or ‘";"’ (Windows, Linux).
+     For portability, it is best to query categories individually: it
+     is not necessarily the case that the result of ‘foo <-
+     Sys.getlocale()’ can be used in ‘Sys.setlocale("LC_ALL", locale =
+     foo)’.
+
+Available locales:
+
+     On most Unix-alikes the POSIX shell command ‘locale -a’ will list
+     the ‘available public’ locales.  What that means is
+     platform-dependent.  On recent Linuxen this may mean ‘available to
+     be installed’ as on some RPM-based systems the locale data is in
+     separate RPMs.  On Debian/Ubuntu the set of available locales is
+     managed by OS-specific facilities such as ‘locale-gen’ and ‘locale
+     -a’ lists those currently enabled.
+
+     For Windows, Microsoft moves its documentation frequently so a Web
+     search is the best way to find current information.  From R 4.2,
+: 
+     UCRT locale names should be used.  The character set should match
+     the system/ANSI codepage (‘l10n_info()$codepage’ be the same as
+     ‘l10n_info()$system.codepage’).  Setting it to any other value
+     results in a warning and may cause encoding problems.  As from R
+     4.2 on recent Windows the system codepage is 65001 and one should
+     always use locale names ending with ‘".UTF-8"’ (except for ‘"C"’
+     and ‘""’), otherwise Windows may add a different character set.
+
+Warning:
+
+     Setting ‘"LC_NUMERIC"’ to any value other than ‘"C"’ may cause R
+     to function anomalously, so gives a warning.  Input conversions in
+     R itself are unaffected, but the reading and writing of ASCII
+     ‘save’ files will be, as may packages which do their own
+     input/output.
+
+     Setting it temporarily on a Unix-alike to produce graphical or
+     text output may work well enough, but ‘options(OutDec)’ is often
+     preferable.
+
+     Almost all the output routines used by R itself under Windows
+     ignore the setting of ‘"LC_NUMERIC"’ since they make use of the
+     Trio library which is not internationalized.
+
+Note:
+
+     Changing the values of locale categories whilst R is running ought
+     to be noticed by the OS services, and usually is but exceptions
+     have been seen (usually in collation services).
+
+     Do not use the value of ‘Sys.getlocale("LC_CTYPE")’ to attempt to
+     find the character set - for example UTF-8 locales can have suffix
+     ‘.UTF-8’ or ‘.utf8’ (more common on Linux than ‘UTF-8’) or none
+     (as on macOS) and Latin-9 locales can have suffix ‘ISO8859-15’,
+     ‘iso885915’, ‘iso885915@euro’ or ‘ISO8859-15@euro’.  Use
+     ‘l10n_info’ instead.
+
+See Also:
+
+     ‘strptime’ for uses of ‘category = "LC_TIME"’.  ‘Sys.localeconv’
+     for details of numerical and monetary representations.
+
+     ‘l10n_info’ gives some summary facts about the locale and its
+     encoding (including if it is UTF-8).
+
+     Section “Locales” in ‘R Installation and Administration’ for
+     background on locales and how to find out locale names on your
+     system.
+:
+: 
+     ‘Sys.setLanguage’
+
+Examples:
+
+     Sys.getlocale()
+     
+     ## Date-time  related :
+     Sys.getlocale("LC_TIME") -> olcT
+     then <- as.POSIXlt("2001-01-01 01:01:01", tz = "UTC")
+     ## Not run:
+     
+     c(m = months(then), wd = weekdays(then)) # locale specific
+     Sys.setlocale("LC_TIME", "de")     # Solaris: details are OS-dependent
+     Sys.setlocale("LC_TIME", "de_DE")  # Many Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.UTF-8")  # Linux, macOS, other Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.utf8")   # some Linux versions
+     Sys.setlocale("LC_TIME", "German.UTF-8") # Windows
+     Sys.getlocale("LC_TIME") # the last one successfully set above
+     c(m = months(then), wd = weekdays(then)) # in C_TIME locale 'cT' ; typically German
+     ## End(Not run)
+     
+     Sys.setlocale("LC_TIME", "C")
+     c(m = months(then), wd = weekdays(then)) # "standard" (still platform specific ?)
+     Sys.setlocale("LC_TIME", olcT)           # reset to previous
+     
+     ## Other locales
+     Sys.getlocale("LC_PAPER")          # may or may not be set
+     .LC.categories # of length 9 on all platforms
+     
+     ## Not run:
+     Sys.setlocale("LC_COLLATE", "C")   # turn off locale-specific sorting,
+                                        # usually (but not on all platforms)
+     Sys.setenv("LANGUAGE" = "es") # set the language for error/warning messages
+     ## End(Not run)
+     
+     ## some nice formatting; should work on most platforms,
+               ## macOS does not name the entries.
+      sep <- switch(Sys.info()[["sysname"]],
+                    "Darwin"=, "SunOS" = "/",
+                    "Linux" =, "Windows" = ";")
+      ##' named vector from a "full" Sys.getlocale() :
+      asNvec <- function(loc) {
+          sl <- strsplit(strsplit(loc, sep)[[1L]], "=")
+          if(all(lengths(sl) == 2L))
+             setNames(sapply(sl, `[[`, 2L), sapply(sl, `[[`, 1L))
+          else
+            setNames(as.character(sl), .LC.categories[1+seq_along(sl)])
+      }
+      print.Dlist(lloc <- asNvec(Sys.getlocale()))
+:
+
+^
+Examples:
+
+     Sys.getlocale()
+     
+     ## Date-time  related :
+     Sys.getlocale("LC_TIME") -> olcT
+     then <- as.POSIXlt("2001-01-01 01:01:01", tz = "UTC")
+     ## Not run:
+     
+     c(m = months(then), wd = weekdays(then)) # locale specific
+     Sys.setlocale("LC_TIME", "de")     # Solaris: details are OS-dependent
+     Sys.setlocale("LC_TIME", "de_DE")  # Many Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.UTF-8")  # Linux, macOS, other Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.utf8")   # some Linux versions
+     Sys.setlocale("LC_TIME", "German.UTF-8") # Windows
+     Sys.getlocale("LC_TIME") # the last one successfully set above
+     c(m = months(then), wd = weekdays(then)) # in C_TIME locale 'cT' ; typically German
+     ## End(Not run)
+     
+     Sys.setlocale("LC_TIME", "C")
+     c(m = months(then), wd = weekdays(then)) # "standard" (still platform specific ?)
+     Sys.setlocale("LC_TIME", olcT)           # reset to previous
+:
+
+^
+Examples:
+
+     Sys.getlocale()
+     
+     ## Date-time  related :
+     Sys.getlocale("LC_TIME") -> olcT
+     then <- as.POSIXlt("2001-01-01 01:01:01", tz = "UTC")
+     ## Not run:
+     
+     c(m = months(then), wd = weekdays(then)) # locale specific
+     Sys.setlocale("LC_TIME", "de")     # Solaris: details are OS-dependent
+     Sys.setlocale("LC_TIME", "de_DE")  # Many Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.UTF-8")  # Linux, macOS, other Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.utf8")   # some Linux versions
+     Sys.setlocale("LC_TIME", "German.UTF-8") # Windows
+     Sys.getlocale("LC_TIME") # the last one successfully set above
+:
+
+^
+Examples:
+
+     Sys.getlocale()
+     
+     ## Date-time  related :
+     Sys.getlocale("LC_TIME") -> olcT
+     then <- as.POSIXlt("2001-01-01 01:01:01", tz = "UTC")
+     ## Not run:
+     
+     c(m = months(then), wd = weekdays(then)) # locale specific
+     Sys.setlocale("LC_TIME", "de")     # Solaris: details are OS-dependent
+     Sys.setlocale("LC_TIME", "de_DE")  # Many Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.UTF-8")  # Linux, macOS, other Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.utf8")   # some Linux versions
+     Sys.setlocale("LC_TIME", "German.UTF-8") # Windows
+     Sys.getlocale("LC_TIME") # the last one successfully set above
+     c(m = months(then), wd = weekdays(then)) # in C_TIME locale 'cT' ; typically German
+     ## End(Not run)
+     
+     Sys.setlocale("LC_TIME", "C")
+     c(m = months(then), wd = weekdays(then)) # "standard" (still platform specific ?)
+     Sys.setlocale("LC_TIME", olcT)           # reset to previous
+     
+     ## Other locales
+     Sys.getlocale("LC_PAPER")          # may or may not be set
+     .LC.categories # of length 9 on all platforms
+     
+     ## Not run:
+     Sys.setlocale("LC_COLLATE", "C")   # turn off locale-specific sorting,
+                                        # usually (but not on all platforms)
+     Sys.setenv("LANGUAGE" = "es") # set the language for error/warning messages
+     ## End(Not run)
+     
+     ## some nice formatting; should work on most platforms,
+               ## macOS does not name the entries.
+      sep <- switch(Sys.info()[["sysname"]],
+:
+
+^
+Examples:
+
+     Sys.getlocale()
+     
+     ## Date-time  related :
+     Sys.getlocale("LC_TIME") -> olcT
+     then <- as.POSIXlt("2001-01-01 01:01:01", tz = "UTC")
+     ## Not run:
+     
+     c(m = months(then), wd = weekdays(then)) # locale specific
+     Sys.setlocale("LC_TIME", "de")     # Solaris: details are OS-dependent
+     Sys.setlocale("LC_TIME", "de_DE")  # Many Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.UTF-8")  # Linux, macOS, other Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.utf8")   # some Linux versions
+     Sys.setlocale("LC_TIME", "German.UTF-8") # Windows
+     Sys.getlocale("LC_TIME") # the last one successfully set above
+     c(m = months(then), wd = weekdays(then)) # in C_TIME locale 'cT' ; typically German
+:
+
+^
+Examples:
+
+     Sys.getlocale()
+     
+     ## Date-time  related :
+     Sys.getlocale("LC_TIME") -> olcT
+     then <- as.POSIXlt("2001-01-01 01:01:01", tz = "UTC")
+     ## Not run:
+     
+     c(m = months(then), wd = weekdays(then)) # locale specific
+     Sys.setlocale("LC_TIME", "de")     # Solaris: details are OS-dependent
+     Sys.setlocale("LC_TIME", "de_DE")  # Many Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.UTF-8")  # Linux, macOS, other Unix-alikes
+     Sys.setlocale("LC_TIME", "de_DE.utf8")   # some Linux versions
+     Sys.setlocale("LC_TIME", "German.UTF-8") # Windows
+     Sys.getlocale("LC_TIME") # the last one successfully set above
+     c(m = months(then), wd = weekdays(then)) # in C_TIME locale 'cT' ; typically German
+     ## End(Not run)
+     
+     Sys.setlocale("LC_TIME", "C")
+     c(m = months(then), wd = weekdays(then)) # "standard" (still platform specific ?)
+     Sys.setlocale("LC_TIME", olcT)           # reset to previous
+     
+     ## Other locales
+     Sys.getlocale("LC_PAPER")          # may or may not be set
+     .LC.categories # of length 9 on all platforms
+     
+     ## Not run:
+     Sys.setlocale("LC_COLLATE", "C")   # turn off locale-specific sorting,
+                                        # usually (but not on all platforms)
+     Sys.setenv("LANGUAGE" = "es") # set the language for error/warning messages
+     ## End(Not run)
+     
+     ## some nice formatting; should work on most platforms,
+               ## macOS does not name the entries.
+      sep <- switch(Sys.info()[["sysname"]],
+:qx
