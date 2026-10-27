@@ -1,0 +1,623 @@
+]0;Day10~/sta141a/Public/Day10> 
+]0;Day10~/sta141a/Public/Day10> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 44253 
+Time = 2026-10-26 14:24:34 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day10 
+1> source("../Day9/nasa.R")
+[24:50] 2> d = read()
+[25:00] 3> class(d)
+[1] "data.frame"
+[25:03] 4> dim(d)
+[1] 576   4
+[25:04] 5> names(d)
+[1] "value" "lat"   "lon"   "date" 
+[25:07] 6> table(d$lat)
+
+-21.2 -18.8 -16.2 -13.8 -11.2  -8.8  -6.2  -3.8  -1.2   1.2   3.8   6.2   8.8  11.2  13.8  16.2  18.8  21.2  23.8  26.2  28.8  31.2  33.8  36.2 
+   24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24 
+[25:41] 7> table(d$lon)
+
+-113.8 -111.2 -108.8 -106.2 -103.8 -101.2  -98.8  -96.2  -93.8  -91.2  -88.8  -86.2  -83.8  -81.2  -78.8  -76.2  -73.8  -71.2  -68.8  -66.2  -63.8  -61.2  -58.8  -56.2 
+    24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24 
+[25:49] 8> summary(d$value)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  270.3   294.1   297.4   295.2   299.2   304.9 
+[26:04] 9> plot(d$lat, d$value)
+[26:37] 10> boxplot(d$value ~ d$lat)
+[27:06] 11> subset(d, lat == 13.8 & lon == -91.2)   # manually check cell in file.
+    value  lat   lon       date
+226   301 13.8 -91.2 1995-01-16
+[28:12] 12> length(unique(d$date))
+[1] 1
+[28:42] 13> sapply(d, class)
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+[28:45] 14> boxplot(d$value ~ d$lon)
+[29:34] 15> plot(d$lon, d$lat)
+[30:01] 16> table(d$lon, d$lat)
+        
+         -21.2 -18.8 -16.2 -13.8 -11.2 -8.8 -6.2 -3.8 -1.2 1.2 3.8 6.2 8.8 11.2 13.8 16.2 18.8 21.2 23.8 26.2 28.8 31.2 33.8 36.2
+  -113.8     1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -111.2     1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -108.8     1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -106.2     1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -103.8     1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -101.2     1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -98.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -96.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -93.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -91.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -88.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -86.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -83.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -81.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -78.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -76.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -73.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -71.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -68.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -66.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -63.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -61.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -58.8      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+  -56.2      1     1     1     1     1    1    1    1    1   1   1   1   1    1    1    1    1    1    1    1    1    1    1    1
+[30:20] 17> all(table(d$lon, d$lat) == 1)
+[1] TRUE
+[30:29] 18> ff = list.files("~/Data/NASA", full.names = TRUE)
+[36:05] 19> ff
+  [1] "/Users/duncan/Data/NASA/cloudhigh1.txt"    "/Users/duncan/Data/NASA/cloudhigh10.txt"   "/Users/duncan/Data/NASA/cloudhigh11.txt"   "/Users/duncan/Data/NASA/cloudhigh12.txt"   "/Users/duncan/Data/NASA/cloudhigh13.txt"  
+  [6] "/Users/duncan/Data/NASA/cloudhigh14.txt"   "/Users/duncan/Data/NASA/cloudhigh15.txt"   "/Users/duncan/Data/NASA/cloudhigh16.txt"   "/Users/duncan/Data/NASA/cloudhigh17.txt"   "/Users/duncan/Data/NASA/cloudhigh18.txt"  
+ [11] "/Users/duncan/Data/NASA/cloudhigh19.txt"   "/Users/duncan/Data/NASA/cloudhigh2.txt"    "/Users/duncan/Data/NASA/cloudhigh20.txt"   "/Users/duncan/Data/NASA/cloudhigh21.txt"   "/Users/duncan/Data/NASA/cloudhigh22.txt"  
+ [16] "/Users/duncan/Data/NASA/cloudhigh23.txt"   "/Users/duncan/Data/NASA/cloudhigh24.txt"   "/Users/duncan/Data/NASA/cloudhigh25.txt"   "/Users/duncan/Data/NASA/cloudhigh26.txt"   "/Users/duncan/Data/NASA/cloudhigh27.txt"  
+ [21] "/Users/duncan/Data/NASA/cloudhigh28.txt"   "/Users/duncan/Data/NASA/cloudhigh29.txt"   "/Users/duncan/Data/NASA/cloudhigh3.txt"    "/Users/duncan/Data/NASA/cloudhigh30.txt"   "/Users/duncan/Data/NASA/cloudhigh31.txt"  
+ [26] "/Users/duncan/Data/NASA/cloudhigh32.txt"   "/Users/duncan/Data/NASA/cloudhigh33.txt"   "/Users/duncan/Data/NASA/cloudhigh34.txt"   "/Users/duncan/Data/NASA/cloudhigh35.txt"   "/Users/duncan/Data/NASA/cloudhigh36.txt"  
+ [31] "/Users/duncan/Data/NASA/cloudhigh37.txt"   "/Users/duncan/Data/NASA/cloudhigh38.txt"   "/Users/duncan/Data/NASA/cloudhigh39.txt"   "/Users/duncan/Data/NASA/cloudhigh4.txt"    "/Users/duncan/Data/NASA/cloudhigh40.txt"  
+ [36] "/Users/duncan/Data/NASA/cloudhigh41.txt"   "/Users/duncan/Data/NASA/cloudhigh42.txt"   "/Users/duncan/Data/NASA/cloudhigh43.txt"   "/Users/duncan/Data/NASA/cloudhigh44.txt"   "/Users/duncan/Data/NASA/cloudhigh45.txt"  
+ [41] "/Users/duncan/Data/NASA/cloudhigh46.txt"   "/Users/duncan/Data/NASA/cloudhigh47.txt"   "/Users/duncan/Data/NASA/cloudhigh48.txt"   "/Users/duncan/Data/NASA/cloudhigh49.txt"   "/Users/duncan/Data/NASA/cloudhigh5.txt"   
+ [46] "/Users/duncan/Data/NASA/cloudhigh50.txt"   "/Users/duncan/Data/NASA/cloudhigh51.txt"   "/Users/duncan/Data/NASA/cloudhigh52.txt"   "/Users/duncan/Data/NASA/cloudhigh53.txt"   "/Users/duncan/Data/NASA/cloudhigh54.txt"  
+ [51] "/Users/duncan/Data/NASA/cloudhigh55.txt"   "/Users/duncan/Data/NASA/cloudhigh56.txt"   "/Users/duncan/Data/NASA/cloudhigh57.txt"   "/Users/duncan/Data/NASA/cloudhigh58.txt"   "/Users/duncan/Data/NASA/cloudhigh59.txt"  
+ [56] "/Users/duncan/Data/NASA/cloudhigh6.txt"    "/Users/duncan/Data/NASA/cloudhigh60.txt"   "/Users/duncan/Data/NASA/cloudhigh61.txt"   "/Users/duncan/Data/NASA/cloudhigh62.txt"   "/Users/duncan/Data/NASA/cloudhigh63.txt"  
+ [61] "/Users/duncan/Data/NASA/cloudhigh64.txt"   "/Users/duncan/Data/NASA/cloudhigh65.txt"   "/Users/duncan/Data/NASA/cloudhigh66.txt"   "/Users/duncan/Data/NASA/cloudhigh67.txt"   "/Users/duncan/Data/NASA/cloudhigh68.txt"  
+ [66] "/Users/duncan/Data/NASA/cloudhigh69.txt"   "/Users/duncan/Data/NASA/cloudhigh7.txt"    "/Users/duncan/Data/NASA/cloudhigh70.txt"   "/Users/duncan/Data/NASA/cloudhigh71.txt"   "/Users/duncan/Data/NASA/cloudhigh72.txt"  
+ [71] "/Users/duncan/Data/NASA/cloudhigh8.txt"    "/Users/duncan/Data/NASA/cloudhigh9.txt"    "/Users/duncan/Data/NASA/cloudlow1.txt"     "/Users/duncan/Data/NASA/cloudlow10.txt"    "/Users/duncan/Data/NASA/cloudlow11.txt"   
+ [76] "/Users/duncan/Data/NASA/cloudlow12.txt"    "/Users/duncan/Data/NASA/cloudlow13.txt"    "/Users/duncan/Data/NASA/cloudlow14.txt"    "/Users/duncan/Data/NASA/cloudlow15.txt"    "/Users/duncan/Data/NASA/cloudlow16.txt"   
+ [81] "/Users/duncan/Data/NASA/cloudlow17.txt"    "/Users/duncan/Data/NASA/cloudlow18.txt"    "/Users/duncan/Data/NASA/cloudlow19.txt"    "/Users/duncan/Data/NASA/cloudlow2.txt"     "/Users/duncan/Data/NASA/cloudlow20.txt"   
+ [86] "/Users/duncan/Data/NASA/cloudlow21.txt"    "/Users/duncan/Data/NASA/cloudlow22.txt"    "/Users/duncan/Data/NASA/cloudlow23.txt"    "/Users/duncan/Data/NASA/cloudlow24.txt"    "/Users/duncan/Data/NASA/cloudlow25.txt"   
+ [91] "/Users/duncan/Data/NASA/cloudlow26.txt"    "/Users/duncan/Data/NASA/cloudlow27.txt"    "/Users/duncan/Data/NASA/cloudlow28.txt"    "/Users/duncan/Data/NASA/cloudlow29.txt"    "/Users/duncan/Data/NASA/cloudlow3.txt"    
+ [96] "/Users/duncan/Data/NASA/cloudlow30.txt"    "/Users/duncan/Data/NASA/cloudlow31.txt"    "/Users/duncan/Data/NASA/cloudlow32.txt"    "/Users/duncan/Data/NASA/cloudlow33.txt"    "/Users/duncan/Data/NASA/cloudlow34.txt"   
+[101] "/Users/duncan/Data/NASA/cloudlow35.txt"    "/Users/duncan/Data/NASA/cloudlow36.txt"    "/Users/duncan/Data/NASA/cloudlow37.txt"    "/Users/duncan/Data/NASA/cloudlow38.txt"    "/Users/duncan/Data/NASA/cloudlow39.txt"   
+[106] "/Users/duncan/Data/NASA/cloudlow4.txt"     "/Users/duncan/Data/NASA/cloudlow40.txt"    "/Users/duncan/Data/NASA/cloudlow41.txt"    "/Users/duncan/Data/NASA/cloudlow42.txt"    "/Users/duncan/Data/NASA/cloudlow43.txt"   
+[111] "/Users/duncan/Data/NASA/cloudlow44.txt"    "/Users/duncan/Data/NASA/cloudlow45.txt"    "/Users/duncan/Data/NASA/cloudlow46.txt"    "/Users/duncan/Data/NASA/cloudlow47.txt"    "/Users/duncan/Data/NASA/cloudlow48.txt"   
+[116] "/Users/duncan/Data/NASA/cloudlow49.txt"    "/Users/duncan/Data/NASA/cloudlow5.txt"     "/Users/duncan/Data/NASA/cloudlow50.txt"    "/Users/duncan/Data/NASA/cloudlow51.txt"    "/Users/duncan/Data/NASA/cloudlow52.txt"   
+[121] "/Users/duncan/Data/NASA/cloudlow53.txt"    "/Users/duncan/Data/NASA/cloudlow54.txt"    "/Users/duncan/Data/NASA/cloudlow55.txt"    "/Users/duncan/Data/NASA/cloudlow56.txt"    "/Users/duncan/Data/NASA/cloudlow57.txt"   
+[126] "/Users/duncan/Data/NASA/cloudlow58.txt"    "/Users/duncan/Data/NASA/cloudlow59.txt"    "/Users/duncan/Data/NASA/cloudlow6.txt"     "/Users/duncan/Data/NASA/cloudlow60.txt"    "/Users/duncan/Data/NASA/cloudlow61.txt"   
+[131] "/Users/duncan/Data/NASA/cloudlow62.txt"    "/Users/duncan/Data/NASA/cloudlow63.txt"    "/Users/duncan/Data/NASA/cloudlow64.txt"    "/Users/duncan/Data/NASA/cloudlow65.txt"    "/Users/duncan/Data/NASA/cloudlow66.txt"   
+[136] "/Users/duncan/Data/NASA/cloudlow67.txt"    "/Users/duncan/Data/NASA/cloudlow68.txt"    "/Users/duncan/Data/NASA/cloudlow69.txt"    "/Users/duncan/Data/NASA/cloudlow7.txt"     "/Users/duncan/Data/NASA/cloudlow70.txt"   
+[141] "/Users/duncan/Data/NASA/cloudlow71.txt"    "/Users/duncan/Data/NASA/cloudlow72.txt"    "/Users/duncan/Data/NASA/cloudlow8.txt"     "/Users/duncan/Data/NASA/cloudlow9.txt"     "/Users/duncan/Data/NASA/cloudmid1.txt"    
+[146] "/Users/duncan/Data/NASA/cloudmid10.txt"    "/Users/duncan/Data/NASA/cloudmid11.txt"    "/Users/duncan/Data/NASA/cloudmid12.txt"    "/Users/duncan/Data/NASA/cloudmid13.txt"    "/Users/duncan/Data/NASA/cloudmid14.txt"   
+[151] "/Users/duncan/Data/NASA/cloudmid15.txt"    "/Users/duncan/Data/NASA/cloudmid16.txt"    "/Users/duncan/Data/NASA/cloudmid17.txt"    "/Users/duncan/Data/NASA/cloudmid18.txt"    "/Users/duncan/Data/NASA/cloudmid19.txt"   
+[156] "/Users/duncan/Data/NASA/cloudmid2.txt"     "/Users/duncan/Data/NASA/cloudmid20.txt"    "/Users/duncan/Data/NASA/cloudmid21.txt"    "/Users/duncan/Data/NASA/cloudmid22.txt"    "/Users/duncan/Data/NASA/cloudmid23.txt"   
+[161] "/Users/duncan/Data/NASA/cloudmid24.txt"    "/Users/duncan/Data/NASA/cloudmid25.txt"    "/Users/duncan/Data/NASA/cloudmid26.txt"    "/Users/duncan/Data/NASA/cloudmid27.txt"    "/Users/duncan/Data/NASA/cloudmid28.txt"   
+[166] "/Users/duncan/Data/NASA/cloudmid29.txt"    "/Users/duncan/Data/NASA/cloudmid3.txt"     "/Users/duncan/Data/NASA/cloudmid30.txt"    "/Users/duncan/Data/NASA/cloudmid31.txt"    "/Users/duncan/Data/NASA/cloudmid32.txt"   
+[171] "/Users/duncan/Data/NASA/cloudmid33.txt"    "/Users/duncan/Data/NASA/cloudmid34.txt"    "/Users/duncan/Data/NASA/cloudmid35.txt"    "/Users/duncan/Data/NASA/cloudmid36.txt"    "/Users/duncan/Data/NASA/cloudmid37.txt"   
+[176] "/Users/duncan/Data/NASA/cloudmid38.txt"    "/Users/duncan/Data/NASA/cloudmid39.txt"    "/Users/duncan/Data/NASA/cloudmid4.txt"     "/Users/duncan/Data/NASA/cloudmid40.txt"    "/Users/duncan/Data/NASA/cloudmid41.txt"   
+[181] "/Users/duncan/Data/NASA/cloudmid42.txt"    "/Users/duncan/Data/NASA/cloudmid43.txt"    "/Users/duncan/Data/NASA/cloudmid44.txt"    "/Users/duncan/Data/NASA/cloudmid45.txt"    "/Users/duncan/Data/NASA/cloudmid46.txt"   
+[186] "/Users/duncan/Data/NASA/cloudmid47.txt"    "/Users/duncan/Data/NASA/cloudmid48.txt"    "/Users/duncan/Data/NASA/cloudmid49.txt"    "/Users/duncan/Data/NASA/cloudmid5.txt"     "/Users/duncan/Data/NASA/cloudmid50.txt"   
+[191] "/Users/duncan/Data/NASA/cloudmid51.txt"    "/Users/duncan/Data/NASA/cloudmid52.txt"    "/Users/duncan/Data/NASA/cloudmid53.txt"    "/Users/duncan/Data/NASA/cloudmid54.txt"    "/Users/duncan/Data/NASA/cloudmid55.txt"   
+[196] "/Users/duncan/Data/NASA/cloudmid56.txt"    "/Users/duncan/Data/NASA/cloudmid57.txt"    "/Users/duncan/Data/NASA/cloudmid58.txt"    "/Users/duncan/Data/NASA/cloudmid59.txt"    "/Users/duncan/Data/NASA/cloudmid6.txt"    
+[201] "/Users/duncan/Data/NASA/cloudmid60.txt"    "/Users/duncan/Data/NASA/cloudmid61.txt"    "/Users/duncan/Data/NASA/cloudmid62.txt"    "/Users/duncan/Data/NASA/cloudmid63.txt"    "/Users/duncan/Data/NASA/cloudmid64.txt"   
+[206] "/Users/duncan/Data/NASA/cloudmid65.txt"    "/Users/duncan/Data/NASA/cloudmid66.txt"    "/Users/duncan/Data/NASA/cloudmid67.txt"    "/Users/duncan/Data/NASA/cloudmid68.txt"    "/Users/duncan/Data/NASA/cloudmid69.txt"   
+[211] "/Users/duncan/Data/NASA/cloudmid7.txt"     "/Users/duncan/Data/NASA/cloudmid70.txt"    "/Users/duncan/Data/NASA/cloudmid71.txt"    "/Users/duncan/Data/NASA/cloudmid72.txt"    "/Users/duncan/Data/NASA/cloudmid8.txt"    
+[216] "/Users/duncan/Data/NASA/cloudmid9.txt"     "/Users/duncan/Data/NASA/elevation.dat"     "/Users/duncan/Data/NASA/intlvtn.dat"       "/Users/duncan/Data/NASA/ozone1.txt"        "/Users/duncan/Data/NASA/ozone10.txt"      
+[221] "/Users/duncan/Data/NASA/ozone11.txt"       "/Users/duncan/Data/NASA/ozone12.txt"       "/Users/duncan/Data/NASA/ozone13.txt"       "/Users/duncan/Data/NASA/ozone14.txt"       "/Users/duncan/Data/NASA/ozone15.txt"      
+[226] "/Users/duncan/Data/NASA/ozone16.txt"       "/Users/duncan/Data/NASA/ozone17.txt"       "/Users/duncan/Data/NASA/ozone18.txt"       "/Users/duncan/Data/NASA/ozone19.txt"       "/Users/duncan/Data/NASA/ozone2.txt"       
+[231] "/Users/duncan/Data/NASA/ozone20.txt"       "/Users/duncan/Data/NASA/ozone21.txt"       "/Users/duncan/Data/NASA/ozone22.txt"       "/Users/duncan/Data/NASA/ozone23.txt"       "/Users/duncan/Data/NASA/ozone24.txt"      
+[236] "/Users/duncan/Data/NASA/ozone25.txt"       "/Users/duncan/Data/NASA/ozone26.txt"       "/Users/duncan/Data/NASA/ozone27.txt"       "/Users/duncan/Data/NASA/ozone28.txt"       "/Users/duncan/Data/NASA/ozone29.txt"      
+[241] "/Users/duncan/Data/NASA/ozone3.txt"        "/Users/duncan/Data/NASA/ozone30.txt"       "/Users/duncan/Data/NASA/ozone31.txt"       "/Users/duncan/Data/NASA/ozone32.txt"       "/Users/duncan/Data/NASA/ozone33.txt"      
+[246] "/Users/duncan/Data/NASA/ozone34.txt"       "/Users/duncan/Data/NASA/ozone35.txt"       "/Users/duncan/Data/NASA/ozone36.txt"       "/Users/duncan/Data/NASA/ozone37.txt"       "/Users/duncan/Data/NASA/ozone38.txt"      
+[251] "/Users/duncan/Data/NASA/ozone39.txt"       "/Users/duncan/Data/NASA/ozone4.txt"        "/Users/duncan/Data/NASA/ozone40.txt"       "/Users/duncan/Data/NASA/ozone41.txt"       "/Users/duncan/Data/NASA/ozone42.txt"      
+[256] "/Users/duncan/Data/NASA/ozone43.txt"       "/Users/duncan/Data/NASA/ozone44.txt"       "/Users/duncan/Data/NASA/ozone45.txt"       "/Users/duncan/Data/NASA/ozone46.txt"       "/Users/duncan/Data/NASA/ozone47.txt"      
+[261] "/Users/duncan/Data/NASA/ozone48.txt"       "/Users/duncan/Data/NASA/ozone49.txt"       "/Users/duncan/Data/NASA/ozone5.txt"        "/Users/duncan/Data/NASA/ozone50.txt"       "/Users/duncan/Data/NASA/ozone51.txt"      
+[266] "/Users/duncan/Data/NASA/ozone52.txt"       "/Users/duncan/Data/NASA/ozone53.txt"       "/Users/duncan/Data/NASA/ozone54.txt"       "/Users/duncan/Data/NASA/ozone55.txt"       "/Users/duncan/Data/NASA/ozone56.txt"      
+[271] "/Users/duncan/Data/NASA/ozone57.txt"       "/Users/duncan/Data/NASA/ozone58.txt"       "/Users/duncan/Data/NASA/ozone59.txt"       "/Users/duncan/Data/NASA/ozone6.txt"        "/Users/duncan/Data/NASA/ozone60.txt"      
+[276] "/Users/duncan/Data/NASA/ozone61.txt"       "/Users/duncan/Data/NASA/ozone62.txt"       "/Users/duncan/Data/NASA/ozone63.txt"       "/Users/duncan/Data/NASA/ozone64.txt"       "/Users/duncan/Data/NASA/ozone65.txt"      
+[281] "/Users/duncan/Data/NASA/ozone66.txt"       "/Users/duncan/Data/NASA/ozone67.txt"       "/Users/duncan/Data/NASA/ozone68.txt"       "/Users/duncan/Data/NASA/ozone69.txt"       "/Users/duncan/Data/NASA/ozone7.txt"       
+[286] "/Users/duncan/Data/NASA/ozone70.txt"       "/Users/duncan/Data/NASA/ozone71.txt"       "/Users/duncan/Data/NASA/ozone72.txt"       "/Users/duncan/Data/NASA/ozone8.txt"        "/Users/duncan/Data/NASA/ozone9.txt"       
+[291] "/Users/duncan/Data/NASA/pressure1.txt"     "/Users/duncan/Data/NASA/pressure10.txt"    "/Users/duncan/Data/NASA/pressure11.txt"    "/Users/duncan/Data/NASA/pressure12.txt"    "/Users/duncan/Data/NASA/pressure13.txt"   
+[296] "/Users/duncan/Data/NASA/pressure14.txt"    "/Users/duncan/Data/NASA/pressure15.txt"    "/Users/duncan/Data/NASA/pressure16.txt"    "/Users/duncan/Data/NASA/pressure17.txt"    "/Users/duncan/Data/NASA/pressure18.txt"   
+[301] "/Users/duncan/Data/NASA/pressure19.txt"    "/Users/duncan/Data/NASA/pressure2.txt"     "/Users/duncan/Data/NASA/pressure20.txt"    "/Users/duncan/Data/NASA/pressure21.txt"    "/Users/duncan/Data/NASA/pressure22.txt"   
+[306] "/Users/duncan/Data/NASA/pressure23.txt"    "/Users/duncan/Data/NASA/pressure24.txt"    "/Users/duncan/Data/NASA/pressure25.txt"    "/Users/duncan/Data/NASA/pressure26.txt"    "/Users/duncan/Data/NASA/pressure27.txt"   
+[311] "/Users/duncan/Data/NASA/pressure28.txt"    "/Users/duncan/Data/NASA/pressure29.txt"    "/Users/duncan/Data/NASA/pressure3.txt"     "/Users/duncan/Data/NASA/pressure30.txt"    "/Users/duncan/Data/NASA/pressure31.txt"   
+[316] "/Users/duncan/Data/NASA/pressure32.txt"    "/Users/duncan/Data/NASA/pressure33.txt"    "/Users/duncan/Data/NASA/pressure34.txt"    "/Users/duncan/Data/NASA/pressure35.txt"    "/Users/duncan/Data/NASA/pressure36.txt"   
+[321] "/Users/duncan/Data/NASA/pressure37.txt"    "/Users/duncan/Data/NASA/pressure38.txt"    "/Users/duncan/Data/NASA/pressure39.txt"    "/Users/duncan/Data/NASA/pressure4.txt"     "/Users/duncan/Data/NASA/pressure40.txt"   
+[326] "/Users/duncan/Data/NASA/pressure41.txt"    "/Users/duncan/Data/NASA/pressure42.txt"    "/Users/duncan/Data/NASA/pressure43.txt"    "/Users/duncan/Data/NASA/pressure44.txt"    "/Users/duncan/Data/NASA/pressure45.txt"   
+[331] "/Users/duncan/Data/NASA/pressure46.txt"    "/Users/duncan/Data/NASA/pressure47.txt"    "/Users/duncan/Data/NASA/pressure48.txt"    "/Users/duncan/Data/NASA/pressure49.txt"    "/Users/duncan/Data/NASA/pressure5.txt"    
+[336] "/Users/duncan/Data/NASA/pressure50.txt"    "/Users/duncan/Data/NASA/pressure51.txt"    "/Users/duncan/Data/NASA/pressure52.txt"    "/Users/duncan/Data/NASA/pressure53.txt"    "/Users/duncan/Data/NASA/pressure54.txt"   
+[341] "/Users/duncan/Data/NASA/pressure55.txt"    "/Users/duncan/Data/NASA/pressure56.txt"    "/Users/duncan/Data/NASA/pressure57.txt"    "/Users/duncan/Data/NASA/pressure58.txt"    "/Users/duncan/Data/NASA/pressure59.txt"   
+[346] "/Users/duncan/Data/NASA/pressure6.txt"     "/Users/duncan/Data/NASA/pressure60.txt"    "/Users/duncan/Data/NASA/pressure61.txt"    "/Users/duncan/Data/NASA/pressure62.txt"    "/Users/duncan/Data/NASA/pressure63.txt"   
+[351] "/Users/duncan/Data/NASA/pressure64.txt"    "/Users/duncan/Data/NASA/pressure65.txt"    "/Users/duncan/Data/NASA/pressure66.txt"    "/Users/duncan/Data/NASA/pressure67.txt"    "/Users/duncan/Data/NASA/pressure68.txt"   
+[356] "/Users/duncan/Data/NASA/pressure69.txt"    "/Users/duncan/Data/NASA/pressure7.txt"     "/Users/duncan/Data/NASA/pressure70.txt"    "/Users/duncan/Data/NASA/pressure71.txt"    "/Users/duncan/Data/NASA/pressure72.txt"   
+[361] "/Users/duncan/Data/NASA/pressure8.txt"     "/Users/duncan/Data/NASA/pressure9.txt"     "/Users/duncan/Data/NASA/surftemp1.txt"     "/Users/duncan/Data/NASA/surftemp10.txt"    "/Users/duncan/Data/NASA/surftemp11.txt"   
+[366] "/Users/duncan/Data/NASA/surftemp12.txt"    "/Users/duncan/Data/NASA/surftemp13.txt"    "/Users/duncan/Data/NASA/surftemp14.txt"    "/Users/duncan/Data/NASA/surftemp15.txt"    "/Users/duncan/Data/NASA/surftemp16.txt"   
+[371] "/Users/duncan/Data/NASA/surftemp17.txt"    "/Users/duncan/Data/NASA/surftemp18.txt"    "/Users/duncan/Data/NASA/surftemp19.txt"    "/Users/duncan/Data/NASA/surftemp2.txt"     "/Users/duncan/Data/NASA/surftemp20.txt"   
+[376] "/Users/duncan/Data/NASA/surftemp21.txt"    "/Users/duncan/Data/NASA/surftemp22.txt"    "/Users/duncan/Data/NASA/surftemp23.txt"    "/Users/duncan/Data/NASA/surftemp24.txt"    "/Users/duncan/Data/NASA/surftemp25.txt"   
+[381] "/Users/duncan/Data/NASA/surftemp26.txt"    "/Users/duncan/Data/NASA/surftemp27.txt"    "/Users/duncan/Data/NASA/surftemp28.txt"    "/Users/duncan/Data/NASA/surftemp29.txt"    "/Users/duncan/Data/NASA/surftemp3.txt"    
+[386] "/Users/duncan/Data/NASA/surftemp30.txt"    "/Users/duncan/Data/NASA/surftemp31.txt"    "/Users/duncan/Data/NASA/surftemp32.txt"    "/Users/duncan/Data/NASA/surftemp33.txt"    "/Users/duncan/Data/NASA/surftemp34.txt"   
+[391] "/Users/duncan/Data/NASA/surftemp35.txt"    "/Users/duncan/Data/NASA/surftemp36.txt"    "/Users/duncan/Data/NASA/surftemp37.txt"    "/Users/duncan/Data/NASA/surftemp38.txt"    "/Users/duncan/Data/NASA/surftemp39.txt"   
+[396] "/Users/duncan/Data/NASA/surftemp4.txt"     "/Users/duncan/Data/NASA/surftemp40.txt"    "/Users/duncan/Data/NASA/surftemp41.txt"    "/Users/duncan/Data/NASA/surftemp42.txt"    "/Users/duncan/Data/NASA/surftemp43.txt"   
+[401] "/Users/duncan/Data/NASA/surftemp44.txt"    "/Users/duncan/Data/NASA/surftemp45.txt"    "/Users/duncan/Data/NASA/surftemp46.txt"    "/Users/duncan/Data/NASA/surftemp47.txt"    "/Users/duncan/Data/NASA/surftemp48.txt"   
+[406] "/Users/duncan/Data/NASA/surftemp49.txt"    "/Users/duncan/Data/NASA/surftemp5.txt"     "/Users/duncan/Data/NASA/surftemp50.txt"    "/Users/duncan/Data/NASA/surftemp51.txt"    "/Users/duncan/Data/NASA/surftemp52.txt"   
+[411] "/Users/duncan/Data/NASA/surftemp53.txt"    "/Users/duncan/Data/NASA/surftemp54.txt"    "/Users/duncan/Data/NASA/surftemp55.txt"    "/Users/duncan/Data/NASA/surftemp56.txt"    "/Users/duncan/Data/NASA/surftemp57.txt"   
+[416] "/Users/duncan/Data/NASA/surftemp58.txt"    "/Users/duncan/Data/NASA/surftemp59.txt"    "/Users/duncan/Data/NASA/surftemp6.txt"     "/Users/duncan/Data/NASA/surftemp60.txt"    "/Users/duncan/Data/NASA/surftemp61.txt"   
+[421] "/Users/duncan/Data/NASA/surftemp62.txt"    "/Users/duncan/Data/NASA/surftemp63.txt"    "/Users/duncan/Data/NASA/surftemp64.txt"    "/Users/duncan/Data/NASA/surftemp65.txt"    "/Users/duncan/Data/NASA/surftemp66.txt"   
+[426] "/Users/duncan/Data/NASA/surftemp67.txt"    "/Users/duncan/Data/NASA/surftemp68.txt"    "/Users/duncan/Data/NASA/surftemp69.txt"    "/Users/duncan/Data/NASA/surftemp7.txt"     "/Users/duncan/Data/NASA/surftemp70.txt"   
+[431] "/Users/duncan/Data/NASA/surftemp71.txt"    "/Users/duncan/Data/NASA/surftemp72.txt"    "/Users/duncan/Data/NASA/surftemp8.txt"     "/Users/duncan/Data/NASA/surftemp9.txt"     "/Users/duncan/Data/NASA/temperature1.txt" 
+[436] "/Users/duncan/Data/NASA/temperature10.txt" "/Users/duncan/Data/NASA/temperature11.txt" "/Users/duncan/Data/NASA/temperature12.txt" "/Users/duncan/Data/NASA/temperature13.txt" "/Users/duncan/Data/NASA/temperature14.txt"
+[441] "/Users/duncan/Data/NASA/temperature15.txt" "/Users/duncan/Data/NASA/temperature16.txt" "/Users/duncan/Data/NASA/temperature17.txt" "/Users/duncan/Data/NASA/temperature18.txt" "/Users/duncan/Data/NASA/temperature19.txt"
+[446] "/Users/duncan/Data/NASA/temperature2.txt"  "/Users/duncan/Data/NASA/temperature20.txt" "/Users/duncan/Data/NASA/temperature21.txt" "/Users/duncan/Data/NASA/temperature22.txt" "/Users/duncan/Data/NASA/temperature23.txt"
+[451] "/Users/duncan/Data/NASA/temperature24.txt" "/Users/duncan/Data/NASA/temperature25.txt" "/Users/duncan/Data/NASA/temperature26.txt" "/Users/duncan/Data/NASA/temperature27.txt" "/Users/duncan/Data/NASA/temperature28.txt"
+[456] "/Users/duncan/Data/NASA/temperature29.txt" "/Users/duncan/Data/NASA/temperature3.txt"  "/Users/duncan/Data/NASA/temperature30.txt" "/Users/duncan/Data/NASA/temperature31.txt" "/Users/duncan/Data/NASA/temperature32.txt"
+[461] "/Users/duncan/Data/NASA/temperature33.txt" "/Users/duncan/Data/NASA/temperature34.txt" "/Users/duncan/Data/NASA/temperature35.txt" "/Users/duncan/Data/NASA/temperature36.txt" "/Users/duncan/Data/NASA/temperature37.txt"
+[466] "/Users/duncan/Data/NASA/temperature38.txt" "/Users/duncan/Data/NASA/temperature39.txt" "/Users/duncan/Data/NASA/temperature4.txt"  "/Users/duncan/Data/NASA/temperature40.txt" "/Users/duncan/Data/NASA/temperature41.txt"
+[471] "/Users/duncan/Data/NASA/temperature42.txt" "/Users/duncan/Data/NASA/temperature43.txt" "/Users/duncan/Data/NASA/temperature44.txt" "/Users/duncan/Data/NASA/temperature45.txt" "/Users/duncan/Data/NASA/temperature46.txt"
+[476] "/Users/duncan/Data/NASA/temperature47.txt" "/Users/duncan/Data/NASA/temperature48.txt" "/Users/duncan/Data/NASA/temperature49.txt" "/Users/duncan/Data/NASA/temperature5.txt"  "/Users/duncan/Data/NASA/temperature50.txt"
+[481] "/Users/duncan/Data/NASA/temperature51.txt" "/Users/duncan/Data/NASA/temperature52.txt" "/Users/duncan/Data/NASA/temperature53.txt" "/Users/duncan/Data/NASA/temperature54.txt" "/Users/duncan/Data/NASA/temperature55.txt"
+[486] "/Users/duncan/Data/NASA/temperature56.txt" "/Users/duncan/Data/NASA/temperature57.txt" "/Users/duncan/Data/NASA/temperature58.txt" "/Users/duncan/Data/NASA/temperature59.txt" "/Users/duncan/Data/NASA/temperature6.txt" 
+[491] "/Users/duncan/Data/NASA/temperature60.txt" "/Users/duncan/Data/NASA/temperature61.txt" "/Users/duncan/Data/NASA/temperature62.txt" "/Users/duncan/Data/NASA/temperature63.txt" "/Users/duncan/Data/NASA/temperature64.txt"
+[496] "/Users/duncan/Data/NASA/temperature65.txt" "/Users/duncan/Data/NASA/temperature66.txt" "/Users/duncan/Data/NASA/temperature67.txt" "/Users/duncan/Data/NASA/temperature68.txt" "/Users/duncan/Data/NASA/temperature69.txt"
+[501] "/Users/duncan/Data/NASA/temperature7.txt"  "/Users/duncan/Data/NASA/temperature70.txt" "/Users/duncan/Data/NASA/temperature71.txt" "/Users/duncan/Data/NASA/temperature72.txt" "/Users/duncan/Data/NASA/temperature8.txt" 
+[506] "/Users/duncan/Data/NASA/temperature9.txt" 
+[36:07] 20> i = sample(ff, 3)
+[36:29] 21> i
+[1] "/Users/duncan/Data/NASA/ozone58.txt"   "/Users/duncan/Data/NASA/cloudlow2.txt" "/Users/duncan/Data/NASA/ozone49.txt"  
+[36:29] 22> z = lapply(i, read)
+[36:42] 23> # different variables - cloud cover and ozone.
+[36:42] 23> sapply(z, class)
+[1] "data.frame" "data.frame" "data.frame"
+[37:06] 24> sapply(z, dim)
+     [,1] [,2] [,3]
+[1,]  576  576  576
+[2,]    4    4    4
+[37:11] 25> identical(z[[1]], z[[2]])
+[1] FALSE
+[37:20] 26> all.equal(z[[1]], z[[2]])
+[1] "Component “value”: Modes: numeric, character"               "Component “value”: target is numeric, current is character" "Component “date”: Mean relative difference: 0.1565257"     
+[37:29] 27> head(z[[1]]
++ )
+  value  lat    lon       date
+1   286 36.2 -113.8 1999-10-16
+2   292 33.8 -113.8 1999-10-16
+3   292 31.2 -113.8 1999-10-16
+4   288 28.8 -113.8 1999-10-16
+5   278 26.2 -113.8 1999-10-16
+6   270 23.8 -113.8 1999-10-16
+[37:47] 28> head(z[[2]])
+  value  lat    lon       date
+1  15.5 36.2 -113.8 1995-02-16
+2    16 33.8 -113.8 1995-02-16
+3    17 31.2 -113.8 1995-02-16
+4  19.5 28.8 -113.8 1995-02-16
+5    16 26.2 -113.8 1995-02-16
+6    19 23.8 -113.8 1995-02-16
+[37:51] 29> sapply(z, function(x) sapply(x, class))
+      [,1]      [,2]        [,3]     
+value "numeric" "character" "numeric"
+lat   "numeric" "numeric"   "numeric"
+lon   "numeric" "numeric"   "numeric"
+date  "Date"    "Date"      "Date"   
+[38:01] 30> # why is the value in item 2 a character?
+[38:01] 30> class(z[[2]]$value)
+[1] "character"
+[38:35] 31> z[[2]]$value
+  [1] "15.5"  "16"    "17"    "19.5"  "16"    "19"    "22.5"  "21"    "19.5"  "22"    "24.5"  "20"    "25.5"  "29"    "28.5"  "34.5"  "37.5"  "32"    "30"    "31.5"  "36.5"  "41"    "35.5"  "33.5"  "10.5"  "16"    "17"    "11.5" 
+ [29] "16.5"  "16"    "20.5"  "21"    "18.5"  "21.5"  "22"    "20"    "25.5"  "28"    "27.5"  "33"    "38"    "34"    "32.5"  "33.5"  "40"    "41.5"  "35.5"  "36"    "10.5"  "12"    "11.5"  "11.5"  "11"    "14"    "18"    "19"   
+ [57] "23"    "19"    "17"    "21"    "27.5"  "31.5"  "26"    "32"    "41.5"  "37"    "33.5"  "34"    "43"    "41"    "37"    "35"    "10.5"  "10"    "11.5"  "8.5"   "11"    "10"    "21"    "21"    "24"    "20"    "20.5"  "23.5" 
+ [85] "26.5"  "31.5"  "27"    "36.5"  "46"    "38"    "36"    "34"    "43"    "42.5"  "37.5"  "35.5"  "12.5"  "18.5"  "18"    "11.5"  "7.5"   "10"    "11.5"  "14"    "12.5"  "20.5"  "16"    "18"    "25"    "33"    "28"    "34.5" 
+[113] "45"    "40"    "35.5"  "31"    "41"    "41.5"  "37"    "38"    "16.5"  "20.5"  "21.5"  "16"    "12.5"  "7.5"   "13.5"  "15.5"  "11.5"  "17.5"  "13"    "17.5"  "27"    "39"    "28"    "34"    "44.5"  "39.5"  "33.5"  "28.5" 
+[141] "34.5"  "43"    "37"    "37"    "20.5"  "24.5"  "22.5"  "18"    "20"    "18"    "25"    "12.5"  "11.5"  "14"    "16"    "13.5"  "27"    "38.5"  "28"    "34"    "41.5"  "38.5"  "32"    "28"    "34"    "43"    "38"    "36.5" 
+[169] "20.5"  "24.5"  "21.5"  "22.5"  "30.5"  "33.5"  "35"    "23"    "15"    "21.5"  "16.5"  "13"    "27.5"  "38.5"  "27"    "30.5"  "38"    "40"    "33"    "23.5"  "31"    "43.5"  "47.5"  "43.5"  "27"    "26"    "21.5"  "25.5" 
+[197] "38"    "39"    "29.5"  "26"    "19"    "17.5"  "15"    "18.5"  "33.5"  "36"    "23.5"  "27.5"  "40"    "40.5"  "34.5"  "24.5"  "33"    "44"    "52.5"  "51"    "26.5"  "24"    "22"    "30"    "42"    "31.5"  "18"    "18.5" 
+[225] "22"    "15"    "17"    "16.5"  "31"    "33.5"  "27"    "30"    "38.5"  "40.5"  "36"    "29"    "38"    "46"    "55"    "52.5"  "19.5"  "26.5"  "24.5"  "30"    "45"    "28.5"  "18"    "19"    "22"    "16.5"  "13.5"  "16.5" 
+[253] "29"    "31.5"  "22"    "26.5"  "35.5"  "44"    "36"    "31"    "41.5"  "46"    "57"    "52.5"  "21.5"  "26.5"  "25.5"  "34.5"  "41.5"  "34"    "20"    "24"    "30"    "28"    "24"    "20"    "29"    "26.5"  "24"    "25"   
+[281] "36.5"  "41"    "41"    "42"    "42.5"  "48.5"  "56"    "59"    "20.5"  "24"    "23.5"  "24"    "41.5"  "28"    "19.5"  "27.5"  "27"    "28"    "32.5"  "19.5"  "29"    "24.5"  "29.5"  "30.5"  "34.5"  "40"    "40.5"  "42"   
+[309] "46"    "51.5"  "55.5"  "59"    "20.5"  "24"    "32"    "24"    "21.5"  "25.5"  "17.5"  "26"    "23.5"  "31"    "20.5"  "23"    "19.5"  "26"    "32"    "24.5"  "25.5"  "29.5"  "39.5"  "36"    "44"    "50"    "56"    "63.5" 
+[337] "19"    "23.5"  "45"    "45"    "28.5"  "23"    "16.5"  "22"    "26"    "17"    "15"    "15.5"  "21.5"  "34"    "18"    "9"     "6"     "8.5"   "23.5"  "17"    "33"    "48"    "52"    "63"    "28.5"  "39"    "45"    "40.5" 
+[365] "35"    "31"    "20"    "22"    "24.5"  "11.5"  "12.5"  "15"    "17"    "17"    "15.5"  "13"    "8"     "4.5"   "4"     "4.5"   "11"    "44.5"  "54"    "59.5"  "40.5"  "41.5"  "37.5"  "40.5"  "33.5"  "31"    "24.5"  "25.5" 
+[393] "23"    "12.5"  "13.5"  "19"    "16"    "17"    "15.5"  "12"    "9.5"   "6.5"   "4.5"   "4.5"   "7.5"   "28"    "45.5"  "55.5"  "38"    "36.5"  "41"    "37.5"  "37.5"  "31"    "31"    "21.5"  "24.5"  "15.5"  "13.5"  "19"   
+[421] "15.5"  "16"    "14.5"  "10.5"  "8.5"   "6.5"   "6"     "5"     "4"     "9"     "13.5"  "33.5"  "38.00" "38.00" "39.50" "37.50" "37.50" "32.50" "30.00" "22.50" "30.50" "23.50" "14.00" "13.50" "16.00" "17.00" "12.00" "10.50"
+[449] "9.00"  "7.00"  "6.00"  "6.50"  "6.50"  "6.00"  "...."  "10.50" "35.50" "38.00" "42.50" "37.00" "39.00" "35.50" "28.50" "22.50" "34.50" "27.00" "20.00" "15.00" "20.00" "15.50" "13.50" "12.00" "10.00" "7.00"  "5.50"  "6.00" 
+[477] "9.50"  "9.00"  "...."  "9.50"  "37.5"  "42"    "39.5"  "34.5"  "35.5"  "35.5"  "31"    "30"    "38"    "33.5"  "28"    "20.5"  "17.5"  "17"    "14.5"  "12.5"  "10.5"  "8"     "6"     "5.5"   "9.5"   "9"     "8.5"   "16.5" 
+[505] "38"    "40"    "35"    "33.5"  "35.5"  "36"    "36"    "34"    "40"    "38"    "30.5"  "23.5"  "22"    "21.5"  "18.5"  "13.5"  "10"    "7.5"   "6"     "4.5"   "8"     "11.5"  "15"    "19"    "39.5"  "38"    "35"    "33.5" 
+[533] "35.5"  "34"    "37"    "41.5"  "38"    "37"    "30.5"  "27"    "22.5"  "25.5"  "20"    "15"    "9"     "6.5"   "5"     "4.5"   "6.5"   "12"    "15.5"  "13.5"  "39.5"  "36"    "35"    "37"    "38.5"  "39"    "36.5"  "38"   
+[561] "39.5"  "36.5"  "32"    "31"    "18.5"  "24"    "19.5"  "14.5"  "8"     "5.5"   "5.5"   "5"     "7.5"   "9"     "14"    "12"   
+[38:38] 32> unique(z[[2]]$value)
+  [1] "15.5"  "16"    "17"    "19.5"  "19"    "22.5"  "21"    "22"    "24.5"  "20"    "25.5"  "29"    "28.5"  "34.5"  "37.5"  "32"    "30"    "31.5"  "36.5"  "41"    "35.5"  "33.5"  "10.5"  "11.5"  "16.5"  "20.5"  "18.5"  "21.5" 
+ [29] "28"    "27.5"  "33"    "38"    "34"    "32.5"  "40"    "41.5"  "36"    "12"    "11"    "14"    "18"    "23"    "26"    "37"    "43"    "35"    "10"    "8.5"   "24"    "23.5"  "26.5"  "27"    "46"    "42.5"  "12.5"  "7.5"  
+ [57] "25"    "45"    "31"    "13.5"  "17.5"  "13"    "39"    "44.5"  "39.5"  "38.5"  "30.5"  "15"    "43.5"  "47.5"  "29.5"  "40.5"  "44"    "52.5"  "51"    "42"    "55"    "57"    "48.5"  "56"    "59"    "51.5"  "55.5"  "50"   
+ [85] "63.5"  "9"     "6"     "48"    "52"    "63"    "8"     "4.5"   "4"     "54"    "59.5"  "9.5"   "6.5"   "45.5"  "14.5"  "5"     "38.00" "39.50" "37.50" "32.50" "30.00" "22.50" "30.50" "23.50" "14.00" "13.50" "16.00" "17.00"
+[113] "12.00" "10.50" "9.00"  "7.00"  "6.00"  "6.50"  "...."  "35.50" "42.50" "37.00" "39.00" "28.50" "34.50" "27.00" "20.00" "15.00" "15.50" "10.00" "5.50"  "9.50"  "5.5"  
+[38:52] 33> # ....    That's their way of indicating a missing value.
+[38:52] 33> # How to fix our read() function?
+[38:52] 33> ?read.table
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+read.table                package:utils                R Documentation
+
+Data Input
+
+Description:
+
+     Reads a file in table format and creates a data frame from it,
+     with cases corresponding to lines and variables to fields in the
+     file.
+
+Usage:
+
+     read.table(file, header = FALSE, sep = "", quote = "\"'",
+                dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+                row.names, col.names, as.is = !stringsAsFactors, tryLogical = TRUE,
+                na.strings = "NA", colClasses = NA, nrows = -1,
+                skip = 0, check.names = TRUE, fill = !blank.lines.skip,
+                strip.white = FALSE, blank.lines.skip = TRUE,
+                comment.char = "#",
+                allowEscapes = FALSE, flush = FALSE,
+                stringsAsFactors = FALSE,
+                fileEncoding = "", encoding = "unknown", text, skipNul = FALSE)
+     
+     read.csv(file, header = TRUE, sep = ",", quote = "\"",
+              dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.csv2(file, header = TRUE, sep = ";", quote = "\"",
+               dec = ",", fill = TRUE, comment.char = "", ...)
+     
+     read.delim(file, header = TRUE, sep = "\t", quote = "\"",
+                dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.delim2(file, header = TRUE, sep = "\t", quote = "\"",
+:
+
+^
+
+^read.table                package:utils                R Documentation
+
+Data Input
+
+Description:
+
+     Reads a file in table format and creates a data frame from it,
+     with cases corresponding to lines and variables to fields in the
+     file.
+
+Usage:
+
+     read.table(file, header = FALSE, sep = "", quote = "\"'",
+                dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+                row.names, col.names, as.is = !stringsAsFactors, tryLogical = TRUE,
+                na.strings = "NA", colClasses = NA, nrows = -1,
+                skip = 0, check.names = TRUE, fill = !blank.lines.skip,
+                strip.white = FALSE, blank.lines.skip = TRUE,
+                comment.char = "#",
+                allowEscapes = FALSE, flush = FALSE,
+                stringsAsFactors = FALSE,
+                fileEncoding = "", encoding = "unknown", text, skipNul = FALSE)
+     
+     read.csv(file, header = TRUE, sep = ",", quote = "\"",
+              dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.csv2(file, header = TRUE, sep = ";", quote = "\"",
+               dec = ",", fill = TRUE, comment.char = "", ...)
+     
+     read.delim(file, header = TRUE, sep = "\t", quote = "\"",
+                dec = ".", fill = TRUE, comment.char = "", ...)
+     
+:q
+[40:38] 34> [40:38] 34> source("nasa.R")
+[40:42] 35> # new version with na.strings = "...."
+[40:42] 35> read
+function(file = "../Data/NASA/temperature1.txt", encoding = "UTF8")
+{
+    tmp = read.table(file, skip = 7,header = FALSE, na.strings = "....") #<<<<<<<< changed.
+    vals = unlist(tmp[, -(1:3)])
+    d = data.frame(value = vals)
+    
+    # latitude
+    lat = compLatitude(tmp[,1])
+    d$lat = rep(lat, ncol(tmp) - 3)
+
+
+    # Read the first 6 lines to get the date and the longitude
+    # Other ways to do longitude
+    tmp2 = readLines(file, n = 6)
+#    browser()
+    
+    # longitude
+    # Split the longitude line get only the values
+    # Originally had
+    #     lon = strsplit(tmp2[6],  " ")
+    # What difference does it make?
+    # options(warn = 2, error = recover)
+    # then read()
+    lon = strsplit(tmp2[6],  " ")[[1]]
+    lon = lon[ lon != "" ]
+    lon = compLongitude(lon)
+    d$lon = rep(lon, each = nrow(tmp))
+
+    
+    # date
+    d$date = as.Date(getDate(tmp2[5]), "%d-%b-%Y")
+
+    # remove the meaningless row names.
+    rownames(d) = NULL
+    
+    d
+}
+[40:53] 36> z2 = read(i[2])
+[41:03] 37> sapply(z2, class)
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+[41:09] 38> class(z2$value)
+[1] "numeric"
+[41:15] 39> table(is.na(z2$value))
+
+FALSE  TRUE 
+  574     2 
+[41:24] 40> z2$value
+  [1] 15.5 16.0 17.0 19.5 16.0 19.0 22.5 21.0 19.5 22.0 24.5 20.0 25.5 29.0 28.5 34.5 37.5 32.0 30.0 31.5 36.5 41.0 35.5 33.5 10.5 16.0 17.0 11.5 16.5 16.0 20.5 21.0 18.5 21.5 22.0 20.0 25.5 28.0 27.5 33.0 38.0 34.0 32.5 33.5 40.0
+ [46] 41.5 35.5 36.0 10.5 12.0 11.5 11.5 11.0 14.0 18.0 19.0 23.0 19.0 17.0 21.0 27.5 31.5 26.0 32.0 41.5 37.0 33.5 34.0 43.0 41.0 37.0 35.0 10.5 10.0 11.5  8.5 11.0 10.0 21.0 21.0 24.0 20.0 20.5 23.5 26.5 31.5 27.0 36.5 46.0 38.0
+ [91] 36.0 34.0 43.0 42.5 37.5 35.5 12.5 18.5 18.0 11.5  7.5 10.0 11.5 14.0 12.5 20.5 16.0 18.0 25.0 33.0 28.0 34.5 45.0 40.0 35.5 31.0 41.0 41.5 37.0 38.0 16.5 20.5 21.5 16.0 12.5  7.5 13.5 15.5 11.5 17.5 13.0 17.5 27.0 39.0 28.0
+[136] 34.0 44.5 39.5 33.5 28.5 34.5 43.0 37.0 37.0 20.5 24.5 22.5 18.0 20.0 18.0 25.0 12.5 11.5 14.0 16.0 13.5 27.0 38.5 28.0 34.0 41.5 38.5 32.0 28.0 34.0 43.0 38.0 36.5 20.5 24.5 21.5 22.5 30.5 33.5 35.0 23.0 15.0 21.5 16.5 13.0
+[181] 27.5 38.5 27.0 30.5 38.0 40.0 33.0 23.5 31.0 43.5 47.5 43.5 27.0 26.0 21.5 25.5 38.0 39.0 29.5 26.0 19.0 17.5 15.0 18.5 33.5 36.0 23.5 27.5 40.0 40.5 34.5 24.5 33.0 44.0 52.5 51.0 26.5 24.0 22.0 30.0 42.0 31.5 18.0 18.5 22.0
+[226] 15.0 17.0 16.5 31.0 33.5 27.0 30.0 38.5 40.5 36.0 29.0 38.0 46.0 55.0 52.5 19.5 26.5 24.5 30.0 45.0 28.5 18.0 19.0 22.0 16.5 13.5 16.5 29.0 31.5 22.0 26.5 35.5 44.0 36.0 31.0 41.5 46.0 57.0 52.5 21.5 26.5 25.5 34.5 41.5 34.0
+[271] 20.0 24.0 30.0 28.0 24.0 20.0 29.0 26.5 24.0 25.0 36.5 41.0 41.0 42.0 42.5 48.5 56.0 59.0 20.5 24.0 23.5 24.0 41.5 28.0 19.5 27.5 27.0 28.0 32.5 19.5 29.0 24.5 29.5 30.5 34.5 40.0 40.5 42.0 46.0 51.5 55.5 59.0 20.5 24.0 32.0
+[316] 24.0 21.5 25.5 17.5 26.0 23.5 31.0 20.5 23.0 19.5 26.0 32.0 24.5 25.5 29.5 39.5 36.0 44.0 50.0 56.0 63.5 19.0 23.5 45.0 45.0 28.5 23.0 16.5 22.0 26.0 17.0 15.0 15.5 21.5 34.0 18.0  9.0  6.0  8.5 23.5 17.0 33.0 48.0 52.0 63.0
+[361] 28.5 39.0 45.0 40.5 35.0 31.0 20.0 22.0 24.5 11.5 12.5 15.0 17.0 17.0 15.5 13.0  8.0  4.5  4.0  4.5 11.0 44.5 54.0 59.5 40.5 41.5 37.5 40.5 33.5 31.0 24.5 25.5 23.0 12.5 13.5 19.0 16.0 17.0 15.5 12.0  9.5  6.5  4.5  4.5  7.5
+[406] 28.0 45.5 55.5 38.0 36.5 41.0 37.5 37.5 31.0 31.0 21.5 24.5 15.5 13.5 19.0 15.5 16.0 14.5 10.5  8.5  6.5  6.0  5.0  4.0  9.0 13.5 33.5 38.0 38.0 39.5 37.5 37.5 32.5 30.0 22.5 30.5 23.5 14.0 13.5 16.0 17.0 12.0 10.5  9.0  7.0
+[451]  6.0  6.5  6.5  6.0   NA 10.5 35.5 38.0 42.5 37.0 39.0 35.5 28.5 22.5 34.5 27.0 20.0 15.0 20.0 15.5 13.5 12.0 10.0  7.0  5.5  6.0  9.5  9.0   NA  9.5 37.5 42.0 39.5 34.5 35.5 35.5 31.0 30.0 38.0 33.5 28.0 20.5 17.5 17.0 14.5
+[496] 12.5 10.5  8.0  6.0  5.5  9.5  9.0  8.5 16.5 38.0 40.0 35.0 33.5 35.5 36.0 36.0 34.0 40.0 38.0 30.5 23.5 22.0 21.5 18.5 13.5 10.0  7.5  6.0  4.5  8.0 11.5 15.0 19.0 39.5 38.0 35.0 33.5 35.5 34.0 37.0 41.5 38.0 37.0 30.5 27.0
+[541] 22.5 25.5 20.0 15.0  9.0  6.5  5.0  4.5  6.5 12.0 15.5 13.5 39.5 36.0 35.0 37.0 38.5 39.0 36.5 38.0 39.5 36.5 32.0 31.0 18.5 24.0 19.5 14.5  8.0  5.5  5.5  5.0  7.5  9.0 14.0 12.0
+[41:29] 41> ls()
+ [1] "compLatitude"   "compLongitude"  "d"              "ff"             "getDate"        "i"              "PRMGateway"     "PRMGatewayProd" "read"           "z"              "z2"            
+[13:52] 42> al = lapply(ff, read)
+Error in `$<-.data.frame`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32,  : 
+  replacement has 3233 rows, data has 3074
+
+Enter a frame number, or 0 to exit 
+
+1: lapply(ff, read)
+2: FUN(X[[i]], ...)
+3: nasa.R#28: `$<-`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 
+4: nasa.R#28: `$<-.data.frame`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 3
+
+Selection: 0
+[13:52] 42> al = lapply(ff, function(f) try(read(f)))
+Error in `$<-.data.frame`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32,  : 
+  replacement has 3233 rows, data has 3074
+Error in `$<-.data.frame`(`*tmp*`, "lon", value = c(26.2, 26.2, 26.2,  : 
+  replacement has 450 rows, data has 396
+[14:29] 43> names(al) = ff
+[14:49] 44> err = sapply(al, inherits, 'try-error')
+[14:50] 45> ff[err]
+[1] "/Users/duncan/Data/NASA/elevation.dat" "/Users/duncan/Data/NASA/intlvtn.dat"  
+[14:54] 46> # Aaah.
+[14:54] 46> # .dat files not .txt
+[14:54] 46> # not the same format.
+[14:54] 46> ff
+*** output flushed ***
+[40:50] 47> basename(ff)
+  [1] "cloudhigh1.txt"    "cloudhigh10.txt"   "cloudhigh11.txt"   "cloudhigh12.txt"   "cloudhigh13.txt"   "cloudhigh14.txt"   "cloudhigh15.txt"   "cloudhigh16.txt"   "cloudhigh17.txt"   "cloudhigh18.txt"   "cloudhigh19.txt"  
+ [12] "cloudhigh2.txt"    "cloudhigh20.txt"   "cloudhigh21.txt"   "cloudhigh22.txt"   "cloudhigh23.txt"   "cloudhigh24.txt"   "cloudhigh25.txt"   "cloudhigh26.txt"   "cloudhigh27.txt"   "cloudhigh28.txt"   "cloudhigh29.txt"  
+ [23] "cloudhigh3.txt"    "cloudhigh30.txt"   "cloudhigh31.txt"   "cloudhigh32.txt"   "cloudhigh33.txt"   "cloudhigh34.txt"   "cloudhigh35.txt"   "cloudhigh36.txt"   "cloudhigh37.txt"   "cloudhigh38.txt"   "cloudhigh39.txt"  
+ [34] "cloudhigh4.txt"    "cloudhigh40.txt"   "cloudhigh41.txt"   "cloudhigh42.txt"   "cloudhigh43.txt"   "cloudhigh44.txt"   "cloudhigh45.txt"   "cloudhigh46.txt"   "cloudhigh47.txt"   "cloudhigh48.txt"   "cloudhigh49.txt"  
+ [45] "cloudhigh5.txt"    "cloudhigh50.txt"   "cloudhigh51.txt"   "cloudhigh52.txt"   "cloudhigh53.txt"   "cloudhigh54.txt"   "cloudhigh55.txt"   "cloudhigh56.txt"   "cloudhigh57.txt"   "cloudhigh58.txt"   "cloudhigh59.txt"  
+ [56] "cloudhigh6.txt"    "cloudhigh60.txt"   "cloudhigh61.txt"   "cloudhigh62.txt"   "cloudhigh63.txt"   "cloudhigh64.txt"   "cloudhigh65.txt"   "cloudhigh66.txt"   "cloudhigh67.txt"   "cloudhigh68.txt"   "cloudhigh69.txt"  
+ [67] "cloudhigh7.txt"    "cloudhigh70.txt"   "cloudhigh71.txt"   "cloudhigh72.txt"   "cloudhigh8.txt"    "cloudhigh9.txt"    "cloudlow1.txt"     "cloudlow10.txt"    "cloudlow11.txt"    "cloudlow12.txt"    "cloudlow13.txt"   
+ [78] "cloudlow14.txt"    "cloudlow15.txt"    "cloudlow16.txt"    "cloudlow17.txt"    "cloudlow18.txt"    "cloudlow19.txt"    "cloudlow2.txt"     "cloudlow20.txt"    "cloudlow21.txt"    "cloudlow22.txt"    "cloudlow23.txt"   
+ [89] "cloudlow24.txt"    "cloudlow25.txt"    "cloudlow26.txt"    "cloudlow27.txt"    "cloudlow28.txt"    "cloudlow29.txt"    "cloudlow3.txt"     "cloudlow30.txt"    "cloudlow31.txt"    "cloudlow32.txt"    "cloudlow33.txt"   
+[100] "cloudlow34.txt"    "cloudlow35.txt"    "cloudlow36.txt"    "cloudlow37.txt"    "cloudlow38.txt"    "cloudlow39.txt"    "cloudlow4.txt"     "cloudlow40.txt"    "cloudlow41.txt"    "cloudlow42.txt"    "cloudlow43.txt"   
+[111] "cloudlow44.txt"    "cloudlow45.txt"    "cloudlow46.txt"    "cloudlow47.txt"    "cloudlow48.txt"    "cloudlow49.txt"    "cloudlow5.txt"     "cloudlow50.txt"    "cloudlow51.txt"    "cloudlow52.txt"    "cloudlow53.txt"   
+[122] "cloudlow54.txt"    "cloudlow55.txt"    "cloudlow56.txt"    "cloudlow57.txt"    "cloudlow58.txt"    "cloudlow59.txt"    "cloudlow6.txt"     "cloudlow60.txt"    "cloudlow61.txt"    "cloudlow62.txt"    "cloudlow63.txt"   
+[133] "cloudlow64.txt"    "cloudlow65.txt"    "cloudlow66.txt"    "cloudlow67.txt"    "cloudlow68.txt"    "cloudlow69.txt"    "cloudlow7.txt"     "cloudlow70.txt"    "cloudlow71.txt"    "cloudlow72.txt"    "cloudlow8.txt"    
+[144] "cloudlow9.txt"     "cloudmid1.txt"     "cloudmid10.txt"    "cloudmid11.txt"    "cloudmid12.txt"    "cloudmid13.txt"    "cloudmid14.txt"    "cloudmid15.txt"    "cloudmid16.txt"    "cloudmid17.txt"    "cloudmid18.txt"   
+[155] "cloudmid19.txt"    "cloudmid2.txt"     "cloudmid20.txt"    "cloudmid21.txt"    "cloudmid22.txt"    "cloudmid23.txt"    "cloudmid24.txt"    "cloudmid25.txt"    "cloudmid26.txt"    "cloudmid27.txt"    "cloudmid28.txt"   
+[166] "cloudmid29.txt"    "cloudmid3.txt"     "cloudmid30.txt"    "cloudmid31.txt"    "cloudmid32.txt"    "cloudmid33.txt"    "cloudmid34.txt"    "cloudmid35.txt"    "cloudmid36.txt"    "cloudmid37.txt"    "cloudmid38.txt"   
+[177] "cloudmid39.txt"    "cloudmid4.txt"     "cloudmid40.txt"    "cloudmid41.txt"    "cloudmid42.txt"    "cloudmid43.txt"    "cloudmid44.txt"    "cloudmid45.txt"    "cloudmid46.txt"    "cloudmid47.txt"    "cloudmid48.txt"   
+[188] "cloudmid49.txt"    "cloudmid5.txt"     "cloudmid50.txt"    "cloudmid51.txt"    "cloudmid52.txt"    "cloudmid53.txt"    "cloudmid54.txt"    "cloudmid55.txt"    "cloudmid56.txt"    "cloudmid57.txt"    "cloudmid58.txt"   
+[199] "cloudmid59.txt"    "cloudmid6.txt"     "cloudmid60.txt"    "cloudmid61.txt"    "cloudmid62.txt"    "cloudmid63.txt"    "cloudmid64.txt"    "cloudmid65.txt"    "cloudmid66.txt"    "cloudmid67.txt"    "cloudmid68.txt"   
+[210] "cloudmid69.txt"    "cloudmid7.txt"     "cloudmid70.txt"    "cloudmid71.txt"    "cloudmid72.txt"    "cloudmid8.txt"     "cloudmid9.txt"     "elevation.dat"     "intlvtn.dat"       "ozone1.txt"        "ozone10.txt"      
+[221] "ozone11.txt"       "ozone12.txt"       "ozone13.txt"       "ozone14.txt"       "ozone15.txt"       "ozone16.txt"       "ozone17.txt"       "ozone18.txt"       "ozone19.txt"       "ozone2.txt"        "ozone20.txt"      
+[232] "ozone21.txt"       "ozone22.txt"       "ozone23.txt"       "ozone24.txt"       "ozone25.txt"       "ozone26.txt"       "ozone27.txt"       "ozone28.txt"       "ozone29.txt"       "ozone3.txt"        "ozone30.txt"      
+[243] "ozone31.txt"       "ozone32.txt"       "ozone33.txt"       "ozone34.txt"       "ozone35.txt"       "ozone36.txt"       "ozone37.txt"       "ozone38.txt"       "ozone39.txt"       "ozone4.txt"        "ozone40.txt"      
+[254] "ozone41.txt"       "ozone42.txt"       "ozone43.txt"       "ozone44.txt"       "ozone45.txt"       "ozone46.txt"       "ozone47.txt"       "ozone48.txt"       "ozone49.txt"       "ozone5.txt"        "ozone50.txt"      
+[265] "ozone51.txt"       "ozone52.txt"       "ozone53.txt"       "ozone54.txt"       "ozone55.txt"       "ozone56.txt"       "ozone57.txt"       "ozone58.txt"       "ozone59.txt"       "ozone6.txt"        "ozone60.txt"      
+[276] "ozone61.txt"       "ozone62.txt"       "ozone63.txt"       "ozone64.txt"       "ozone65.txt"       "ozone66.txt"       "ozone67.txt"       "ozone68.txt"       "ozone69.txt"       "ozone7.txt"        "ozone70.txt"      
+[287] "ozone71.txt"       "ozone72.txt"       "ozone8.txt"        "ozone9.txt"        "pressure1.txt"     "pressure10.txt"    "pressure11.txt"    "pressure12.txt"    "pressure13.txt"    "pressure14.txt"    "pressure15.txt"   
+[298] "pressure16.txt"    "pressure17.txt"    "pressure18.txt"    "pressure19.txt"    "pressure2.txt"     "pressure20.txt"    "pressure21.txt"    "pressure22.txt"    "pressure23.txt"    "pressure24.txt"    "pressure25.txt"   
+[309] "pressure26.txt"    "pressure27.txt"    "pressure28.txt"    "pressure29.txt"    "pressure3.txt"     "pressure30.txt"    "pressure31.txt"    "pressure32.txt"    "pressure33.txt"    "pressure34.txt"    "pressure35.txt"   
+[320] "pressure36.txt"    "pressure37.txt"    "pressure38.txt"    "pressure39.txt"    "pressure4.txt"     "pressure40.txt"    "pressure41.txt"    "pressure42.txt"    "pressure43.txt"    "pressure44.txt"    "pressure45.txt"   
+[331] "pressure46.txt"    "pressure47.txt"    "pressure48.txt"    "pressure49.txt"    "pressure5.txt"     "pressure50.txt"    "pressure51.txt"    "pressure52.txt"    "pressure53.txt"    "pressure54.txt"    "pressure55.txt"   
+[342] "pressure56.txt"    "pressure57.txt"    "pressure58.txt"    "pressure59.txt"    "pressure6.txt"     "pressure60.txt"    "pressure61.txt"    "pressure62.txt"    "pressure63.txt"    "pressure64.txt"    "pressure65.txt"   
+[353] "pressure66.txt"    "pressure67.txt"    "pressure68.txt"    "pressure69.txt"    "pressure7.txt"     "pressure70.txt"    "pressure71.txt"    "pressure72.txt"    "pressure8.txt"     "pressure9.txt"     "surftemp1.txt"    
+[364] "surftemp10.txt"    "surftemp11.txt"    "surftemp12.txt"    "surftemp13.txt"    "surftemp14.txt"    "surftemp15.txt"    "surftemp16.txt"    "surftemp17.txt"    "surftemp18.txt"    "surftemp19.txt"    "surftemp2.txt"    
+[375] "surftemp20.txt"    "surftemp21.txt"    "surftemp22.txt"    "surftemp23.txt"    "surftemp24.txt"    "surftemp25.txt"    "surftemp26.txt"    "surftemp27.txt"    "surftemp28.txt"    "surftemp29.txt"    "surftemp3.txt"    
+[386] "surftemp30.txt"    "surftemp31.txt"    "surftemp32.txt"    "surftemp33.txt"    "surftemp34.txt"    "surftemp35.txt"    "surftemp36.txt"    "surftemp37.txt"    "surftemp38.txt"    "surftemp39.txt"    "surftemp4.txt"    
+[397] "surftemp40.txt"    "surftemp41.txt"    "surftemp42.txt"    "surftemp43.txt"    "surftemp44.txt"    "surftemp45.txt"    "surftemp46.txt"    "surftemp47.txt"    "surftemp48.txt"    "surftemp49.txt"    "surftemp5.txt"    
+[408] "surftemp50.txt"    "surftemp51.txt"    "surftemp52.txt"    "surftemp53.txt"    "surftemp54.txt"    "surftemp55.txt"    "surftemp56.txt"    "surftemp57.txt"    "surftemp58.txt"    "surftemp59.txt"    "surftemp6.txt"    
+[419] "surftemp60.txt"    "surftemp61.txt"    "surftemp62.txt"    "surftemp63.txt"    "surftemp64.txt"    "surftemp65.txt"    "surftemp66.txt"    "surftemp67.txt"    "surftemp68.txt"    "surftemp69.txt"    "surftemp7.txt"    
+[430] "surftemp70.txt"    "surftemp71.txt"    "surftemp72.txt"    "surftemp8.txt"     "surftemp9.txt"     "temperature1.txt"  "temperature10.txt" "temperature11.txt" "temperature12.txt" "temperature13.txt" "temperature14.txt"
+[441] "temperature15.txt" "temperature16.txt" "temperature17.txt" "temperature18.txt" "temperature19.txt" "temperature2.txt"  "temperature20.txt" "temperature21.txt" "temperature22.txt" "temperature23.txt" "temperature24.txt"
+[452] "temperature25.txt" "temperature26.txt" "temperature27.txt" "temperature28.txt" "temperature29.txt" "temperature3.txt"  "temperature30.txt" "temperature31.txt" "temperature32.txt" "temperature33.txt" "temperature34.txt"
+[463] "temperature35.txt" "temperature36.txt" "temperature37.txt" "temperature38.txt" "temperature39.txt" "temperature4.txt"  "temperature40.txt" "temperature41.txt" "temperature42.txt" "temperature43.txt" "temperature44.txt"
+[474] "temperature45.txt" "temperature46.txt" "temperature47.txt" "temperature48.txt" "temperature49.txt" "temperature5.txt"  "temperature50.txt" "temperature51.txt" "temperature52.txt" "temperature53.txt" "temperature54.txt"
+[485] "temperature55.txt" "temperature56.txt" "temperature57.txt" "temperature58.txt" "temperature59.txt" "temperature6.txt"  "temperature60.txt" "temperature61.txt" "temperature62.txt" "temperature63.txt" "temperature64.txt"
+[496] "temperature65.txt" "temperature66.txt" "temperature67.txt" "temperature68.txt" "temperature69.txt" "temperature7.txt"  "temperature70.txt" "temperature71.txt" "temperature72.txt" "temperature8.txt"  "temperature9.txt" 
+[40:56] 48> vars = c("cloudhigh", "cloudlow", "cloudmid", "ozone", "pressure", "surftemp", "temperature")
+[41:35] 49> ffv = lapply(vars, function(v) list.files("~/Data/NASA", pattern = v, full.names = TRUE))
+[42:17] 50> names(ffv)
+NULL
+[42:21] 51> names(ffv) = vars
+[42:24] 52> sapply(ffv, length)
+  cloudhigh    cloudlow    cloudmid       ozone    pressure    surftemp temperature 
+         72          72          72          72          72          72          72 
+[42:28] 53> dfs.vars = lapply(ffv, function(fs) lapply(fs, read))
+[43:02] 54> sapply(dfs.vars, function(x) table(sapply(x, class)))
+  cloudhigh.data.frame    cloudlow.data.frame    cloudmid.data.frame       ozone.data.frame    pressure.data.frame    surftemp.data.frame temperature.data.frame 
+                    72                     72                     72                     72                     72                     72                     72 
+[43:20] 55> sapply(dfs.vars, function(x) table(sapply(x, nrow)))
+  cloudhigh.576    cloudlow.576    cloudmid.576       ozone.576    pressure.576    surftemp.576 temperature.576 
+             72              72              72              72              72              72              72 
+[43:25] 56> lapply(dfs.vars, function(x) table(sapply(x, nrow)))
+*** output flushed ***
+[43:49] 57> dfs = lapply(dfs.vars, function(x) do.call(rbind, x))
+[44:28] 58> sapply(dfs, class)
+   cloudhigh     cloudlow     cloudmid        ozone     pressure     surftemp  temperature 
+"data.frame" "data.frame" "data.frame" "data.frame" "data.frame" "data.frame" "data.frame" 
+[44:42] 59> sapply(dfs, dim)
+     cloudhigh cloudlow cloudmid ozone pressure surftemp temperature
+[1,]     41472    41472    41472 41472    41472    41472       41472
+[2,]         4        4        4     4        4        4           4
+[44:46] 60> 41472/72
+[1] 576
+[44:53] 61> 576/(24*24)
+[1] 1
+[45:10] 62> sapply(dfs, names)
+     cloudhigh cloudlow cloudmid ozone   pressure surftemp temperature
+[1,] "value"   "value"  "value"  "value" "value"  "value"  "value"    
+[2,] "lat"     "lat"    "lat"    "lat"   "lat"    "lat"    "lat"      
+[3,] "lon"     "lon"    "lon"    "lon"   "lon"    "lon"    "lon"      
+[4,] "date"    "date"   "date"   "date"  "date"   "date"   "date"     
+[45:18] 63> # Can we put these side by side?  Do the rows match across the 7 variables?
+[45:18] 63> sapply(dfs, function(x, first) identical(x$lat, first), dfs[[1]]$lat)
+  cloudhigh    cloudlow    cloudmid       ozone    pressure    surftemp temperature 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+[46:45] 64> sapply(dfs, function(x, first) identical(x$lon, first), dfs[[1]]$lon)
+  cloudhigh    cloudlow    cloudmid       ozone    pressure    surftemp temperature 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+[46:58] 65> sapply(dfs, function(x, first) identical(x$date, first), dfs[[1]]$date)
+  cloudhigh    cloudlow    cloudmid       ozone    pressure    surftemp temperature 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+[47:07] 66> # Yes
+[47:07] 66> # The value columns should not match
+[47:07] 66> df = cbind(dfs[[1]][, c("lat", "lon", "date", "value")], do.call(cbind, lapply(dfs[-1], function(x) x[, "value", drop = FALSE])))
+[48:42] 67> names(df)
+ [1] "lat"   "lon"   "date"  "value" "value" "value" "value" "value" "value" "value"
+[48:45] 68> vars
+[1] "cloudhigh"   "cloudlow"    "cloudmid"    "ozone"       "pressure"    "surftemp"    "temperature"
+[49:04] 69> names(df)[-(1:3)] = vars
+[49:07] 70> head(df)
+   lat    lon       date cloudhigh cloudlow cloudmid ozone pressure surftemp temperature
+1 36.2 -113.8 1995-01-16      26.0      7.5     34.5   304      835    272.7       272.1
+2 33.8 -113.8 1995-01-16      20.0     11.5     32.5   304      940    279.5       282.2
+3 31.2 -113.8 1995-01-16      16.0     16.5     26.0   298      960    284.7       285.2
+4 28.8 -113.8 1995-01-16      13.0     20.5     14.5   276      990    289.3       290.7
+5 26.2 -113.8 1995-01-16       7.5     26.0     10.5   274     1000    292.2       292.7
+6 23.8 -113.8 1995-01-16       8.0     30.0      9.5   264     1000    294.1       293.6
+[49:16] 71> names(dfs)
+[1] "cloudhigh"   "cloudlow"    "cloudmid"    "ozone"       "pressure"    "surftemp"    "temperature"
+[49:30] 72> head(dfs$ozone)
+  value  lat    lon       date
+1   304 36.2 -113.8 1995-01-16
+2   304 33.8 -113.8 1995-01-16
+3   298 31.2 -113.8 1995-01-16
+4   276 28.8 -113.8 1995-01-16
+5   274 26.2 -113.8 1995-01-16
+6   264 23.8 -113.8 1995-01-16
+[49:40] 73> head(dfs$cloudhigh)
+  value  lat    lon       date
+1  26.0 36.2 -113.8 1995-01-16
+2  20.0 33.8 -113.8 1995-01-16
+3  16.0 31.2 -113.8 1995-01-16
+4  13.0 28.8 -113.8 1995-01-16
+5   7.5 26.2 -113.8 1995-01-16
+6   8.0 23.8 -113.8 1995-01-16
+[49:54] 74> # now check these make sense.
+[49:54] 74> plot(df$lon, df$lat)
+[50:22] 75> table(df$lon, df$lat)
+*** output flushed ***
+[50:39] 76> 
+[51:01] 77> table(df$lon, df$lat)
+        
+         -21.2 -18.8 -16.2 -13.8 -11.2 -8.8 -6.2 -3.8 -1.2 1.2 3.8 6.2 8.8 11.2 13.8 16.2 18.8 21.2 23.8 26.2 28.8 31.2 33.8 36.2
+  -113.8    72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -111.2    72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -108.8    72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -106.2    72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -103.8    72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -101.2    72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -98.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -96.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -93.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -91.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -88.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -86.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -83.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -81.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -78.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -76.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -73.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -71.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -68.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -66.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -63.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -61.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -58.8     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+  -56.2     72    72    72    72    72   72   72   72   72  72  72  72  72   72   72   72   72   72   72   72   72   72   72   72
+[51:25] 78> # Does this make sense?
+[51:25] 78> # plot temperature by month of the year (across 6 years)
+[51:25] 78> boxplot( df$temperature ~ as.integer(format(df$date, "%m")))
+[52:46] 79> # Make sense?
+[52:46] 79> boxplot( df$surftemp ~ as.integer(format(df$date, "%m")))
+[53:21] 80> with(df, plot(cloudlow, surftemp))
+[00:06] 81> # color by month?
+[00:06] 81> library(ggplot2)
+[00:49] 82> ggplot(df, aes(x = cloudlow, y = surftemp, color = format(date, "%m"))) + geom_point()
+Warning message:
+Removed 110 rows containing missing values or values outside the scale range (`geom_point()`). 
+[01:36] 83> sapply(df, function(x) sum(is.na(x)))
+        lat         lon        date   cloudhigh    cloudlow    cloudmid       ozone    pressure    surftemp temperature 
+          0           0           0           0         110           0           0           0           0           0 
+[02:45] 84> 
+[02:45] 84> df$date[is.na(df$cloudlow)]
+  [1] "1995-01-16" "1995-01-16" "1995-10-16" "1995-10-16" "1995-12-16" "1995-12-16" "1995-12-16" "1996-01-16" "1996-01-16" "1996-02-16" "1996-02-16" "1996-03-16" "1996-03-16" "1996-04-16" "1996-04-16" "1996-05-16" "1996-05-16"
+ [18] "1996-07-16" "1996-07-16" "1995-02-16" "1995-02-16" "1996-08-16" "1996-08-16" "1996-09-16" "1996-09-16" "1996-10-16" "1996-10-16" "1996-11-16" "1996-11-16" "1996-12-16" "1996-12-16" "1996-12-16" "1997-02-16" "1997-02-16"
+ [35] "1997-03-16" "1997-03-16" "1997-04-16" "1997-04-16" "1997-05-16" "1997-05-16" "1995-03-16" "1995-03-16" "1997-10-16" "1997-10-16" "1997-12-16" "1997-12-16" "1998-01-16" "1998-01-16" "1998-02-16" "1998-02-16" "1998-03-16"
+ [52] "1998-03-16" "1998-04-16" "1998-04-16" "1998-05-16" "1998-05-16" "1998-05-16" "1998-06-16" "1998-06-16" "1998-07-16" "1998-08-16" "1998-09-16" "1998-09-16" "1998-10-16" "1998-11-16" "1998-11-16" "1998-12-16" "1999-01-16"
+ [69] "1999-01-16" "1995-05-16" "1995-05-16" "1999-02-16" "1999-03-16" "1999-03-16" "1999-04-16" "1999-04-16" "1999-05-16" "1999-06-16" "1999-07-16" "1999-07-16" "1999-08-16" "1999-09-16" "1999-10-16" "1999-11-16" "1995-06-16"
+ [86] "1995-06-16" "1999-12-16" "1999-12-16" "2000-01-16" "2000-01-16" "2000-02-16" "2000-03-16" "2000-04-16" "2000-04-16" "2000-05-16" "2000-06-16" "2000-07-16" "2000-08-16" "2000-09-16" "1995-07-16" "1995-07-16" "2000-10-16"
+[103] "2000-11-16" "2000-11-16" "2000-12-16" "2000-12-16" "1995-08-16" "1995-08-16" "1995-09-16" "1995-09-16"
+t[03:39] 85> table(df$date[is.na(df$cloudlow)])
+
+1995-01-16 1995-02-16 1995-03-16 1995-05-16 1995-06-16 1995-07-16 1995-08-16 1995-09-16 1995-10-16 1995-12-16 1996-01-16 1996-02-16 1996-03-16 1996-04-16 1996-05-16 1996-07-16 1996-08-16 1996-09-16 1996-10-16 1996-11-16 1996-12-16 
+         2          2          2          2          2          2          2          2          2          3          2          2          2          2          2          2          2          2          2          2          3 
+1997-02-16 1997-03-16 1997-04-16 1997-05-16 1997-10-16 1997-12-16 1998-01-16 1998-02-16 1998-03-16 1998-04-16 1998-05-16 1998-06-16 1998-07-16 1998-08-16 1998-09-16 1998-10-16 1998-11-16 1998-12-16 1999-01-16 1999-02-16 1999-03-16 
+         2          2          2          2          2          2          2          2          2          2          3          2          1          1          2          1          2          1          2          1          2 
+1999-04-16 1999-05-16 1999-06-16 1999-07-16 1999-08-16 1999-09-16 1999-10-16 1999-11-16 1999-12-16 2000-01-16 2000-02-16 2000-03-16 2000-04-16 2000-05-16 2000-06-16 2000-07-16 2000-08-16 2000-09-16 2000-10-16 2000-11-16 2000-12-16 
+         2          1          1          2          1          1          1          1          2          2          1          1          2          1          1          1          1          1          1          2          2 
+[03:51] 86> table(df$lat[is.na(df$cloudlow)], df$lon[is.na(df$cloudlow)], d$)
+Error: unexpected ')' in "table(df$lat[is.na(df$cloudlow)], df$lon[is.na(df$cloudlow)], d$)"
+No suitable frames for recover()
+[03:51] 86> table(df$lat[is.na(df$cloudlow)], df$lon[is.na(df$cloudlow)])
+       
+        -68.8 -66.2
+  -21.2     0    31
+  -18.8    32    32
+  -16.2    15     0
+[04:22] 87> 
