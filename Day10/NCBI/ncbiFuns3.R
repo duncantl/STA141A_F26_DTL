@@ -1,9 +1,3 @@
-########################
-# Missing the last column.
-# Need to add the max(nchar(body)) to pos before diff where body is the vector of lines of data in the table
-# Need to have the body.
-# Arrange for procBlock() to provide this in the call to computeWidths
-# But don't have it (dt) until 3rd line of procBlock()
 
 computeWidths =
 function(h, body)
