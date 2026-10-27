@@ -88,3 +88,27 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
    	    + browser() and debugging.
     + [nasa functions](Day9/nasa.R)
     + [R session](Day9/Rsession), [R commands](Day9/Rcode.R), [R commands markdown](Day9/Rcode.md)
+
+
+
++ [Day 10](Day10)
+   + Reading data - strategies and implementation.
+   + Writing functions
+   + Finding non-local variables
+   + Debugging code
+   + [README](Day10/Plan.md)
+   + Finish NASA data
+      + read many files
+	  + get an error
+	    + try()
+      + warnings		
+         + add `na.strings = "...."`
+   + NCBI Data
+      + [NCBI Iteratons](NCBI/README.md)
+
+
++ [Day 11](Day11)
+   + Review session
+   
++ [Day 12](Day12)
+   + Mid-term exam.
