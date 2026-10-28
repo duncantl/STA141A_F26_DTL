@@ -1,0 +1,2001 @@
+]0;NASA~/sta141a/Public/Data/NASA> cd NA
+bash: cd: NA: No such file or directory
+]0;NASA~/sta141a/Public/Data/NASA> ls
+*** output flushed ***
+]0;NASA~/sta141a/Public/Data/NASA> cd ../../Day19
+]0;Day19~/sta141a/Public/Day19> cd ../Day10
+]0;Day10~/sta141a/Public/Day10> ls
+NASA/  NCBI/  Plan.md
+]0;Day10~/sta141a/Public/Day10> pwd
+/Users/duncan/sta141a/Public/Day10
+]0;Day10~/sta141a/Public/Day10> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 84312 
+Time = 2026-10-27 08:58:13 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day10 
+1> source("../Day9/nasa.R")
+[58:21] 2> 
+[58:28] 4> i = c("ozone58.txt" , "cloudlow2.txt", "ozone49.txt")
+[59:34] 5> z = read()
+[13:08] 6> class(z)
+[1] "data.frame"
+[13:31] 7> dim(z)
+[1] 576   4
+[13:37] 8> names(z)
+[1] "value" "lat"   "lon"   "date" 
+[13:45] 9> 24*24
+[1] 576
+[14:16] 10> table(z$lat)
+
+-21.2 -18.8 -16.2 -13.8 -11.2  -8.8  -6.2  -3.8  -1.2   1.2   3.8   6.2   8.8  11.2  13.8  16.2  18.8  21.2  23.8  26.2 
+   24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24    24 
+ 28.8  31.2  33.8  36.2 
+   24    24    24    24 
+[14:31] 11> length(table(z$lat))
+[1] 24
+[14:37] 12> table(z$lon)
+
+-113.8 -111.2 -108.8 -106.2 -103.8 -101.2  -98.8  -96.2  -93.8  -91.2  -88.8  -86.2  -83.8  -81.2  -78.8  -76.2  -73.8 
+    24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24     24 
+ -71.2  -68.8  -66.2  -63.8  -61.2  -58.8  -56.2 
+    24     24     24     24     24     24     24 
+[15:07] 13> table(z$lat, z$lon)
+       
+        -113.8 -111.2 -108.8 -106.2 -103.8 -101.2 -98.8 -96.2 -93.8 -91.2 -88.8 -86.2 -83.8 -81.2 -78.8 -76.2 -73.8
+  -21.2      1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -18.8      1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -16.2      1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -13.8      1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -11.2      1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -8.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -6.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -3.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  -1.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  1.2        1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  3.8        1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  6.2        1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  8.8        1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  11.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  13.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  16.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  18.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  21.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  23.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  26.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  28.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  31.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  33.8       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+  36.2       1      1      1      1      1      1     1     1     1     1     1     1     1     1     1     1     1
+       
+        -71.2 -68.8 -66.2 -63.8 -61.2 -58.8 -56.2
+  -21.2     1     1     1     1     1     1     1
+  -18.8     1     1     1     1     1     1     1
+  -16.2     1     1     1     1     1     1     1
+  -13.8     1     1     1     1     1     1     1
+  -11.2     1     1     1     1     1     1     1
+  -8.8      1     1     1     1     1     1     1
+  -6.2      1     1     1     1     1     1     1
+  -3.8      1     1     1     1     1     1     1
+  -1.2      1     1     1     1     1     1     1
+  1.2       1     1     1     1     1     1     1
+  3.8       1     1     1     1     1     1     1
+  6.2       1     1     1     1     1     1     1
+  8.8       1     1     1     1     1     1     1
+  11.2      1     1     1     1     1     1     1
+  13.8      1     1     1     1     1     1     1
+  16.2      1     1     1     1     1     1     1
+  18.8      1     1     1     1     1     1     1
+  21.2      1     1     1     1     1     1     1
+  23.8      1     1     1     1     1     1     1
+  26.2      1     1     1     1     1     1     1
+  28.8      1     1     1     1     1     1     1
+  31.2      1     1     1     1     1     1     1
+  33.8      1     1     1     1     1     1     1
+  36.2      1     1     1     1     1     1     1
+[15:22] 14> table(table(z$lat, z$lon))
+
+  1 
+576 
+[15:37] 15> length(unique(z$date))
+[1] 1
+[16:04] 16> z$date[1]
+[1] "1995-01-16"
+[16:12] 17> sapply(z, class)
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+[16:20] 18> summary(z$value)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  270.3   294.1   297.4   295.2   299.2   304.9 
+[16:36] 19> sapply(z, function(x) table(is.na(x)))
+value.FALSE   lat.FALSE   lon.FALSE  date.FALSE 
+        576         576         576         576 
+[17:37] 20> sapply(z, function(x) sum(is.na(x)))
+value   lat   lon  date 
+    0     0     0     0 
+[17:53] 21> plot(z$lat, z$value)
+[19:02] 22> plot(z$lon, z$value)
+[20:01] 23> ff = list.files("../Data/NASA", full.names = TRUE)
+[22:04] 24> head(ff)
+[1] "../Data/NASA/cloudhigh1.txt"  "../Data/NASA/cloudhigh10.txt" "../Data/NASA/cloudhigh11.txt"
+[4] "../Data/NASA/cloudhigh12.txt" "../Data/NASA/cloudhigh13.txt" "../Data/NASA/cloudhigh14.txt"
+[22:07] 25> length(ff)
+[1] 506
+[22:09] 26> sample(ff, 3)
+[1] "../Data/NASA/surftemp35.txt"    "../Data/NASA/temperature69.txt" "../Data/NASA/cloudmid71.txt"   
+[22:46] 27> i
+[1] "ozone58.txt"   "cloudlow2.txt" "ozone49.txt"  
+[22:55] 28> j = file.path("../Data/NASA", i)
+[23:22] 29> j
+[1] "../Data/NASA/ozone58.txt"   "../Data/NASA/cloudlow2.txt" "../Data/NASA/ozone49.txt"  
+[23:22] 30> file.exists(j)
+[1] TRUE TRUE TRUE
+[23:30] 31> z = lapply(j, read)
+[23:51] 32> class(z)
+[1] "list"
+[24:06] 33> class(z[[3]])
+[1] "data.frame"
+[24:49] 34> class(z[3])
+[1] "list"
+[24:55] 35> length(z[3])
+[1] 1
+[25:02] 36> x = c(1, 3)
+[26:09] 37> x[1]
+[1] 1
+[26:11] 38> sapply(z, class)
+[1] "data.frame" "data.frame" "data.frame"
+[26:53] 39> sapply(z, dim)
+     [,1] [,2] [,3]
+[1,]  576  576  576
+[2,]    4    4    4
+[27:00] 40> sapply(z, names)
+     [,1]    [,2]    [,3]   
+[1,] "value" "value" "value"
+[2,] "lat"   "lat"   "lat"  
+[3,] "lon"   "lon"   "lon"  
+[4,] "date"  "date"  "date" 
+[27:13] 41> lapply(z, function(x) sapply(x, class))
+[[1]]
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+
+[[2]]
+      value         lat         lon        date 
+"character"   "numeric"   "numeric"      "Date" 
+
+[[3]]
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+
+[27:43] 42> z[[2]]$value
+  [1] "15.5"  "16"    "17"    "19.5"  "16"    "19"    "22.5"  "21"    "19.5"  "22"    "24.5"  "20"    "25.5"  "29"   
+ [15] "28.5"  "34.5"  "37.5"  "32"    "30"    "31.5"  "36.5"  "41"    "35.5"  "33.5"  "10.5"  "16"    "17"    "11.5" 
+ [29] "16.5"  "16"    "20.5"  "21"    "18.5"  "21.5"  "22"    "20"    "25.5"  "28"    "27.5"  "33"    "38"    "34"   
+ [43] "32.5"  "33.5"  "40"    "41.5"  "35.5"  "36"    "10.5"  "12"    "11.5"  "11.5"  "11"    "14"    "18"    "19"   
+ [57] "23"    "19"    "17"    "21"    "27.5"  "31.5"  "26"    "32"    "41.5"  "37"    "33.5"  "34"    "43"    "41"   
+ [71] "37"    "35"    "10.5"  "10"    "11.5"  "8.5"   "11"    "10"    "21"    "21"    "24"    "20"    "20.5"  "23.5" 
+ [85] "26.5"  "31.5"  "27"    "36.5"  "46"    "38"    "36"    "34"    "43"    "42.5"  "37.5"  "35.5"  "12.5"  "18.5" 
+ [99] "18"    "11.5"  "7.5"   "10"    "11.5"  "14"    "12.5"  "20.5"  "16"    "18"    "25"    "33"    "28"    "34.5" 
+[113] "45"    "40"    "35.5"  "31"    "41"    "41.5"  "37"    "38"    "16.5"  "20.5"  "21.5"  "16"    "12.5"  "7.5"  
+[127] "13.5"  "15.5"  "11.5"  "17.5"  "13"    "17.5"  "27"    "39"    "28"    "34"    "44.5"  "39.5"  "33.5"  "28.5" 
+[141] "34.5"  "43"    "37"    "37"    "20.5"  "24.5"  "22.5"  "18"    "20"    "18"    "25"    "12.5"  "11.5"  "14"   
+[155] "16"    "13.5"  "27"    "38.5"  "28"    "34"    "41.5"  "38.5"  "32"    "28"    "34"    "43"    "38"    "36.5" 
+[169] "20.5"  "24.5"  "21.5"  "22.5"  "30.5"  "33.5"  "35"    "23"    "15"    "21.5"  "16.5"  "13"    "27.5"  "38.5" 
+[183] "27"    "30.5"  "38"    "40"    "33"    "23.5"  "31"    "43.5"  "47.5"  "43.5"  "27"    "26"    "21.5"  "25.5" 
+[197] "38"    "39"    "29.5"  "26"    "19"    "17.5"  "15"    "18.5"  "33.5"  "36"    "23.5"  "27.5"  "40"    "40.5" 
+[211] "34.5"  "24.5"  "33"    "44"    "52.5"  "51"    "26.5"  "24"    "22"    "30"    "42"    "31.5"  "18"    "18.5" 
+[225] "22"    "15"    "17"    "16.5"  "31"    "33.5"  "27"    "30"    "38.5"  "40.5"  "36"    "29"    "38"    "46"   
+[239] "55"    "52.5"  "19.5"  "26.5"  "24.5"  "30"    "45"    "28.5"  "18"    "19"    "22"    "16.5"  "13.5"  "16.5" 
+[253] "29"    "31.5"  "22"    "26.5"  "35.5"  "44"    "36"    "31"    "41.5"  "46"    "57"    "52.5"  "21.5"  "26.5" 
+[267] "25.5"  "34.5"  "41.5"  "34"    "20"    "24"    "30"    "28"    "24"    "20"    "29"    "26.5"  "24"    "25"   
+[281] "36.5"  "41"    "41"    "42"    "42.5"  "48.5"  "56"    "59"    "20.5"  "24"    "23.5"  "24"    "41.5"  "28"   
+[295] "19.5"  "27.5"  "27"    "28"    "32.5"  "19.5"  "29"    "24.5"  "29.5"  "30.5"  "34.5"  "40"    "40.5"  "42"   
+[309] "46"    "51.5"  "55.5"  "59"    "20.5"  "24"    "32"    "24"    "21.5"  "25.5"  "17.5"  "26"    "23.5"  "31"   
+[323] "20.5"  "23"    "19.5"  "26"    "32"    "24.5"  "25.5"  "29.5"  "39.5"  "36"    "44"    "50"    "56"    "63.5" 
+[337] "19"    "23.5"  "45"    "45"    "28.5"  "23"    "16.5"  "22"    "26"    "17"    "15"    "15.5"  "21.5"  "34"   
+[351] "18"    "9"     "6"     "8.5"   "23.5"  "17"    "33"    "48"    "52"    "63"    "28.5"  "39"    "45"    "40.5" 
+[365] "35"    "31"    "20"    "22"    "24.5"  "11.5"  "12.5"  "15"    "17"    "17"    "15.5"  "13"    "8"     "4.5"  
+[379] "4"     "4.5"   "11"    "44.5"  "54"    "59.5"  "40.5"  "41.5"  "37.5"  "40.5"  "33.5"  "31"    "24.5"  "25.5" 
+[393] "23"    "12.5"  "13.5"  "19"    "16"    "17"    "15.5"  "12"    "9.5"   "6.5"   "4.5"   "4.5"   "7.5"   "28"   
+[407] "45.5"  "55.5"  "38"    "36.5"  "41"    "37.5"  "37.5"  "31"    "31"    "21.5"  "24.5"  "15.5"  "13.5"  "19"   
+[421] "15.5"  "16"    "14.5"  "10.5"  "8.5"   "6.5"   "6"     "5"     "4"     "9"     "13.5"  "33.5"  "38.00" "38.00"
+[435] "39.50" "37.50" "37.50" "32.50" "30.00" "22.50" "30.50" "23.50" "14.00" "13.50" "16.00" "17.00" "12.00" "10.50"
+[449] "9.00"  "7.00"  "6.00"  "6.50"  "6.50"  "6.00"  "...."  "10.50" "35.50" "38.00" "42.50" "37.00" "39.00" "35.50"
+[463] "28.50" "22.50" "34.50" "27.00" "20.00" "15.00" "20.00" "15.50" "13.50" "12.00" "10.00" "7.00"  "5.50"  "6.00" 
+[477] "9.50"  "9.00"  "...."  "9.50"  "37.5"  "42"    "39.5"  "34.5"  "35.5"  "35.5"  "31"    "30"    "38"    "33.5" 
+[491] "28"    "20.5"  "17.5"  "17"    "14.5"  "12.5"  "10.5"  "8"     "6"     "5.5"   "9.5"   "9"     "8.5"   "16.5" 
+[505] "38"    "40"    "35"    "33.5"  "35.5"  "36"    "36"    "34"    "40"    "38"    "30.5"  "23.5"  "22"    "21.5" 
+[519] "18.5"  "13.5"  "10"    "7.5"   "6"     "4.5"   "8"     "11.5"  "15"    "19"    "39.5"  "38"    "35"    "33.5" 
+[533] "35.5"  "34"    "37"    "41.5"  "38"    "37"    "30.5"  "27"    "22.5"  "25.5"  "20"    "15"    "9"     "6.5"  
+[547] "5"     "4.5"   "6.5"   "12"    "15.5"  "13.5"  "39.5"  "36"    "35"    "37"    "38.5"  "39"    "36.5"  "38"   
+[561] "39.5"  "36.5"  "32"    "31"    "18.5"  "24"    "19.5"  "14.5"  "8"     "5.5"   "5.5"   "5"     "7.5"   "9"    
+[575] "14"    "12"   
+[29:15] 43> w = as.numeric(z[[2]]$value)
+Warning message:
+NAs introduced by coercion 
+[30:04] 44> x = z[[2]]$value
+[30:31] 45> x[ is.na(x) ]
+character(0)
+[30:50] 46> x[ is.na(w) ]
+[1] "...." "...."
+[31:07] 47> 
+[31:07] 47> j
+[1] "../Data/NASA/ozone58.txt"   "../Data/NASA/cloudlow2.txt" "../Data/NASA/ozone49.txt"  
+[32:05] 48> source("nasa.R")
+Error in file(filename, "r", encoding = encoding) : 
+  cannot open the connection
+In addition: Warning message:
+In file(filename, "r", encoding = encoding) :
+  cannot open file 'nasa.R': No such file or directory
+
+Enter a frame number, or 0 to exit 
+
+1: source("nasa.R")
+2: file(filename, "r", encoding = encoding)
+
+Selection: 0
+[32:05] 48> source("NASA/nasa.R")
+Error in file(filename, "r", encoding = encoding) : 
+  cannot open the connection
+In addition: Warning message:
+In file(filename, "r", encoding = encoding) :
+  cannot open file 'NASA/nasa.R': No such file or directory
+
+Enter a frame number, or 0 to exit 
+
+1: source("NASA/nasa.R")
+2: file(filename, "r", encoding = encoding)
+
+Selection: 0
+[32:05] 48> getwd()
+[1] "/Users/duncan/Classes/Davis/STA141A_F26/Public/Day10"
+[33:09] 49> source("NASA/nasa2.R")
+[33:20] 50> read
+function(file = "../Data/NASA/temperature1.txt", encoding = "UTF8")
+{
+    tmp = read.table(file, skip = 7,header = FALSE, na.strings = "....") #<<<<<<<< changed.
+    vals = unlist(tmp[, -(1:3)])
+    d = data.frame(value = vals)
+    
+    # latitude
+    lat = compLatitude(tmp[,1])
+    d$lat = rep(lat, ncol(tmp) - 3)
+
+
+    # Read the first 6 lines to get the date and the longitude
+    # Other ways to do longitude
+    tmp2 = readLines(file, n = 6)
+#    browser()
+    
+    # longitude
+    # Split the longitude line get only the values
+    # Originally had
+    #     lon = strsplit(tmp2[6],  " ")
+    # What difference does it make?
+    # options(warn = 2, error = recover)
+    # then read()
+    lon = strsplit(tmp2[6],  " ")[[1]]
+    lon = lon[ lon != "" ]
+    lon = compLongitude(lon)
+    d$lon = rep(lon, each = nrow(tmp))
+
+    
+    # date
+    d$date = as.Date(getDate(tmp2[5]), "%d-%b-%Y")
+
+    # remove the meaningless row names.
+    rownames(d) = NULL
+    
+    d
+}
+[33:24] 51> z = lapply(j, read)
+[33:48] 52> lapply(z, function(x) sapply(x, class))
+[[1]]
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+
+[[2]]
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+
+[[3]]
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+
+[33:54] 53> ff
+  [1] "../Data/NASA/cloudhigh1.txt"    "../Data/NASA/cloudhigh10.txt"   "../Data/NASA/cloudhigh11.txt"  
+  [4] "../Data/NASA/cloudhigh12.txt"   "../Data/NASA/cloudhigh13.txt"   "../Data/NASA/cloudhigh14.txt"  
+  [7] "../Data/NASA/cloudhigh15.txt"   "../Data/NASA/cloudhigh16.txt"   "../Data/NASA/cloudhigh17.txt"  
+ [10] "../Data/NASA/cloudhigh18.txt"   "../Data/NASA/cloudhigh19.txt"   "../Data/NASA/cloudhigh2.txt"   
+ [13] "../Data/NASA/cloudhigh20.txt"   "../Data/NASA/cloudhigh21.txt"   "../Data/NASA/cloudhigh22.txt"  
+ [16] "../Data/NASA/cloudhigh23.txt"   "../Data/NASA/cloudhigh24.txt"   "../Data/NASA/cloudhigh25.txt"  
+ [19] "../Data/NASA/cloudhigh26.txt"   "../Data/NASA/cloudhigh27.txt"   "../Data/NASA/cloudhigh28.txt"  
+ [22] "../Data/NASA/cloudhigh29.txt"   "../Data/NASA/cloudhigh3.txt"    "../Data/NASA/cloudhigh30.txt"  
+ [25] "../Data/NASA/cloudhigh31.txt"   "../Data/NASA/cloudhigh32.txt"   "../Data/NASA/cloudhigh33.txt"  
+ [28] "../Data/NASA/cloudhigh34.txt"   "../Data/NASA/cloudhigh35.txt"   "../Data/NASA/cloudhigh36.txt"  
+ [31] "../Data/NASA/cloudhigh37.txt"   "../Data/NASA/cloudhigh38.txt"   "../Data/NASA/cloudhigh39.txt"  
+ [34] "../Data/NASA/cloudhigh4.txt"    "../Data/NASA/cloudhigh40.txt"   "../Data/NASA/cloudhigh41.txt"  
+ [37] "../Data/NASA/cloudhigh42.txt"   "../Data/NASA/cloudhigh43.txt"   "../Data/NASA/cloudhigh44.txt"  
+ [40] "../Data/NASA/cloudhigh45.txt"   "../Data/NASA/cloudhigh46.txt"   "../Data/NASA/cloudhigh47.txt"  
+ [43] "../Data/NASA/cloudhigh48.txt"   "../Data/NASA/cloudhigh49.txt"   "../Data/NASA/cloudhigh5.txt"   
+ [46] "../Data/NASA/cloudhigh50.txt"   "../Data/NASA/cloudhigh51.txt"   "../Data/NASA/cloudhigh52.txt"  
+ [49] "../Data/NASA/cloudhigh53.txt"   "../Data/NASA/cloudhigh54.txt"   "../Data/NASA/cloudhigh55.txt"  
+ [52] "../Data/NASA/cloudhigh56.txt"   "../Data/NASA/cloudhigh57.txt"   "../Data/NASA/cloudhigh58.txt"  
+ [55] "../Data/NASA/cloudhigh59.txt"   "../Data/NASA/cloudhigh6.txt"    "../Data/NASA/cloudhigh60.txt"  
+ [58] "../Data/NASA/cloudhigh61.txt"   "../Data/NASA/cloudhigh62.txt"   "../Data/NASA/cloudhigh63.txt"  
+ [61] "../Data/NASA/cloudhigh64.txt"   "../Data/NASA/cloudhigh65.txt"   "../Data/NASA/cloudhigh66.txt"  
+ [64] "../Data/NASA/cloudhigh67.txt"   "../Data/NASA/cloudhigh68.txt"   "../Data/NASA/cloudhigh69.txt"  
+ [67] "../Data/NASA/cloudhigh7.txt"    "../Data/NASA/cloudhigh70.txt"   "../Data/NASA/cloudhigh71.txt"  
+ [70] "../Data/NASA/cloudhigh72.txt"   "../Data/NASA/cloudhigh8.txt"    "../Data/NASA/cloudhigh9.txt"   
+ [73] "../Data/NASA/cloudlow1.txt"     "../Data/NASA/cloudlow10.txt"    "../Data/NASA/cloudlow11.txt"   
+ [76] "../Data/NASA/cloudlow12.txt"    "../Data/NASA/cloudlow13.txt"    "../Data/NASA/cloudlow14.txt"   
+ [79] "../Data/NASA/cloudlow15.txt"    "../Data/NASA/cloudlow16.txt"    "../Data/NASA/cloudlow17.txt"   
+ [82] "../Data/NASA/cloudlow18.txt"    "../Data/NASA/cloudlow19.txt"    "../Data/NASA/cloudlow2.txt"    
+ [85] "../Data/NASA/cloudlow20.txt"    "../Data/NASA/cloudlow21.txt"    "../Data/NASA/cloudlow22.txt"   
+ [88] "../Data/NASA/cloudlow23.txt"    "../Data/NASA/cloudlow24.txt"    "../Data/NASA/cloudlow25.txt"   
+ [91] "../Data/NASA/cloudlow26.txt"    "../Data/NASA/cloudlow27.txt"    "../Data/NASA/cloudlow28.txt"   
+ [94] "../Data/NASA/cloudlow29.txt"    "../Data/NASA/cloudlow3.txt"     "../Data/NASA/cloudlow30.txt"   
+ [97] "../Data/NASA/cloudlow31.txt"    "../Data/NASA/cloudlow32.txt"    "../Data/NASA/cloudlow33.txt"   
+[100] "../Data/NASA/cloudlow34.txt"    "../Data/NASA/cloudlow35.txt"    "../Data/NASA/cloudlow36.txt"   
+[103] "../Data/NASA/cloudlow37.txt"    "../Data/NASA/cloudlow38.txt"    "../Data/NASA/cloudlow39.txt"   
+[106] "../Data/NASA/cloudlow4.txt"     "../Data/NASA/cloudlow40.txt"    "../Data/NASA/cloudlow41.txt"   
+[109] "../Data/NASA/cloudlow42.txt"    "../Data/NASA/cloudlow43.txt"    "../Data/NASA/cloudlow44.txt"   
+[112] "../Data/NASA/cloudlow45.txt"    "../Data/NASA/cloudlow46.txt"    "../Data/NASA/cloudlow47.txt"   
+[115] "../Data/NASA/cloudlow48.txt"    "../Data/NASA/cloudlow49.txt"    "../Data/NASA/cloudlow5.txt"    
+[118] "../Data/NASA/cloudlow50.txt"    "../Data/NASA/cloudlow51.txt"    "../Data/NASA/cloudlow52.txt"   
+[121] "../Data/NASA/cloudlow53.txt"    "../Data/NASA/cloudlow54.txt"    "../Data/NASA/cloudlow55.txt"   
+[124] "../Data/NASA/cloudlow56.txt"    "../Data/NASA/cloudlow57.txt"    "../Data/NASA/cloudlow58.txt"   
+[127] "../Data/NASA/cloudlow59.txt"    "../Data/NASA/cloudlow6.txt"     "../Data/NASA/cloudlow60.txt"   
+[130] "../Data/NASA/cloudlow61.txt"    "../Data/NASA/cloudlow62.txt"    "../Data/NASA/cloudlow63.txt"   
+[133] "../Data/NASA/cloudlow64.txt"    "../Data/NASA/cloudlow65.txt"    "../Data/NASA/cloudlow66.txt"   
+[136] "../Data/NASA/cloudlow67.txt"    "../Data/NASA/cloudlow68.txt"    "../Data/NASA/cloudlow69.txt"   
+[139] "../Data/NASA/cloudlow7.txt"     "../Data/NASA/cloudlow70.txt"    "../Data/NASA/cloudlow71.txt"   
+[142] "../Data/NASA/cloudlow72.txt"    "../Data/NASA/cloudlow8.txt"     "../Data/NASA/cloudlow9.txt"    
+[145] "../Data/NASA/cloudmid1.txt"     "../Data/NASA/cloudmid10.txt"    "../Data/NASA/cloudmid11.txt"   
+[148] "../Data/NASA/cloudmid12.txt"    "../Data/NASA/cloudmid13.txt"    "../Data/NASA/cloudmid14.txt"   
+[151] "../Data/NASA/cloudmid15.txt"    "../Data/NASA/cloudmid16.txt"    "../Data/NASA/cloudmid17.txt"   
+[154] "../Data/NASA/cloudmid18.txt"    "../Data/NASA/cloudmid19.txt"    "../Data/NASA/cloudmid2.txt"    
+[157] "../Data/NASA/cloudmid20.txt"    "../Data/NASA/cloudmid21.txt"    "../Data/NASA/cloudmid22.txt"   
+[160] "../Data/NASA/cloudmid23.txt"    "../Data/NASA/cloudmid24.txt"    "../Data/NASA/cloudmid25.txt"   
+[163] "../Data/NASA/cloudmid26.txt"    "../Data/NASA/cloudmid27.txt"    "../Data/NASA/cloudmid28.txt"   
+[166] "../Data/NASA/cloudmid29.txt"    "../Data/NASA/cloudmid3.txt"     "../Data/NASA/cloudmid30.txt"   
+[169] "../Data/NASA/cloudmid31.txt"    "../Data/NASA/cloudmid32.txt"    "../Data/NASA/cloudmid33.txt"   
+[172] "../Data/NASA/cloudmid34.txt"    "../Data/NASA/cloudmid35.txt"    "../Data/NASA/cloudmid36.txt"   
+[175] "../Data/NASA/cloudmid37.txt"    "../Data/NASA/cloudmid38.txt"    "../Data/NASA/cloudmid39.txt"   
+[178] "../Data/NASA/cloudmid4.txt"     "../Data/NASA/cloudmid40.txt"    "../Data/NASA/cloudmid41.txt"   
+[181] "../Data/NASA/cloudmid42.txt"    "../Data/NASA/cloudmid43.txt"    "../Data/NASA/cloudmid44.txt"   
+[184] "../Data/NASA/cloudmid45.txt"    "../Data/NASA/cloudmid46.txt"    "../Data/NASA/cloudmid47.txt"   
+[187] "../Data/NASA/cloudmid48.txt"    "../Data/NASA/cloudmid49.txt"    "../Data/NASA/cloudmid5.txt"    
+[190] "../Data/NASA/cloudmid50.txt"    "../Data/NASA/cloudmid51.txt"    "../Data/NASA/cloudmid52.txt"   
+[193] "../Data/NASA/cloudmid53.txt"    "../Data/NASA/cloudmid54.txt"    "../Data/NASA/cloudmid55.txt"   
+[196] "../Data/NASA/cloudmid56.txt"    "../Data/NASA/cloudmid57.txt"    "../Data/NASA/cloudmid58.txt"   
+[199] "../Data/NASA/cloudmid59.txt"    "../Data/NASA/cloudmid6.txt"     "../Data/NASA/cloudmid60.txt"   
+[202] "../Data/NASA/cloudmid61.txt"    "../Data/NASA/cloudmid62.txt"    "../Data/NASA/cloudmid63.txt"   
+[205] "../Data/NASA/cloudmid64.txt"    "../Data/NASA/cloudmid65.txt"    "../Data/NASA/cloudmid66.txt"   
+[208] "../Data/NASA/cloudmid67.txt"    "../Data/NASA/cloudmid68.txt"    "../Data/NASA/cloudmid69.txt"   
+[211] "../Data/NASA/cloudmid7.txt"     "../Data/NASA/cloudmid70.txt"    "../Data/NASA/cloudmid71.txt"   
+[214] "../Data/NASA/cloudmid72.txt"    "../Data/NASA/cloudmid8.txt"     "../Data/NASA/cloudmid9.txt"    
+[217] "../Data/NASA/elevation.dat"     "../Data/NASA/intlvtn.dat"       "../Data/NASA/ozone1.txt"       
+[220] "../Data/NASA/ozone10.txt"       "../Data/NASA/ozone11.txt"       "../Data/NASA/ozone12.txt"      
+[223] "../Data/NASA/ozone13.txt"       "../Data/NASA/ozone14.txt"       "../Data/NASA/ozone15.txt"      
+[226] "../Data/NASA/ozone16.txt"       "../Data/NASA/ozone17.txt"       "../Data/NASA/ozone18.txt"      
+[229] "../Data/NASA/ozone19.txt"       "../Data/NASA/ozone2.txt"        "../Data/NASA/ozone20.txt"      
+[232] "../Data/NASA/ozone21.txt"       "../Data/NASA/ozone22.txt"       "../Data/NASA/ozone23.txt"      
+[235] "../Data/NASA/ozone24.txt"       "../Data/NASA/ozone25.txt"       "../Data/NASA/ozone26.txt"      
+[238] "../Data/NASA/ozone27.txt"       "../Data/NASA/ozone28.txt"       "../Data/NASA/ozone29.txt"      
+[241] "../Data/NASA/ozone3.txt"        "../Data/NASA/ozone30.txt"       "../Data/NASA/ozone31.txt"      
+[244] "../Data/NASA/ozone32.txt"       "../Data/NASA/ozone33.txt"       "../Data/NASA/ozone34.txt"      
+[247] "../Data/NASA/ozone35.txt"       "../Data/NASA/ozone36.txt"       "../Data/NASA/ozone37.txt"      
+[250] "../Data/NASA/ozone38.txt"       "../Data/NASA/ozone39.txt"       "../Data/NASA/ozone4.txt"       
+[253] "../Data/NASA/ozone40.txt"       "../Data/NASA/ozone41.txt"       "../Data/NASA/ozone42.txt"      
+[256] "../Data/NASA/ozone43.txt"       "../Data/NASA/ozone44.txt"       "../Data/NASA/ozone45.txt"      
+[259] "../Data/NASA/ozone46.txt"       "../Data/NASA/ozone47.txt"       "../Data/NASA/ozone48.txt"      
+[262] "../Data/NASA/ozone49.txt"       "../Data/NASA/ozone5.txt"        "../Data/NASA/ozone50.txt"      
+[265] "../Data/NASA/ozone51.txt"       "../Data/NASA/ozone52.txt"       "../Data/NASA/ozone53.txt"      
+[268] "../Data/NASA/ozone54.txt"       "../Data/NASA/ozone55.txt"       "../Data/NASA/ozone56.txt"      
+[271] "../Data/NASA/ozone57.txt"       "../Data/NASA/ozone58.txt"       "../Data/NASA/ozone59.txt"      
+[274] "../Data/NASA/ozone6.txt"        "../Data/NASA/ozone60.txt"       "../Data/NASA/ozone61.txt"      
+[277] "../Data/NASA/ozone62.txt"       "../Data/NASA/ozone63.txt"       "../Data/NASA/ozone64.txt"      
+[280] "../Data/NASA/ozone65.txt"       "../Data/NASA/ozone66.txt"       "../Data/NASA/ozone67.txt"      
+[283] "../Data/NASA/ozone68.txt"       "../Data/NASA/ozone69.txt"       "../Data/NASA/ozone7.txt"       
+[286] "../Data/NASA/ozone70.txt"       "../Data/NASA/ozone71.txt"       "../Data/NASA/ozone72.txt"      
+[289] "../Data/NASA/ozone8.txt"        "../Data/NASA/ozone9.txt"        "../Data/NASA/pressure1.txt"    
+[292] "../Data/NASA/pressure10.txt"    "../Data/NASA/pressure11.txt"    "../Data/NASA/pressure12.txt"   
+[295] "../Data/NASA/pressure13.txt"    "../Data/NASA/pressure14.txt"    "../Data/NASA/pressure15.txt"   
+[298] "../Data/NASA/pressure16.txt"    "../Data/NASA/pressure17.txt"    "../Data/NASA/pressure18.txt"   
+[301] "../Data/NASA/pressure19.txt"    "../Data/NASA/pressure2.txt"     "../Data/NASA/pressure20.txt"   
+[304] "../Data/NASA/pressure21.txt"    "../Data/NASA/pressure22.txt"    "../Data/NASA/pressure23.txt"   
+[307] "../Data/NASA/pressure24.txt"    "../Data/NASA/pressure25.txt"    "../Data/NASA/pressure26.txt"   
+[310] "../Data/NASA/pressure27.txt"    "../Data/NASA/pressure28.txt"    "../Data/NASA/pressure29.txt"   
+[313] "../Data/NASA/pressure3.txt"     "../Data/NASA/pressure30.txt"    "../Data/NASA/pressure31.txt"   
+[316] "../Data/NASA/pressure32.txt"    "../Data/NASA/pressure33.txt"    "../Data/NASA/pressure34.txt"   
+[319] "../Data/NASA/pressure35.txt"    "../Data/NASA/pressure36.txt"    "../Data/NASA/pressure37.txt"   
+[322] "../Data/NASA/pressure38.txt"    "../Data/NASA/pressure39.txt"    "../Data/NASA/pressure4.txt"    
+[325] "../Data/NASA/pressure40.txt"    "../Data/NASA/pressure41.txt"    "../Data/NASA/pressure42.txt"   
+[328] "../Data/NASA/pressure43.txt"    "../Data/NASA/pressure44.txt"    "../Data/NASA/pressure45.txt"   
+[331] "../Data/NASA/pressure46.txt"    "../Data/NASA/pressure47.txt"    "../Data/NASA/pressure48.txt"   
+[334] "../Data/NASA/pressure49.txt"    "../Data/NASA/pressure5.txt"     "../Data/NASA/pressure50.txt"   
+[337] "../Data/NASA/pressure51.txt"    "../Data/NASA/pressure52.txt"    "../Data/NASA/pressure53.txt"   
+[340] "../Data/NASA/pressure54.txt"    "../Data/NASA/pressure55.txt"    "../Data/NASA/pressure56.txt"   
+[343] "../Data/NASA/pressure57.txt"    "../Data/NASA/pressure58.txt"    "../Data/NASA/pressure59.txt"   
+[346] "../Data/NASA/pressure6.txt"     "../Data/NASA/pressure60.txt"    "../Data/NASA/pressure61.txt"   
+[349] "../Data/NASA/pressure62.txt"    "../Data/NASA/pressure63.txt"    "../Data/NASA/pressure64.txt"   
+[352] "../Data/NASA/pressure65.txt"    "../Data/NASA/pressure66.txt"    "../Data/NASA/pressure67.txt"   
+[355] "../Data/NASA/pressure68.txt"    "../Data/NASA/pressure69.txt"    "../Data/NASA/pressure7.txt"    
+[358] "../Data/NASA/pressure70.txt"    "../Data/NASA/pressure71.txt"    "../Data/NASA/pressure72.txt"   
+[361] "../Data/NASA/pressure8.txt"     "../Data/NASA/pressure9.txt"     "../Data/NASA/surftemp1.txt"    
+[364] "../Data/NASA/surftemp10.txt"    "../Data/NASA/surftemp11.txt"    "../Data/NASA/surftemp12.txt"   
+[367] "../Data/NASA/surftemp13.txt"    "../Data/NASA/surftemp14.txt"    "../Data/NASA/surftemp15.txt"   
+[370] "../Data/NASA/surftemp16.txt"    "../Data/NASA/surftemp17.txt"    "../Data/NASA/surftemp18.txt"   
+[373] "../Data/NASA/surftemp19.txt"    "../Data/NASA/surftemp2.txt"     "../Data/NASA/surftemp20.txt"   
+[376] "../Data/NASA/surftemp21.txt"    "../Data/NASA/surftemp22.txt"    "../Data/NASA/surftemp23.txt"   
+[379] "../Data/NASA/surftemp24.txt"    "../Data/NASA/surftemp25.txt"    "../Data/NASA/surftemp26.txt"   
+[382] "../Data/NASA/surftemp27.txt"    "../Data/NASA/surftemp28.txt"    "../Data/NASA/surftemp29.txt"   
+[385] "../Data/NASA/surftemp3.txt"     "../Data/NASA/surftemp30.txt"    "../Data/NASA/surftemp31.txt"   
+[388] "../Data/NASA/surftemp32.txt"    "../Data/NASA/surftemp33.txt"    "../Data/NASA/surftemp34.txt"   
+[391] "../Data/NASA/surftemp35.txt"    "../Data/NASA/surftemp36.txt"    "../Data/NASA/surftemp37.txt"   
+[394] "../Data/NASA/surftemp38.txt"    "../Data/NASA/surftemp39.txt"    "../Data/NASA/surftemp4.txt"    
+[397] "../Data/NASA/surftemp40.txt"    "../Data/NASA/surftemp41.txt"    "../Data/NASA/surftemp42.txt"   
+[400] "../Data/NASA/surftemp43.txt"    "../Data/NASA/surftemp44.txt"    "../Data/NASA/surftemp45.txt"   
+[403] "../Data/NASA/surftemp46.txt"    "../Data/NASA/surftemp47.txt"    "../Data/NASA/surftemp48.txt"   
+[406] "../Data/NASA/surftemp49.txt"    "../Data/NASA/surftemp5.txt"     "../Data/NASA/surftemp50.txt"   
+[409] "../Data/NASA/surftemp51.txt"    "../Data/NASA/surftemp52.txt"    "../Data/NASA/surftemp53.txt"   
+[412] "../Data/NASA/surftemp54.txt"    "../Data/NASA/surftemp55.txt"    "../Data/NASA/surftemp56.txt"   
+[415] "../Data/NASA/surftemp57.txt"    "../Data/NASA/surftemp58.txt"    "../Data/NASA/surftemp59.txt"   
+[418] "../Data/NASA/surftemp6.txt"     "../Data/NASA/surftemp60.txt"    "../Data/NASA/surftemp61.txt"   
+[421] "../Data/NASA/surftemp62.txt"    "../Data/NASA/surftemp63.txt"    "../Data/NASA/surftemp64.txt"   
+[424] "../Data/NASA/surftemp65.txt"    "../Data/NASA/surftemp66.txt"    "../Data/NASA/surftemp67.txt"   
+[427] "../Data/NASA/surftemp68.txt"    "../Data/NASA/surftemp69.txt"    "../Data/NASA/surftemp7.txt"    
+[430] "../Data/NASA/surftemp70.txt"    "../Data/NASA/surftemp71.txt"    "../Data/NASA/surftemp72.txt"   
+[433] "../Data/NASA/surftemp8.txt"     "../Data/NASA/surftemp9.txt"     "../Data/NASA/temperature1.txt" 
+[436] "../Data/NASA/temperature10.txt" "../Data/NASA/temperature11.txt" "../Data/NASA/temperature12.txt"
+[439] "../Data/NASA/temperature13.txt" "../Data/NASA/temperature14.txt" "../Data/NASA/temperature15.txt"
+[442] "../Data/NASA/temperature16.txt" "../Data/NASA/temperature17.txt" "../Data/NASA/temperature18.txt"
+[445] "../Data/NASA/temperature19.txt" "../Data/NASA/temperature2.txt"  "../Data/NASA/temperature20.txt"
+[448] "../Data/NASA/temperature21.txt" "../Data/NASA/temperature22.txt" "../Data/NASA/temperature23.txt"
+[451] "../Data/NASA/temperature24.txt" "../Data/NASA/temperature25.txt" "../Data/NASA/temperature26.txt"
+[454] "../Data/NASA/temperature27.txt" "../Data/NASA/temperature28.txt" "../Data/NASA/temperature29.txt"
+[457] "../Data/NASA/temperature3.txt"  "../Data/NASA/temperature30.txt" "../Data/NASA/temperature31.txt"
+[460] "../Data/NASA/temperature32.txt" "../Data/NASA/temperature33.txt" "../Data/NASA/temperature34.txt"
+[463] "../Data/NASA/temperature35.txt" "../Data/NASA/temperature36.txt" "../Data/NASA/temperature37.txt"
+[466] "../Data/NASA/temperature38.txt" "../Data/NASA/temperature39.txt" "../Data/NASA/temperature4.txt" 
+[469] "../Data/NASA/temperature40.txt" "../Data/NASA/temperature41.txt" "../Data/NASA/temperature42.txt"
+[472] "../Data/NASA/temperature43.txt" "../Data/NASA/temperature44.txt" "../Data/NASA/temperature45.txt"
+[475] "../Data/NASA/temperature46.txt" "../Data/NASA/temperature47.txt" "../Data/NASA/temperature48.txt"
+[478] "../Data/NASA/temperature49.txt" "../Data/NASA/temperature5.txt"  "../Data/NASA/temperature50.txt"
+[481] "../Data/NASA/temperature51.txt" "../Data/NASA/temperature52.txt" "../Data/NASA/temperature53.txt"
+[484] "../Data/NASA/temperature54.txt" "../Data/NASA/temperature55.txt" "../Data/NASA/temperature56.txt"
+[487] "../Data/NASA/temperature57.txt" "../Data/NASA/temperature58.txt" "../Data/NASA/temperature59.txt"
+[490] "../Data/NASA/temperature6.txt"  "../Data/NASA/temperature60.txt" "../Data/NASA/temperature61.txt"
+[493] "../Data/NASA/temperature62.txt" "../Data/NASA/temperature63.txt" "../Data/NASA/temperature64.txt"
+[496] "../Data/NASA/temperature65.txt" "../Data/NASA/temperature66.txt" "../Data/NASA/temperature67.txt"
+[499] "../Data/NASA/temperature68.txt" "../Data/NASA/temperature69.txt" "../Data/NASA/temperature7.txt" 
+[502] "../Data/NASA/temperature70.txt" "../Data/NASA/temperature71.txt" "../Data/NASA/temperature72.txt"
+[505] "../Data/NASA/temperature8.txt"  "../Data/NASA/temperature9.txt" 
+[34:15] 54> z = lapply(ff, read)
+Error in `$<-.data.frame`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32,  : 
+  replacement has 3233 rows, data has 3074
+
+Enter a frame number, or 0 to exit 
+
+1: lapply(ff, read)
+2: FUN(X[[i]], ...)
+3: nasa2.R#28: `$<-`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 
+4: nasa2.R#28: `$<-.data.frame`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 3
+
+Selection: 2
+Called from: `$<-`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32, 32, 32, 32, 
+32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 
+32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 
+32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 30, 30, 30, 
+30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 
+30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 
+30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 
+30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 
+31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 
+31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 
+31, 31, 31, 31, 31, 31, 31, 48, 48, 48, 48, 48, 48, 48, 48, 48, 
+48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 
+48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 
+48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 79, 79, 79, 79, 
+79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 
+79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 
+79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 
+79, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 
+128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 
+128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 
+128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 
+128, 128, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 
+129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 
+129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 
+129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 
+129, 129, 129, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 
+154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 
+154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 
+154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 154, 
+154, 154, 154, 154, 150, 150, 150, 150, 150, 150, 150, 150, 150, 
+150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 
+150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 
+150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 
+150, 150, 150, 150, 150, 149, 149, 149, 149, 149, 149, 149, 149, 
+149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 
+149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 
+149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 149, 
+149, 149, 149, 149, 149, 149, 162, 162, 162, 162, 162, 162, 162, 
+162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 
+162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 
+162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 162, 
+162, 162, 162, 162, 162, 162, 162, 122, 122, 122, 122, 122, 122, 
+122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 
+122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 
+122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 122, 
+122, 122, 122, 122, 122, 122, 122, 122, 105, 105, 105, 105, 105, 
+105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 
+105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 
+105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 
+105, 105, 105, 105, 105, 105, 105, 105, 105, 91, 91, 91, 91, 
+91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 
+91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 
+91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 
+91, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 
+77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 
+77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 
+77, 77, 77, 77, 77, 77, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 
+71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 
+71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 
+71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 71, 53, 53, 53, 53, 53, 
+53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 
+53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 
+53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 
+42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 
+42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 
+42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 
+42, 42, 42, 42, 42, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 
+27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 
+27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 
+27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 
+7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 
+7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 
+3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 
+3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 
+3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 
+10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 
+10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 
+10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 
+10, 10, 10, 10, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 
+8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 
+8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+5, 5, 5, 5, 5, 5, 5, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 16, 16, 16, 16, 16, 
+16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
+16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
+16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 
+14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 
+14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 
+14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 
+14, 14, 14, 14, 14, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 
+8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 
+8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 
+7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 
+7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 
+7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA))
+Browse[1]> ls()
+[1] "d"        "encoding" "file"     "lat"      "lon"      "tmp"      "tmp2"     "vals"    
+Browse[1]> file
+[1] "../Data/NASA/elevation.dat"
+Browse[1]> Q
+[35:44] 56> z = lapply(ff, function(f) try(read(f)))
+Error in `$<-.data.frame`(`*tmp*`, "lon", value = c(32, 32, 32, 32, 32,  : 
+  replacement has 3233 rows, data has 3074
+Error in `$<-.data.frame`(`*tmp*`, "lon", value = c(26.2, 26.2, 26.2,  : 
+  replacement has 450 rows, data has 396
+[36:52] 57> err = sapply(z, inherits, 'try-error')
+[38:05] 58> table(err)
+err
+FALSE  TRUE 
+  504     2 
+[38:07] 59> z[err]
+*** output flushed ***
+[38:15] 60> ff[err]
+[1] "../Data/NASA/elevation.dat" "../Data/NASA/intlvtn.dat"  
+[38:23] 61> ff = list.files("../Data/NASA", full.names = TRUE, pattern = "cloudhigh")
+[39:14] 62> ff
+ [1] "../Data/NASA/cloudhigh1.txt"  "../Data/NASA/cloudhigh10.txt" "../Data/NASA/cloudhigh11.txt"
+ [4] "../Data/NASA/cloudhigh12.txt" "../Data/NASA/cloudhigh13.txt" "../Data/NASA/cloudhigh14.txt"
+ [7] "../Data/NASA/cloudhigh15.txt" "../Data/NASA/cloudhigh16.txt" "../Data/NASA/cloudhigh17.txt"
+[10] "../Data/NASA/cloudhigh18.txt" "../Data/NASA/cloudhigh19.txt" "../Data/NASA/cloudhigh2.txt" 
+[13] "../Data/NASA/cloudhigh20.txt" "../Data/NASA/cloudhigh21.txt" "../Data/NASA/cloudhigh22.txt"
+[16] "../Data/NASA/cloudhigh23.txt" "../Data/NASA/cloudhigh24.txt" "../Data/NASA/cloudhigh25.txt"
+[19] "../Data/NASA/cloudhigh26.txt" "../Data/NASA/cloudhigh27.txt" "../Data/NASA/cloudhigh28.txt"
+[22] "../Data/NASA/cloudhigh29.txt" "../Data/NASA/cloudhigh3.txt"  "../Data/NASA/cloudhigh30.txt"
+[25] "../Data/NASA/cloudhigh31.txt" "../Data/NASA/cloudhigh32.txt" "../Data/NASA/cloudhigh33.txt"
+[28] "../Data/NASA/cloudhigh34.txt" "../Data/NASA/cloudhigh35.txt" "../Data/NASA/cloudhigh36.txt"
+[31] "../Data/NASA/cloudhigh37.txt" "../Data/NASA/cloudhigh38.txt" "../Data/NASA/cloudhigh39.txt"
+[34] "../Data/NASA/cloudhigh4.txt"  "../Data/NASA/cloudhigh40.txt" "../Data/NASA/cloudhigh41.txt"
+[37] "../Data/NASA/cloudhigh42.txt" "../Data/NASA/cloudhigh43.txt" "../Data/NASA/cloudhigh44.txt"
+[40] "../Data/NASA/cloudhigh45.txt" "../Data/NASA/cloudhigh46.txt" "../Data/NASA/cloudhigh47.txt"
+[43] "../Data/NASA/cloudhigh48.txt" "../Data/NASA/cloudhigh49.txt" "../Data/NASA/cloudhigh5.txt" 
+[46] "../Data/NASA/cloudhigh50.txt" "../Data/NASA/cloudhigh51.txt" "../Data/NASA/cloudhigh52.txt"
+[49] "../Data/NASA/cloudhigh53.txt" "../Data/NASA/cloudhigh54.txt" "../Data/NASA/cloudhigh55.txt"
+[52] "../Data/NASA/cloudhigh56.txt" "../Data/NASA/cloudhigh57.txt" "../Data/NASA/cloudhigh58.txt"
+[55] "../Data/NASA/cloudhigh59.txt" "../Data/NASA/cloudhigh6.txt"  "../Data/NASA/cloudhigh60.txt"
+[58] "../Data/NASA/cloudhigh61.txt" "../Data/NASA/cloudhigh62.txt" "../Data/NASA/cloudhigh63.txt"
+[61] "../Data/NASA/cloudhigh64.txt" "../Data/NASA/cloudhigh65.txt" "../Data/NASA/cloudhigh66.txt"
+[64] "../Data/NASA/cloudhigh67.txt" "../Data/NASA/cloudhigh68.txt" "../Data/NASA/cloudhigh69.txt"
+[67] "../Data/NASA/cloudhigh7.txt"  "../Data/NASA/cloudhigh70.txt" "../Data/NASA/cloudhigh71.txt"
+[70] "../Data/NASA/cloudhigh72.txt" "../Data/NASA/cloudhigh8.txt"  "../Data/NASA/cloudhigh9.txt" 
+[39:14] 63> z = lapply(ff, read)
+[41:50] 64> length(z)
+[1] 72
+[41:53] 65> names(z) = ff
+[41:58] 66> sapply(z, class)
+*** output flushed ***
+[42:14] 67> table(sapply(z, class))
+
+data.frame 
+        72 
+[42:18] 68> rbind
+function (..., deparse.level = 1) 
+.Internal(rbind(deparse.level, ...))
+<bytecode: 0x775c2c938>
+<environment: namespace:base>
+[43:05] 69> z2 = do.call(rbind, z)
+[44:02] 70> class(z2)
+[1] "data.frame"
+[44:14] 71> dim(z2)
+[1] 41472     4
+[44:17] 72> sapply(z2, class)
+    value       lat       lon      date 
+"numeric" "numeric" "numeric"    "Date" 
+[44:20] 73> table(z2$date)
+
+1995-01-16 1995-02-16 1995-03-16 1995-04-16 1995-05-16 1995-06-16 1995-07-16 1995-08-16 1995-09-16 1995-10-16 1995-11-16 
+       576        576        576        576        576        576        576        576        576        576        576 
+1995-12-16 1996-01-16 1996-02-16 1996-03-16 1996-04-16 1996-05-16 1996-06-16 1996-07-16 1996-08-16 1996-09-16 1996-10-16 
+       576        576        576        576        576        576        576        576        576        576        576 
+1996-11-16 1996-12-16 1997-01-16 1997-02-16 1997-03-16 1997-04-16 1997-05-16 1997-06-16 1997-07-16 1997-08-16 1997-09-16 
+       576        576        576        576        576        576        576        576        576        576        576 
+1997-10-16 1997-11-16 1997-12-16 1998-01-16 1998-02-16 1998-03-16 1998-04-16 1998-05-16 1998-06-16 1998-07-16 1998-08-16 
+       576        576        576        576        576        576        576        576        576        576        576 
+1998-09-16 1998-10-16 1998-11-16 1998-12-16 1999-01-16 1999-02-16 1999-03-16 1999-04-16 1999-05-16 1999-06-16 1999-07-16 
+       576        576        576        576        576        576        576        576        576        576        576 
+1999-08-16 1999-09-16 1999-10-16 1999-11-16 1999-12-16 2000-01-16 2000-02-16 2000-03-16 2000-04-16 2000-05-16 2000-06-16 
+       576        576        576        576        576        576        576        576        576        576        576 
+2000-07-16 2000-08-16 2000-09-16 2000-10-16 2000-11-16 2000-12-16 
+       576        576        576        576        576        576 
+[44:30] 74> table(z2$lat)
+
+-21.2 -18.8 -16.2 -13.8 -11.2  -8.8  -6.2  -3.8  -1.2   1.2   3.8   6.2   8.8  11.2  13.8  16.2  18.8  21.2  23.8  26.2 
+ 1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728  1728 
+ 28.8  31.2  33.8  36.2 
+ 1728  1728  1728  1728 
+[44:42] 75> ff
+ [1] "../Data/NASA/cloudhigh1.txt"  "../Data/NASA/cloudhigh10.txt" "../Data/NASA/cloudhigh11.txt"
+ [4] "../Data/NASA/cloudhigh12.txt" "../Data/NASA/cloudhigh13.txt" "../Data/NASA/cloudhigh14.txt"
+ [7] "../Data/NASA/cloudhigh15.txt" "../Data/NASA/cloudhigh16.txt" "../Data/NASA/cloudhigh17.txt"
+[10] "../Data/NASA/cloudhigh18.txt" "../Data/NASA/cloudhigh19.txt" "../Data/NASA/cloudhigh2.txt" 
+[13] "../Data/NASA/cloudhigh20.txt" "../Data/NASA/cloudhigh21.txt" "../Data/NASA/cloudhigh22.txt"
+[16] "../Data/NASA/cloudhigh23.txt" "../Data/NASA/cloudhigh24.txt" "../Data/NASA/cloudhigh25.txt"
+[19] "../Data/NASA/cloudhigh26.txt" "../Data/NASA/cloudhigh27.txt" "../Data/NASA/cloudhigh28.txt"
+[22] "../Data/NASA/cloudhigh29.txt" "../Data/NASA/cloudhigh3.txt"  "../Data/NASA/cloudhigh30.txt"
+[25] "../Data/NASA/cloudhigh31.txt" "../Data/NASA/cloudhigh32.txt" "../Data/NASA/cloudhigh33.txt"
+[28] "../Data/NASA/cloudhigh34.txt" "../Data/NASA/cloudhigh35.txt" "../Data/NASA/cloudhigh36.txt"
+[31] "../Data/NASA/cloudhigh37.txt" "../Data/NASA/cloudhigh38.txt" "../Data/NASA/cloudhigh39.txt"
+[34] "../Data/NASA/cloudhigh4.txt"  "../Data/NASA/cloudhigh40.txt" "../Data/NASA/cloudhigh41.txt"
+[37] "../Data/NASA/cloudhigh42.txt" "../Data/NASA/cloudhigh43.txt" "../Data/NASA/cloudhigh44.txt"
+[40] "../Data/NASA/cloudhigh45.txt" "../Data/NASA/cloudhigh46.txt" "../Data/NASA/cloudhigh47.txt"
+[43] "../Data/NASA/cloudhigh48.txt" "../Data/NASA/cloudhigh49.txt" "../Data/NASA/cloudhigh5.txt" 
+[46] "../Data/NASA/cloudhigh50.txt" "../Data/NASA/cloudhigh51.txt" "../Data/NASA/cloudhigh52.txt"
+[49] "../Data/NASA/cloudhigh53.txt" "../Data/NASA/cloudhigh54.txt" "../Data/NASA/cloudhigh55.txt"
+[52] "../Data/NASA/cloudhigh56.txt" "../Data/NASA/cloudhigh57.txt" "../Data/NASA/cloudhigh58.txt"
+[55] "../Data/NASA/cloudhigh59.txt" "../Data/NASA/cloudhigh6.txt"  "../Data/NASA/cloudhigh60.txt"
+[58] "../Data/NASA/cloudhigh61.txt" "../Data/NASA/cloudhigh62.txt" "../Data/NASA/cloudhigh63.txt"
+[61] "../Data/NASA/cloudhigh64.txt" "../Data/NASA/cloudhigh65.txt" "../Data/NASA/cloudhigh66.txt"
+[64] "../Data/NASA/cloudhigh67.txt" "../Data/NASA/cloudhigh68.txt" "../Data/NASA/cloudhigh69.txt"
+[67] "../Data/NASA/cloudhigh7.txt"  "../Data/NASA/cloudhigh70.txt" "../Data/NASA/cloudhigh71.txt"
+[70] "../Data/NASA/cloudhigh72.txt" "../Data/NASA/cloudhigh8.txt"  "../Data/NASA/cloudhigh9.txt" 
+[47:29] 76> sapply(z2, nrow)
+$value
+NULL
+
+$lat
+NULL
+
+$lon
+NULL
+
+$date
+NULL
+
+[48:44] 77> dim(z2)
+[1] 41472     4
+[48:56] 78> sapply(z, nrow)
+ ../Data/NASA/cloudhigh1.txt ../Data/NASA/cloudhigh10.txt ../Data/NASA/cloudhigh11.txt ../Data/NASA/cloudhigh12.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh13.txt ../Data/NASA/cloudhigh14.txt ../Data/NASA/cloudhigh15.txt ../Data/NASA/cloudhigh16.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh17.txt ../Data/NASA/cloudhigh18.txt ../Data/NASA/cloudhigh19.txt  ../Data/NASA/cloudhigh2.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh20.txt ../Data/NASA/cloudhigh21.txt ../Data/NASA/cloudhigh22.txt ../Data/NASA/cloudhigh23.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh24.txt ../Data/NASA/cloudhigh25.txt ../Data/NASA/cloudhigh26.txt ../Data/NASA/cloudhigh27.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh28.txt ../Data/NASA/cloudhigh29.txt  ../Data/NASA/cloudhigh3.txt ../Data/NASA/cloudhigh30.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh31.txt ../Data/NASA/cloudhigh32.txt ../Data/NASA/cloudhigh33.txt ../Data/NASA/cloudhigh34.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh35.txt ../Data/NASA/cloudhigh36.txt ../Data/NASA/cloudhigh37.txt ../Data/NASA/cloudhigh38.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh39.txt  ../Data/NASA/cloudhigh4.txt ../Data/NASA/cloudhigh40.txt ../Data/NASA/cloudhigh41.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh42.txt ../Data/NASA/cloudhigh43.txt ../Data/NASA/cloudhigh44.txt ../Data/NASA/cloudhigh45.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh46.txt ../Data/NASA/cloudhigh47.txt ../Data/NASA/cloudhigh48.txt ../Data/NASA/cloudhigh49.txt 
+                         576                          576                          576                          576 
+ ../Data/NASA/cloudhigh5.txt ../Data/NASA/cloudhigh50.txt ../Data/NASA/cloudhigh51.txt ../Data/NASA/cloudhigh52.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh53.txt ../Data/NASA/cloudhigh54.txt ../Data/NASA/cloudhigh55.txt ../Data/NASA/cloudhigh56.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh57.txt ../Data/NASA/cloudhigh58.txt ../Data/NASA/cloudhigh59.txt  ../Data/NASA/cloudhigh6.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh60.txt ../Data/NASA/cloudhigh61.txt ../Data/NASA/cloudhigh62.txt ../Data/NASA/cloudhigh63.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh64.txt ../Data/NASA/cloudhigh65.txt ../Data/NASA/cloudhigh66.txt ../Data/NASA/cloudhigh67.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh68.txt ../Data/NASA/cloudhigh69.txt  ../Data/NASA/cloudhigh7.txt ../Data/NASA/cloudhigh70.txt 
+                         576                          576                          576                          576 
+../Data/NASA/cloudhigh71.txt ../Data/NASA/cloudhigh72.txt  ../Data/NASA/cloudhigh8.txt  ../Data/NASA/cloudhigh9.txt 
+                         576                          576                          576                          576 
+[49:11] 79> 
+[49:11] 79> l = readLines("../Data/NCBIQuery.txt")
+[02:50] 80> head(substring(l, 1, 7), 10)
+ [1] "RID: R6" "Job Tit" "Program" "Databas" "Query #" ""        "Sequenc" "       " "Descrip" "Lepomis"
+[03:18] 81> w = substring(l, 1, 7) == "Query #"
+[03:36] 82> table(w)
+w
+FALSE  TRUE 
+ 4649     2 
+[03:39] 83> which(w)
+[1]    5 2323
+[04:22] 84> length(l)
+[1] 4651
+[04:38] 85> cs = cumsum(w)
+[04:47] 86> table(cs)
+cs
+   0    1    2 
+   4 2318 2329 
+[04:51] 87> g = split(l, cs)
+[05:36] 88> length(g)
+[1] 3
+[05:40] 89> g[[1]]
+[1] "RID: R69MU8R7016\t"                       "Job Title:2 sequences (Species1)\t\t\t\t"
+[3] "Program: BLASTN "                         "Database: nt Nucleotide collection (nt)" 
+[05:43] 90> head(g[[2]], 10)
+ [1] "Query #1: Species1 Query ID: lcl|Query_11494 Length: 170"                                                                                                                 
+ [2] ""                                                                                                                                                                         
+ [3] "Sequences producing significant alignments:"                                                                                                                              
+ [4] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+ [5] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+ [6] "Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...     Lepomis mini... redspotted s... 225390     292    292   100%  5e-75 97.65  948        KM370987.1       "
+ [7] "Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MH301069.1       "
+ [8] "Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...  Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MF621732.1       "
+ [9] "Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301066.1       "
+[10] "Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301065.1       "
+[05:56] 91> which(g[[2]] == "")
+*** output flushed ***
+[06:40] 92> x = g[[2]]
+[07:05] 93> x = x[-(1:3)]
+[07:16] 94> head(x)
+[1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+[2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+[3] "Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...     Lepomis mini... redspotted s... 225390     292    292   100%  5e-75 97.65  948        KM370987.1       "
+[4] "Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MH301069.1       "
+[5] "Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...  Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MF621732.1       "
+[6] "Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301066.1       "
+[07:19] 95> which(x == "")[1]
+[1] 103
+[07:32] 96> x2 = x[ 1:(which(x == "")[1] - 1)]
+[08:37] 97> x2
+  [1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+  [2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+  [3] "Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...     Lepomis mini... redspotted s... 225390     292    292   100%  5e-75 97.65  948        KM370987.1       "
+  [4] "Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MH301069.1       "
+  [5] "Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...  Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MF621732.1       "
+  [6] "Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301066.1       "
+  [7] "Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301065.1       "
+  [8] "Lepomis auritus strain NEFC_F16-508 mitochondrion, complete...    Lepomis auritus redbreast su... 201688     270    270   100%  2e-68 95.29  16501      MF621723.1       "
+  [9] "Lepomis gibbosus isolate LG_EVO1 small subunit ribosomal RNA...   Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  1098       MH918136.1       "
+ [10] "Lepomis gibbosus voucher NEFC_F16-162 mitochondrion, complete...  Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MF621726.1       "
+ [11] "Lepomis gibbosus voucher NEFC_F16-162 mitochondrion, complete...  Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MF621725.1       "
+ [12] "Lepomis gibbosus strain NEFC_F16-021 mitochondrion, complete...   Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MF621724.1       "
+ [13] "Lepomis gibbosus voucher NEFC F18-021 mitochondrion, complete...  Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MT667250.1       "
+ [14] "Lepomis humilis 12S ribosomal RNA gene, partial sequence;...      Lepomis humilis orangespotte... 255468     252    252   98%   9e-63 94.05  948        AY372810.1       "
+ [15] "Lepomis gibbosus voucher LodgeLab Lgibbosus_1 mitochondrion,...   Lepomis gibb... pumpkinseed ... 270329     241    241   100%  2e-59 92.35  16503      KP013097.1       "
+ [16] "Lepomis macrochirus CBM:ZF:18564 mitochondrial gene for 12S...    Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  168        LC552443.1       "
+ [17] "Lepomis macrochirus CBM:ZF:16156 mitochondrial gene for 12S...    Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  168        LC552442.1       "
+ [18] "Lepomis macrochirus CBM:ZF 19091 mitochondrial gene for 12S...    Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  168        LC421682.1       "
+ [19] "Lepomis macrochirus strain NEFC_F16-067 mitochondrion, complet... Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16490      MF621714.1       "
+ [20] "Lepomis macrochirus strain NEFC_F16-029 mitochondrion, complet... Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16490      MF621713.1       "
+ [21] "Lepomis macrochirus strain NEFC_F16-204 mitochondrion, complet... Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16489      MF621712.1       "
+ [22] "Lepomis macrochirus mitochondrial gene for 12S rRNA, partial...   Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  168        LC049665.1       "
+ [23] "Lepomis macrochirus voucher LodgeLab Lmacrochirus_1...            Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16489      KP013118.1       "
+ [24] "Lepomis macrochirus mitochondrial DNA, complete genome            Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16488      AP005993.1       "
+ [25] "Lepomis macrochirus small subunit ribosomal RNA gene, partial...  Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.77  816        MW630143.1       "
+ [26] "Lepomis macrochirus voucher NNIBR 2017 mitochondrion, complete... Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16489      MK840862.1       "
+ [27] "Lepomis macrochirus mitochondrion, complete genome                Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  16489      JN389795.2       "
+ [28] "Lepomis macrochirus mitochondrial genes for cytochrome b,...      Lepomis macr... bluegill        13106      237    237   97%   2e-58 92.73  1774       AB167815.1       "
+ [29] "Lepomis gulosus isolate NEFC F17-119 mitochondrion, complete...   Lepomis gulosus NA              201690     231    231   97%   1e-56 92.12  16486      MH301068.1       "
+ [30] "Chaenobryttus gulosus isolate NEFC F16-212 mitochondrion,...      Lepomis gulosus NA              201690     231    231   97%   1e-56 92.12  16486      NC_042249.1      "
+ [31] "Lepomis macrochirus mitochondrial gene for 12S rRNA, partial...   Lepomis macr... bluegill        13106      231    231   97%   1e-56 92.12  168        LC277930.1       "
+ [32] "Lepomis cyanellus voucher LodgeLab Lcyanellus_1 mitochondrion,... Lepomis cyan... green sunfish   201691     231    231   97%   1e-56 92.12  16485      KP013087.1       "
+ [33] "Lepomis cyanellus mitochondrion, complete genome                  Lepomis cyan... green sunfish   201691     231    231   97%   1e-56 92.12  16485      KC427094.1       "
+ [34] "Lepomis cyanellus voucher NEFC F19-045 mitochondrion, complete... Lepomis cyan... green sunfish   201691     231    231   97%   1e-56 92.12  16485      MT667253.1       "
+ [35] "Pomoxis nigromaculatus isolate NEFC F17-136 mitochondrion,...     Pomoxis nigr... black crappie   8182       230    230   98%   4e-56 91.62  16496      MH324420.1       "
+ [36] "Pomoxis nigromaculatus isolate NEFC F17-120 mitochondrion,...     Pomoxis nigr... black crappie   8182       230    230   98%   4e-56 91.62  16496      MH324419.1       "
+ [37] "Lepomis megalotis 12S ribosomal RNA gene, partial sequence;...    Lepomis mega... NA              270330     230    230   98%   4e-56 91.62  947        KM370981.1       "
+ [38] "Lepomis gibbosus 12S ribosomal RNA gene, partial sequence;...     Lepomis gibb... pumpkinseed ... 270329     224    224   91%   2e-54 92.90  242        KM282424.1       "
+ [39] "Micropterus salmoides CBM:ZF:19351 mitochondrial gene for 12S...  Micropterus ... largemouth bass 27706      219    219   98%   9e-53 90.42  169        LC474183.1       "
+ [40] "Micropterus salmoides salmoides isolate NEFC F16-158...           Micropterus ... northern lar... 489037     219    219   98%   9e-53 90.42  16486      MH301076.1       "
+ [41] "Micropterus salmoides salmoides voucher NEFC F16-068...           Micropterus ... northern lar... 489037     219    219   98%   9e-53 90.42  16486      MH301075.1       "
+ [42] "Micropterus salmoides salmoides voucher NEFC F16-036...           Micropterus ... northern lar... 489037     219    219   98%   9e-53 90.42  16487      MH301074.1       "
+ [43] "Micropterus salmoides mitochondrial gene for 12S rRNA, partial... Micropterus ... largemouth bass 27706      219    219   98%   9e-53 90.42  169        LC069536.1       "
+ [44] "Micropterus salmoides salmoides mitochondrion, complete genome    Micropterus ... northern lar... 489037     219    219   98%   9e-53 90.42  16486      HQ391896.1       "
+ [45] "Micropterus salmoides mitochondrion, complete genome              Micropterus ... largemouth bass 27706      219    219   98%   9e-53 90.42  16484      DQ536425.1       "
+ [46] "Pomoxis nigromaculatus voucher NEFC F17-193 mitochondrion,...     Pomoxis nigr... black crappie   8182       213    213   98%   4e-51 89.82  16498      MH301081.1       "
+ [47] "Pomoxis nigromaculatus voucher NEFC_F16-162 mitochondrion,...     Pomoxis nigr... black crappie   8182       213    213   98%   4e-51 89.82  16497      MF621719.1       "
+ [48] "Pomoxis nigromaculatus strain NEFC_F16-017 mitochondrion,...      Pomoxis nigr... black crappie   8182       213    213   98%   4e-51 89.82  16496      MF621715.1       "
+ [49] "Pomoxis nigromaculatus voucher LodgeLab Pnigromaculatus_1...      Pomoxis nigr... black crappie   8182       213    213   98%   4e-51 89.82  16496      KP013112.1       "
+ [50] "Lepomis macrochirus 12S ribosomal RNA gene, partial sequence;...  Lepomis macr... bluegill        13106      204    204   88%   3e-48 91.33  241        KM282426.1       "
+ [51] "Lepomis cyanellus 12S ribosomal RNA gene, partial sequence;...    Lepomis cyan... green sunfish   201691     204    204   88%   3e-48 91.33  242        KM282423.1       "
+ [52] "Micropterus punctulatus 12S ribosomal RNA gene, partial...        Micropterus ... spotted bass    225060     202    202   98%   9e-48 88.69  947        KM370980.1       "
+ [53] "Mesopristes cancellatus voucher TeC2 12S ribosomal RNA gene,...   Mesopristes ... tapiroid gru... 1100886    198    198   100%  1e-46 87.72  951        KF999828.1       "
+ [54] "Mesopristes cancellatus voucher TeC1 12S ribosomal RNA gene,...   Mesopristes ... tapiroid gru... 1100886    198    198   100%  1e-46 87.72  951        KF999827.1       "
+ [55] "Mastacembelus moorii 12S ribosomal RNA gene, partial sequence;... Mastacembelu... NA              762267     193    193   99%   5e-45 87.72  909        MN255606.1       "
+ [56] "Lepomis macrochirus voucher KU 25193 12S ribosomal RNA gene,...   Lepomis macr... bluegill        13106      193    193   75%   5e-45 93.80  527        AF150004.1       "
+ [57] "Lactarius lactarius mitochondrion, complete genome                Lactarius la... false trevally  445388     191    191   100%  2e-44 87.13  16642      MN952976.1       "
+ [58] "Hephaestus fuliginosus voucher PY2017 mitochondrion, complete...  Hephaestus f... sooty grunter   1085684    191    191   100%  2e-44 87.06  16770      MH606192.1       "
+ [59] "Malakichthys elegans mitochondrial gene for 12S rRNA, partial...  Malakichthys... NA              223801     191    191   100%  2e-44 87.13  169        LC021234.1       "
+ [60] "Micropterus salmoides 12S ribosomal RNA gene, partial sequence... Micropterus ... largemouth bass 27706      191    191   89%   2e-44 89.47  242        KM282430.1       "
+ [61] "Mastacembelus cunningtoni 12S ribosomal RNA gene, partial...      Mastacembelu... NA              762263     185    185   96%   9e-43 87.35  910        MN255603.1       "
+ [62] "Malakichthys barbatus mitochondrial gene for 12S rRNA, partial... Malakichthys... NA              223800     185    185   100%  9e-43 86.55  169        LC021231.1       "
+ [63] "Malakichthys griseus mitochondrial gene for 12S rRNA, partial...  Malakichthys... NA              223802     185    185   98%   9e-43 86.90  169        LC021230.1       "
+ [64] "Cephalopholis cyanostigma mitochondrial gene for 12S rRNA,...     Cephalopholi... NA              327805     183    183   99%   3e-42 86.47  169        LC340125.1       "
+ [65] "Rhynchopelates oxyrhynchus mitochondrial DNA, complete genome     Rhynchopelat... sharpbeak te... 270585     182    182   100%  1e-41 85.96  16631      AP006811.1       "
+ [66] "Mastacembelus zebratus 12S ribosomal RNA gene, partial sequenc... Mastacembelu... NA              762272     182    182   99%   1e-41 86.47  911        MN255611.1       "
+ [67] "Rhynchopelates oxyrhynchus CBM:ZF:20045 mitochondrial gene for... Rhynchopelat... sharpbeak te... 270585     182    182   100%  1e-41 85.96  170        LC506710.1       "
+ [68] "Terapon theraps mitochondrial gene for 12S rRNA, partial...       Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        LC037039.1       "
+ [69] "Terapon theraps voucher TeE2 12S ribosomal RNA gene, complete...  Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  951        KF999832.1       "
+ [70] "Terapon theraps voucher TeE1 12S ribosomal RNA gene, complete...  Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  951        KF999831.1       "
+ [71] "Terapon theraps voucher SW244 small subunit ribosomal RNA gene... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ605739.1       "
+ [72] "Terapon theraps isolate PearlRE219 small subunit ribosomal RNA... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ469694.1       "
+ [73] "Terapon theraps isolate PearlRE218 small subunit ribosomal RNA... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ469693.1       "
+ [74] "Terapon theraps isolate PearlRE217 small subunit ribosomal RNA... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ469692.1       "
+ [75] "Terapon theraps isolate PearlRE216 small subunit ribosomal RNA... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ469691.1       "
+ [76] "Terapon theraps isolate PearlRE215 small subunit ribosomal RNA... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ469690.1       "
+ [77] "Terapon theraps isolate PearlRE214 small subunit ribosomal RNA... Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  170        MZ469689.1       "
+ [78] "Terapon theraps mitochondrion, complete genome                    Terapon theraps largescaled ... 163132     182    182   100%  1e-41 85.96  16587      NC_056114.1      "
+ [79] "Mesopristes argenteus NSMT:P:121150 mitochondrial gene for 12S... Mesopristes ... silver grunter  1161373    182    182   100%  1e-41 85.96  170        LC579133.1       "
+ [80] "Rhynchopelates oxyrhynchus mitochondrial DNA, complete genome     Rhynchopelat... sharpbeak te... 270585     182    182   100%  1e-41 85.96  16631      AP011064.1       "
+ [81] "Elassoma okefenokee mitochondrial gene for 12S rRNA, partial...   Elassoma oke... Okefenokee p... 71678      180    180   96%   4e-41 86.67  168        LC104607.1       "
+ [82] "Elassoma zonatum mitochondrial gene for 12S rRNA, partial...      Elassoma zon... banded pygmy... 71679      180    180   96%   4e-41 86.59  168        LC104606.1       "
+ [83] "Elassoma zonatum mitochondrial DNA, complete genome except for... Elassoma zon... banded pygmy... 71679      180    180   96%   4e-41 86.59  16071      AP006813.1       "
+ [84] "Mastacembelus armatus mitochondrion, complete genome              Mastacembelu... zig-zag eel     205130     178    178   99%   2e-40 85.88  16487      KY609156.1       "
+ [85] "Cephalopholis formosa mitochondrial gene for 12S rRNA, partial... Cephalopholi... NA              306585     178    178   99%   2e-40 85.96  169        LC026635.1       "
+ [86] "Cephalopholis formosa voucher SW58 small subunit ribosomal RNA... Cephalopholi... NA              306585     178    178   99%   2e-40 85.96  169        MZ605553.1       "
+ [87] "Cephalopholis microprion KAUM:I:79887 mitochondrial gene for 1... Cephalopholi... freckled hind   603996     178    178   99%   2e-40 85.88  169        LC579111.1       "
+ [88] "Ophieleotris aporos 12S ribosomal RNA gene, complete sequence;... Giuris marga... snakehead gu... 1095382    178    178   97%   2e-40 86.31  964        AF265364.1       "
+ [89] "Mastacembelus favus mitochondrial DNA, complete genome            Mastacembelu... tire track eel  143340     178    178   99%   2e-40 85.96  16498      AP002946.1       "
+ [90] "Rhynchopelates oxyrhynchus CBM:ZF:20135-2 mitochondrial gene f... Rhynchopelat... sharpbeak te... 270585     176    176   100%  5e-40 85.38  170        LC519413.1       "
+ [91] "Rhynchopelates oxyrhynchus CBM:ZF:20135-1 mitochondrial gene f... Rhynchopelat... sharpbeak te... 270585     176    176   100%  5e-40 85.38  170        LC519412.1       "
+ [92] "Mastacembelus plagiostomus 12S ribosomal RNA gene, partial...     Mastacembelu... NA              762269     176    176   99%   5e-40 85.88  904        MN255608.1       "
+ [93] "Mastacembelus flavidus 12S ribosomal RNA gene, partial sequenc... Mastacembelu... NA              762265     176    176   99%   5e-40 85.88  883        MN255601.1       "
+ [94] "Mastacembelus albomaculatus 12S ribosomal RNA gene, partial...    Mastacembelu... NA              762262     176    176   99%   5e-40 85.88  905        MN255600.1       "
+ [95] "Rhynchopelates oxyrhynchus CBM:ZF:19597 mitochondrial gene for... Rhynchopelat... sharpbeak te... 270585     176    176   100%  5e-40 85.38  170        LC474194.1       "
+ [96] "Etheostoma olmstedi isolate NEFC F17-090 mitochondrion, comple... Etheostoma o... tessallated ... 417934     176    176   97%   5e-40 86.14  16687      MH301064.1       "
+ [97] "Etheostoma olmstedi isolate NEFC F17-089 mitochondrion, comple... Etheostoma o... tessallated ... 417934     176    176   97%   5e-40 86.14  16707      MH301063.1       "
+ [98] "Etheostoma olmstedi isolate NEFC F17-015 mitochondrion, comple... Etheostoma o... tessallated ... 417934     176    176   97%   5e-40 86.14  16627      MH301062.1       "
+ [99] "Rhynchopelates oxyrhynchus CBM:ZF:21451 mitochondrial genes fo... Rhynchopelat... sharpbeak te... 270585     176    176   100%  5e-40 85.38  1089       LC649129.1       "
+[100] "Leiopotherapon plumbeus voucher SW146 small subunit ribosomal...  Leiopotherap... NA              941982     176    176   100%  5e-40 85.38  170        MZ605641.1       "
+[101] "Etheostoma olmstedi isolate F19-104 mitochondrion, partial genome Etheostoma o... tessallated ... 417934     176    176   97%   5e-40 86.14  16493      MW856913.1       "
+[102] "Etheostoma olmstedi isolate F19-218 mitochondrion, complete...    Etheostoma o... tessallated ... 417934     176    176   97%   5e-40 86.14  16639      MW856867.1       "
+[08:39] 98> x2[1:2]
+[1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+[2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+[19:03] 99> h = x2[1:2]
+[19:05] 100> strsplit(h[2], "|")
+[[1]]
+  [1] "D" "e" "s" "c" "r" "i" "p" "t" "i" "o" "n" " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [30] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [59] " " " " " " " " " " " " " " " " "N" "a" "m" "e" " " " " " " " " " " " " " " " " " " " " " " " " "N" "a" "m" "e" " "
+ [88] " " " " " " " " " " " " " " " " " " " " " " "T" "a" "x" "i" "d" " " " " " " " " " " " " "S" "c" "o" "r" "e" " " " "
+[117] "S" "c" "o" "r" "e" " " "c" "o" "v" "e" "r" " " "V" "a" "l" "u" "e" " " "I" "d" "e" "n" "t" " " " " "L" "e" "n" " "
+[146] " " " " " " " " " " " " " " "A" "c" "c" "e" "s" "s" "i" "o" "n" " " " " " " " " " " " " " " " "
+
+[19:31] 101> strsplit(h[2], "")
+[[1]]
+  [1] "D" "e" "s" "c" "r" "i" "p" "t" "i" "o" "n" " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [30] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [59] " " " " " " " " " " " " " " " " "N" "a" "m" "e" " " " " " " " " " " " " " " " " " " " " " " " " "N" "a" "m" "e" " "
+ [88] " " " " " " " " " " " " " " " " " " " " " " "T" "a" "x" "i" "d" " " " " " " " " " " " " "S" "c" "o" "r" "e" " " " "
+[117] "S" "c" "o" "r" "e" " " "c" "o" "v" "e" "r" " " "V" "a" "l" "u" "e" " " "I" "d" "e" "n" "t" " " " " "L" "e" "n" " "
+[146] " " " " " " " " " " " " " " "A" "c" "c" "e" "s" "s" "i" "o" "n" " " " " " " " " " " " " " " " "
+
+[19:50] 102> strsplit(h[2], "")[[1]] %in% LETTERS
+  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [20] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [39] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [58] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [77] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [96] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+[115] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+[134] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[153]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[20:12] 103> which(strsplit(h[2], "")[[1]] %in% LETTERS)
+ [1]   1  67  83  99 110 117 129 135 142 153
+[20:16] 104> 
+[20:16] 104> 
+[20:16] 104> ################################################
+[20:16] 104> source("../Day/nasa.R")
+Error in file(filename, "r", encoding = encoding) : 
+  cannot open the connection
+In addition: Warning message:
+In file(filename, "r", encoding = encoding) :
+  cannot open file '../Day/nasa.R': No such file or directory
+
+Enter a frame number, or 0 to exit 
+
+1: source("../Day/nasa.R")
+2: file(filename, "r", encoding = encoding)
+
+Selection: 0
+[20:16] 104> 
+[20:16] 104> source("../Day9/nasa.R")
+[56:25] 105> read
+function(file = "../Data/NASA/temperature1.txt", encoding = "UTF8")
+{
+    tmp = read.table(file, skip = 7,header = FALSE)
+    vals = unlist(tmp[, -(1:3)])
+    d = data.frame(value = vals)
+    
+    # latitude
+    lat = compLatitude(tmp[,1])
+    d$lat = rep(lat, ncol(tmp) - 3)
+
+
+    # Read the first 6 lines to get the date and the longitude
+    # Other ways to do longitude
+    tmp2 = readLines(file, n = 6)
+    browser()
+    
+    # longitude
+    # Split the longitude line get only the values
+    # Originally had
+    #     lon = strsplit(tmp2[6],  " ")
+    # What difference does it make?
+    # options(warn = 2, error = recover)
+    # then read()
+    lon = strsplit(tmp2[6],  " ")[[1]]
+    lon = lon[ lon != "" ]
+    lon = compLongitude(lon)
+    d$lon = rep(lon, each = nrow(tmp))
+
+    
+    # date
+    d$date = as.Date(getDate(tmp2[5]), "%d-%b-%Y")
+
+    # remove the meaningless row names.
+    rownames(d) = NULL
+    
+    d
+}
+[56:27] 106> v = read()
+Called from: read()
+Browse[1]> ls()
+[1] "d"        "encoding" "file"     "lat"      "tmp"      "tmp2"     "vals"    
+Browse[1]> file
+[1] "../Data/NASA/temperature1.txt"
+Browse[1]> lat
+ [1]  36.2  33.8  31.2  28.8  26.2  23.8  21.2  18.8  16.2  13.8  11.2   8.8   6.2   3.8   1.2  -1.2  -3.8  -6.2  -8.8
+[20] -11.2 -13.8 -16.2 -18.8 -21.2
+Browse[1]> tmp2
+[1] "             VARIABLE : Mean Near-surface air temperature (kelvin)"                                                                                                                    
+[2] "             FILENAME : ISCCPMonthly_avg.nc"                                                                                                                                           
+[3] "             FILEPATH : /usr/local/fer_data/data/"                                                                                                                                     
+[4] "             SUBSET   : 24 by 24 points (LONGITUDE-LATITUDE)"                                                                                                                          
+[5] "             TIME     : 16-JAN-1995 00:00"                                                                                                                                             
+[6] "              113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W  96.2W  93.8W  91.2W  88.8W  86.2W  83.8W  81.2W  78.8W  76.2W  73.8W  71.2W  68.8W  66.2W  63.8W  61.2W  58.8W  56.2W  "
+Browse[1]> tmp2[5]
+[1] "             TIME     : 16-JAN-1995 00:00"
+Browse[1]> n
+debug at ../Day9/nasa.R#25: lon = strsplit(tmp2[6], " ")[[1]]
+Browse[1]> n
+debug at ../Day9/nasa.R#26: lon = lon[lon != ""]
+Browse[1]> n
+debug at ../Day9/nasa.R#27: lon = compLongitude(lon)
+Browse[1]> ls()
+[1] "d"        "encoding" "file"     "lat"      "lon"      "tmp"      "tmp2"     "vals"    
+Browse[1]> lon
+ [1] "113.8W" "111.2W" "108.8W" "106.2W" "103.8W" "101.2W" "98.8W"  "96.2W"  "93.8W"  "91.2W"  "88.8W"  "86.2W"  "83.8W" 
+[14] "81.2W"  "78.8W"  "76.2W"  "73.8W"  "71.2W"  "68.8W"  "66.2W"  "63.8W"  "61.2W"  "58.8W"  "56.2W" 
+Browse[1]> n
+debug at ../Day9/nasa.R#28: d$lon = rep(lon, each = nrow(tmp))
+Browse[1]> lon
+ [1] -113.8 -111.2 -108.8 -106.2 -103.8 -101.2  -98.8  -96.2  -93.8  -91.2  -88.8  -86.2  -83.8  -81.2  -78.8  -76.2
+[17]  -73.8  -71.2  -68.8  -66.2  -63.8  -61.2  -58.8  -56.2
+Browse[1]> lon[4] = NA
+Browse[1]> lon
+ [1] -113.8 -111.2 -108.8     NA -103.8 -101.2  -98.8  -96.2  -93.8  -91.2  -88.8  -86.2  -83.8  -81.2  -78.8  -76.2
+[17]  -73.8  -71.2  -68.8  -66.2  -63.8  -61.2  -58.8  -56.2
+Browse[1]> c
+[58:55] 117> v
+    value   lat    lon       date
+1   272.1  36.2 -113.8 1995-01-16
+2   282.2  33.8 -113.8 1995-01-16
+3   285.2  31.2 -113.8 1995-01-16
+4   290.7  28.8 -113.8 1995-01-16
+5   292.7  26.2 -113.8 1995-01-16
+6   293.6  23.8 -113.8 1995-01-16
+7   294.6  21.2 -113.8 1995-01-16
+8   296.9  18.8 -113.8 1995-01-16
+9   297.8  16.2 -113.8 1995-01-16
+10  298.7  13.8 -113.8 1995-01-16
+11  300.1  11.2 -113.8 1995-01-16
+12  300.1   8.8 -113.8 1995-01-16
+13  300.5   6.2 -113.8 1995-01-16
+14  299.6   3.8 -113.8 1995-01-16
+15  298.3   1.2 -113.8 1995-01-16
+16  297.8  -1.2 -113.8 1995-01-16
+17  298.3  -3.8 -113.8 1995-01-16
+18  298.3  -6.2 -113.8 1995-01-16
+19  298.3  -8.8 -113.8 1995-01-16
+20  298.3 -11.2 -113.8 1995-01-16
+21  297.8 -13.8 -113.8 1995-01-16
+22  296.9 -16.2 -113.8 1995-01-16
+23  296.9 -18.8 -113.8 1995-01-16
+24  296.9 -21.2 -113.8 1995-01-16
+25  270.3  36.2 -111.2 1995-01-16
+26  282.2  33.8 -111.2 1995-01-16
+27  285.2  31.2 -111.2 1995-01-16
+28  286.8  28.8 -111.2 1995-01-16
+29  293.6  26.2 -111.2 1995-01-16
+30  295.0  23.8 -111.2 1995-01-16
+31  295.0  21.2 -111.2 1995-01-16
+32  296.9  18.8 -111.2 1995-01-16
+33  298.3  16.2 -111.2 1995-01-16
+34  299.6  13.8 -111.2 1995-01-16
+35  300.5  11.2 -111.2 1995-01-16
+36  300.5   8.8 -111.2 1995-01-16
+37  299.6   6.2 -111.2 1995-01-16
+38  299.2   3.8 -111.2 1995-01-16
+39  297.8   1.2 -111.2 1995-01-16
+40  297.4  -1.2 -111.2 1995-01-16
+41  297.8  -3.8 -111.2 1995-01-16
+42  298.3  -6.2 -111.2 1995-01-16
+43  297.8  -8.8 -111.2 1995-01-16
+44  297.8 -11.2 -111.2 1995-01-16
+45  297.4 -13.8 -111.2 1995-01-16
+46  296.9 -16.2 -111.2 1995-01-16
+47  296.9 -18.8 -111.2 1995-01-16
+48  296.5 -21.2 -111.2 1995-01-16
+49  270.3  36.2 -108.8 1995-01-16
+50  272.7  33.8 -108.8 1995-01-16
+51  276.1  31.2 -108.8 1995-01-16
+52  286.8  28.8 -108.8 1995-01-16
+53  284.2  26.2 -108.8 1995-01-16
+54  295.5  23.8 -108.8 1995-01-16
+55  296.0  21.2 -108.8 1995-01-16
+56  297.8  18.8 -108.8 1995-01-16
+57  299.2  16.2 -108.8 1995-01-16
+58  299.6  13.8 -108.8 1995-01-16
+59  300.5  11.2 -108.8 1995-01-16
+60  300.1   8.8 -108.8 1995-01-16
+61  300.1   6.2 -108.8 1995-01-16
+62  299.2   3.8 -108.8 1995-01-16
+63  297.8   1.2 -108.8 1995-01-16
+64  297.8  -1.2 -108.8 1995-01-16
+65  297.4  -3.8 -108.8 1995-01-16
+66  297.8  -6.2 -108.8 1995-01-16
+67  297.4  -8.8 -108.8 1995-01-16
+68  297.4 -11.2 -108.8 1995-01-16
+69  297.4 -13.8 -108.8 1995-01-16
+70  296.5 -16.2 -108.8 1995-01-16
+71  296.5 -18.8 -108.8 1995-01-16
+72  296.0 -21.2 -108.8 1995-01-16
+73  270.9  36.2     NA 1995-01-16
+74  272.7  33.8     NA 1995-01-16
+75  275.0  31.2     NA 1995-01-16
+76  276.7  28.8     NA 1995-01-16
+77  284.2  26.2     NA 1995-01-16
+78  282.7  23.8     NA 1995-01-16
+79  297.4  21.2     NA 1995-01-16
+80  297.8  18.8     NA 1995-01-16
+81  300.5  16.2     NA 1995-01-16
+82  300.1  13.8     NA 1995-01-16
+83  301.0  11.2     NA 1995-01-16
+84  300.1   8.8     NA 1995-01-16
+85  299.6   6.2     NA 1995-01-16
+86  299.6   3.8     NA 1995-01-16
+87  297.8   1.2     NA 1995-01-16
+88  297.4  -1.2     NA 1995-01-16
+89  297.8  -3.8     NA 1995-01-16
+90  297.8  -6.2     NA 1995-01-16
+91  296.9  -8.8     NA 1995-01-16
+92  296.9 -11.2     NA 1995-01-16
+93  296.9 -13.8     NA 1995-01-16
+94  296.0 -16.2     NA 1995-01-16
+95  296.5 -18.8     NA 1995-01-16
+96  296.5 -21.2     NA 1995-01-16
+97  271.5  36.2 -103.8 1995-01-16
+98  271.5  33.8 -103.8 1995-01-16
+99  278.9  31.2 -103.8 1995-01-16
+100 277.3  28.8 -103.8 1995-01-16
+101 279.5  26.2 -103.8 1995-01-16
+102 282.7  23.8 -103.8 1995-01-16
+103 283.7  21.2 -103.8 1995-01-16
+104 300.1  18.8 -103.8 1995-01-16
+105 301.0  16.2 -103.8 1995-01-16
+106 300.5  13.8 -103.8 1995-01-16
+107 300.5  11.2 -103.8 1995-01-16
+108 300.1   8.8 -103.8 1995-01-16
+109 300.1   6.2 -103.8 1995-01-16
+110 300.1   3.8 -103.8 1995-01-16
+111 298.7   1.2 -103.8 1995-01-16
+112 297.4  -1.2 -103.8 1995-01-16
+113 298.3  -3.8 -103.8 1995-01-16
+114 297.8  -6.2 -103.8 1995-01-16
+115 297.4  -8.8 -103.8 1995-01-16
+116 296.9 -11.2 -103.8 1995-01-16
+117 296.9 -13.8 -103.8 1995-01-16
+118 296.5 -16.2 -103.8 1995-01-16
+119 296.0 -18.8 -103.8 1995-01-16
+120 295.5 -21.2 -103.8 1995-01-16
+121 275.6  36.2 -101.2 1995-01-16
+122 280.0  33.8 -101.2 1995-01-16
+123 281.6  31.2 -101.2 1995-01-16
+124 283.2  28.8 -101.2 1995-01-16
+125 281.1  26.2 -101.2 1995-01-16
+126 281.6  23.8 -101.2 1995-01-16
+127 282.7  21.2 -101.2 1995-01-16
+128 293.2  18.8 -101.2 1995-01-16
+129 301.0  16.2 -101.2 1995-01-16
+130 301.0  13.8 -101.2 1995-01-16
+131 300.1  11.2 -101.2 1995-01-16
+132 300.1   8.8 -101.2 1995-01-16
+133 299.6   6.2 -101.2 1995-01-16
+134 299.6   3.8 -101.2 1995-01-16
+135 298.3   1.2 -101.2 1995-01-16
+136 297.8  -1.2 -101.2 1995-01-16
+137 297.8  -3.8 -101.2 1995-01-16
+138 297.4  -6.2 -101.2 1995-01-16
+139 297.4  -8.8 -101.2 1995-01-16
+140 296.9 -11.2 -101.2 1995-01-16
+141 296.5 -13.8 -101.2 1995-01-16
+142 296.0 -16.2 -101.2 1995-01-16
+143 295.5 -18.8 -101.2 1995-01-16
+144 295.0 -21.2 -101.2 1995-01-16
+145 278.4  36.2  -98.8 1995-01-16
+146 281.6  33.8  -98.8 1995-01-16
+147 283.7  31.2  -98.8 1995-01-16
+148 287.3  28.8  -98.8 1995-01-16
+149 289.3  26.2  -98.8 1995-01-16
+150 285.2  23.8  -98.8 1995-01-16
+151 291.7  21.2  -98.8 1995-01-16
+152 289.3  18.8  -98.8 1995-01-16
+153 300.1  16.2  -98.8 1995-01-16
+154 300.5  13.8  -98.8 1995-01-16
+155 300.5  11.2  -98.8 1995-01-16
+156 300.1   8.8  -98.8 1995-01-16
+157 300.1   6.2  -98.8 1995-01-16
+158 300.1   3.8  -98.8 1995-01-16
+159 298.3   1.2  -98.8 1995-01-16
+160 297.4  -1.2  -98.8 1995-01-16
+161 298.3  -3.8  -98.8 1995-01-16
+162 297.8  -6.2  -98.8 1995-01-16
+163 297.4  -8.8  -98.8 1995-01-16
+164 296.9 -11.2  -98.8 1995-01-16
+165 296.0 -13.8  -98.8 1995-01-16
+166 295.5 -16.2  -98.8 1995-01-16
+167 295.0 -18.8  -98.8 1995-01-16
+168 295.5 -21.2  -98.8 1995-01-16
+169 278.4  36.2  -96.2 1995-01-16
+170 281.6  33.8  -96.2 1995-01-16
+171 283.7  31.2  -96.2 1995-01-16
+172 288.3  28.8  -96.2 1995-01-16
+173 292.2  26.2  -96.2 1995-01-16
+174 294.1  23.8  -96.2 1995-01-16
+175 296.0  21.2  -96.2 1995-01-16
+176 290.2  18.8  -96.2 1995-01-16
+177 298.3  16.2  -96.2 1995-01-16
+178 300.1  13.8  -96.2 1995-01-16
+179 300.1  11.2  -96.2 1995-01-16
+180 299.6   8.8  -96.2 1995-01-16
+181 300.5   6.2  -96.2 1995-01-16
+182 300.1   3.8  -96.2 1995-01-16
+183 298.7   1.2  -96.2 1995-01-16
+184 297.4  -1.2  -96.2 1995-01-16
+185 297.8  -3.8  -96.2 1995-01-16
+186 297.4  -6.2  -96.2 1995-01-16
+187 296.9  -8.8  -96.2 1995-01-16
+188 296.5 -11.2  -96.2 1995-01-16
+189 296.5 -13.8  -96.2 1995-01-16
+190 295.5 -16.2  -96.2 1995-01-16
+191 295.5 -18.8  -96.2 1995-01-16
+192 295.0 -21.2  -96.2 1995-01-16
+193 278.4  36.2  -93.8 1995-01-16
+194 281.6  33.8  -93.8 1995-01-16
+195 283.7  31.2  -93.8 1995-01-16
+196 288.3  28.8  -93.8 1995-01-16
+197 292.7  26.2  -93.8 1995-01-16
+198 294.6  23.8  -93.8 1995-01-16
+199 296.9  21.2  -93.8 1995-01-16
+200 296.0  18.8  -93.8 1995-01-16
+201 291.2  16.2  -93.8 1995-01-16
+202 300.5  13.8  -93.8 1995-01-16
+203 300.1  11.2  -93.8 1995-01-16
+204 299.6   8.8  -93.8 1995-01-16
+205 300.5   6.2  -93.8 1995-01-16
+206 300.1   3.8  -93.8 1995-01-16
+207 299.6   1.2  -93.8 1995-01-16
+208 297.4  -1.2  -93.8 1995-01-16
+209 298.3  -3.8  -93.8 1995-01-16
+210 297.4  -6.2  -93.8 1995-01-16
+211 296.9  -8.8  -93.8 1995-01-16
+212 296.5 -11.2  -93.8 1995-01-16
+213 295.5 -13.8  -93.8 1995-01-16
+214 295.5 -16.2  -93.8 1995-01-16
+215 295.0 -18.8  -93.8 1995-01-16
+216 295.0 -21.2  -93.8 1995-01-16
+217 278.4  36.2  -91.2 1995-01-16
+218 282.7  33.8  -91.2 1995-01-16
+219 284.7  31.2  -91.2 1995-01-16
+220 289.3  28.8  -91.2 1995-01-16
+221 293.2  26.2  -91.2 1995-01-16
+222 295.5  23.8  -91.2 1995-01-16
+223 296.0  21.2  -91.2 1995-01-16
+224 296.5  18.8  -91.2 1995-01-16
+225 293.6  16.2  -91.2 1995-01-16
+226 301.0  13.8  -91.2 1995-01-16
+227 300.1  11.2  -91.2 1995-01-16
+228 299.2   8.8  -91.2 1995-01-16
+229 301.0   6.2  -91.2 1995-01-16
+230 301.0   3.8  -91.2 1995-01-16
+231 299.6   1.2  -91.2 1995-01-16
+232 299.2  -1.2  -91.2 1995-01-16
+233 298.3  -3.8  -91.2 1995-01-16
+234 297.8  -6.2  -91.2 1995-01-16
+235 297.4  -8.8  -91.2 1995-01-16
+236 296.9 -11.2  -91.2 1995-01-16
+237 296.0 -13.8  -91.2 1995-01-16
+238 295.5 -16.2  -91.2 1995-01-16
+239 295.0 -18.8  -91.2 1995-01-16
+240 294.6 -21.2  -91.2 1995-01-16
+241 277.8  36.2  -88.8 1995-01-16
+242 281.1  33.8  -88.8 1995-01-16
+243 284.2  31.2  -88.8 1995-01-16
+244 289.3  28.8  -88.8 1995-01-16
+245 293.6  26.2  -88.8 1995-01-16
+246 296.0  23.8  -88.8 1995-01-16
+247 296.0  21.2  -88.8 1995-01-16
+248 295.5  18.8  -88.8 1995-01-16
+249 293.6  16.2  -88.8 1995-01-16
+250 294.6  13.8  -88.8 1995-01-16
+251 299.6  11.2  -88.8 1995-01-16
+252 299.2   8.8  -88.8 1995-01-16
+253 300.5   6.2  -88.8 1995-01-16
+254 301.0   3.8  -88.8 1995-01-16
+255 298.7   1.2  -88.8 1995-01-16
+256 298.3  -1.2  -88.8 1995-01-16
+257 297.8  -3.8  -88.8 1995-01-16
+258 298.3  -6.2  -88.8 1995-01-16
+259 297.4  -8.8  -88.8 1995-01-16
+260 296.9 -11.2  -88.8 1995-01-16
+261 296.0 -13.8  -88.8 1995-01-16
+262 295.5 -16.2  -88.8 1995-01-16
+263 294.6 -18.8  -88.8 1995-01-16
+264 294.6 -21.2  -88.8 1995-01-16
+265 277.3  36.2  -86.2 1995-01-16
+266 282.2  33.8  -86.2 1995-01-16
+267 285.2  31.2  -86.2 1995-01-16
+268 289.8  28.8  -86.2 1995-01-16
+269 294.1  26.2  -86.2 1995-01-16
+270 296.5  23.8  -86.2 1995-01-16
+271 296.9  21.2  -86.2 1995-01-16
+272 298.3  18.8  -86.2 1995-01-16
+273 298.7  16.2  -86.2 1995-01-16
+274 293.2  13.8  -86.2 1995-01-16
+275 299.6  11.2  -86.2 1995-01-16
+276 301.0   8.8  -86.2 1995-01-16
+277 301.9   6.2  -86.2 1995-01-16
+278 301.0   3.8  -86.2 1995-01-16
+279 300.1   1.2  -86.2 1995-01-16
+280 298.3  -1.2  -86.2 1995-01-16
+281 298.7  -3.8  -86.2 1995-01-16
+282 298.3  -6.2  -86.2 1995-01-16
+283 297.4  -8.8  -86.2 1995-01-16
+284 296.9 -11.2  -86.2 1995-01-16
+285 296.5 -13.8  -86.2 1995-01-16
+286 295.5 -16.2  -86.2 1995-01-16
+287 295.0 -18.8  -86.2 1995-01-16
+288 294.6 -21.2  -86.2 1995-01-16
+289 276.7  36.2  -83.8 1995-01-16
+290 281.6  33.8  -83.8 1995-01-16
+291 286.3  31.2  -83.8 1995-01-16
+292 289.3  28.8  -83.8 1995-01-16
+293 294.1  26.2  -83.8 1995-01-16
+294 296.0  23.8  -83.8 1995-01-16
+295 298.7  21.2  -83.8 1995-01-16
+296 298.7  18.8  -83.8 1995-01-16
+297 299.2  16.2  -83.8 1995-01-16
+298 298.3  13.8  -83.8 1995-01-16
+299 299.6  11.2  -83.8 1995-01-16
+300 301.4   8.8  -83.8 1995-01-16
+301 301.9   6.2  -83.8 1995-01-16
+302 301.0   3.8  -83.8 1995-01-16
+303 299.2   1.2  -83.8 1995-01-16
+304 297.8  -1.2  -83.8 1995-01-16
+305 297.8  -3.8  -83.8 1995-01-16
+306 298.7  -6.2  -83.8 1995-01-16
+307 298.3  -8.8  -83.8 1995-01-16
+308 297.8 -11.2  -83.8 1995-01-16
+309 296.5 -13.8  -83.8 1995-01-16
+310 295.5 -16.2  -83.8 1995-01-16
+311 294.6 -18.8  -83.8 1995-01-16
+312 294.6 -21.2  -83.8 1995-01-16
+313 276.7  36.2  -81.2 1995-01-16
+314 281.6  33.8  -81.2 1995-01-16
+315 289.3  31.2  -81.2 1995-01-16
+316 288.8  28.8  -81.2 1995-01-16
+317 292.7  26.2  -81.2 1995-01-16
+318 296.5  23.8  -81.2 1995-01-16
+319 298.7  21.2  -81.2 1995-01-16
+320 299.2  18.8  -81.2 1995-01-16
+321 299.2  16.2  -81.2 1995-01-16
+322 299.6  13.8  -81.2 1995-01-16
+323 299.6  11.2  -81.2 1995-01-16
+324 301.0   8.8  -81.2 1995-01-16
+325 301.4   6.2  -81.2 1995-01-16
+326 300.1   3.8  -81.2 1995-01-16
+327 299.2   1.2  -81.2 1995-01-16
+328 298.3  -1.2  -81.2 1995-01-16
+329 297.8  -3.8  -81.2 1995-01-16
+330 297.8  -6.2  -81.2 1995-01-16
+331 297.8  -8.8  -81.2 1995-01-16
+332 298.3 -11.2  -81.2 1995-01-16
+333 296.9 -13.8  -81.2 1995-01-16
+334 295.5 -16.2  -81.2 1995-01-16
+335 295.5 -18.8  -81.2 1995-01-16
+336 294.6 -21.2  -81.2 1995-01-16
+337 278.9  36.2  -78.8 1995-01-16
+338 284.2  33.8  -78.8 1995-01-16
+339 289.8  31.2  -78.8 1995-01-16
+340 291.2  28.8  -78.8 1995-01-16
+341 295.0  26.2  -78.8 1995-01-16
+342 296.0  23.8  -78.8 1995-01-16
+343 298.3  21.2  -78.8 1995-01-16
+344 299.6  18.8  -78.8 1995-01-16
+345 299.2  16.2  -78.8 1995-01-16
+346 299.6  13.8  -78.8 1995-01-16
+347 299.6  11.2  -78.8 1995-01-16
+348 300.1   8.8  -78.8 1995-01-16
+349 301.0   6.2  -78.8 1995-01-16
+350 300.1   3.8  -78.8 1995-01-16
+351 294.6   1.2  -78.8 1995-01-16
+352 287.3  -1.2  -78.8 1995-01-16
+353 288.8  -3.8  -78.8 1995-01-16
+354 291.7  -6.2  -78.8 1995-01-16
+355 297.4  -8.8  -78.8 1995-01-16
+356 295.5 -11.2  -78.8 1995-01-16
+357 296.5 -13.8  -78.8 1995-01-16
+358 295.5 -16.2  -78.8 1995-01-16
+359 295.0 -18.8  -78.8 1995-01-16
+360 294.6 -21.2  -78.8 1995-01-16
+361 283.2  36.2  -76.2 1995-01-16
+362 287.8  33.8  -76.2 1995-01-16
+363 289.8  31.2  -76.2 1995-01-16
+364 292.2  28.8  -76.2 1995-01-16
+365 295.0  26.2  -76.2 1995-01-16
+366 296.9  23.8  -76.2 1995-01-16
+367 297.8  21.2  -76.2 1995-01-16
+368 299.2  18.8  -76.2 1995-01-16
+369 299.2  16.2  -76.2 1995-01-16
+370 299.2  13.8  -76.2 1995-01-16
+371 300.5  11.2  -76.2 1995-01-16
+372 301.0   8.8  -76.2 1995-01-16
+373 298.7   6.2  -76.2 1995-01-16
+374 294.6   3.8  -76.2 1995-01-16
+375 294.6   1.2  -76.2 1995-01-16
+376 298.7  -1.2  -76.2 1995-01-16
+377 300.1  -3.8  -76.2 1995-01-16
+378 296.5  -6.2  -76.2 1995-01-16
+379 286.8  -8.8  -76.2 1995-01-16
+380 284.2 -11.2  -76.2 1995-01-16
+381 293.6 -13.8  -76.2 1995-01-16
+382 296.5 -16.2  -76.2 1995-01-16
+383 296.5 -18.8  -76.2 1995-01-16
+384 295.5 -21.2  -76.2 1995-01-16
+385 285.8  36.2  -73.8 1995-01-16
+386 288.3  33.8  -73.8 1995-01-16
+387 292.7  31.2  -73.8 1995-01-16
+388 292.2  28.8  -73.8 1995-01-16
+389 294.6  26.2  -73.8 1995-01-16
+390 296.9  23.8  -73.8 1995-01-16
+391 298.3  21.2  -73.8 1995-01-16
+392 299.2  18.8  -73.8 1995-01-16
+393 299.2  16.2  -73.8 1995-01-16
+394 299.2  13.8  -73.8 1995-01-16
+395 301.0  11.2  -73.8 1995-01-16
+396 301.0   8.8  -73.8 1995-01-16
+397 296.5   6.2  -73.8 1995-01-16
+398 297.4   3.8  -73.8 1995-01-16
+399 297.8   1.2  -73.8 1995-01-16
+400 298.3  -1.2  -73.8 1995-01-16
+401 300.1  -3.8  -73.8 1995-01-16
+402 299.6  -6.2  -73.8 1995-01-16
+403 298.7  -8.8  -73.8 1995-01-16
+404 296.9 -11.2  -73.8 1995-01-16
+405 281.6 -13.8  -73.8 1995-01-16
+406 293.6 -16.2  -73.8 1995-01-16
+407 296.9 -18.8  -73.8 1995-01-16
+408 296.0 -21.2  -73.8 1995-01-16
+409 286.8  36.2  -71.2 1995-01-16
+410 289.3  33.8  -71.2 1995-01-16
+411 290.7  31.2  -71.2 1995-01-16
+412 292.2  28.8  -71.2 1995-01-16
+413 294.6  26.2  -71.2 1995-01-16
+414 296.5  23.8  -71.2 1995-01-16
+415 298.3  21.2  -71.2 1995-01-16
+416 297.8  18.8  -71.2 1995-01-16
+417 299.2  16.2  -71.2 1995-01-16
+418 299.6  13.8  -71.2 1995-01-16
+419 299.6  11.2  -71.2 1995-01-16
+420 299.6   8.8  -71.2 1995-01-16
+421 298.3   6.2  -71.2 1995-01-16
+422 300.5   3.8  -71.2 1995-01-16
+423 298.7   1.2  -71.2 1995-01-16
+424 299.2  -1.2  -71.2 1995-01-16
+425 300.1  -3.8  -71.2 1995-01-16
+426 300.1  -6.2  -71.2 1995-01-16
+427 299.6  -8.8  -71.2 1995-01-16
+428 298.3 -11.2  -71.2 1995-01-16
+429 282.2 -13.8  -71.2 1995-01-16
+430 287.3 -16.2  -71.2 1995-01-16
+431 292.2 -18.8  -71.2 1995-01-16
+432 296.9 -21.2  -71.2 1995-01-16
+433 286.8  36.2  -68.8 1995-01-16
+434 289.8  33.8  -68.8 1995-01-16
+435 290.7  31.2  -68.8 1995-01-16
+436 292.2  28.8  -68.8 1995-01-16
+437 294.6  26.2  -68.8 1995-01-16
+438 296.0  23.8  -68.8 1995-01-16
+439 297.4  21.2  -68.8 1995-01-16
+440 298.3  18.8  -68.8 1995-01-16
+441 298.7  16.2  -68.8 1995-01-16
+442 299.2  13.8  -68.8 1995-01-16
+443 300.1  11.2  -68.8 1995-01-16
+444 297.8   8.8  -68.8 1995-01-16
+445 300.5   6.2  -68.8 1995-01-16
+446 300.1   3.8  -68.8 1995-01-16
+447 299.6   1.2  -68.8 1995-01-16
+448 300.1  -1.2  -68.8 1995-01-16
+449 300.5  -3.8  -68.8 1995-01-16
+450 300.1  -6.2  -68.8 1995-01-16
+451 300.1  -8.8  -68.8 1995-01-16
+452 299.6 -11.2  -68.8 1995-01-16
+453 299.6 -13.8  -68.8 1995-01-16
+454 282.2 -16.2  -68.8 1995-01-16
+455 283.2 -18.8  -68.8 1995-01-16
+456 288.3 -21.2  -68.8 1995-01-16
+457 288.3  36.2  -66.2 1995-01-16
+458 289.8  33.8  -66.2 1995-01-16
+459 291.2  31.2  -66.2 1995-01-16
+460 292.7  28.8  -66.2 1995-01-16
+461 294.6  26.2  -66.2 1995-01-16
+462 296.0  23.8  -66.2 1995-01-16
+463 297.4  21.2  -66.2 1995-01-16
+464 298.3  18.8  -66.2 1995-01-16
+465 299.2  16.2  -66.2 1995-01-16
+466 299.2  13.8  -66.2 1995-01-16
+467 299.6  11.2  -66.2 1995-01-16
+468 299.6   8.8  -66.2 1995-01-16
+469 300.5   6.2  -66.2 1995-01-16
+470 297.8   3.8  -66.2 1995-01-16
+471 299.2   1.2  -66.2 1995-01-16
+472 300.5  -1.2  -66.2 1995-01-16
+473 301.0  -3.8  -66.2 1995-01-16
+474 301.0  -6.2  -66.2 1995-01-16
+475 299.6  -8.8  -66.2 1995-01-16
+476 299.2 -11.2  -66.2 1995-01-16
+477 302.8 -13.8  -66.2 1995-01-16
+478 290.2 -16.2  -66.2 1995-01-16
+479 283.2 -18.8  -66.2 1995-01-16
+480 288.8 -21.2  -66.2 1995-01-16
+481 288.8  36.2  -63.8 1995-01-16
+482 289.3  33.8  -63.8 1995-01-16
+483 291.7  31.2  -63.8 1995-01-16
+484 293.2  28.8  -63.8 1995-01-16
+485 294.6  26.2  -63.8 1995-01-16
+486 296.5  23.8  -63.8 1995-01-16
+487 296.9  21.2  -63.8 1995-01-16
+488 298.3  18.8  -63.8 1995-01-16
+489 298.7  16.2  -63.8 1995-01-16
+490 299.6  13.8  -63.8 1995-01-16
+491 299.2  11.2  -63.8 1995-01-16
+492 299.6   8.8  -63.8 1995-01-16
+493 296.0   6.2  -63.8 1995-01-16
+494 295.0   3.8  -63.8 1995-01-16
+495 299.2   1.2  -63.8 1995-01-16
+496 301.9  -1.2  -63.8 1995-01-16
+497 301.4  -3.8  -63.8 1995-01-16
+498 301.0  -6.2  -63.8 1995-01-16
+499 300.5  -8.8  -63.8 1995-01-16
+500 299.2 -11.2  -63.8 1995-01-16
+501 299.2 -13.8  -63.8 1995-01-16
+502 301.0 -16.2  -63.8 1995-01-16
+503 290.2 -18.8  -63.8 1995-01-16
+504 301.4 -21.2  -63.8 1995-01-16
+505 288.8  36.2  -61.2 1995-01-16
+506 289.8  33.8  -61.2 1995-01-16
+507 290.7  31.2  -61.2 1995-01-16
+508 293.2  28.8  -61.2 1995-01-16
+509 294.6  26.2  -61.2 1995-01-16
+510 296.0  23.8  -61.2 1995-01-16
+511 296.9  21.2  -61.2 1995-01-16
+512 297.8  18.8  -61.2 1995-01-16
+513 298.7  16.2  -61.2 1995-01-16
+514 299.2  13.8  -61.2 1995-01-16
+515 299.2  11.2  -61.2 1995-01-16
+516 298.7   8.8  -61.2 1995-01-16
+517 297.8   6.2  -61.2 1995-01-16
+518 297.8   3.8  -61.2 1995-01-16
+519 300.1   1.2  -61.2 1995-01-16
+520 301.4  -1.2  -61.2 1995-01-16
+521 301.4  -3.8  -61.2 1995-01-16
+522 301.0  -6.2  -61.2 1995-01-16
+523 300.1  -8.8  -61.2 1995-01-16
+524 299.2 -11.2  -61.2 1995-01-16
+525 298.7 -13.8  -61.2 1995-01-16
+526 301.0 -16.2  -61.2 1995-01-16
+527 303.2 -18.8  -61.2 1995-01-16
+528 304.9 -21.2  -61.2 1995-01-16
+529 288.8  36.2  -58.8 1995-01-16
+530 289.8  33.8  -58.8 1995-01-16
+531 290.7  31.2  -58.8 1995-01-16
+532 292.2  28.8  -58.8 1995-01-16
+533 294.6  26.2  -58.8 1995-01-16
+534 295.5  23.8  -58.8 1995-01-16
+535 296.9  21.2  -58.8 1995-01-16
+536 297.8  18.8  -58.8 1995-01-16
+537 298.3  16.2  -58.8 1995-01-16
+538 298.7  13.8  -58.8 1995-01-16
+539 299.2  11.2  -58.8 1995-01-16
+540 299.2   8.8  -58.8 1995-01-16
+541 297.8   6.2  -58.8 1995-01-16
+542 299.2   3.8  -58.8 1995-01-16
+543 299.2   1.2  -58.8 1995-01-16
+544 300.5  -1.2  -58.8 1995-01-16
+545 301.4  -3.8  -58.8 1995-01-16
+546 300.1  -6.2  -58.8 1995-01-16
+547 299.2  -8.8  -58.8 1995-01-16
+548 299.2 -11.2  -58.8 1995-01-16
+549 299.2 -13.8  -58.8 1995-01-16
+550 301.9 -16.2  -58.8 1995-01-16
+551 301.4 -18.8  -58.8 1995-01-16
+552 302.3 -21.2  -58.8 1995-01-16
+553 288.8  36.2  -56.2 1995-01-16
+554 289.8  33.8  -56.2 1995-01-16
+555 290.7  31.2  -56.2 1995-01-16
+556 292.2  28.8  -56.2 1995-01-16
+557 294.1  26.2  -56.2 1995-01-16
+558 295.0  23.8  -56.2 1995-01-16
+559 296.5  21.2  -56.2 1995-01-16
+560 297.4  18.8  -56.2 1995-01-16
+561 297.8  16.2  -56.2 1995-01-16
+562 298.3  13.8  -56.2 1995-01-16
+563 298.7  11.2  -56.2 1995-01-16
+564 299.2   8.8  -56.2 1995-01-16
+565 299.6   6.2  -56.2 1995-01-16
+566 296.5   3.8  -56.2 1995-01-16
+567 298.3   1.2  -56.2 1995-01-16
+568 300.5  -1.2  -56.2 1995-01-16
+569 301.0  -3.8  -56.2 1995-01-16
+570 300.1  -6.2  -56.2 1995-01-16
+571 298.7  -8.8  -56.2 1995-01-16
+572 298.7 -11.2  -56.2 1995-01-16
+573 299.6 -13.8  -56.2 1995-01-16
+574 301.0 -16.2  -56.2 1995-01-16
+575 302.3 -18.8  -56.2 1995-01-16
+576 300.1 -21.2  -56.2 1995-01-16
+[58:57] 118> v = read()
+Called from: read()
+Browse[1]> n
+debug at ../Day9/nasa.R#25: lon = strsplit(tmp2[6], " ")[[1]]
+Browse[1]> n
+debug at ../Day9/nasa.R#26: lon = lon[lon != ""]
+Browse[1]> C
+function (object, contr, how.many, ...) 
+{
+    object <- as.factor(object)
+    if (!nlevels(object)) 
+        stop("object not interpretable as a factor")
+    if (!missing(contr) && is.name(Xcontr <- substitute(contr))) 
+        contr <- switch(as.character(Xcontr), poly = "contr.poly", 
+            helmert = "contr.helmert", sum = "contr.sum", treatment = "contr.treatment", 
+            SAS = "contr.SAS", contr)
+    if (missing(contr)) {
+        oc <- getOption("contrasts")
+        contr <- if (length(oc) < 2L) 
+            if (is.ordered(object)) 
+                contr.poly
+            else contr.treatment
+        else oc[1 + is.ordered(object)]
+    }
+    if (missing(how.many) && missing(...)) 
+        contrasts(object) <- contr
+    else {
+        if (is.character(contr)) 
+            contr <- get(contr, mode = "function")
+        if (is.function(contr)) 
+            contr <- contr(levels(object), ...)
+        contrasts(object, how.many) <- contr
+    }
+    object
+}
+<bytecode: 0x7741333b8>
+<environment: namespace:stats>
+Browse[1]> c
+[59:45] 120> v = read()
+Called from: read()
+Browse[1]> Q
+[59:45] 120> debug(read.table)
+[00:44] 121> read.table("../Data/NASA/cloudhigh1.txt")
+debugging in: read.table("../Data/NASA/cloudhigh1.txt")
+debug: {
+    if (missing(file) && !missing(text)) {
+        file <- textConnection(text, encoding = "UTF-8")
+        encoding <- "UTF-8"
+        on.exit(close(file))
+    }
+    if (is.character(file)) {
+        file <- if (nzchar(fileEncoding)) 
+            file(file, "rt", encoding = fileEncoding)
+        else file(file, "rt")
+        on.exit(close(file))
+    }
+    if (!inherits(file, "connection")) 
+        stop("'file' must be a character string or connection")
+    if (!isOpen(file, "rt")) {
+        open(file, "rt")
+        on.exit(close(file))
+    }
+    pbEncoding <- if (encoding %in% c("", "bytes", "UTF-8")) 
+        encoding
+    else "bytes"
+    numerals <- match.arg(numerals)
+    if (skip > 0L) 
+        readLines(file, skip)
+    nlines <- n0lines <- if (nrows < 0L) 
+        5
+    else min(5L, (header + nrows))
+    lines <- .External(C_readtablehead, file, nlines, comment.char, 
+        blank.lines.skip, quote, sep, skipNul)
+    if (encoding %in% c("UTF-8", "latin1")) 
+        Encoding(lines) <- encoding
+    nlines <- length(lines)
+    if (!nlines) {
+        if (missing(col.names)) 
+            stop("no lines available in input")
+        rlabp <- FALSE
+        cols <- length(col.names)
+    }
+    else {
+        if (all(!nzchar(lines))) 
+            stop("empty beginning of file")
+        if (nlines < n0lines && file == 0L) {
+            pushBack(c(lines, lines, ""), file, encoding = pbEncoding)
+            on.exit((clearPushBack(stdin())))
+        }
+        else pushBack(c(lines, lines), file, encoding = pbEncoding)
+        first <- scan(file, what = "", sep = sep, quote = quote, 
+            nlines = 1, quiet = TRUE, skip = 0, strip.white = TRUE, 
+            blank.lines.skip = blank.lines.skip, na.strings = character(0), 
+            comment.char = comment.char, allowEscapes = allowEscapes, 
+            encoding = encoding, skipNul = skipNul)
+        col1 <- if (missing(col.names)) 
+            length(first)
+        else length(col.names)
+        col <- numeric(nlines - 1L)
+        if (nlines > 1L) 
+            for (i in seq_along(col)) col[i] <- length(scan(file, 
+                what = "", sep = sep, quote = quote, nlines = 1, 
+                quiet = TRUE, skip = 0, strip.white = strip.white, 
+                blank.lines.skip = blank.lines.skip, comment.char = comment.char, 
+                allowEscapes = allowEscapes, encoding = encoding, 
+                skipNul = skipNul))
+        cols <- max(col1, col)
+        rlabp <- (cols - col1) == 1L
+        if (rlabp && missing(header)) 
+            header <- TRUE
+        if (!header) 
+            rlabp <- FALSE
+        if (header) {
+            .External(C_readtablehead, file, 1L, comment.char, 
+                blank.lines.skip, quote, sep, skipNul)
+            if (missing(col.names)) 
+                col.names <- first
+            else if (length(first) != length(col.names)) 
+                warning("header and 'col.names' are of different lengths")
+        }
+        else if (missing(col.names)) 
+            col.names <- paste0("V", 1L:cols)
+        if (length(col.names) + rlabp < cols) 
+            stop("more columns than column names")
+        if (fill && length(col.names) > cols) 
+            cols <- length(col.names)
+        if (!fill && cols > 0L && length(col.names) > cols) 
+            stop("more column names than columns")
+        if (cols == 0L) 
+            stop("first five rows are empty: giving up")
+    }
+    if (check.names) 
+        col.names <- make.names(col.names, unique = TRUE)
+    if (rlabp) 
+        col.names <- c("row.names", col.names)
+    nmColClasses <- names(colClasses)
+    if (is.null(nmColClasses)) {
+        if (length(colClasses) < cols) 
+            colClasses <- rep_len(colClasses, cols)
+    }
+    else {
+        tmp <- rep_len(NA_character_, cols)
+        names(tmp) <- col.names
+        i <- match(nmColClasses, col.names, 0L)
+        if (any(i <= 0L)) 
+            warning("not all columns named in 'colClasses' exist")
+        tmp[i[i > 0L]] <- colClasses[i > 0L]
+        colClasses <- tmp
+    }
+    what <- rep.int(list(""), cols)
+    names(what) <- col.names
+    colClasses[colClasses %in% c("real", "double")] <- "numeric"
+    known <- colClasses %in% c("logical", "integer", "numeric", 
+        "complex", "character", "raw")
+    what[known] <- lapply(colClasses[known], do.call, list(0))
+    what[colClasses %in% "NULL"] <- list(NULL)
+    keep <- !vapply(what, is.null, NA)
+    data <- scan(file = file, what = what, sep = sep, quote = quote, 
+        dec = dec, nmax = nrows, skip = 0, na.strings = na.strings, 
+        quiet = TRUE, fill = fill, strip.white = strip.white, 
+        blank.lines.skip = blank.lines.skip, multi.line = FALSE, 
+        comment.char = comment.char, allowEscapes = allowEscapes, 
+        flush = flush, encoding = encoding, skipNul = skipNul)
+    nlines <- length(data[[which.max(keep)]])
+    if (cols != length(data)) {
+        warning("cols = ", cols, " != length(data) = ", length(data), 
+            domain = NA)
+        cols <- length(data)
+    }
+    if (is.logical(as.is)) {
+        as.is <- rep_len(as.is, cols)
+    }
+    else if (is.numeric(as.is)) {
+        if (any(as.is < 1 | as.is > cols)) 
+            stop("invalid numeric 'as.is' expression")
+        i <- rep.int(FALSE, cols)
+        i[as.is] <- TRUE
+        as.is <- i
+    }
+    else if (is.character(as.is)) {
+        i <- match(as.is, col.names, 0L)
+        if (any(i <= 0L)) 
+            warning("not all columns named in 'as.is' exist")
+        i <- i[i > 0L]
+        as.is <- rep.int(FALSE, cols)
+        as.is[i] <- TRUE
+    }
+    else if (length(as.is) != cols) 
+        stop(gettextf("'as.is' has the wrong length %d  != cols = %d", 
+            length(as.is), cols), domain = NA)
+    do <- keep & !known
+    if (rlabp) 
+        do[1L] <- FALSE
+    for (i in (1L:cols)[do]) {
+        data[[i]] <- if (is.na(colClasses[i])) 
+            type.convert(data[[i]], as.is = as.is[i], dec = dec, 
+                numerals = numerals, na.strings = character(0L), 
+                tryLogical = tryLogical)
+        else if (colClasses[i] == "factor") 
+            as.factor(data[[i]])
+        else if (colClasses[i] == "Date") 
+            as.Date(data[[i]])
+        else if (colClasses[i] == "POSIXct") 
+            as.POSIXct(data[[i]])
+        else methods::as(data[[i]], colClasses[i])
+    }
+    compactRN <- TRUE
+    if (missing(row.names)) {
+        if (rlabp) {
+            row.names <- data[[1L]]
+            data <- data[-1L]
+            keep <- keep[-1L]
+            compactRN <- FALSE
+        }
+        else row.names <- .set_row_names(as.integer(nlines))
+    }
+    else if (is.null(row.names)) {
+        row.names <- .set_row_names(as.integer(nlines))
+    }
+    else if (is.character(row.names)) {
+        compactRN <- FALSE
+        if (length(row.names) == 1L) {
+            rowvar <- (1L:cols)[match(col.names, row.names, 0L) == 
+                1L]
+            row.names <- data[[rowvar]]
+            data <- data[-rowvar]
+            keep <- keep[-rowvar]
+        }
+    }
+    else if (is.numeric(row.names) && length(row.names) == 1L) {
+        compactRN <- FALSE
+        rlabp <- row.names
+        row.names <- data[[rlabp]]
+        data <- data[-rlabp]
+        keep <- keep[-rlabp]
+    }
+    else stop("invalid 'row.names' specification")
+    data <- data[keep]
+    if (is.object(row.names) || !(is.integer(row.names))) 
+        row.names <- as.character(row.names)
+    if (!compactRN) {
+        if (length(row.names) != nlines) 
+            stop("invalid 'row.names' length")
+        if (anyDuplicated(row.names)) 
+            stop("duplicate 'row.names' are not allowed")
+        if (anyNA(row.names)) 
+            stop("missing values in 'row.names' are not allowed")
+    }
+    class(data) <- "data.frame"
+    attr(data, "row.names") <- row.names
+    data
+}
+Browse[1]> n
+debug: if (missing(file) && !missing(text)) {
+    file <- textConnection(text, encoding = "UTF-8")
+    encoding <- "UTF-8"
+    on.exit(close(file))
+}
+Browse[1]> 
+debug: if (is.character(file)) {
+    file <- if (nzchar(fileEncoding)) 
+        file(file, "rt", encoding = fileEncoding)
+    else file(file, "rt")
+    on.exit(close(file))
+}
+Browse[1]> 
+debug: file <- if (nzchar(fileEncoding)) file(file, "rt", encoding = fileEncoding) else file(file, 
+    "rt")
+Browse[1]> Q
+[00:44] 121> undebug(read.table)
+[27:07] 122> 
