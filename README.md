@@ -94,7 +94,6 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
 + [Day 10](Day10)
    + Reading data - strategies and implementation.
    + Writing functions
-   + Finding non-local variables
    + Debugging code
    + [README](Day10/Plan.md)
    + Finish NASA data
@@ -103,11 +102,15 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
 	    + try()
       + warnings		
          + add `na.strings = "...."`
+   + [update read() function](Day10/NASA/nasa2.R) for na.strings
+   + [R session for NASA](Day10/NASA/NASARsession),
+     [R session for NASA R](Day10/NASA/NASARsession.R), [R session for NASA markdown](Day10/NASA/NASARsession.md)
    + NCBI Data
       + [NCBI Iteratons](NCBI/README.md)
-
+   + [R session](Day10/Rsession), [R commands](Day10/Rcode.R), [R commands markdown](Day10/Rcode.md)
 
 + [Day 11](Day11)
+   + Finding non-local variables
    + Review session
    
 + [Day 12](Day12)
