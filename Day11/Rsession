@@ -1,0 +1,1408 @@
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> ls
+AirlineDelays_HW1.md   AirlineDelays_SampleSolutions.pdf  bob.rda  GNUmakefile@      Solutions.pdf  Solutions.R~
+AirlineDelays_HW1.pdf  AirlineDelays_SampleSolutions.Rmd  funs.R   Solutions_files/  Solutions.R
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.pdf 
+Rscript -e "rmarkdown::render(\"AirlineDelays_SampleSolutions.Rmd\", \"pdf_document\")"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+  |...............................                                                                                |  28% [unnamed-chunk-19]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-19-1.png" but not available.
+  |.....................................                                                                          |  34% [unnamed-chunk-23]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-23-1.png" but not available.
+  |.......................................                                                                        |  35% [unnamed-chunk-24]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-24-1.png" but not available.
+  |.........................................                                                                      |  36% [unnamed-chunk-25]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-25-1.png" but not available.
+  |..........................................                                                                     |  38% [unnamed-chunk-26]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-26-1.png" but not available.
+  |..................................................                                                             |  45% [unnamed-chunk-31]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-31-1.png" but not available.
+  |.....................................................                                                          |  48% [unnamed-chunk-33]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-33-1.png" but not available.
+  |.......................................................                                                        |  50% [unnamed-chunk-34]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-34-1.png" but not available.
+  |.........................................................                                                      |  51% [unnamed-chunk-35]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-35-1.png" but not available.
+  |..........................................................                                                     |  53% [unnamed-chunk-36]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-36-1.png" but not available.
+  |.........................................................................................                      |  80% [unnamed-chunk-55]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-55-1.png" but not available.
+  |...........................................................................................                    |  82% [unnamed-chunk-56]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-56-1.png" but not available.
+  |............................................................................................                   |  83% [unnamed-chunk-57]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-57-1.png" but not available.
+  |..............................................................................................                 |  85% [unnamed-chunk-58]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-58-1.png" but not available.
+  |...................................................................................................            |  89% [unnamed-chunk-61]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-61-1.png" but not available.
+  |....................................................................................................           |  91% [unnamed-chunk-62]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-62-1.png" but not available.
+  |........................................................................................................       |  93% [unnamed-chunk-64]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-64-1.png" but not available.
+  |.........................................................................................................      |  95% [unnamed-chunk-65]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-65-1.png" but not available.
+  |.............................................................................................................. |  99% [unnamed-chunk-68]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-68-1.png" but not available.
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.knit.md
+
+/usr/local/bin/pandoc +RTS -K512m -RTS AirlineDelays_SampleSolutions.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output AirlineDelays_SampleSolutions.tex --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --highlight-style tango --pdf-engine pdflatex --variable graphics --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/extract-data-uri.lua --variable 'geometry:margin=1in' 
+
+Output created: AirlineDelays_SampleSolutions.pdf
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> open AirlineDelays_SampleSolutions.pdf 
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> open .
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make -f ../GNUmakefile AirlineDelays_SampleSolutions.R
+Rscript -e "knitr::purl(\"AirlineDelays_SampleSolutions.Rmd\", \"AirlineDelays_SampleSolutions.R\", documentation = 0)"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.R
+
+[1] "AirlineDelays_SampleSolutions.R"
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> Rscript -e "knitr::purl(\"AirlineDelays_SampleSolutions.Rmd\", \"AirlineDelays_SampleSolutions.R\", documentation = 2)"
+[1] "AirlineDelays_SampleSolutions.R"
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> Rscript -e "knitr::purl(\"AirlineDelays_SampleSolutions.Rmd\", \"AirlineDelays_SampleSolutions.R\", documentation = 2)"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.R
+
+[1] "AirlineDelays_SampleSolutions.R"
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> Rscript -e "knitr::purl(\"AirlineDelays_SampleSolutions.Rmd\", \"AirlineDelays_SampleSolutions.R\", documentation = 2)"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.R
+
+[1] "AirlineDelays_SampleSolutions.R"
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> ls
+AirlineDelays_HW1.md               AirlineDelays_SampleSolutions.R    funs.R        phoebe~           Solutions.R
+AirlineDelays_HW1.pdf              AirlineDelays_SampleSolutions.Rmd  GNUmakefile@  Solutions_files/  Solutions.R~
+AirlineDelays_SampleSolutions.pdf  bob.rda                            phoebe        Solutions.pdf
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.pdf 
+Rscript -e "rmarkdown::render(\"AirlineDelays_SampleSolutions.Rmd\", \"pdf_document\")"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+  |.............................                                                                                  |  27% [unnamed-chunk-19]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-19-1.png" but not available.
+  |....................................                                                                           |  32% [unnamed-chunk-23]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-23-1.png" but not available.
+  |.....................................                                                                          |  34% [unnamed-chunk-24]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-24-1.png" but not available.
+  |.......................................                                                                        |  35% [unnamed-chunk-25]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-25-1.png" but not available.
+  |........................................                                                                       |  36%                    [unnamed-chunk-26]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-26-1.png" but not available.
+  |................................................                                                               |  43% [unnamed-chunk-31]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-31-1.png" but not available.
+  |...................................................                                                            |  46% [unnamed-chunk-33]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-33-1.png" but not available.
+  |.....................................................                                                          |  48% [unnamed-chunk-34]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-34-1.png" but not available.
+  |......................................................                                                         |  49% [unnamed-chunk-35]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-35-1.png" but not available.
+  |........................................................                                                       |  50% [unnamed-chunk-36]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-36-1.png" but not available.
+  |..............................................................                                                 |  56% [unnamed-chunk-40]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-40-1.png" but not available.
+  |........................................................................................                       |  80% [unnamed-chunk-57]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-57-1.png" but not available.
+  |..........................................................................................                     |  81% [unnamed-chunk-58]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-58-1.png" but not available.
+  |............................................................................................                   |  83% [unnamed-chunk-59]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-59-1.png" but not available.
+  |.............................................................................................                  |  84% [unnamed-chunk-60]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-60-1.png" but not available.
+  |..................................................................................................             |  88% [unnamed-chunk-63]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-63-1.png" but not available.
+  |...................................................................................................            |  90% [unnamed-chunk-64]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-64-1.png" but not available.
+  |......................................................................................................         |  92%                    [unnamed-chunk-66]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-66-1.png" but not available.
+  |........................................................................................................       |  94% [unnamed-chunk-67]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-67-1.png" but not available.
+  |.............................................................................................................. |  99% [unnamed-chunk-71]
+
+Error in eval(expr, envir) : '...' used in an incorrect context
+Calls: <Anonymous> ... eval -> withCallingHandlers -> withVisible -> eval -> eval
+
+Quitting from AirlineDelays_SampleSolutions.Rmd:635-637 [unnamed-chunk-71]
+                                                                                                                                                                         
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.pdf 
+Rscript -e "rmarkdown::render(\"AirlineDelays_SampleSolutions.Rmd\", \"pdf_document\")"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+  |.............................                                                                                  |  27% [unnamed-chunk-19]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-19-1.png" but not available.
+  |....................................                                                                           |  32% [unnamed-chunk-23]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-23-1.png" but not available.
+  |.....................................                                                                          |  34% [unnamed-chunk-24]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-24-1.png" but not available.
+  |.......................................                                                                        |  35% [unnamed-chunk-25]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-25-1.png" but not available.
+  |........................................                                                                       |  36%                    [unnamed-chunk-26]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-26-1.png" but not available.
+  |................................................                                                               |  43% [unnamed-chunk-31]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-31-1.png" but not available.
+  |...................................................                                                            |  46% [unnamed-chunk-33]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-33-1.png" but not available.
+  |.....................................................                                                          |  48% [unnamed-chunk-34]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-34-1.png" but not available.
+  |......................................................                                                         |  49% [unnamed-chunk-35]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-35-1.png" but not available.
+  |........................................................                                                       |  50% [unnamed-chunk-36]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-36-1.png" but not available.
+  |..............................................................                                                 |  56% [unnamed-chunk-40]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-40-1.png" but not available.
+  |........................................................................................                       |  80% [unnamed-chunk-57]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-57-1.png" but not available.
+  |..........................................................................................                     |  81% [unnamed-chunk-58]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-58-1.png" but not available.
+  |............................................................................................                   |  83% [unnamed-chunk-59]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-59-1.png" but not available.
+  |.............................................................................................                  |  84% [unnamed-chunk-60]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-60-1.png" but not available.
+  |..................................................................................................             |  88% [unnamed-chunk-63]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-63-1.png" but not available.
+  |...................................................................................................            |  90% [unnamed-chunk-64]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-64-1.png" but not available.
+  |......................................................................................................         |  92%                    [unnamed-chunk-66]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-66-1.png" but not available.
+  |........................................................................................................       |  94% [unnamed-chunk-67]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-67-1.png" but not available.
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.knit.md
+
+/usr/local/bin/pandoc +RTS -K512m -RTS AirlineDelays_SampleSolutions.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output AirlineDelays_SampleSolutions.tex --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --highlight-style tango --pdf-engine pdflatex --variable graphics --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/extract-data-uri.lua --variable 'geometry:margin=1in' 
+
+Output created: AirlineDelays_SampleSolutions.pdf
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> ls
+AirlineDelays_HW1.md               AirlineDelays_SampleSolutions.R    funs.R        phoebe~           Solutions.R
+AirlineDelays_HW1.pdf              AirlineDelays_SampleSolutions.Rmd  GNUmakefile@  Solutions_files/  Solutions.R~
+AirlineDelays_SampleSolutions.pdf  bob.rda                            phoebe        Solutions.pdf
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> rm AirlineDelays_SampleSolutions.R
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.R
+Rscript -e "knitr::purl(\"AirlineDelays_SampleSolutions.Rmd\", \"AirlineDelays_SampleSolutions.R\", documentation = 2)"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.R
+
+[1] "AirlineDelays_SampleSolutions.R"
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> cd ..
+]0;Assignments~/sta141a/Assignments> git add runByQ.R 
+]0;Assignments~/sta141a/Assignments> git commit -m "adaptation of runByQ.R for AirlineDelays."
+[main f0e0fd0] adaptation of runByQ.R for AirlineDelays.
+ 1 file changed, 25 insertions(+)
+]0;Assignments~/sta141a/Assignments> ls
+AirlineDelays1/  Baseball/  FEC/  GNUmakefile  ReadingData/  runByQ.R
+]0;Assignments~/sta141a/Assignments> cd AirlineDelays1/
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> ls
+AirlineDelays_HW1.md   AirlineDelays_SampleSolutions.pdf  AirlineDelays_SampleSolutions.Rmd  funs.R        phoebe   Solutions_files/  Solutions.R
+AirlineDelays_HW1.pdf  AirlineDelays_SampleSolutions.R    bob.rda                            GNUmakefile@  phoebe~  Solutions.pdf     Solutions.R~
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git status .
+On branch main
+Your branch is ahead of 'origin/main' by 8 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   AirlineDelays_SampleSolutions.Rmd
+	deleted:    Sep2026_Mar2012_May2011.rds
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	AirlineDelays_SampleSolutions.R
+	Solutions.R
+	phoebe
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git add AirlineDelays_SampleSolutions.Rmd 
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git commit -m "final solutions"
+[main fed9269] final solutions
+ 1 file changed, 76 insertions(+), 36 deletions(-)
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.R
+make: 'AirlineDelays_SampleSolutions.R' is up to date.
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> 
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 74927 
+Time = 2026-10-28 19:16:57 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Assignments/AirlineDelays1 
+1> knitr::purl("AirlineDelays_SampleSolutions.Rmd", "AirlineDelays_SampleSolutions.R", documentation = 2)
+[1] "AirlineDelays_SampleSolutions.R"
+[17:16] 2> knitr::purl("AirlineDelays_SampleSolutions.Rmd", "AirlineDelays_SampleSolutions.R", documentation = 2)
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                                                           
+output file: AirlineDelays_SampleSolutions.R
+
+[1] "AirlineDelays_SampleSolutions.R"
+[17:29] 3> textConnection
+function (object, open = "r", local = FALSE, name = deparse1(substitute(object)), 
+    encoding = c("", "bytes", "UTF-8")) 
+{
+    env <- if (local) 
+        parent.frame()
+    else .GlobalEnv
+    type <- match(match.arg(encoding), c("", "bytes", "UTF-8"))
+    if (!(is.character(name) && length(name) == 1)) 
+        stop(gettextf("'%s' must be a character string", "name"), 
+            domain = NA)
+    .Internal(textConnection(name, object, open, env, type))
+}
+<bytecode: 0x714d2f5e8>
+<environment: namespace:base>
+[18:04] 4> con = textConnection("", "w")
+Error in textConnection("", "w") : 
+  attempt to use zero-length variable name
+
+Enter a frame number, or 0 to exit 
+
+1: textConnection("", "w")
+
+Selection: 0
+[18:04] 4> ls()
+[1] "PRMGateway"     "PRMGatewayProd"
+[18:22] 5> con = textConnection(x, "w")
+Error: object 'x' not found
+
+Enter a frame number, or 0 to exit 
+
+1: textConnection(x, "w")
+
+Selection: 0
+[18:22] 5> x = character()
+[18:31] 6> con = textConnection("", "w", local = TRUE)
+Error in textConnection("", "w", local = TRUE) : 
+  attempt to use zero-length variable name
+
+Enter a frame number, or 0 to exit 
+
+1: textConnection("", "w", local = TRUE)
+
+Selection: 0
+[18:31] 6> con = textConnection(v, "w", local = TRUE)
+Error: object 'v' not found
+
+Enter a frame number, or 0 to exit 
+
+1: textConnection(v, "w", local = TRUE)
+
+Selection: 0
+[18:31] 6> textConnectionValue
+function (con) 
+.Internal(textConnectionValue(con))
+<bytecode: 0x713c0a890>
+<environment: namespace:base>
+[30:26] 7> source("../runByQ.R")
+[31:08] 8> z = mkCode("AirlineDelays_SampleSolutions.Rmd")
+Error in textConnection(v, "w", local = TRUE) : invalid 'text' argument
+
+Enter a frame number, or 0 to exit 
+
+1: mkCode("AirlineDelays_SampleSolutions.Rmd")
+2: runByQ.R#59: textConnection(v, "w", local = TRUE)
+
+Selection: 0
+
+[31:08] 8> [31:08] 8> textConnection
+function (object, open = "r", local = FALSE, name = deparse1(substitute(object)), 
+    encoding = c("", "bytes", "UTF-8")) 
+{
+    env <- if (local) 
+        parent.frame()
+    else .GlobalEnv
+    type <- match(match.arg(encoding), c("", "bytes", "UTF-8"))
+    if (!(is.character(name) && length(name) == 1)) 
+        stop(gettextf("'%s' must be a character string", "name"), 
+            domain = NA)
+    .Internal(textConnection(name, object, open, env, type))
+}
+<bytecode: 0x714d2f5e8>
+<environment: namespace:base>
+[31:38] 9> source("../runByQ.R")
+[32:15] 10> z = mkCode("AirlineDelays_SampleSolutions.Rmd")
+Error in textConnection(v, "w", local = TRUE, name = "v") : 
+  invalid 'text' argument
+
+Enter a frame number, or 0 to exit 
+
+1: mkCode("AirlineDelays_SampleSolutions.Rmd")
+2: runByQ.R#59: textConnection(v, "w", local = TRUE, name = "v")
+
+Selection: 0
+[32:15] 10> ?textConnection
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+textConnection              package:base               R Documentation
+
+Text Connections
+
+Description:
+
+     Input and output text connections.
+
+Usage:
+
+     textConnection(object, open = "r", local = FALSE,
+                    name = deparse1(substitute(object)),
+                    encoding = c("", "bytes", "UTF-8"))
+     
+     textConnectionValue(con)
+     
+Arguments:
+
+  object: character.  A description of the connection.  For an input
+          this is an R character vector object, and for an output
+          connection the name for the R character vector to receive the
+          output, or ‘NULL’ (for none).
+
+    open: character string.  Either ‘"r"’ (or equivalently ‘""’) for an
+          input connection or ‘"w"’ or ‘"a"’ for an output connection.
+
+   local: logical.  Used only for output connections.  If ‘TRUE’,
+: 
+          output is assigned to a variable in the calling environment.
+          Otherwise the global environment is used.
+
+    name: a ‘character’ string specifying the connection name.
+
+encoding: character string, partially matched.  Used only for input
+          connections.  How marked strings in ‘object’ should be
+          handled: converted to the current locale, used byte-by-byte
+          or translated to UTF-8.
+
+     con: an output text connection.
+
+Details:
+
+     An input text connection is opened and the character vector is
+     copied at time the connection object is created, and ‘close’
+     destroys the copy.  ‘object’ should be the name of a character
+     vector: however, short expressions will be accepted provided they
+     deparse to less than 60 bytes.
+
+     An output text connection is opened and creates an R character
+     vector of the given name in the user's workspace or in the calling
+     environment, depending on the value of the ‘local’ argument.  This
+     object will at all times hold the completed lines of output to the
+     connection, and ‘isIncomplete’ will indicate if there is an
+     incomplete final line.  Closing the connection will output the
+     final line, complete or not.  (A line is complete once it has been
+     terminated by end-of-line, represented by ‘"\n"’ in R.)  The
+: 
+     output character vector has locked bindings (see ‘lockBinding’)
+     until ‘close’ is called on the connection.  The character vector
+     can also be retrieved _via_ ‘textConnectionValue’, which is the
+     only way to do so if ‘object = NULL’.  If the current locale is
+     detected as Latin-1 or UTF-8, non-ASCII elements of the character
+     vector will be marked accordingly (see ‘Encoding’).
+
+     Opening a text connection with ‘mode = "a"’ will attempt to append
+     to an existing character vector with the given name in the user's
+     workspace or the calling environment.  If none is found (even if
+     an object exists of the right name but the wrong type) a new
+     character vector will be created, with a warning.
+
+     You cannot ‘seek’ on a text connection, and ‘seek’ will always
+     return zero as the position.
+
+     Text connections have slightly unusual semantics: they are always
+     open, and throwing away an input text connection without closing
+     it (so it get garbage-collected) does not give a warning.
+
+Value:
+
+     For ‘textConnection’, a connection object of class
+     ‘"textConnection"’ which inherits from class ‘"connection"’.
+
+     For ‘textConnectionValue’, a character vector.
+
+Note:
+: 
+
+     As output text connections keep the character vector up to date
+     line-by-line, they are relatively expensive to use, and it is
+     often better to use an anonymous ‘file()’ connection to collect
+     output.
+
+     On (rare) platforms where ‘vsnprintf’ does not return the needed
+     length of output there is a 100,000 character limit on the length
+     of line for output connections: longer lines will be truncated
+     with a warning.
+
+References:
+
+     Chambers JM (1998). _Programming with Data_. Springer, New York.
+     ISBN 978-0-387-98503-9.
+     [S has input text connections only.]
+
+See Also:
+
+     ‘connections’, ‘showConnections’, ‘pushBack’, ‘capture.output’.
+
+Examples:
+
+     zz <- textConnection(LETTERS)
+     readLines(zz, 2)
+     scan(zz, "", 4)
+     pushBack(c("aa", "bb"), zz)
+     scan(zz, "", 4)
+: 
+     close(zz)
+     
+     zz <- textConnection("foo", "w")
+     writeLines(c("testit1", "testit2"), zz)
+     cat("testit3 ", file = zz)
+     isIncomplete(zz)
+     cat("testit4\n", file = zz)
+     isIncomplete(zz)
+     close(zz)
+     foo
+     
+     # capture R output: use part of example from help(lm)
+     zz <- textConnection("foo", "w")
+     ctl <- c(4.17, 5.58, 5.18, 6.11, 4.5, 4.61, 5.17, 4.53, 5.33, 5.14)
+     trt <- c(4.81, 4.17, 4.41, 3.59, 5.87, 3.83, 6.03, 4.89, 4.32, 4.69)
+     group <- gl(2, 10, 20, labels = c("Ctl", "Trt"))
+     weight <- c(ctl, trt)
+     sink(zz)
+     anova(lm.D9 <- lm(weight ~ group))
+     cat("\nSummary of Residuals:\n\n")
+     summary(resid(lm.D9))
+     sink()
+     close(zz)
+     cat(foo, sep = "\n")
+     
+
+(END)
+
+^     scan(zz, "", 4)
+     close(zz)
+     
+     zz <- textConnection("foo", "w")
+     writeLines(c("testit1", "testit2"), zz)
+     cat("testit3 ", file = zz)
+     isIncomplete(zz)
+     cat("testit4\n", file = zz)
+     isIncomplete(zz)
+     close(zz)
+     foo
+     
+     # capture R output: use part of example from help(lm)
+     zz <- textConnection("foo", "w")
+     ctl <- c(4.17, 5.58, 5.18, 6.11, 4.5, 4.61, 5.17, 4.53, 5.33, 5.14)
+     trt <- c(4.81, 4.17, 4.41, 3.59, 5.87, 3.83, 6.03, 4.89, 4.32, 4.69)
+     group <- gl(2, 10, 20, labels = c("Ctl", "Trt"))
+     weight <- c(ctl, trt)
+     sink(zz)
+     anova(lm.D9 <- lm(weight ~ group))
+     cat("\nSummary of Residuals:\n\n")
+     summary(resid(lm.D9))
+     sink()
+     close(zz)
+     cat(foo, sep = "\n")
+     
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+
+^     scan(zz, "", 4)
+     close(zz)
+     
+     zz <- textConnection("foo", "w")
+     writeLines(c("testit1", "testit2"), zz)
+     cat("testit3 ", file = zz)
+     isIncomplete(zz)
+     cat("testit4\n", file = zz)
+     isIncomplete(zz)
+     close(zz)
+     foo
+     
+     # capture R output: use part of example from help(lm)
+     zz <- textConnection("foo", "w")
+     ctl <- c(4.17, 5.58, 5.18, 6.11, 4.5, 4.61, 5.17, 4.53, 5.33, 5.14)
+     trt <- c(4.81, 4.17, 4.41, 3.59, 5.87, 3.83, 6.03, 4.89, 4.32, 4.69)
+     group <- gl(2, 10, 20, labels = c("Ctl", "Trt"))
+     weight <- c(ctl, trt)
+     sink(zz)
+     anova(lm.D9 <- lm(weight ~ group))
+     cat("\nSummary of Residuals:\n\n")
+     summary(resid(lm.D9))
+     sink()
+     close(zz)
+     cat(foo, sep = "\n")
+     
+
+~
+(END)Q
+[34:44] 11> [34:44] 11> source("../runByQ.R")
+[34:45] 12> z = mkCode("AirlineDelays_SampleSolutions.Rmd")
+Error in textConnection(v, "w", local = TRUE) : 
+  attempt to use zero-length variable name
+
+Enter a frame number, or 0 to exit 
+
+1: mkCode("AirlineDelays_SampleSolutions.Rmd")
+2: runByQ.R#59: textConnection(v, "w", local = TRUE)
+
+Selection: 0
+[34:45] 12> source("../runByQ.R")
+[36:13] 13> z = mkCode("AirlineDelays_SampleSolutions.Rmd")
+Error in textConnection(v, "w", local = TRUE) : 
+  attempt to use zero-length variable name
+
+Enter a frame number, or 0 to exit 
+
+1: mkCode("AirlineDelays_SampleSolutions.Rmd")
+2: runByQ.R#59: textConnection(v, "w", local = TRUE)
+
+Selection: 0
+[36:13] 13> v = ""
+[40:25] 14>     con = textConnection(v, "w", local = TRUE)
+Error in textConnection(v, "w", local = TRUE) : 
+  attempt to use zero-length variable name
+
+Enter a frame number, or 0 to exit 
+
+1: textConnection(v, "w", local = TRUE)
+
+Selection: 0
+[40:25] 14>     con = textConnection("v", "w", local = TRUE)
+[41:14] 15> source("../runByQ.R")
+[42:22] 16> z = mkCode("AirlineDelays_SampleSolutions.Rmd")
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                                                           
+[42:30] 17> z
+*** output flushed ***
+[42:35] 18> source("../runByQ.R")
+[43:04] 19> source("../runByQ.R")
+[43:14] 20> z = mkCode("AirlineDelays_SampleSolutions.Rmd")
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                                                           
+Called from: stripComments(l = txt)
+Browse[1]> c
+[43:20] 21> head(z, 20)
+ [1] "options(width = 70)"                                                  "knitr::opts_chunk$set(comment = \"\", fig.height = 5, dev = \"png\")"
+ [3] ""                                                                     "## Reading the RDS file"                                             
+ [5] "dir = \"../../Data/AirlineDelays/\""                                  "d = df = readRDS(file.path(dir, \"AirlineDelays.rds\"))"             
+ [7] ""                                                                     "### Getting Familiar with the Data"                                  
+ [9] "summary(d$ArrDelay)"                                                  ""                                                                    
+[11] "d[which(is.na(d$ArrDelay))[1:3], ]"                                   ""                                                                    
+[13] "table(is.na(d$ArrDelay), is.na(d$Cancellation))"                      ""                                                                    
+[15] "d[is.na(d$ArrDelay) & is.na(d$CancellationDescription), ]"            ""                                                                    
+[17] "## Caveat"                                                            "## Q 1   What period does the data cover? Is it complete?"           
+[19] "range(d$FlightDate)"                                                  ""                                                                    
+[43:24] 22> cat(z[1:100], sep = "\n")
+*** output flushed ***
+[43:41] 23> q()
+Save workspace image? [y/n/c]: n
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> ls
+AirlineDelays_HW1.md   AirlineDelays_SampleSolutions.pdf  AirlineDelays_SampleSolutions.Rmd  funs.R        phoebe   Solutions_files/  Solutions.R
+AirlineDelays_HW1.pdf  AirlineDelays_SampleSolutions.R    bob.rda                            GNUmakefile@  phoebe~  Solutions.pdf     Solutions.R~
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.R
+Rscript -e "source("../runByQ.R"); cat(mkCode(\"AirlineDelays_SampleSolutions.Rmd\"), file = \"AirlineDelays_SampleSolutions.R\", sep = \"\n\")"
+Error: object '..' not found
+recover called non-interactively; frames dumped, use debugger() to view
+Error: unexpected end of input
+No suitable frames for recover()
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.R
+Rscript -e "source(\"../runByQ.R\"); cat(mkCode(\"AirlineDelays_SampleSolutions.Rmd\"), file = \"AirlineDelays_SampleSolutions.R\", sep = \"\n\")"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                         
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> 
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.pdf
+Rscript -e "rmarkdown::render(\"AirlineDelays_SampleSolutions.Rmd\", \"pdf_document\")"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+  |.............................                                                                                  |  26% [unnamed-chunk-19]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-19-1.png" but not available.
+  |...................................                                                                            |  32% [unnamed-chunk-23]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-23-1.png" but not available.
+  |.....................................                                                                          |  33% [unnamed-chunk-24]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-24-1.png" but not available.
+  |......................................                                                                         |  34%                    [unnamed-chunk-25]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-25-1.png" but not available.
+  |........................................                                                                       |  36% [unnamed-chunk-26]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-26-1.png" but not available.
+  |...............................................                                                                |  43% [unnamed-chunk-31]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-31-1.png" but not available.
+  |...................................................                                                            |  46% [unnamed-chunk-33]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-33-1.png" but not available.
+  |....................................................                                                           |  47% [unnamed-chunk-34]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-34-1.png" but not available.
+  |......................................................                                                         |  48% [unnamed-chunk-35]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-35-1.png" but not available.
+  |.......................................................                                                        |  50% [unnamed-chunk-36]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-36-1.png" but not available.
+  |.............................................................                                                  |  55% [unnamed-chunk-40]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-40-1.png" but not available.
+  |.......................................................................................                        |  79% [unnamed-chunk-57]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-57-1.png" but not available.
+  |.........................................................................................                      |  80% [unnamed-chunk-58]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-58-1.png" but not available.
+  |..........................................................................................                     |  81%                    [unnamed-chunk-59]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-59-1.png" but not available.
+  |............................................................................................                   |  83% [unnamed-chunk-60]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-60-1.png" but not available.
+  |................................................................................................               |  87% [unnamed-chunk-63]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-63-1.png" but not available.
+  |..................................................................................................             |  88% [unnamed-chunk-64]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-64-1.png" but not available.
+  |.....................................................................................................          |  91% [unnamed-chunk-66]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-66-1.png" but not available.
+  |.......................................................................................................        |  92% [unnamed-chunk-67]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-67-1.png" but not available.
+  |.............................................................................................................. |  99% [unnamed-chunk-72]The magick package is required to crop "AirlineDelays_SampleSolutions_files/figure-latex/unnamed-chunk-72-1.png" but not available.
+                                                                                                                                                                         
+output file: AirlineDelays_SampleSolutions.knit.md
+
+/usr/local/bin/pandoc +RTS -K512m -RTS AirlineDelays_SampleSolutions.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output AirlineDelays_SampleSolutions.tex --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --highlight-style tango --pdf-engine pdflatex --variable graphics --lua-filter /Users/duncan/Rpackages4/rmarkdown/rmarkdown/lua/extract-data-uri.lua --variable 'geometry:margin=1in' 
+
+Output created: AirlineDelays_SampleSolutions.pdf
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> make AirlineDelays_SampleSolutions.R
+Rscript -e "source(\"../runByQ.R\"); cat(mkCode(\"AirlineDelays_SampleSolutions.Rmd\"), file = \"AirlineDelays_SampleSolutions.R\", sep = \"\n\")"
+
+
+processing file: AirlineDelays_SampleSolutions.Rmd
+                                                                                                                                                                         
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git status .
+On branch main
+Your branch is ahead of 'origin/main' by 10 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   AirlineDelays_SampleSolutions.Rmd
+	deleted:    Sep2026_Mar2012_May2011.rds
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	AirlineDelays_SampleSolutions.R
+	Solutions.R
+	phoebe
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git add AirlineDelays_SampleSolutions.Rmd 
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git commit -m "solutions"
+[main fb64b1b] solutions
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> cd ..
+]0;Assignments~/sta141a/Assignments> git status .
+On branch main
+Your branch is ahead of 'origin/main' by 11 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    AirlineDelays1/Sep2026_Mar2012_May2011.rds
+	modified:   Baseball/BaseballSampleSolutions.Rmd
+	modified:   GNUmakefile
+	modified:   runByQ.R
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	AirlineDelays1/AirlineDelays_SampleSolutions.R
+	AirlineDelays1/Solutions.R
+	AirlineDelays1/phoebe
+	Baseball/BaseballSampleSolutions.R
+	FEC/lookups.melissa.com_Archive [26-10-05 12-49-05].har
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;Assignments~/sta141a/Assignments> git add GNUmakefile  runByQ.R 
+]0;Assignments~/sta141a/Assignments> git commit -m "new way to create .R file from solutions"
+[main 2349c14] new way to create .R file from solutions
+ 2 files changed, 27 insertions(+), 19 deletions(-)
+]0;Assignments~/sta141a/Assignments> cd FEC/
+]0;FEC~/sta141a/Assignments/FEC> git status .
+On branch main
+Your branch is ahead of 'origin/main' by 12 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	lookups.melissa.com_Archive [26-10-05 12-49-05].har
+
+nothing added to commit but untracked files present (use "git add" to track)
+]0;FEC~/sta141a/Assignments/FEC> cd ..
+]0;Assignments~/sta141a/Assignments> git status .
+On branch main
+Your branch is ahead of 'origin/main' by 12 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    AirlineDelays1/Sep2026_Mar2012_May2011.rds
+	modified:   Baseball/BaseballSampleSolutions.Rmd
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	AirlineDelays1/AirlineDelays_SampleSolutions.R
+	AirlineDelays1/Solutions.R
+	AirlineDelays1/phoebe
+	Baseball/BaseballSampleSolutions.R
+	FEC/lookups.melissa.com_Archive [26-10-05 12-49-05].har
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;Assignments~/sta141a/Assignments> cd Baseball/
+]0;Baseball~/sta141a/Assignments/Baseball> git diff BaseballSampleSolutions.Rmd 
+diff --git a/Assignments/Baseball/BaseballSampleSolutions.Rmd b/Assignments/Baseball/BaseballSampleSolutions.Rmd
+index f083b21..a8483e4 100644
+--- a/Assignments/Baseball/BaseballSampleSolutions.Rmd
++++ b/Assignments/Baseball/BaseballSampleSolutions.Rmd
+@@ -25,6 +25,14 @@ table(ty == "data.frame")
+ v[ty == "data.frame"]
+ ```
+ 
++We can also use
++```{r}
++e = as.list(as.environment("package:Lahman"))
++table(sapply(e, class))
++```
++
++
++
+ We can explore the column names for these:
+ ```{r}
+ v2 = v[ty == "data.frame"]
+]0;Baseball~/sta141a/Assignments/Baseball> git add BaseballSampleSolutions.Rmd 
+]0;Baseball~/sta141a/Assignments/Baseball> git commit -m "as.list(as.environment(..."
+[main 58f3aa9] as.list(as.environment(...
+ 1 file changed, 8 insertions(+)
+]0;Baseball~/sta141a/Assignments/Baseball> git push
+Enumerating objects: 69, done.
+Counting objects: 100% (69/69), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (61/61), done.
+Writing objects: 100% (61/61), 23.64 KiB | 5.91 MiB/s, done.
+Total 61 (delta 42), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (42/42), completed with 5 local objects.        
+To github.com:duncantl/STA141A_F26.git
+   cae12c1..58f3aa9  main -> main
+]0;Baseball~/sta141a/Assignments/Baseball> pwd
+/Users/duncan/sta141a/Assignments/Baseball
+]0;Baseball~/sta141a/Assignments/Baseball> cd ..
+]0;Assignments~/sta141a/Assignments> git status .
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    AirlineDelays1/Sep2026_Mar2012_May2011.rds
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	AirlineDelays1/AirlineDelays_SampleSolutions.R
+	AirlineDelays1/Solutions.R
+	AirlineDelays1/phoebe
+	Baseball/BaseballSampleSolutions.R
+	FEC/lookups.melissa.com_Archive [26-10-05 12-49-05].har
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;Assignments~/sta141a/Assignments> cd AirlineDelays1/
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git add ph
+fatal: pathspec 'ph' did not match any files
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git add phoebe
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> git commit -m "Phoebe's comments"
+[main c81e787] Phoebe's comments
+ 1 file changed, 5 insertions(+)
+ create mode 100644 Assignments/AirlineDelays1/phoebe
+]0;AirlineDelays1~/sta141a/Assignments/AirlineDelays1> cd ..
+]0;Assignments~/sta141a/Assignments> cd ..
+]0;sta141a~/sta141a> git status 
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    Assignments/AirlineDelays1/Sep2026_Mar2012_May2011.rds
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Assignments/AirlineDelays1/AirlineDelays_SampleSolutions.R
+	Assignments/AirlineDelays1/Solutions.R
+	Assignments/Baseball/BaseballSampleSolutions.R
+	Assignments/FEC/lookups.melissa.com_Archive [26-10-05 12-49-05].har
+	ClassInfo.md
+	Data/#README.md#
+	Data/AirlineDelays/#mk.R#
+	Data/AirlineDelays/International_Report_Departures_20260907.csv
+	Data/AirlineDelays/L_AIRLINE_ID.csv
+	Data/AirlineDelays/L_AIRPORT.csv
+	Data/AirlineDelays/L_AIRPORT_ID.csv
+	Data/AirlineDelays/L_AIRPORT_SEQ_ID.csv
+	Data/AirlineDelays/L_CANCELLATION.csv
+	Data/AirlineDelays/L_CARRIER_HISTORY.csv
+	Data/AirlineDelays/L_CITY_MARKET_ID.csv
+	Data/AirlineDelays/L_DEPARRBLK.csv
+	Data/AirlineDelays/L_DISTANCE_GROUP_250.csv
+	Data/AirlineDelays/L_ONTIME_DELAY_GROUPS.csv
+	Data/AirlineDelays/L_STATE_ABR_AVIATION.csv
+	Data/AirlineDelays/L_STATE_FIPS.csv
+	Data/AirlineDelays/L_UNIQUE_CARRIERS.csv
+	Data/AirlineDelays/L_WORLD_AREA_CODES.csv
+	Data/AirlineDelays/L_YESNO_RESP.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_10.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_11.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_12.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_6.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_7.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_8.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_9.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2026_1.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2026_2.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2026_3.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2026_4.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2026_5.csv
+	Data/AirlineDelays/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2026_6.csv
+	Data/AirlineDelays/readme.html
+	Data/CIMIS/
+	Data/PEMS/
+	Data/README.md
+	Data/SFGate/2011_files/
+	Data/SFGate/June2011_files/
+	Data/SFGate/RECENT HOME SALES - The Almanac.html
+	Data/SFGate/RECENT HOME SALES - The Almanac_files/
+	Data/SFGate/Sold_2012_files/
+	Data/SFGate/sfgate_files/
+	Data/SFGate/www.zillow.com_Archive [26-09-20 10-59-35].har
+	Data/water.R
+	ExamQuestions.md
+	GNUmakefile
+	HWSchedule.md
+	MidTerm/
+	NicksCourseURL.md
+	OHsPeople.md
+	Phoebe.md
+	PrevCourses/
+	Public/
+	Rfunctions.md
+	Roster/
+	Syllabus.md
+	TODO.md
+	Topics2.md
+	URLs
+	Vectorization/
+	ZHANG, Biying.jpg
+	expand.grid.Rsession
+	getRmdCode.R
+	htmlSlidesTemplate.html
+	phoebe.R
+	phoebeFuns.R
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;sta141a~/sta141a> find . -name '*Topics*'
+./Topics.md
+./Public/Day2/Topics.md
+./Public/Day2/Topics.md~
+./Public/Review/Topics.md
+./Public/Review/Topics.md~
+./MidTerm/Topics.md
+./MidTerm/Topics.md~
+./Topics2.md
+]0;sta141a~/sta141a> cd Public/
+]0;Public~/sta141a/Public> ls
+Data/  Day10/  Day12/  Day14/  Day16/  Day18/  Day2/   Day3/  Day5/  Day7/  Day9/             FunctionsUsed.md~  funsUsed.R~  GNUmakefile~  Review/
+Day1/  Day11/  Day13/  Day15/  Day17/  Day19/  Day20/  Day4/  Day6/  Day8/  FunctionsUsed.md  funsUsed.R         GNUmakefile  README.md
+]0;Public~/sta141a/Public> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 1424 
+Time = 2026-10-29 09:26:57 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public 
+1> data(mtcars)
+[27:04] 2> mtcars
+                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+[27:05] 3> with(mtcars, tapply(mpg, cyl, median))
+   4    6    8 
+26.0 19.7 15.2 
+[28:13] 4> split(mtcars, mtcars$cyl)
+$`4`
+                mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Datsun 710     22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Merc 240D      24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230       22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+
+$`6`
+                mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Valiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Merc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+
+$`8`
+                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+
+[29:47] 5> tapply(mtcars, mtcars$cyl, function(d) lm(mpg ~ wt, d))
+$`4`
+
+Call:
+lm(formula = mpg ~ wt, data = d)
+
+Coefficients:
+(Intercept)           wt  
+     39.571       -5.647  
+
+
+$`6`
+
+Call:
+lm(formula = mpg ~ wt, data = d)
+
+Coefficients:
+(Intercept)           wt  
+      28.41        -2.78  
+
+
+$`8`
+
+Call:
+lm(formula = mpg ~ wt, data = d)
+
+Coefficients:
+(Intercept)           wt  
+     23.868       -2.192  
+
+
+[30:41] 6> h = c("                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        ", "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        ")
+[43:39] 7> h
+[1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+[2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+[43:41] 8> strsplit(h, "")
+[[1]]
+  [1] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [32] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [63] " " " " " " " " "S" "c" "i" "e" "n" "t" "i" "f" "i" "c" " " " " " " " " " " " " "C" "o" "m" "m" "o" "n" " " " " " " " " " "
+ [94] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "M" "a" "x" " " " " " " " " "T" "o" "t" "a" "l" " " "Q" "u"
+[125] "e" "r" "y" " " " " " " "E" " " " " " " "P" "e" "r" "." " " " " " " "A" "c" "c" "." " " " " " " " " " " " " " " " " " " " "
+[156] " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+
+[[2]]
+  [1] "D" "e" "s" "c" "r" "i" "p" "t" "i" "o" "n" " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [32] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [63] " " " " " " " " "N" "a" "m" "e" " " " " " " " " " " " " " " " " " " " " " " " " "N" "a" "m" "e" " " " " " " " " " " " " " "
+ [94] " " " " " " " " " " "T" "a" "x" "i" "d" " " " " " " " " " " " " "S" "c" "o" "r" "e" " " " " "S" "c" "o" "r" "e" " " "c" "o"
+[125] "v" "e" "r" " " "V" "a" "l" "u" "e" " " "I" "d" "e" "n" "t" " " " " "L" "e" "n" " " " " " " " " " " " " " " " " "A" "c" "c"
+[156] "e" "s" "s" "i" "o" "n" " " " " " " " " " " " " " " " "
+
+[43:56] 9> e = strsplit(h, "")
+[44:08] 10> w = e[[2]] %in% LETTERS
+[44:38] 11> w
+  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [21] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [41] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [81] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[101] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[141] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[161] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[44:41] 12> names(w) = e[[2]]
+[45:01] 13> w
+    D     e     s     c     r     i     p     t     i     o     n                                                             
+ TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE 
+                                                                                                                              
+FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE 
+                                                                                                                              
+FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE 
+                      N     a     m     e                                                                             N     a 
+FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE 
+    m     e                                                                             T     a     x     i     d             
+FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE 
+                            S     c     o     r     e                 S     c     o     r     e           c     o     v     e 
+FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE 
+    r           V     a     l     u     e           I     d     e     n     t                 L     e     n                   
+FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE 
+                                  A     c     c     e     s     s     i     o     n                                           
+FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE 
+      
+FALSE 
+[45:05] 14> which(w)
+  D   N   N   T   S   S   V   I   L   A 
+  1  67  83  99 110 117 129 135 142 153 
+[45:22] 15> w2 = e[[2]] %in% LETTERS
+[51:59] 16> e[[1]]
+  [1] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [32] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+ [63] " " " " " " " " "S" "c" "i" "e" "n" "t" "i" "f" "i" "c" " " " " " " " " " " " " "C" "o" "m" "m" "o" "n" " " " " " " " " " "
+ [94] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "M" "a" "x" " " " " " " " " "T" "o" "t" "a" "l" " " "Q" "u"
+[125] "e" "r" "y" " " " " " " "E" " " " " " " "P" "e" "r" "." " " " " " " "A" "c" "c" "." " " " " " " " " " " " " " " " " " " " "
+[156] " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+[52:02] 17> LETTERS
+ [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
+[52:10] 18> letters
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+[52:20] 19> w1 = e[[1]] %in% LETTERS
+[52:35] 20> table(w1)
+w1
+FALSE  TRUE 
+  161     8 
+[52:38] 21> table(w2)
+w2
+FALSE  TRUE 
+  159    10 
+[52:40] 22> e[[1]][w1]
+[1] "S" "C" "M" "T" "Q" "E" "P" "A"
+[53:21] 23> e[[1]][w1 & e[[1]] != "E"]
+[1] "S" "C" "M" "T" "Q" "P" "A"
+[54:33] 24> (w1 & e[[1]] != "E") | w2
+  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [21] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [41] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [81] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[101] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[121] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[141] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[161] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[56:08] 25> table((w1 & e[[1]] != "E") | w2)
+
+FALSE  TRUE 
+  158    11 
+[56:11] 26> w = (w1 & e[[1]] != "E") | w2)
+Error: unexpected ')' in "w = (w1 & e[[1]] != "E") | w2)"
+No suitable frames for recover()
+[56:11] 26> w = (w1 & e[[1]] != "E") | w2
+[56:28] 27> e[[2]][w]
+ [1] "D" "N" "N" "T" "S" "S" "c" "V" "I" "L" "A"
+[56:35] 28> which(w)
+ [1]   1  67  83  99 110 117 123 129 135 142 153
+[57:46] 29> w
+  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [21] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [41] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [81] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[101] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[121] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[141] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[161] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[58:00] 30> diff(which(w))
+ [1] 66 16 16 11  7  6  6  6  7 11
+[58:36] 31> l = readLines("Data/NCBIQuery.txt")
+[01:51] 32> v = l[10:20]
+[02:08] 33> nchar(v)
+ [1] 169 169 169 169 169 169 169 169 169 169 169
+[02:44] 34> c(which(w), max(nchar(v))
++ )
+ [1]   1  67  83  99 110 117 123 129 135 142 153 169
+[03:21] 35> diff(c(which(w), max(nchar(v))))
+ [1] 66 16 16 11  7  6  6  6  7 11 16
+[03:28] 36> widths = diff(c(which(w), max(nchar(v))))
+[06:10] 37> d = read.fwf(textConnection(v), widths = widths, header = FALSE)
+[06:46] 38> d[1,]
+                                                                  V1               V2               V3     V4  V5  V6     V7
+1 Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...      Lepomis mini...  redspotted s...  225390 292 292 100%  
+     V8    V9 V10              V11
+1 5e-75 97.65 948 KM370987.1      
+[06:49] 39> d[1,11]
+[1] "KM370987.1      "
+[07:15] 40> sapply(d, class)
+         V1          V2          V3          V4          V5          V6          V7          V8          V9         V10 
+"character" "character" "character"   "numeric"   "numeric"   "numeric" "character"   "numeric"   "numeric"   "numeric" 
+        V11 
+"character" 
+[07:41] 41> sapply(d, is.character)
+   V1    V2    V3    V4    V5    V6    V7    V8    V9   V10   V11 
+ TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE 
+[07:55] 42> ww = sapply(d, is.character)
+[08:00] 43> d[ww] = lapply(d[ww], trimws)
+[08:54] 44> d[1:2,]
+                                                                 V1              V2              V3     V4  V5  V6   V7    V8
+1     Lepomis miniatus 12S ribosomal RNA gene, partial sequence;... Lepomis mini... redspotted s... 225390 292 292 100% 5e-75
+2 Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332 281 281 100% 1e-71
+     V9   V10        V11
+1 97.65   948 KM370987.1
+2 96.47 16512 MH301069.1
+[08:58] 45> d$V6
+ [1] 292 281 281 276 276 270 252 252 252 252 252
+[09:19] 46> d$V7
+ [1] "100%" "100%" "100%" "100%" "100%" "100%" "100%" "100%" "100%" "100%" "100%"
+[09:31] 47> nchar(d$V7)
+ [1] 4 4 4 4 4 4 4 4 4 4 4
+[10:12] 48> substring(d$V7, 1, nchar(d$V7) -1)
+ [1] "100" "100" "100" "100" "100" "100" "100" "100" "100" "100" "100"
+[10:26] 49> as.numeric(substring(d$V7, 1, nchar(d$V7) -1))
+ [1] 100 100 100 100 100 100 100 100 100 100 100
+[10:34] 50> read.fwf(textConnection(h), widths = widths, header = FALSE)
+                                                                  V1               V2               V3          V4      V5
+1                                                                    Scientific       Common                       Max    
+2 Description                                                        Name             Name             Taxid       Score  
+      V6     V7     V8      V9         V10              V11
+1 Total  Query    E    Per.    Acc.                        
+2 Score  cover  Value  Ident   Len         Accession       
+[15:45] 51> h2 = read.fwf(textConnection(h), widths = widths, header = FALSE)
+[16:07] 52> dim(h2)
+[1]  2 11
+[16:09] 53> h2[1,]
+                                                                  V1               V2               V3          V4      V5
+1                                                                    Scientific       Common                       Max    
+      V6     V7     V8      V9         V10              V11
+1 Total  Query    E    Per.    Acc.                        
+[16:47] 54> paste(h2[1,], h2[2,])
+ [1] "                                                                   Description                                                       "
+ [2] "Scientific       Name            "                                                                                                    
+ [3] "Common           Name            "                                                                                                    
+ [4] "            Taxid      "                                                                                                              
+ [5] "Max     Score  "                                                                                                                      
+ [6] "Total  Score "                                                                                                                        
+ [7] "Query  cover "                                                                                                                        
+ [8] "  E    Value "                                                                                                                        
+ [9] "Per.    Ident  "                                                                                                                      
+[10] "Acc.        Len        "                                                                                                              
+[11] "                 Accession       "                                                                                                    
+[17:06] 55> paste(trimws(h2[1,]), trimws(h2[2,]))
+ [1] " Description"    "Scientific Name" "Common Name"     " Taxid"          "Max Score"       "Total Score"    
+ [7] "Query cover"     "E Value"         "Per. Ident"      "Acc. Len"        " Accession"     
+[17:24] 56> trimws(paste(trimws(h2[1,]), trimws(h2[2,])))
+ [1] "Description"     "Scientific Name" "Common Name"     "Taxid"           "Max Score"       "Total Score"    
+ [7] "Query cover"     "E Value"         "Per. Ident"      "Acc. Len"        "Accession"      
+[17:37] 57> class(h2[1,])
+[1] "data.frame"
+[17:58] 58> sapply(h2, paste, collapse = " ")
+                                                                                                                                     V1 
+"                                                                   Description                                                       " 
+                                                                                                                                     V2 
+                                                                                                    "Scientific       Name            " 
+                                                                                                                                     V3 
+                                                                                                    "Common           Name            " 
+                                                                                                                                     V4 
+                                                                                                              "            Taxid      " 
+                                                                                                                                     V5 
+                                                                                                                      "Max     Score  " 
+                                                                                                                                     V6 
+                                                                                                                        "Total  Score " 
+                                                                                                                                     V7 
+                                                                                                                        "Query  cover " 
+                                                                                                                                     V8 
+                                                                                                                        "  E    Value " 
+                                                                                                                                     V9 
+                                                                                                                      "Per.    Ident  " 
+                                                                                                                                    V10 
+                                                                                                              "Acc.        Len        " 
+                                                                                                                                    V11 
+                                                                                                    "                 Accession       " 
+[18:25] 59> sapply(h2, function(x) paste(trimws(x), collapse = " "))
+               V1                V2                V3                V4                V5                V6                V7 
+   " Description" "Scientific Name"     "Common Name"          " Taxid"       "Max Score"     "Total Score"     "Query cover" 
+               V8                V9               V10               V11 
+        "E Value"      "Per. Ident"        "Acc. Len"      " Accession" 
+[19:23] 60> ll = readLines("Data/NCBIQuery.txt")
+[07:53] 61> head(ll, 20)
+ [1] "RID: R69MU8R7016\t"                                                                                                                                                       
+ [2] "Job Title:2 sequences (Species1)\t\t\t\t"                                                                                                                                 
+ [3] "Program: BLASTN "                                                                                                                                                         
+ [4] "Database: nt Nucleotide collection (nt)"                                                                                                                                  
+ [5] "Query #1: Species1 Query ID: lcl|Query_11494 Length: 170"                                                                                                                 
+ [6] ""                                                                                                                                                                         
+ [7] "Sequences producing significant alignments:"                                                                                                                              
+ [8] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+ [9] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+[10] "Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...     Lepomis mini... redspotted s... 225390     292    292   100%  5e-75 97.65  948        KM370987.1       "
+[11] "Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MH301069.1       "
+[12] "Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...  Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MF621732.1       "
+[13] "Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301066.1       "
+[14] "Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301065.1       "
+[15] "Lepomis auritus strain NEFC_F16-508 mitochondrion, complete...    Lepomis auritus redbreast su... 201688     270    270   100%  2e-68 95.29  16501      MF621723.1       "
+[16] "Lepomis gibbosus isolate LG_EVO1 small subunit ribosomal RNA...   Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  1098       MH918136.1       "
+[17] "Lepomis gibbosus voucher NEFC_F16-162 mitochondrion, complete...  Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MF621726.1       "
+[18] "Lepomis gibbosus voucher NEFC_F16-162 mitochondrion, complete...  Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MF621725.1       "
+[19] "Lepomis gibbosus strain NEFC_F16-021 mitochondrion, complete...   Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MF621724.1       "
+[20] "Lepomis gibbosus voucher NEFC F18-021 mitochondrion, complete...  Lepomis gibb... pumpkinseed ... 270329     252    252   100%  9e-63 93.53  16503      MT667250.1       "
+[08:01] 62> tmp = l[[5:15]
++   C-c C-c
+No suitable frames for recover()
+[08:01] 62> tmp = l[5:15]
+[08:21] 63> l[5]
+[1] "Query #1: Species1 Query ID: lcl|Query_11494 Length: 170"
+[08:26] 64> tmp == ""
+ [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[08:42] 65> tmp[tmp != ""]
+ [1] "Query #1: Species1 Query ID: lcl|Query_11494 Length: 170"                                                                                                                 
+ [2] "Sequences producing significant alignments:"                                                                                                                              
+ [3] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+ [4] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+ [5] "Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...     Lepomis mini... redspotted s... 225390     292    292   100%  5e-75 97.65  948        KM370987.1       "
+ [6] "Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MH301069.1       "
+ [7] "Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...  Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MF621732.1       "
+ [8] "Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301066.1       "
+ [9] "Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301065.1       "
+[10] "Lepomis auritus strain NEFC_F16-508 mitochondrion, complete...    Lepomis auritus redbreast su... 201688     270    270   100%  2e-68 95.29  16501      MF621723.1       "
+[08:57] 66> trimws(tmp)
+ [1] "Query #1: Species1 Query ID: lcl|Query_11494 Length: 170"                                                                                                          
+ [2] ""                                                                                                                                                                  
+ [3] "Sequences producing significant alignments:"                                                                                                                       
+ [4] "Scientific      Common                     Max    Total Query   E   Per.   Acc."                                                                                   
+ [5] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession" 
+ [6] "Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...     Lepomis mini... redspotted s... 225390     292    292   100%  5e-75 97.65  948        KM370987.1"
+ [7] "Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete... Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MH301069.1"
+ [8] "Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...  Lepomis punc... spotted sunfish 270332     281    281   100%  1e-71 96.47  16512      MF621732.1"
+ [9] "Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301066.1"
+[10] "Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...   Lepomis auritus redbreast su... 201688     276    276   100%  5e-70 95.88  16500      MH301065.1"
+[11] "Lepomis auritus strain NEFC_F16-508 mitochondrion, complete...    Lepomis auritus redbreast su... 201688     270    270   100%  2e-68 95.29  16501      MF621723.1"
+[09:26] 67> tmp != ""
+ [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[09:47] 68> table(tmp != "")
+
+FALSE  TRUE 
+    1    10 
+[09:55] 69> h
+[1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+[2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+[10:29] 70> h2 = read.fwf(textConnection(h), widths = widths, header = FALSE)
+[13:06] 71> h2
+                                                                  V1               V2               V3          V4      V5
+1                                                                    Scientific       Common                       Max    
+2 Description                                                        Name             Name             Taxid       Score  
+      V6     V7     V8      V9         V10              V11
+1 Total  Query    E    Per.    Acc.                        
+2 Score  cover  Value  Ident   Len         Accession       
+[13:12] 72> h2$V8
+[1] "  E   " "Value "
+[13:18] 73> sapply(h2, function(x) paste(trimws(x), collapse = " "))
+               V1                V2                V3                V4                V5                V6                V7 
+   " Description" "Scientific Name"     "Common Name"          " Taxid"       "Max Score"     "Total Score"     "Query cover" 
+               V8                V9               V10               V11 
+        "E Value"      "Per. Ident"        "Acc. Len"      " Accession" 
+[13:57] 74> ff = list.files("Data/NASA/", pattern = "txt", full = TRUE)
+[16:09] 75> length(ff)
+[1] 504
+[16:11] 76> a = lapply(ff, readLines)
+[16:36] 77> names(a) = ff
+[16:40] 78> l6 = sapply(a, function(x) x[6])
+[16:59] 79> length(unique(l6))
+[1] 1
+[17:05] 80> unqiue(l6)
+Error in unqiue(l6) : could not find function "unqiue"
+No suitable frames for recover()
+[17:05] 80> unique(l6)
+[1] "              113.8W 111.2W 108.8W 106.2W 103.8W 101.2W 98.8W  96.2W  93.8W  91.2W  88.8W  86.2W  83.8W  81.2W  78.8W  76.2W  73.8W  71.2W  68.8W  66.2W  63.8W  61.2W  58.8W  56.2W  "
+[17:34] 81> l5 = sapply(a, function(x) x[5])
+[17:52] 82> length(unique(l5))
+[1] 72
+[17:57] 83> table(l5)
+l5
+             TIME     : 16-APR-1995 00:00              TIME     : 16-APR-1996 00:00              TIME     : 16-APR-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-APR-1998 00:00              TIME     : 16-APR-1999 00:00              TIME     : 16-APR-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-AUG-1995 00:00              TIME     : 16-AUG-1996 00:00              TIME     : 16-AUG-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-AUG-1998 00:00              TIME     : 16-AUG-1999 00:00              TIME     : 16-AUG-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-DEC-1995 00:00              TIME     : 16-DEC-1996 00:00              TIME     : 16-DEC-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-DEC-1998 00:00              TIME     : 16-DEC-1999 00:00              TIME     : 16-DEC-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-FEB-1995 00:00              TIME     : 16-FEB-1996 00:00              TIME     : 16-FEB-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-FEB-1998 00:00              TIME     : 16-FEB-1999 00:00              TIME     : 16-FEB-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-JAN-1995 00:00              TIME     : 16-JAN-1996 00:00              TIME     : 16-JAN-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-JAN-1998 00:00              TIME     : 16-JAN-1999 00:00              TIME     : 16-JAN-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-JUL-1995 00:00              TIME     : 16-JUL-1996 00:00              TIME     : 16-JUL-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-JUL-1998 00:00              TIME     : 16-JUL-1999 00:00              TIME     : 16-JUL-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-JUN-1995 00:00              TIME     : 16-JUN-1996 00:00              TIME     : 16-JUN-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-JUN-1998 00:00              TIME     : 16-JUN-1999 00:00              TIME     : 16-JUN-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-MAR-1995 00:00              TIME     : 16-MAR-1996 00:00              TIME     : 16-MAR-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-MAR-1998 00:00              TIME     : 16-MAR-1999 00:00              TIME     : 16-MAR-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-MAY-1995 00:00              TIME     : 16-MAY-1996 00:00              TIME     : 16-MAY-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-MAY-1998 00:00              TIME     : 16-MAY-1999 00:00              TIME     : 16-MAY-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-NOV-1995 00:00              TIME     : 16-NOV-1996 00:00              TIME     : 16-NOV-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-NOV-1998 00:00              TIME     : 16-NOV-1999 00:00              TIME     : 16-NOV-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-OCT-1995 00:00              TIME     : 16-OCT-1996 00:00              TIME     : 16-OCT-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-OCT-1998 00:00              TIME     : 16-OCT-1999 00:00              TIME     : 16-OCT-2000 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-SEP-1995 00:00              TIME     : 16-SEP-1996 00:00              TIME     : 16-SEP-1997 00:00 
+                                        7                                         7                                         7 
+             TIME     : 16-SEP-1998 00:00              TIME     : 16-SEP-1999 00:00              TIME     : 16-SEP-2000 00:00 
+                                        7                                         7                                         7 
+[18:14] 84> table(table(l5))
+
+ 7 
+72 
+[18:21] 85> h
+[1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+[2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+[27:38] 86> 
