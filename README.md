@@ -110,8 +110,14 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
    + [R session](Day10/Rsession), [R commands](Day10/Rcode.R), [R commands markdown](Day10/Rcode.md)
 
 + [Day 11](Day11)
-   + Finding non-local variables
    + Review session
+   + [Functions Used in class & homeworks](FunctionsUsed.md)
+   + [Topics](Topics.md)
+   + [R session](Day11/Rsession), [R commands](Day11/Rcode.R), [R commands markdown](Day11/Rcode.md)
    
 + [Day 12](Day12)
    + Mid-term exam.
+
+
+
++ Finding non-local variables
