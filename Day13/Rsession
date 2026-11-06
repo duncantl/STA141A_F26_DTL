@@ -1,0 +1,266 @@
+]0;Day13~/sta141a/Public/Day13> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 45227 
+Time = 2026-11-05 09:11:27 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26/Public/Day13 
+1> curve(rnorm(x, 0, 1), -4, 4)
+[11:37] 2> curve(dnorm(x, 0, 1), -4, 4)
+[11:47] 3> dnorm(c(-1, 0, 1, .5, .74567), 1, 3)
+[1] 0.1064827 0.1257944 0.1329808 0.1311466 0.1325037
+[13:27] 4> ?rnorm
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+Normal                  package:stats                  R Documentation
+
+The Normal Distribution
+
+Description:
+
+     Density, distribution function, quantile function and random
+     generation for the normal distribution with mean equal to ‘mean’
+     and standard deviation equal to ‘sd’.
+
+Usage:
+
+     dnorm(x, mean = 0, sd = 1, log = FALSE)
+     pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)
+     qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)
+     rnorm(n, mean = 0, sd = 1)
+     
+Arguments:
+
+    x, q: vector of quantiles.
+
+       p: vector of probabilities.
+
+       n: number of observations. If ‘length(n) > 1’, the length is
+          taken to be the number required.
+
+    mean: vector of means.
+
+      sd: vector of standard deviations.
+
+log, log.p: logical; if ‘TRUE’, probabilities/densities are given as
+          logarithms.
+
+lower.tail: logical; if ‘TRUE’ (default), probabilities are P[X <= x],
+          otherwise, P[X > x].
+
+Details:
+
+:q
+[55:31] 5> [55:31] 5> getwd()
+[1] "/Users/duncan/Classes/Davis/STA141A_F26/Public/Day13"
+[39:49] 6> source("../Day10/ncbiFuns.R")
+Error in file(filename, "r", encoding = encoding) : 
+  cannot open the connection
+In addition: Warning message:
+In file(filename, "r", encoding = encoding) :
+  cannot open file '../Day10/ncbiFuns.R': No such file or directory
+
+Enter a frame number, or 0 to exit 
+
+1: source("../Day10/ncbiFuns.R")
+2: file(filename, "r", encoding = encoding)
+
+Selection: 0
+[39:49] 6> list.files("../Day10")
+[1] "NASA"        "NCBI"        "Plan.md"     "Rsession"    "Rsession.md" "Rsession.R" 
+[40:32] 7> source("../Day10/NCBI/ncbiFuns.R")
+[40:40] 8> ls()
+[1] "computeWidths"  "mkNames"        "mkNames0"       "PRMGateway"     "PRMGatewayProd" "procBlock"     
+[40:44] 9> source("../Day10/NCBI/topLevel.R")
+[41:14] 10> read
+function(file = "../Data/NCBIQuery.txt",  l = readLines(file))
+{
+#    l = readLines(file)
+    w = l == "Sequences producing significant alignments:"
+    g = split(l, cumsum(w))
+    g = g[-1]
+
+    lapply(g, procBlock)
+}
+[41:26] 11> k = read()
+[41:35] 12> source("../Day10/NCBI/topLevel.R")
+[42:32] 13> k = read()
+Called from: read()
+Browse[1]> ls()
+[1] "file" "l"   
+Browse[1]> file
+[1] "../Data/NCBIQuery.txt"
+Browse[1]> head(l)
+[1] "RID: R69MU8R7016\t"                                       "Job Title:2 sequences (Species1)\t\t\t\t"                
+[3] "Program: BLASTN "                                         "Database: nt Nucleotide collection (nt)"                 
+[5] "Query #1: Species1 Query ID: lcl|Query_11494 Length: 170" ""                                                        
+Browse[1]> n
+debug at ../Day10/NCBI/topLevel.R#6: w = l == "Sequences producing significant alignments:"
+Browse[1]> 
+debug at ../Day10/NCBI/topLevel.R#7: g = split(l, cumsum(w))
+Browse[1]> table(w)
+w
+FALSE  TRUE 
+ 4649     2 
+Browse[1]> n
+debug at ../Day10/NCBI/topLevel.R#8: g = g[-1]
+Browse[1]> length(g)
+[1] 3
+Browse[1]> n
+debug at ../Day10/NCBI/topLevel.R#10: lapply(g, procBlock)
+Browse[1]> z = procBlock(g[[1]])
+Browse[1]> class(z)
+[1] "data.frame"
+Browse[1]> dim(z0
++   C-c C-c
+
+Enter a frame number, or 0 to exit 
+
+1: read()
+
+Selection: 0
+Browse[1]> dim(z)
+[1] 100  10
+Browse[1]> names(z)
+ [1] " Description"    "Scientific Name" "Common Name"     " Taxid"          "Max Score"       "Total Score"    
+ [7] "Query cover"     "E Value"         "Per. Ident"      "Acc. Len"       
+Browse[1]> sapply(z, class)
+    Description Scientific Name     Common Name           Taxid       Max Score     Total Score     Query cover 
+    "character"     "character"     "character"       "numeric"       "numeric"       "numeric"     "character" 
+        E Value      Per. Ident        Acc. Len 
+      "numeric"       "numeric"       "numeric" 
+Browse[1]> head(z)
+                                                         Description  Scientific Name      Common Name  Taxid Max Score
+1 Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...      Lepomis mini...  redspotted s...  225390       292
+2 Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete...  Lepomis punc...  spotted sunfish  270332       281
+3 Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...   Lepomis punc...  spotted sunfish  270332       281
+4 Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...    Lepomis auritus  redbreast su...  201688       276
+5 Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...    Lepomis auritus  redbreast su...  201688       276
+6 Lepomis auritus strain NEFC_F16-508 mitochondrion, complete...     Lepomis auritus  redbreast su...  201688       270
+  Total Score Query cover E Value Per. Ident Acc. Len
+1         292      100%     5e-75      97.65      948
+2         281      100%     1e-71      96.47    16512
+3         281      100%     1e-71      96.47    16512
+4         276      100%     5e-70      95.88    16500
+5         276      100%     5e-70      95.88    16500
+6         270      100%     2e-68      95.29    16501
+Browse[1]> summary(z)
+     Description  Scientific Name    Common Name       Taxid          Max Score    Total Score     Query cover 
+ Length   :100   Length   :100    Length   :100   Min.   :   8182   Min.   :176   Min.   :176   Length   :100  
+ N.unique : 97   N.unique : 24    N.unique : 25   1st Qu.:  27706   1st Qu.:182   1st Qu.:182   N.unique :  9  
+ N.blank  :  0   N.blank  :  0    N.blank  :  0   Median : 203410   Median :200   Median :200   N.blank  :  0  
+ Min.nchar: 66   Min.nchar: 16    Min.nchar: 16   Mean   : 276135   Mean   :209   Mean   :209   Min.nchar:  6  
+ Max.nchar: 66   Max.nchar: 16    Max.nchar: 16   3rd Qu.: 306585   3rd Qu.:237   3rd Qu.:237   Max.nchar:  6  
+                                                  Max.   :1161373   Max.   :292   Max.   :292                  
+    E Value            Per. Ident       Acc. Len      
+ Min.   :0.000e+00   Min.   :85.38   Min.   :  168.0  
+ 1st Qu.:0.000e+00   1st Qu.:85.96   1st Qu.:  170.0  
+ Median :5.000e-47   Median :89.64   Median :  957.5  
+ Mean   :7.986e-41   Mean   :89.43   Mean   : 7851.0  
+ 3rd Qu.:1.000e-41   3rd Qu.:92.73   3rd Qu.:16496.0  
+ Max.   :5.000e-40   Max.   :97.65   Max.   :16770.0  
+Browse[1]> Q
+[46:48] 25> source("../Day10/NCBI/topLevel.R")
+[48:25] 26> debug(procBlock)
+[48:34] 27> k = read()
+debugging in: FUN(X[[i]], ...)
+debug at ../Day10/NCBI/ncbiFuns.R#2: {
+    hdr = x[2:3]
+    i = which(x == "")[1]
+    dt = x[4:(i - 1)]
+    ans = read.fwf(textConnection(dt), widths = widths)
+    if (length(names(widths))) 
+        names(ans) = names(widths)
+    ans
+}
+Browse[1]> ls()
+[1] "widths" "x"     
+Browse[1]> widths
+Error in FUN(X[[i]], ...) : object 'hdr' not found
+
+Enter a frame number, or 0 to exit 
+
+1: read()
+2: topLevel.R#9: lapply(g, procBlock)
+3: FUN(X[[i]], ...)
+4: ncbiFuns.R#2: computeWidths(hdr)
+5: ncbiFuns.R#21: strsplit(h, "")
+
+Selection: 0
+Browse[1]> n
+debug at ../Day10/NCBI/ncbiFuns.R#4: hdr = x[2:3]
+Browse[1]> n
+debug at ../Day10/NCBI/ncbiFuns.R#5: i = which(x == "")[1]
+Browse[1]> hdr
+[1] "                                                                  Scientific      Common                     Max    Total Query   E   Per.   Acc.                        "
+[2] "Description                                                       Name            Name            Taxid      Score  Score cover Value Ident  Len        Accession        "
+Browse[1]> widths
+    Description Scientific Name     Common Name           Taxid       Max Score     Total Score     Query cover 
+             66              16              16              11               7               6               6 
+        E Value      Per. Ident        Acc. Len 
+              6               7              11 
+Warning message:
+restarting interrupted promise evaluation 
+Browse[1]> n
+debug at ../Day10/NCBI/ncbiFuns.R#6: dt = x[4:(i - 1)]
+Browse[1]> i
+[1] 104
+Browse[1]> x[104]
+[1] ""
+Browse[1]> names(widths)
+ [1] " Description"    "Scientific Name" "Common Name"     " Taxid"          "Max Score"       "Total Score"    
+ [7] "Query cover"     "E Value"         "Per. Ident"      "Acc. Len"       
+Browse[1]> n
+debug at ../Day10/NCBI/ncbiFuns.R#10: ans = read.fwf(textConnection(dt), widths = widths)
+Browse[1]> 
+debug at ../Day10/NCBI/ncbiFuns.R#13: if (length(names(widths))) names(ans) = names(widths)
+Browse[1]> 
+debug at ../Day10/NCBI/ncbiFuns.R#13: names(ans) = names(widths)
+Browse[1]> 
+debug at ../Day10/NCBI/ncbiFuns.R#15: ans
+Browse[1]> names(ans)
+ [1] " Description"    "Scientific Name" "Common Name"     " Taxid"          "Max Score"       "Total Score"    
+ [7] "Query cover"     "E Value"         "Per. Ident"      "Acc. Len"       
+Browse[1]> head(ans)
+                                                         Description  Scientific Name      Common Name  Taxid Max Score
+1 Lepomis miniatus 12S ribosomal RNA gene, partial sequence;...      Lepomis mini...  redspotted s...  225390       292
+2 Lepomis punctatus isolate NEFC F17-229 mitochondrion, complete...  Lepomis punc...  spotted sunfish  270332       281
+3 Lepomis punctatus strain NEFC_F16-205 mitochondrion, complete...   Lepomis punc...  spotted sunfish  270332       281
+4 Lepomis auritus isolate NEFC F16-237 mitochondrion, complete...    Lepomis auritus  redbreast su...  201688       276
+5 Lepomis auritus isolate NEFC F16-209 mitochondrion, complete...    Lepomis auritus  redbreast su...  201688       276
+6 Lepomis auritus strain NEFC_F16-508 mitochondrion, complete...     Lepomis auritus  redbreast su...  201688       270
+  Total Score Query cover E Value Per. Ident Acc. Len
+1         292      100%     5e-75      97.65      948
+2         281      100%     1e-71      96.47    16512
+3         281      100%     1e-71      96.47    16512
+4         276      100%     5e-70      95.88    16500
+5         276      100%     5e-70      95.88    16500
+6         270      100%     2e-68      95.29    16501
+Browse[1]> Q
+[52:14] 35> source("../Day10/NCBI/ncbiFuns.R")
+[53:07] 36> debug(mkNames)
+[53:11] 37> k = read()
+debugging in: mkNames(h, widths)
+debug at ../Day10/NCBI/ncbiFuns.R#45: {
+    v = read.fwf(textConnection(h), widths = widths, header = FALSE)
+    sapply(v, function(x) paste(trimws(x), collapse = " "))
+}
+Browse[1]> n
+debug at ../Day10/NCBI/ncbiFuns.R#47: v = read.fwf(textConnection(h), widths = widths, header = FALSE)
+Browse[1]> 
