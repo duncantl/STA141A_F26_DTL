@@ -114,10 +114,22 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
    + [Functions Used in class & homeworks](FunctionsUsed.md)
    + [Topics](Topics.md)
    + [R session](Day11/Rsession), [R commands](Day11/Rcode.R), [R commands markdown](Day11/Rcode.md)
+   + Finding non-local variables in your functions
+   ```{r}
+   codetools::findGlobals(myFun, FALSE)$variables
+   ```
    
 + [Day 12](Day12)
    + Mid-term exam.
+   + Bring a blue book and pen/pencil.
 
 
 
-+ Finding non-local variables
+
++ [Day 13](Day13)
+    + Reading the [NCBI data](Data/NCBIQuery.txt) using functions
+    + [topLevel.R](Day10/NCBI/topLevel.R)
+        + to create the blocks of text
+    + [Day10 function files README](Day10/NCBI/README.md)
+   + [R session](Day13/Rsession), [R commands](Day13/Rcode.R), [R commands markdown](Day13/Rcode.md)
+   + [Topics for day 13](Day13/Outline.md)
