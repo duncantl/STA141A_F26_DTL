@@ -10,6 +10,8 @@ function(h, body)
     widths
 }
 
+#codetools::findGlobals(procBlock)
+
 procBlock =
 function(x, widths = computeWidths(hdr, dt))
 {
