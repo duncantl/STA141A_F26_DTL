@@ -5,7 +5,8 @@
 # May want the Query metadata.
 
 
-l = readLines("../Data/NCBIQuery.txt")
+file = "../Data/NCBIQuery.txt"
+l = readLines(file)
 w = l == "Sequences producing significant alignments:"
 table(w)
 
