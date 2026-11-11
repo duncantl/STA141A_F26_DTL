@@ -133,3 +133,19 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
     + [Day10 function files README](Day10/NCBI/README.md)
    + [R session](Day13/Rsession), [R commands](Day13/Rcode.R), [R commands markdown](Day13/Rcode.md)
    + [Topics for day 13](Day13/Outline.md)
+
+
++ [Day 14](Day14)
+    + [R session](Day14/Rsession), [R commands](Day14/Rcode.R), [R commands markdown](Day14/Rcode.md)  
+    + [Outline](Day14/plan.md)
+    + Finish examing the NCBI functions and their evolution.
+      + debugging
+  
++ [Day 15]
+    + Vectorized functions
+      + integrate example
+      + .nknots.smspl in smooth.spline
+        + [original](Day14/nknots.smspl.R)
+        + [vectorized](Day14/nknots.smspl_2.R)
+    + [Messy Dates](Day14/readDates.R)
+       + [data](Data/messyDates.txt)
