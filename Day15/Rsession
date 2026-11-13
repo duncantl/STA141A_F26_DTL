@@ -121,7 +121,7 @@ exiting from: (function(x) 2)(x = dots[[1L]][[5L]])
 debugging in: (function(x) 2)(x = dots[[1L]][[6L]])
 debug at #1: [1] 2
 Browse[1]> Q
-[59:57] 31> z3 = readRDS("~/Rinaldo/z3.rds")
+[59:57] 31> z3 = readRDS("2colWords.rds")
 [02:35] 32> class(z3)
 [1] "data.frame"
 [02:49] 33> dim(z3)
@@ -137,3 +137,129 @@ Browse[1]> Q
 [03:09] 35> sort(c("January", "February", "March"))
 [1] "February" "January"  "March"   
 [12:37] 36> 
+[12:37] 36> getwd()
+[1] "/Users/duncan/Classes/Davis/STA141A_F26"
+[24:11] 37> setwd("Public/Day15")
+[24:22] 38> source("sim.R")
+[24:28] 39> z3 = readRDS("2colWords.rds")
+[24:39] 40> dim(z3)
+[1] 1000000       2
+[26:38] 41> # 1 million rows.
+[26:38] 41> 
+[26:38] 41> mkCol(z3[1:10,])
+          a        b               c
+1  ekob91a2      sxd    ekob91a2_sxd
+2   qt82gtp  5e9frl8 5e9frl8_qt82gtp
+3    95qz47     m3k5     95qz47_m3k5
+4     xqgbn ppc6e5l3  ppc6e5l3_xqgbn
+5  j8t8fwkr      zaa    j8t8fwkr_zaa
+6       5uv 90ijjbpc    5uv_90ijjbpc
+7   o2v3ccf   hib1aq  hib1aq_o2v3ccf
+8      lsjs  im1f88q    im1f88q_lsjs
+9      qsxi      nbs        nbs_qsxi
+10    9yh59   ji7gjz    9yh59_ji7gjz
+[27:23] 42> mkCol
+function(z)
+{
+    w = z$a < z$b
+    z$c = ""
+    z$c[w] = sprintf("%s_%s", z$a[w], z$b[w])
+    z$c[!w] = sprintf("%s_%s", z$b[!w], z$a[!w])
+    z
+}
+<bytecode: 0xb0a938f58>
+[27:38] 43> system.time(mkCol(z3))
+   user  system elapsed 
+  1.811   0.018   1.829 
+[28:00] 44> mkCol2
+function(z)
+{
+    z$c = apply(z, 1, function(x) paste(x[order(x)], collapse = "_"))
+    z
+}
+[28:19] 45> mkCol2(z3[1:10,])
+          a        b               c
+1  ekob91a2      sxd    ekob91a2_sxd
+2   qt82gtp  5e9frl8 5e9frl8_qt82gtp
+3    95qz47     m3k5     95qz47_m3k5
+4     xqgbn ppc6e5l3  ppc6e5l3_xqgbn
+5  j8t8fwkr      zaa    j8t8fwkr_zaa
+6       5uv 90ijjbpc    5uv_90ijjbpc
+7   o2v3ccf   hib1aq  hib1aq_o2v3ccf
+8      lsjs  im1f88q    im1f88q_lsjs
+9      qsxi      nbs        nbs_qsxi
+10    9yh59   ji7gjz    9yh59_ji7gjz
+[28:27] 46> a = mkCol(z3[1:10,])
+[28:48] 47> b = mkCol2(z3[1:10,])
+[28:52] 48> identical(a, b)
+[1] TRUE
+[28:55] 49> mkCol2
+function(z)
+{
+    z$c = apply(z, 1, function(x) paste(x[order(x)], collapse = "_"))
+    z
+}
+<bytecode: 0xb0a0b5b28>
+[29:10] 50> system.time(mkCol2(z3))
+   user  system elapsed 
+ 60.286   0.117  60.412 
+[30:30] 51> mkCol3
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # vectorize the sprintf()
+    z$c = sprintf("%s_%s", tmp[1,], tmp[2,])
+    z
+}
+[31:10] 52> c = mkCol3(z[1:10,])
+*** output flushed ***
+Selection: 0
+[31:10] 52> c = mkCol3(z3[1:10,])
+[31:24] 53> identical(a, c)
+[1] TRUE
+[31:28] 54> mkCol3
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # vectorize the sprintf()
+    z$c = sprintf("%s_%s", tmp[1,], tmp[2,])
+    z
+}
+<bytecode: 0xaeade56c8>
+[31:31] 55> system.time(mkCol3(z3))
+   user  system elapsed 
+ 42.868   0.088  42.970 
+[32:27] 56> mkCol4
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # paste rather than sprintf() - still vectorized
+    z$c = paste(tmp[1,], tmp[2,], sep = "_")
+    z
+}
+[32:43] 57> d  = mkCol4(z3[1:10,])
+[32:55] 58> identical(a,d)
+[1] TRUE
+[32:59] 59> mkCol4
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # paste rather than sprintf() - still vectorized
+    z$c = paste(tmp[1,], tmp[2,], sep = "_")
+    z
+}
+[33:02] 60> d  = mkCol4(z3[1:10,])
+[33:06] 61> mkCol4
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # paste rather than sprintf() - still vectorized
+    z$c = paste(tmp[1,], tmp[2,], sep = "_")
+    z
+}
+<bytecode: 0xb0a0d7e38>
+[33:08] 62> # now byte-code compiled
+[33:08] 62> system.time(mkCol4(z3))
+   user  system elapsed 
+ 43.900   0.062  43.973 
+[34:17] 63> 
