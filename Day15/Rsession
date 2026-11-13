@@ -1,0 +1,139 @@
+]0;sta141a~/sta141a> R
+
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin25.6.0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+PID = 88338 
+Time = 2026-11-12 08:59:45 
+Dir = /Users/duncan/Classes/Davis/STA141A_F26 
+1> 
+[00:54] 7> t = t[t != 0]
+[00:57] 8> 
+[00:57] 8> length(t)
+[1] 40
+[01:09] 9> summary(t)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   8.00   30.56   38.75   43.51   54.12   89.50 
+[01:12] 10> plot(density(t))
+[03:32] 11> rug(t)
+[03:42] 12> f = function(x) 2
+[43:35] 13> integrate(f, 0, 1)
+Error in integrate(f, 0, 1) : 
+  evaluation of function gave a result of wrong length
+
+Enter a frame number, or 0 to exit 
+
+1: integrate(f, 0, 1)
+
+Selection: 0
+[43:35] 13> f(.5)
+[1] 2
+[49:54] 14> f(.25)
+[1] 2
+[49:59] 15> f(c(.5, .25))
+[1] 2
+[51:26] 16> f(f)
+[1] 2
+[51:45] 17> integrate(f, 0, 10)
+Error in integrate(f, 0, 10) : 
+  evaluation of function gave a result of wrong length
+
+Enter a frame number, or 0 to exit 
+
+1: integrate(f, 0, 10)
+
+Selection: 1
+Called from: top level 
+Browse[1]> ls()
+ [1] "abs.tol"       "aux"           "f"             "ff"            "keep.xy"       "limit"         "lower"        
+ [8] "rel.tol"       "stop.on.error" "subdivisions"  "upper"        
+Browse[1]> 
+Enter a frame number, or 0 to exit 
+
+1: integrate(f, 0, 10)
+
+Selection: 0
+[52:40] 18> debug(f)
+[52:56] 19> integrate(f, 0, 10)
+debugging in: f(x, ...)
+debug at #1: [1] 2
+Browse[1]> ls()
+[1] "x"
+Browse[1]> x
+ [1] 5.00000000 0.13046736 9.86953264 0.67468317 9.32531683 1.60295216 8.39704784 2.83302303 7.16697697 4.25562831
+[11] 5.74437169 0.02171418 9.97828582 0.34921254 9.65078746 1.09591137 8.90408863 2.18621433 7.81378567 3.52803569
+[21] 6.47196431
+Browse[1]> numeric(length(x))
+ [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Browse[1]> numeric(length(x)) + 2
+ [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+Browse[1]> rep(2, length(x))
+ [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+Browse[1]> Q
+[56:34] 24> fv = function(x) numeric(length(x) ) + 2
+[57:36] 25> integrate(fv, 0, 10)
+20 with absolute error < 2.2e-13
+[57:42] 26> fv2 = Vectorize(f)
+[58:28] 27> integrate(fv2, 0, 10)
+debugging in: (function(x) 2)(x = dots[[1L]][[1L]])
+debug at #1: [1] 2
+Browse[1]> x
+[1] 5
+Browse[1]> c
+exiting from: (function(x) 2)(x = dots[[1L]][[1L]])
+debugging in: (function(x) 2)(x = dots[[1L]][[2L]])
+debug at #1: [1] 2
+Browse[1]> x
+[1] 0.1304674
+Browse[1]> c
+exiting from: (function(x) 2)(x = dots[[1L]][[2L]])
+debugging in: (function(x) 2)(x = dots[[1L]][[3L]])
+debug at #1: [1] 2
+Browse[1]> x
+[1] 9.869533
+Browse[1]> c
+exiting from: (function(x) 2)(x = dots[[1L]][[3L]])
+debugging in: (function(x) 2)(x = dots[[1L]][[4L]])
+debug at #1: [1] 2
+Browse[1]> x
+[1] 0.6746832
+Browse[1]> c
+exiting from: (function(x) 2)(x = dots[[1L]][[4L]])
+debugging in: (function(x) 2)(x = dots[[1L]][[5L]])
+debug at #1: [1] 2
+Browse[1]> 
+exiting from: (function(x) 2)(x = dots[[1L]][[5L]])
+debugging in: (function(x) 2)(x = dots[[1L]][[6L]])
+debug at #1: [1] 2
+Browse[1]> Q
+[59:57] 31> z3 = readRDS("~/Rinaldo/z3.rds")
+[02:35] 32> class(z3)
+[1] "data.frame"
+[02:49] 33> dim(z3)
+[1] 1000000       2
+[02:53] 34> head(z3)
+         a        b
+1 ekob91a2      sxd
+2  qt82gtp  5e9frl8
+3   95qz47     m3k5
+4    xqgbn ppc6e5l3
+5 j8t8fwkr      zaa
+6      5uv 90ijjbpc
+[03:09] 35> sort(c("January", "February", "March"))
+[1] "February" "January"  "March"   
+[12:37] 36> 
