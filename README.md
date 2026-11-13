@@ -144,8 +144,12 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
 + [Day 15]
     + Vectorized functions
       + integrate example
-      + .nknots.smspl in smooth.spline
+      + combining 2 columns of word, ordering each pair.
+          + [README](Day15/README_2words.md)
+          + [sim.R](Day15/sim.R)
+          + [sample words](Day15/2colWords.rds)
+      + .nknots.smspl in smooth.spline - Not covered in class.
         + [original](Day14/nknots.smspl.R)
         + [vectorized](Day14/nknots.smspl_2.R)
-    + [Messy Dates](Day14/readDates.R)
-       + [data](Data/messyDates.txt)
+      + [Messy Dates](Day14/readDates.R)  - Covered in Discussion Section
+        + [data](Data/messyDates.txt)
