@@ -262,4 +262,154 @@ function(z)
 [33:08] 62> system.time(mkCol4(z3))
    user  system elapsed 
  43.900   0.062  43.973 
-[34:17] 63> 
+[34:17] 63> a
+          a        b               c
+1  ekob91a2      sxd    ekob91a2_sxd
+2   qt82gtp  5e9frl8 5e9frl8_qt82gtp
+3    95qz47     m3k5     95qz47_m3k5
+4     xqgbn ppc6e5l3  ppc6e5l3_xqgbn
+5  j8t8fwkr      zaa    j8t8fwkr_zaa
+6       5uv 90ijjbpc    5uv_90ijjbpc
+7   o2v3ccf   hib1aq  hib1aq_o2v3ccf
+8      lsjs  im1f88q    im1f88q_lsjs
+9      qsxi      nbs        nbs_qsxi
+10    9yh59   ji7gjz    9yh59_ji7gjz
+[41:04] 64> 
+[41:04] 64> tms = lapply(list(mkCol, mkCola, mkCol2, mkCol3, mkCol4), function(f) system.time(f(z3)))
+[54:40] 65> tms
+[[1]]
+   user  system elapsed 
+  0.980   0.005   0.986 
+
+[[2]]
+   user  system elapsed 
+  0.919   0.002   0.921 
+
+[[3]]
+   user  system elapsed 
+ 46.050   0.040  46.093 
+
+[[4]]
+   user  system elapsed 
+ 42.572   0.066  42.667 
+
+[[5]]
+   user  system elapsed 
+ 43.482   0.071  43.621 
+
+[54:47] 66> do.call(rbind, tms)
+     user.self sys.self elapsed user.child sys.child
+[1,]     0.980    0.005   0.986          0         0
+[2,]     0.919    0.002   0.921          0         0
+[3,]    46.050    0.040  46.093          0         0
+[4,]    42.572    0.066  42.667          0         0
+[5,]    43.482    0.071  43.621          0         0
+[54:53] 67> ls()
+
+[55:04] 68> ls()
+ [1] "a"              "b"              "c"              "d"              "f"              "fv"            
+ [7] "fv2"            "mkCol"          "mkCol2"         "mkCol3"         "mkCol4"         "mkCola"        
+[13] "mkString"       "mkString2"      "mkWord"         "mkWord0"        "PRMGateway"     "PRMGatewayProd"
+[19] "t"              "tms"            "z3"            
+[03:19] 69> z = readRDS("~/Rinaldo/z.rds")
+[05:03] 70> tms.full = lapply(list(mkCol, mkCola, mkCol2, mkCol3, mkCol4), function(f) { print(f); system.time(f(z))})
+function(z)
+{
+    w = z$a < z$b
+    z$c = ""
+    z$c[w] = sprintf("%s_%s", z$a[w], z$b[w])
+    z$c[!w] = sprintf("%s_%s", z$b[!w], z$a[!w])
+    z
+}
+<bytecode: 0xb0a938f58>
+function(z)
+{
+    w = z$a < z$b
+    z$c = ""
+    z$c[w] = paste(z$a[w], z$b[w], sep = "_")
+    z$c[!w] = paste(z$b[!w], z$a[!w], sep = "_")
+    z
+}
+<bytecode: 0xb0a03f268>
+function(z)
+{
+    z$c = apply(z, 1, function(x) paste(x[order(x)], collapse = "_"))
+    z
+}
+<bytecode: 0xb0a0b5b28>
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # vectorize the sprintf()
+    z$c = sprintf("%s_%s", tmp[1,], tmp[2,])
+    z
+}
+<bytecode: 0xaeade56c8>
+function(z)
+{
+    tmp = apply(z, 1, function(x) x[order(x)])
+    # paste rather than sprintf() - still vectorized
+    z$c = paste(tmp[1,], tmp[2,], sep = "_")
+    z
+}
+<bytecode: 0xb0a0d7e38>
+[59:12] 71> tms.full = do.call(rbind, tms.full)
+[59:49] 72> tms.full
+     user.self sys.self  elapsed user.child sys.child
+[1,]    51.214    0.386   51.652          0         0
+[2,]    24.666    0.200   24.896          0         0
+[3,]  1208.951    4.466 1215.113          0         0
+[4,]   818.480    7.735  828.489          0         0
+[5,]   826.514    5.839  833.708          0         0
+[59:51] 73> rownames(tms.full) = c("mkCol", "mkCola", paste0("mkCol", 2:4))
+[00:27] 74> tms.full[, 1:3]
+       user.self sys.self  elapsed
+mkCol     51.214    0.386   51.652
+mkCola    24.666    0.200   24.896
+mkCol2  1208.951    4.466 1215.113
+mkCol3   818.480    7.735  828.489
+mkCol4   826.514    5.839  833.708
+[00:34] 75> which.min(tms.full[,1])
+mkCola 
+     2 
+[01:39] 76> tms.full %/% which.min(tms.full[,1])
+       user.self sys.self elapsed user.child sys.child
+mkCol         25        0      25          0         0
+mkCola        12        0      12          0         0
+mkCol2       604        2     607          0         0
+mkCol3       409        3     414          0         0
+mkCol4       413        2     416          0         0
+[01:47] 77> tms.full[, 1:3] %/% which.min(tms.full[,1])
+       user.self sys.self elapsed
+mkCol         25        0      25
+mkCola        12        0      12
+mkCol2       604        2     607
+mkCol3       409        3     414
+mkCol4       413        2     416
+[01:53] 78> tms.full[, 1:3] %/% tms.full[which.min(tms.full[,1]), 1:3]
+       user.self sys.self elapsed
+mkCol          2        0     258
+mkCola       123        0       1
+mkCol2        48       22      49
+mkCol3        33        0    4142
+mkCol4      4132        0      33
+[02:15] 79> tms.full
+       user.self sys.self  elapsed user.child sys.child
+mkCol     51.214    0.386   51.652          0         0
+mkCola    24.666    0.200   24.896          0         0
+mkCol2  1208.951    4.466 1215.113          0         0
+mkCol3   818.480    7.735  828.489          0         0
+mkCol4   826.514    5.839  833.708          0         0
+[02:40] 80> tms.full = tms.full[, 1:3]
+[02:48] 81> tms.full
+       user.self sys.self  elapsed
+mkCol     51.214    0.386   51.652
+mkCola    24.666    0.200   24.896
+mkCol2  1208.951    4.466 1215.113
+mkCol3   818.480    7.735  828.489
+mkCol4   826.514    5.839  833.708
+[02:50] 82> apply(tms.full, 2, function(x) x/min(x))
+
+[03:29] 83> dim(z)
+[1] 18000000        2
+[06:41] 84> 

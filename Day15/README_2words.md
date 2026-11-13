@@ -75,17 +75,18 @@ tms = lapply(list(mkCol, mkCola, mkCol2, mkCol3, mkCol4),
 
 ```r
 do.call(rbind, tms)[, 1:3]
-     user.self sys.self elapsed
-[1,]     0.980    0.005   0.986
-[2,]     0.919    0.002   0.921
-[3,]    46.050    0.040  46.093
-[4,]    42.572    0.066  42.667
-[5,]    43.482    0.071  43.621
+       user.self sys.self elapsed
+mkCol      0.980    0.005   0.986
+mkCola     0.919    0.002   0.921
+mkCol2    46.050    0.040  46.093
+mkCol3    42.572    0.066  42.667
+mkCol4    43.482    0.071  43.621
 ```
 
-We see that mkCola (with paste) is slightly faster than mkCol() (same as mkCola but with sprintf()).
+We see that mkCola (with paste) is slightly faster than mkCol() (same as mkCola but with sprintf()
+rather than paste()).
 
-Both are about 50 times faster than the much less vectorized versions.
+Both are between 46 to 50 times faster than the much less vectorized versions.
 
 mkCol2() is the slowest because we have N calls to order  and N calls to paste().
 
@@ -104,6 +105,35 @@ Note that a factor of 50 speed up a) is the difference between 1 minute and almo
 and b) that factor probably will increase slightly when we have even more rows.
 
 
+For 18 million
+
+```
+       user.self sys.self  elapsed
+mkCol     51.214    0.386   51.652
+mkCola    24.666    0.200   24.896
+mkCol2  1208.951    4.466 1215.113
+mkCol3   818.480    7.735  828.489
+mkCol4   826.514    5.839  833.708
+```
+
+mkCola() is now a twice as fast as mkCol(). So paste() is faster than sprintf() in this context.
+
+
+```r
+apply(tms.full, 2, function(x) x/min(x))
+
+
+       user.self sys.self   elapsed
+mkCol   2.076299    1.930  2.074711
+mkCola  1.000000    1.000  1.000000
+mkCol2 49.012852   22.330 48.807559
+mkCol3 33.182518   38.675 33.277996
+mkCol4 33.508230   29.195 33.487629
+```
+
+So the ratio didn't increase but actually shrunk to 33 for mkCol3 and 4.
+
+The ratio for the least vectorized case is still 48, close to the factor 50 earlier for 1 million observations.
 
 
 

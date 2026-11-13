@@ -106,4 +106,48 @@ mkCol4
 
 system.time(mkCol4(z3))
 
+a
+
+
+
+tms = lapply(list(mkCol, mkCola, mkCol2, mkCol3, mkCol4), function(f) system.time(f(z3)))
+
+tms
+
+do.call(rbind, tms)
+
+ls()
+
+ls()
+
+z = readRDS("~/Rinaldo/z.rds")
+
+tms.full = lapply(list(mkCol, mkCola, mkCol2, mkCol3, mkCol4), function(f) { print(f); system.time(f(z))})
+
+tms.full = do.call(rbind, tms.full)
+
+tms.full
+
+rownames(tms.full) = c("mkCol", "mkCola", paste0("mkCol", 2:4))
+
+tms.full[, 1:3]
+
+which.min(tms.full[,1])
+
+tms.full %/% which.min(tms.full[,1])
+
+tms.full[, 1:3] %/% which.min(tms.full[,1])
+
+tms.full[, 1:3] %/% tms.full[which.min(tms.full[,1]), 1:3]
+
+tms.full
+
+tms.full = tms.full[, 1:3]
+
+tms.full
+
+apply(tms.full, 2, function(x) x/min(x))
+
+dim(z)
+
 
