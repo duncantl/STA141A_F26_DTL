@@ -141,7 +141,7 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
     + Finish examing the NCBI functions and their evolution.
       + debugging
   
-+ [Day 15]
++ [Day 15](Day15)
     + Vectorized functions
       + integrate example
       + combining 2 columns of word, ordering each pair.
@@ -153,3 +153,9 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
         + [vectorized](Day14/nknots.smspl_2.R)
       + [Messy Dates](Day14/readDates.R)  - Covered in Discussion Section
         + [data](Data/messyDates.txt)
+
++ [Day 16](Day16)
+    + [Outline](Day16/plan.md)
+        + Outline of bootstrap
+    + [Bootstrap code](Day16/bootstrap.R)
+    + [sample data - RDS file](Day16/x.rds)
