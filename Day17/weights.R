@@ -17,10 +17,11 @@ gmean = tapply(x, names(x), mean)
 x.bar = mean(x)
 
 wts = rev(var)/ sum(var)
+names(wts)=  c("A", "B")
 weights = rep(wts, n)
 weighted.xbar =  sum(x*weights/sum(weights)) # /sum(n)
 
-
+library(ggplot2)
 ggplot(data.frame(x = x, dist = names(x)), aes(x = x, color= dist) ) + geom_density()
 
 gmean
