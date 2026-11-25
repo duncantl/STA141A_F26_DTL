@@ -159,3 +159,14 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
         + Outline of bootstrap
     + [Bootstrap code](Day16/bootstrap.R)
     + [sample data - RDS file](Day16/x.rds)
+
+
++ [Day 18](Day18)
+    + k-Nearest Neighbors
+    + Cross-validation  
+    + [Outline](Day18/plan.md)
+    + [1-D classification example - run R code](Day18/1d.R)
+    + [1-D notes](Day18/1d.md)
+    + [2-D classification example - run R code](Day18/knnCircle.R)      
+    + [Cross Validation](Day18/CrossValidation.md)
+    + [R session](Day18/Rsession), [R commands](Day18/Rcode.R), [R commands markdown](Day18/Rcode.md)  
