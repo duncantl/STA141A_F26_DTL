@@ -160,6 +160,10 @@ This is the repository for Duncan Temple Lang's Fall 2026 STA141A  course.
     + [Bootstrap code](Day16/bootstrap.R)
     + [sample data - RDS file](Day16/x.rds)
 
++ [Day 17](Day17)
+    + [Weighted averages](Day17/weights.R)
+    + [Weighted least squares](Day17/weightedLS.R)
+
 
 + [Day 18](Day18)
     + k-Nearest Neighbors
